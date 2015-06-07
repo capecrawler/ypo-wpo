@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		32EA009B1B2333F300B392E2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EA009A1B2333F300B392E2 /* BaseViewController.m */; };
+		32EA009E1B2334D700B392E2 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EA009D1B2334D700B392E2 /* BaseTableViewController.m */; };
+		32EA00A11B23351700B392E2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EA00A01B23351700B392E2 /* LoginViewController.m */; };
+		32EA00A41B2347D400B392E2 /* BaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EA00A31B2347D400B392E2 /* BaseNavigationViewController.m */; };
+		32F5D5721B22A81700B40ACE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F5D5711B22A81700B40ACE /* main.m */; };
+		32F5D5751B22A81700B40ACE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F5D5741B22A81700B40ACE /* AppDelegate.m */; };
+		32F5D5781B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32F5D5761B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld */; };
+		32F5D57E1B22A81700B40ACE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F5D57C1B22A81700B40ACE /* Main.storyboard */; };
+		32F5D5801B22A81700B40ACE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32F5D57F1B22A81700B40ACE /* Images.xcassets */; };
+		32F5D5831B22A81700B40ACE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F5D5811B22A81700B40ACE /* LaunchScreen.xib */; };
+		32F5D58F1B22A81700B40ACE /* YPO_WPO_SGTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F5D58E1B22A81700B40ACE /* YPO_WPO_SGTests.m */; };
+		7F51511992692F0E890173DC /* libPods-YPO-WPO SG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB14134EFF597ADAD6B96C8D /* libPods-YPO-WPO SG.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		32F5D5891B22A81700B40ACE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32F5D5641B22A81700B40ACE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32F5D56B1B22A81700B40ACE;
+			remoteInfo = "YPO-WPO SG";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D09B34936790A424A4B858C /* Pods-YPO-WPO SG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YPO-WPO SG.release.xcconfig"; path = "Pods/Target Support Files/Pods-YPO-WPO SG/Pods-YPO-WPO SG.release.xcconfig"; sourceTree = "<group>"; };
+		32EA00991B2333F300B392E2 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		32EA009A1B2333F300B392E2 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		32EA009C1B2334D700B392E2 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		32EA009D1B2334D700B392E2 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		32EA009F1B23351700B392E2 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		32EA00A01B23351700B392E2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		32EA00A21B2347D400B392E2 /* BaseNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationViewController.h; sourceTree = "<group>"; };
+		32EA00A31B2347D400B392E2 /* BaseNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationViewController.m; sourceTree = "<group>"; };
+		32F5D56C1B22A81700B40ACE /* YPO-WPO SG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YPO-WPO SG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32F5D5701B22A81700B40ACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32F5D5711B22A81700B40ACE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32F5D5731B22A81700B40ACE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		32F5D5741B22A81700B40ACE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		32F5D5771B22A81700B40ACE /* YPO_WPO_SG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YPO_WPO_SG.xcdatamodel; sourceTree = "<group>"; };
+		32F5D57D1B22A81700B40ACE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		32F5D57F1B22A81700B40ACE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32F5D5821B22A81700B40ACE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		32F5D5881B22A81700B40ACE /* YPO-WPO SGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "YPO-WPO SGTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32F5D58D1B22A81700B40ACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32F5D58E1B22A81700B40ACE /* YPO_WPO_SGTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YPO_WPO_SGTests.m; sourceTree = "<group>"; };
+		C8E24FC899ECC821D3BAF10B /* Pods-YPO-WPO SG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YPO-WPO SG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YPO-WPO SG/Pods-YPO-WPO SG.debug.xcconfig"; sourceTree = "<group>"; };
+		EB14134EFF597ADAD6B96C8D /* libPods-YPO-WPO SG.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YPO-WPO SG.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		32F5D5691B22A81700B40ACE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F51511992692F0E890173DC /* libPods-YPO-WPO SG.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F5D5851B22A81700B40ACE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07AED282F102099F0407BBAA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C8E24FC899ECC821D3BAF10B /* Pods-YPO-WPO SG.debug.xcconfig */,
+				0D09B34936790A424A4B858C /* Pods-YPO-WPO SG.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		32EA00941B2332A600B392E2 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		32EA00951B2332B100B392E2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				32EA00991B2333F300B392E2 /* BaseViewController.h */,
+				32EA009A1B2333F300B392E2 /* BaseViewController.m */,
+				32EA009C1B2334D700B392E2 /* BaseTableViewController.h */,
+				32EA009D1B2334D700B392E2 /* BaseTableViewController.m */,
+				32EA009F1B23351700B392E2 /* LoginViewController.h */,
+				32EA00A01B23351700B392E2 /* LoginViewController.m */,
+				32EA00A21B2347D400B392E2 /* BaseNavigationViewController.h */,
+				32EA00A31B2347D400B392E2 /* BaseNavigationViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		32EA00961B2332B900B392E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		32EA00971B2332C200B392E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		32EA00981B2332C900B392E2 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		32F5D5631B22A81700B40ACE = {
+			isa = PBXGroup;
+			children = (
+				32F5D56E1B22A81700B40ACE /* YPO-WPO SG */,
+				32F5D58B1B22A81700B40ACE /* YPO-WPO SGTests */,
+				32F5D56D1B22A81700B40ACE /* Products */,
+				07AED282F102099F0407BBAA /* Pods */,
+				E891EC75A4F103006C2D1330 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		32F5D56D1B22A81700B40ACE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				32F5D56C1B22A81700B40ACE /* YPO-WPO SG.app */,
+				32F5D5881B22A81700B40ACE /* YPO-WPO SGTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32F5D56E1B22A81700B40ACE /* YPO-WPO SG */ = {
+			isa = PBXGroup;
+			children = (
+				32EA00981B2332C900B392E2 /* Lib */,
+				32EA00971B2332C200B392E2 /* Models */,
+				32EA00961B2332B900B392E2 /* Views */,
+				32EA00951B2332B100B392E2 /* Controllers */,
+				32EA00941B2332A600B392E2 /* Categories */,
+				32F5D5731B22A81700B40ACE /* AppDelegate.h */,
+				32F5D5741B22A81700B40ACE /* AppDelegate.m */,
+				32F5D57C1B22A81700B40ACE /* Main.storyboard */,
+				32F5D57F1B22A81700B40ACE /* Images.xcassets */,
+				32F5D5811B22A81700B40ACE /* LaunchScreen.xib */,
+				32F5D5761B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld */,
+				32F5D56F1B22A81700B40ACE /* Supporting Files */,
+			);
+			path = "YPO-WPO SG";
+			sourceTree = "<group>";
+		};
+		32F5D56F1B22A81700B40ACE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32F5D5701B22A81700B40ACE /* Info.plist */,
+				32F5D5711B22A81700B40ACE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		32F5D58B1B22A81700B40ACE /* YPO-WPO SGTests */ = {
+			isa = PBXGroup;
+			children = (
+				32F5D58E1B22A81700B40ACE /* YPO_WPO_SGTests.m */,
+				32F5D58C1B22A81700B40ACE /* Supporting Files */,
+			);
+			path = "YPO-WPO SGTests";
+			sourceTree = "<group>";
+		};
+		32F5D58C1B22A81700B40ACE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32F5D58D1B22A81700B40ACE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E891EC75A4F103006C2D1330 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB14134EFF597ADAD6B96C8D /* libPods-YPO-WPO SG.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		32F5D56B1B22A81700B40ACE /* YPO-WPO SG */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32F5D5921B22A81700B40ACE /* Build configuration list for PBXNativeTarget "YPO-WPO SG" */;
+			buildPhases = (
+				A8BBA10DF78216A93702707B /* Check Pods Manifest.lock */,
+				32F5D5681B22A81700B40ACE /* Sources */,
+				32F5D5691B22A81700B40ACE /* Frameworks */,
+				32F5D56A1B22A81700B40ACE /* Resources */,
+				3D0EA02CAE62FB588D01C099 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "YPO-WPO SG";
+			productName = "YPO-WPO SG";
+			productReference = 32F5D56C1B22A81700B40ACE /* YPO-WPO SG.app */;
+			productType = "com.apple.product-type.application";
+		};
+		32F5D5871B22A81700B40ACE /* YPO-WPO SGTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32F5D5951B22A81700B40ACE /* Build configuration list for PBXNativeTarget "YPO-WPO SGTests" */;
+			buildPhases = (
+				32F5D5841B22A81700B40ACE /* Sources */,
+				32F5D5851B22A81700B40ACE /* Frameworks */,
+				32F5D5861B22A81700B40ACE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				32F5D58A1B22A81700B40ACE /* PBXTargetDependency */,
+			);
+			name = "YPO-WPO SGTests";
+			productName = "YPO-WPO SGTests";
+			productReference = 32F5D5881B22A81700B40ACE /* YPO-WPO SGTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		32F5D5641B22A81700B40ACE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Raketeers;
+				TargetAttributes = {
+					32F5D56B1B22A81700B40ACE = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					32F5D5871B22A81700B40ACE = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 32F5D56B1B22A81700B40ACE;
+					};
+				};
+			};
+			buildConfigurationList = 32F5D5671B22A81700B40ACE /* Build configuration list for PBXProject "YPO-WPO SG" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 32F5D5631B22A81700B40ACE;
+			productRefGroup = 32F5D56D1B22A81700B40ACE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				32F5D56B1B22A81700B40ACE /* YPO-WPO SG */,
+				32F5D5871B22A81700B40ACE /* YPO-WPO SGTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		32F5D56A1B22A81700B40ACE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F5D57E1B22A81700B40ACE /* Main.storyboard in Resources */,
+				32F5D5831B22A81700B40ACE /* LaunchScreen.xib in Resources */,
+				32F5D5801B22A81700B40ACE /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F5D5861B22A81700B40ACE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3D0EA02CAE62FB588D01C099 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YPO-WPO SG/Pods-YPO-WPO SG-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8BBA10DF78216A93702707B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		32F5D5681B22A81700B40ACE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F5D5751B22A81700B40ACE /* AppDelegate.m in Sources */,
+				32EA009B1B2333F300B392E2 /* BaseViewController.m in Sources */,
+				32EA00A41B2347D400B392E2 /* BaseNavigationViewController.m in Sources */,
+				32EA00A11B23351700B392E2 /* LoginViewController.m in Sources */,
+				32F5D5721B22A81700B40ACE /* main.m in Sources */,
+				32F5D5781B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld in Sources */,
+				32EA009E1B2334D700B392E2 /* BaseTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F5D5841B22A81700B40ACE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F5D58F1B22A81700B40ACE /* YPO_WPO_SGTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		32F5D58A1B22A81700B40ACE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32F5D56B1B22A81700B40ACE /* YPO-WPO SG */;
+			targetProxy = 32F5D5891B22A81700B40ACE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		32F5D57C1B22A81700B40ACE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32F5D57D1B22A81700B40ACE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		32F5D5811B22A81700B40ACE /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32F5D5821B22A81700B40ACE /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		32F5D5901B22A81700B40ACE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		32F5D5911B22A81700B40ACE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		32F5D5931B22A81700B40ACE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8E24FC899ECC821D3BAF10B /* Pods-YPO-WPO SG.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "YPO-WPO SG/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		32F5D5941B22A81700B40ACE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D09B34936790A424A4B858C /* Pods-YPO-WPO SG.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "YPO-WPO SG/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		32F5D5961B22A81700B40ACE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "YPO-WPO SGTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YPO-WPO SG.app/YPO-WPO SG";
+			};
+			name = Debug;
+		};
+		32F5D5971B22A81700B40ACE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "YPO-WPO SGTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YPO-WPO SG.app/YPO-WPO SG";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		32F5D5671B22A81700B40ACE /* Build configuration list for PBXProject "YPO-WPO SG" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32F5D5901B22A81700B40ACE /* Debug */,
+				32F5D5911B22A81700B40ACE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32F5D5921B22A81700B40ACE /* Build configuration list for PBXNativeTarget "YPO-WPO SG" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32F5D5931B22A81700B40ACE /* Debug */,
+				32F5D5941B22A81700B40ACE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32F5D5951B22A81700B40ACE /* Build configuration list for PBXNativeTarget "YPO-WPO SGTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32F5D5961B22A81700B40ACE /* Debug */,
+				32F5D5971B22A81700B40ACE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		32F5D5761B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				32F5D5771B22A81700B40ACE /* YPO_WPO_SG.xcdatamodel */,
+			);
+			currentVersion = 32F5D5771B22A81700B40ACE /* YPO_WPO_SG.xcdatamodel */;
+			path = YPO_WPO_SG.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 32F5D5641B22A81700B40ACE /* Project object */;
+}
