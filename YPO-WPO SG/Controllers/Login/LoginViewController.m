@@ -10,14 +10,15 @@
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *LoginFormView;
-@property (weak, nonatomic) IBOutlet UIImageView *logoView;
-@property (weak, nonatomic) IBOutlet UITextField *userIdTextField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIView             *LoginFormView;
+@property (weak, nonatomic) IBOutlet UIImageView        *logoView;
+@property (weak, nonatomic) IBOutlet UITextField        *userIdTextField;
+@property (weak, nonatomic) IBOutlet UITextField        *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIButton           *loginButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginFormTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *forgotPasswordBottomConstraint;
-@property (assign, nonatomic) BOOL keyboardVisible;
+
+@property (assign, nonatomic) BOOL                      keyboardVisible;
 
 @end
 
@@ -28,6 +29,8 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    self.userIdTextField.delegate = self;
+    self.passwordTextField.delegate = self;
 }
 
 #pragma mark - View LifeCycle
@@ -42,39 +45,49 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [notificationCenter addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     [notificationCenter addObserver:self selector:@selector(keyboardFrameDidChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    
 }
 
 
-- (void)viewWillDisappear:(BOOL)animated{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
     NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter removeObserver:self];
-    
 }
 
 #pragma mark - Private Methods
 
-- (void) endEditing{
+- (void)endEditing {
     [self.view endEditing:YES];
 }
 
 
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.userIdTextField){
+        [self.passwordTextField becomeFirstResponder];
+        return YES;
+    }else if (textField == self.passwordTextField){
+        
+    }
+    return YES;
+}
+
 
 #pragma mark - Notification
 
-- (void)keyboardWillShow: (NSNotification *) notification{
+- (void)keyboardWillShow:(NSNotification *)notification {
     if (self.keyboardVisible) return;
     self.keyboardVisible = YES;
-    NSDictionary* info = [notification userInfo];
+    NSDictionary *info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     self.forgotPasswordBottomConstraint.constant += kbSize.height;
     self.loginFormTopConstraint.constant -= 180;
@@ -84,10 +97,10 @@
     }];
 }
 
-- (void)keyboardWillHide: (NSNotification *) notification{
+- (void)keyboardWillHide:(NSNotification *)notification {
     if (!self.keyboardVisible) return;
     self.keyboardVisible = NO;
-    NSDictionary* info = [notification userInfo];
+    NSDictionary *info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     self.forgotPasswordBottomConstraint.constant -= kbSize.height;
 
@@ -96,11 +109,9 @@
         self.logoView.alpha = 1;
         [self.view layoutIfNeeded];
     }];
-    
 }
 
-- (void)keyboardFrameDidChange:(NSNotification *) notification{
-    
+- (void)keyboardFrameDidChange:(NSNotification *) notification {
     CGRect keyboardEndFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGRect keyboardBeginFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     

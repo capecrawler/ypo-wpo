@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ayk-5E-GOZ">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -15,6 +16,11 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="selectedImageTintColor" red="0.01176470588" green="0.2784313725" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.011764705882352941" green="0.27843137254901962" blue="0.51764705882352935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="PYR-Q6-iG6" kind="relationship" relationship="viewControllers" id="Yk1-Z1-KuJ"/>
@@ -31,17 +37,114 @@
         <!--Newsfeed-->
         <scene sceneID="ibc-eg-1Qo">
             <objects>
-                <tableViewController id="c4D-Od-bfu" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pVk-y2-aHW">
+                <tableViewController id="c4D-Od-bfu" customClass="NewsfeedViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="22" sectionFooterHeight="22" id="pVk-y2-aHW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sOJ-Kl-BT9">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsCellIdentifier" rowHeight="98" id="sOJ-Kl-BT9" customClass="NewsTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sOJ-Kl-BT9" id="aSx-7g-BZk">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lJB-7X-DdG">
+                                            <rect key="frame" x="8" y="8" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="BFu-HX-E1Q"/>
+                                                <constraint firstAttribute="height" constant="80" id="LMe-Ri-uoO"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Stock Market is scarier: U.S. or China? Hehe" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="FQW-IP-lL4">
+                                            <rect key="frame" x="96" y="8" width="216" height="23"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                                            <color key="textColor" red="0.01176470588" green="0.2784313725" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Caterina Murino" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7B5-9j-6fe">
+                                            <rect key="frame" x="96" y="31" width="216" height="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday, 06 August 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Z6-Ts-yai">
+                                            <rect key="frame" x="96" y="48" width="216" height="15"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lJB-7X-DdG" firstAttribute="top" secondItem="aSx-7g-BZk" secondAttribute="topMargin" id="55b-mC-NKm"/>
+                                        <constraint firstItem="7B5-9j-6fe" firstAttribute="width" secondItem="0Z6-Ts-yai" secondAttribute="width" id="5pS-2S-jTd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="FQW-IP-lL4" secondAttribute="trailing" id="ETZ-Yp-F0D"/>
+                                        <constraint firstItem="0Z6-Ts-yai" firstAttribute="top" secondItem="7B5-9j-6fe" secondAttribute="bottom" id="EU5-8B-a8Z"/>
+                                        <constraint firstItem="FQW-IP-lL4" firstAttribute="top" secondItem="aSx-7g-BZk" secondAttribute="topMargin" id="JjM-hb-GNh"/>
+                                        <constraint firstItem="FQW-IP-lL4" firstAttribute="leading" secondItem="lJB-7X-DdG" secondAttribute="trailing" constant="8" id="MNe-N3-o1P"/>
+                                        <constraint firstItem="7B5-9j-6fe" firstAttribute="top" secondItem="FQW-IP-lL4" secondAttribute="bottom" id="UAN-5S-gkw"/>
+                                        <constraint firstItem="7B5-9j-6fe" firstAttribute="trailing" secondItem="0Z6-Ts-yai" secondAttribute="trailing" id="Zd9-Zb-zKv"/>
+                                        <constraint firstItem="lJB-7X-DdG" firstAttribute="leading" secondItem="aSx-7g-BZk" secondAttribute="leadingMargin" id="f9g-ak-sSW"/>
+                                        <constraint firstItem="7B5-9j-6fe" firstAttribute="trailing" secondItem="FQW-IP-lL4" secondAttribute="trailing" id="hS0-74-UG8"/>
+                                        <constraint firstItem="7B5-9j-6fe" firstAttribute="width" secondItem="FQW-IP-lL4" secondAttribute="width" id="vA4-6S-V7x"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="authorLabel" destination="7B5-9j-6fe" id="wZg-EO-NUi"/>
+                                    <outlet property="datePostedLabel" destination="0Z6-Ts-yai" id="aOp-f7-Eua"/>
+                                    <outlet property="newsImageView" destination="lJB-7X-DdG" id="GUM-Zd-jsm"/>
+                                    <outlet property="newsTitleView" destination="FQW-IP-lL4" id="rJu-bl-0wT"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MemberCellIdentifier" rowHeight="78" id="Dup-P4-XTY" customClass="MemberTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dup-P4-XTY" id="SNr-97-V8x">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CYn-wb-Ysz">
+                                            <rect key="frame" x="8" y="8" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="h4N-zo-84y"/>
+                                                <constraint firstAttribute="height" constant="60" id="i6s-6z-GpV"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Klaudio Santamaria" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSl-2a-vjW">
+                                            <rect key="frame" x="76" y="8" width="203" height="23"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                                            <color key="textColor" red="0.01176470588" green="0.2784313725" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YPO Member" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dl7-4g-Ga0">
+                                            <rect key="frame" x="76" y="31" width="203" height="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Joined: 01 May 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kso-uq-wiB">
+                                            <rect key="frame" x="76" y="48" width="203" height="15"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Dl7-4g-Ga0" firstAttribute="width" secondItem="Kso-uq-wiB" secondAttribute="width" id="6iN-CA-Myn"/>
+                                        <constraint firstItem="Dl7-4g-Ga0" firstAttribute="top" secondItem="LSl-2a-vjW" secondAttribute="bottom" id="86p-pq-yRi"/>
+                                        <constraint firstItem="CYn-wb-Ysz" firstAttribute="top" secondItem="SNr-97-V8x" secondAttribute="topMargin" id="MRl-M2-dNB"/>
+                                        <constraint firstItem="Dl7-4g-Ga0" firstAttribute="width" secondItem="LSl-2a-vjW" secondAttribute="width" id="PFX-NO-wWm"/>
+                                        <constraint firstItem="LSl-2a-vjW" firstAttribute="leading" secondItem="CYn-wb-Ysz" secondAttribute="trailing" constant="8" id="ZIy-Lh-IjF"/>
+                                        <constraint firstItem="Dl7-4g-Ga0" firstAttribute="trailing" secondItem="Kso-uq-wiB" secondAttribute="trailing" id="aGe-x3-zYd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="LSl-2a-vjW" secondAttribute="trailing" id="el9-ty-YnL"/>
+                                        <constraint firstItem="Kso-uq-wiB" firstAttribute="top" secondItem="Dl7-4g-Ga0" secondAttribute="bottom" id="fxd-VU-2e8"/>
+                                        <constraint firstItem="LSl-2a-vjW" firstAttribute="top" secondItem="SNr-97-V8x" secondAttribute="topMargin" id="hoD-OP-VSz"/>
+                                        <constraint firstItem="Dl7-4g-Ga0" firstAttribute="trailing" secondItem="LSl-2a-vjW" secondAttribute="trailing" id="mVn-LX-r8e"/>
+                                        <constraint firstItem="CYn-wb-Ysz" firstAttribute="leading" secondItem="SNr-97-V8x" secondAttribute="leadingMargin" id="qAD-6l-PYu"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateJoinedLabel" destination="Kso-uq-wiB" id="YlO-Dz-LMV"/>
+                                    <outlet property="membershipLabel" destination="Dl7-4g-Ga0" id="h5l-En-szd"/>
+                                    <outlet property="nameLabel" destination="LSl-2a-vjW" id="hil-Kp-Ie8"/>
+                                    <outlet property="profileImageView" destination="CYn-wb-Ysz" id="D7X-7S-i9q"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -50,7 +153,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Newsfeed" id="bQJ-IT-6Mx"/>
-                    <navigationItem key="navigationItem" id="Yf0-sl-8xu"/>
+                    <navigationItem key="navigationItem" title="Newsfeed" id="Yf0-sl-8xu">
+                        <barButtonItem key="rightBarButtonItem" image="ic-search" id="0fH-vA-jBf"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9FF-PX-E5V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,10 +165,13 @@
         <scene sceneID="Ubt-JR-8AX">
             <objects>
                 <navigationController id="PYR-Q6-iG6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Newsfeed" id="gkA-a2-Wx0"/>
+                    <tabBarItem key="tabBarItem" title="Newsfeed" image="ic-newsfeed" id="gkA-a2-Wx0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="62y-Ym-vI6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="c4D-Od-bfu" kind="relationship" relationship="rootViewController" id="Oms-2C-1sq"/>
@@ -95,7 +203,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Directory" id="c29-J4-aBJ"/>
-                    <navigationItem key="navigationItem" id="EMu-92-buf"/>
+                    <navigationItem key="navigationItem" title="Directory" id="EMu-92-buf"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xn-Y3-3m9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,7 +213,7 @@
         <scene sceneID="jsN-al-cwQ">
             <objects>
                 <navigationController id="dp2-f7-uEc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Directory" id="ok6-Jd-2uk"/>
+                    <tabBarItem key="tabBarItem" title="Directory" image="ic-directory" id="ok6-Jd-2uk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xTa-mP-O3Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -122,7 +230,7 @@
         <scene sceneID="lXf-5Q-RpG">
             <objects>
                 <navigationController id="x6X-m0-IUu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" id="Al0-9M-xbQ"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="ic-events" id="Al0-9M-xbQ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ObH-S1-PcO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -157,7 +265,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Events" id="gEb-bR-32a"/>
-                    <navigationItem key="navigationItem" id="WJ4-JC-sdX"/>
+                    <navigationItem key="navigationItem" title="Events" id="WJ4-JC-sdX"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Snk-UM-slA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -167,7 +275,7 @@
         <scene sceneID="h30-YG-eqU">
             <objects>
                 <navigationController id="431-8X-xKk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notifications" id="47I-AK-yPG"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="ic-notifications" id="47I-AK-yPG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZBp-fb-VEy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -202,7 +310,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Notifications" id="3kD-ci-xUL"/>
-                    <navigationItem key="navigationItem" id="A7q-hj-lSJ"/>
+                    <navigationItem key="navigationItem" title="Notifications" id="A7q-hj-lSJ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AbY-Yn-LhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -212,7 +320,7 @@
         <scene sceneID="aZw-mV-FWz">
             <objects>
                 <navigationController id="vUn-8h-Ssp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="aHq-4v-NwE"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="ic-settings" id="aHq-4v-NwE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tVT-8E-JpC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -247,7 +355,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Settings" id="ccb-Sx-lea"/>
-                    <navigationItem key="navigationItem" id="T66-3r-lwO"/>
+                    <navigationItem key="navigationItem" title="Settings" id="T66-3r-lwO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6r-bb-k4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -316,8 +424,8 @@
                                     <constraint firstItem="9DN-Em-pcz" firstAttribute="width" secondItem="9ld-KX-C4h" secondAttribute="width" id="zoN-zO-qwu"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-ct-fSV">
-                                <rect key="frame" x="178" y="538" width="126" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-ct-fSV">
+                                <rect key="frame" x="194" y="540" width="110" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Forgot Password?">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -341,6 +449,7 @@
                             <constraint firstItem="YdF-uW-Uvv" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="vzk-cd-qut"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="LoginFormView" destination="YdF-uW-Uvv" id="Hmv-Nc-cOO"/>
                         <outlet property="forgotPasswordBottomConstraint" destination="ACQ-JW-Idg" id="4I1-3d-nzw"/>
@@ -380,12 +489,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ANl-JH-a1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089" y="294"/>
+            <point key="canvasLocation" x="1069" y="294"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UtB-E6-kxA">
             <objects>
                 <navigationController id="ayR-gJ-S3J" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="od6-tr-KMX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -401,6 +511,12 @@
     </scenes>
     <resources>
         <image name="bg" width="320" height="480"/>
+        <image name="ic-directory" width="25" height="25"/>
+        <image name="ic-events" width="25" height="25"/>
+        <image name="ic-newsfeed" width="25" height="25"/>
+        <image name="ic-notifications" width="25" height="25"/>
+        <image name="ic-search" width="22" height="22"/>
+        <image name="ic-settings" width="25" height="25"/>
         <image name="logo-ypo-login" width="263" height="61"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
