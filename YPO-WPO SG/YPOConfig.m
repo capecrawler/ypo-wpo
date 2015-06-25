@@ -9,7 +9,11 @@
 #import "YPOConfig.h"
 
 
-NSString *const YPOBaseURL = @"";
+NSString *const YPOBaseURL              = @"http://54.165.108.104";
+NSString *const YPOAPIPathPrefix        = @"/api/v1";
+
+NSString *const YPOSecretKey            = @"test";
+NSString *const YPOAccessID             = @"1";
 
 @implementation YPOConfig
 

@@ -30,6 +30,13 @@
 		ACC993AB1B29CC97008E262E /* MemberTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993AA1B29CC97008E262E /* MemberTableViewCell.m */; };
 		ACC993B11B29D571008E262E /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993B01B29D571008E262E /* SettingsViewController.m */; };
 		ACC993B41B29DBE7008E262E /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993B31B29DBE7008E262E /* NewsViewController.m */; };
+		D43EDA971B394A460022FAD4 /* YPORemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D43EDA961B394A460022FAD4 /* YPORemoteManagedObject.m */; };
+		D43EDA9A1B394A9C0022FAD4 /* YPOArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = D43EDA991B394A9C0022FAD4 /* YPOArticle.m */; };
+		D43EDA9D1B394F970022FAD4 /* NSDate+InternetDate.m in Sources */ = {isa = PBXBuildFile; fileRef = D43EDA9C1B394F970022FAD4 /* NSDate+InternetDate.m */; };
+		D451A69F1B3A66BB0083D9C2 /* YPORole.m in Sources */ = {isa = PBXBuildFile; fileRef = D451A69E1B3A66BB0083D9C2 /* YPORole.m */; };
+		D451A6A21B3A66BB0083D9C2 /* YPOMember.m in Sources */ = {isa = PBXBuildFile; fileRef = D451A6A11B3A66BB0083D9C2 /* YPOMember.m */; };
+		D451A6A51B3A689A0083D9C2 /* YPOHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D451A6A41B3A689A0083D9C2 /* YPOHTTPRequest.m */; };
+		D451A6B31B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D451A6B21B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +95,20 @@
 		ACC993B21B29DBE7008E262E /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		ACC993B31B29DBE7008E262E /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		C8E24FC899ECC821D3BAF10B /* Pods-YPO-WPO SG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YPO-WPO SG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YPO-WPO SG/Pods-YPO-WPO SG.debug.xcconfig"; sourceTree = "<group>"; };
+		D43EDA951B394A460022FAD4 /* YPORemoteManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPORemoteManagedObject.h; sourceTree = "<group>"; };
+		D43EDA961B394A460022FAD4 /* YPORemoteManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPORemoteManagedObject.m; sourceTree = "<group>"; };
+		D43EDA981B394A9C0022FAD4 /* YPOArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOArticle.h; sourceTree = "<group>"; };
+		D43EDA991B394A9C0022FAD4 /* YPOArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOArticle.m; sourceTree = "<group>"; };
+		D43EDA9B1B394F970022FAD4 /* NSDate+InternetDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+InternetDate.h"; sourceTree = "<group>"; };
+		D43EDA9C1B394F970022FAD4 /* NSDate+InternetDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+InternetDate.m"; sourceTree = "<group>"; };
+		D451A69D1B3A66BB0083D9C2 /* YPORole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPORole.h; sourceTree = "<group>"; };
+		D451A69E1B3A66BB0083D9C2 /* YPORole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPORole.m; sourceTree = "<group>"; };
+		D451A6A01B3A66BB0083D9C2 /* YPOMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOMember.h; sourceTree = "<group>"; };
+		D451A6A11B3A66BB0083D9C2 /* YPOMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOMember.m; sourceTree = "<group>"; };
+		D451A6A31B3A689A0083D9C2 /* YPOHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOHTTPRequest.h; sourceTree = "<group>"; };
+		D451A6A41B3A689A0083D9C2 /* YPOHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOHTTPRequest.m; sourceTree = "<group>"; };
+		D451A6B11B3AA6470083D9C2 /* YPOHTTPRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOHTTPRequestSerializer.h; sourceTree = "<group>"; };
+		D451A6B21B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOHTTPRequestSerializer.m; sourceTree = "<group>"; };
 		EB14134EFF597ADAD6B96C8D /* libPods-YPO-WPO SG.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YPO-WPO SG.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -124,6 +145,8 @@
 			children = (
 				AC0605AD1B2ABB2F00EB0F5F /* UIColor+Theme.h */,
 				AC0605AE1B2ABB2F00EB0F5F /* UIColor+Theme.m */,
+				D43EDA9B1B394F970022FAD4 /* NSDate+InternetDate.h */,
+				D43EDA9C1B394F970022FAD4 /* NSDate+InternetDate.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -158,6 +181,12 @@
 		32EA00971B2332C200B392E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D451A6A01B3A66BB0083D9C2 /* YPOMember.h */,
+				D451A6A11B3A66BB0083D9C2 /* YPOMember.m */,
+				D451A69D1B3A66BB0083D9C2 /* YPORole.h */,
+				D451A69E1B3A66BB0083D9C2 /* YPORole.m */,
+				D43EDA981B394A9C0022FAD4 /* YPOArticle.h */,
+				D43EDA991B394A9C0022FAD4 /* YPOArticle.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,6 +196,12 @@
 			children = (
 				ACC9939B1B29B55B008E262E /* YPOAPIClient.h */,
 				ACC9939C1B29B55B008E262E /* YPOAPIClient.m */,
+				D43EDA951B394A460022FAD4 /* YPORemoteManagedObject.h */,
+				D43EDA961B394A460022FAD4 /* YPORemoteManagedObject.m */,
+				D451A6A31B3A689A0083D9C2 /* YPOHTTPRequest.h */,
+				D451A6A41B3A689A0083D9C2 /* YPOHTTPRequest.m */,
+				D451A6B11B3AA6470083D9C2 /* YPOHTTPRequestSerializer.h */,
+				D451A6B21B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -443,6 +478,8 @@
 				AC0605AF1B2ABB2F00EB0F5F /* UIColor+Theme.m in Sources */,
 				32EA00A11B23351700B392E2 /* LoginViewController.m in Sources */,
 				32F5D5721B22A81700B40ACE /* main.m in Sources */,
+				D451A6B31B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m in Sources */,
+				D451A6A21B3A66BB0083D9C2 /* YPOMember.m in Sources */,
 				ACC993AB1B29CC97008E262E /* MemberTableViewCell.m in Sources */,
 				AC0605AC1B2AB9FF00EB0F5F /* DirectoryViewController.m in Sources */,
 				32F5D5781B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld in Sources */,
@@ -450,8 +487,13 @@
 				32EA009E1B2334D700B392E2 /* BaseTableViewController.m in Sources */,
 				ACC993A31B29B84B008E262E /* NewsfeedViewController.m in Sources */,
 				ACC993B11B29D571008E262E /* SettingsViewController.m in Sources */,
+				D43EDA971B394A460022FAD4 /* YPORemoteManagedObject.m in Sources */,
 				AC0605B21B2ABD1800EB0F5F /* TableViewHeader.m in Sources */,
+				D43EDA9D1B394F970022FAD4 /* NSDate+InternetDate.m in Sources */,
 				ACC993B41B29DBE7008E262E /* NewsViewController.m in Sources */,
+				D451A6A51B3A689A0083D9C2 /* YPOHTTPRequest.m in Sources */,
+				D43EDA9A1B394A9C0022FAD4 /* YPOArticle.m in Sources */,
+				D451A69F1B3A66BB0083D9C2 /* YPORole.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

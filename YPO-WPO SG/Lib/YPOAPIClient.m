@@ -7,6 +7,7 @@
 //
 
 #import "YPOAPIClient.h"
+#import "YPOHTTPRequestSerializer.h"
 
 @implementation YPOAPIClient
 
@@ -14,7 +15,8 @@
     static YPOAPIClient * _sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[YPOAPIClient alloc] initWithBaseURL:@""];
+        _sharedClient = [[YPOAPIClient alloc] initWithBaseURL:[NSURL URLWithString:YPOBaseURL]];
+        _sharedClient.requestSerializer = [[YPOHTTPRequestSerializer alloc] init];
     });
     return _sharedClient;
 }

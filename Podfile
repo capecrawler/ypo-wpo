@@ -5,6 +5,7 @@ target 'YPO-WPO SG' do
 pod "AFNetworking", "~> 2.0"
 pod "MagicalRecord"
 pod 'SVProgressHUD'
+pod 'AFNetworkActivityLogger', '~> 2.0'
 end
 
 target 'YPO-WPO SGTests' do

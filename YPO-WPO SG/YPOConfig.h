@@ -10,6 +10,10 @@
 
 
 extern NSString *const YPOBaseURL;
+extern NSString *const YPOAPIPathPrefix;
+extern NSString *const YPOSecretKey;
+extern NSString *const YPOAccessID;
+
 
 @interface YPOConfig : NSObject
 

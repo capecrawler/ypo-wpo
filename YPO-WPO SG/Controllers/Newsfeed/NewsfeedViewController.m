@@ -7,6 +7,7 @@
 //
 
 #import "NewsfeedViewController.h"
+#import "YPOArticle.h"
 #import "TableViewHeader.h"
 
 @interface NewsfeedViewController ()
@@ -18,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self fetch];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +36,18 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+#pragma mark - Loading Data
+
+- (void)fetch {
+    YPOHTTPRequest *request = [YPOArticle constructRequest];
+    [request startRequestSuccess:^(NSURLSessionDataTask *task, id reponseObject) {
+        NSLog(@"success");
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"error");
+    }];
+}
 
 #pragma mark - UITableViewController
 
