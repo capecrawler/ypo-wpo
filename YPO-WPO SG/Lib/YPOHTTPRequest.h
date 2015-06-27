@@ -20,10 +20,11 @@ typedef NS_ENUM(NSUInteger, HTTPMethod) {
 @property (nonatomic, assign) HTTPMethod method;
 @property (nonatomic, strong) NSString *apiPath;
 @property (nonatomic, strong) NSDictionary *params;
+@property (nonatomic, assign) BOOL useJSONLoader;
 
 - (void)startRequest;
-- (void)startRequestSuccess:(void (^)(NSURLSessionDataTask *task, id reponseObject))success
+- (void)startRequestSuccess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                     failure:(void (^)(NSURLSessionDataTask *task, NSError *error)) failure;
-
+- (void)loadJSONObject:(id)jsonObject;
 
 @end

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsCellIdentifier" rowHeight="96" id="q34-ix-7Xz" customClass="NewsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q34-ix-7Xz" id="30K-io-0t5">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday, 06 August 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxD-SY-UCE">
+                        <rect key="frame" x="96" y="48" width="216" height="15"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VfS-7z-m9n">
+                        <rect key="frame" x="8" y="8" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="DsO-Nm-8Ni"/>
+                            <constraint firstAttribute="height" constant="80" id="mey-KC-6oS"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Stock Market is scarier: U.S. or China? Hehe" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="15i-u8-zTx">
+                        <rect key="frame" x="96" y="8" width="216" height="23"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                        <color key="textColor" red="0.01176470588" green="0.2784313725" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Caterina Murino" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlh-A7-DCY">
+                        <rect key="frame" x="96" y="31" width="216" height="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zlh-A7-DCY" firstAttribute="width" secondItem="15i-u8-zTx" secondAttribute="width" id="0M3-5f-PDs"/>
+                    <constraint firstItem="VfS-7z-m9n" firstAttribute="leading" secondItem="30K-io-0t5" secondAttribute="leadingMargin" id="SUn-k6-Y2D"/>
+                    <constraint firstItem="zlh-A7-DCY" firstAttribute="trailing" secondItem="PxD-SY-UCE" secondAttribute="trailing" id="Yb5-g1-SiB"/>
+                    <constraint firstItem="zlh-A7-DCY" firstAttribute="width" secondItem="PxD-SY-UCE" secondAttribute="width" id="dGH-qR-YG3"/>
+                    <constraint firstItem="PxD-SY-UCE" firstAttribute="top" secondItem="zlh-A7-DCY" secondAttribute="bottom" id="eb2-zD-pta"/>
+                    <constraint firstItem="zlh-A7-DCY" firstAttribute="top" secondItem="15i-u8-zTx" secondAttribute="bottom" id="gBu-HO-YJY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="15i-u8-zTx" secondAttribute="trailing" id="grx-4h-KYj"/>
+                    <constraint firstItem="15i-u8-zTx" firstAttribute="top" secondItem="30K-io-0t5" secondAttribute="topMargin" id="mgx-eP-WJa"/>
+                    <constraint firstItem="zlh-A7-DCY" firstAttribute="trailing" secondItem="15i-u8-zTx" secondAttribute="trailing" id="onW-eR-Ur3"/>
+                    <constraint firstItem="VfS-7z-m9n" firstAttribute="top" secondItem="30K-io-0t5" secondAttribute="topMargin" id="qlt-x0-Jny"/>
+                    <constraint firstItem="15i-u8-zTx" firstAttribute="leading" secondItem="VfS-7z-m9n" secondAttribute="trailing" constant="8" id="s7V-6W-zd0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="authorLabel" destination="zlh-A7-DCY" id="Z7t-mn-4bj"/>
+                <outlet property="datePostedLabel" destination="PxD-SY-UCE" id="PCx-uv-uGM"/>
+                <outlet property="newsImageView" destination="VfS-7z-m9n" id="tTt-ZO-hT0"/>
+                <outlet property="newsTitleLabel" destination="15i-u8-zTx" id="PHN-d5-bP7"/>
+            </connections>
+            <point key="canvasLocation" x="199" y="177"/>
+        </tableViewCell>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

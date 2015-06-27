@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YPOMember;
 
 @interface MemberTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) YPOMember *member;
+@property (nonatomic, assign) BOOL showJoinedDate;
 
 @end

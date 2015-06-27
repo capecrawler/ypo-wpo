@@ -11,6 +11,7 @@
 @implementation TableViewHeader
 
 - (void) awakeFromNib {
+    [super awakeFromNib];
     self.backgroundColor = UIColorFromRGB(0xefefef);
 }
 

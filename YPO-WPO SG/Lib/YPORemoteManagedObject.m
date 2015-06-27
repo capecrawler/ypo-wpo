@@ -16,7 +16,6 @@
 
 + (YPOHTTPRequest *)constructRequest {
     YPOHTTPRequest * request = [[YPOHTTPRequest alloc] init];
-    request.function = @"members.list";
     return request;
 }
 

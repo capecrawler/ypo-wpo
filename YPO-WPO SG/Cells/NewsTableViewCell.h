@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YPOArticle;
 
 @interface NewsTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) YPOArticle *article;
 
 @end

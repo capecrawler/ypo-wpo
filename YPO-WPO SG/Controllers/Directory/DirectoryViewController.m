@@ -8,6 +8,15 @@
 
 #import "DirectoryViewController.h"
 
+
+typedef NS_ENUM(NSUInteger, DirectoryMenu) {
+    DirectoryMenuMembers = 0,
+    DirectoryMenuNewMembers,
+    DirectoryMenuManagementCommittee,
+    DirectoryMenuChapterAdministrators,
+    DirectoryMenuForum,
+};
+
 @interface DirectoryViewController ()
 
 @property (nonatomic, strong) NSArray *menuOptions;
@@ -25,6 +34,8 @@
                          NSLocalizedString(@"Management Committe", nil),
                          NSLocalizedString(@"Chapter Administrators", nil),
                          NSLocalizedString(@"Forum", nil)];
+    self.tableView.tableFooterView = [UIView new];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,8 +64,30 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
-    
-    
+}
+
+
+#pragma mark - UITableViewDelegate
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.row) {
+        case DirectoryMenuMembers:
+            [self performSegueWithIdentifier:@"MembersListViewController" sender:self];
+            break;
+        case DirectoryMenuNewMembers:
+            [self performSegueWithIdentifier:@"NewMembersViewController" sender:self];
+            break;
+        case DirectoryMenuManagementCommittee:
+            break;
+        case DirectoryMenuChapterAdministrators:
+            break;
+        case DirectoryMenuForum:
+            break;
+        default:
+            break;
+    }
+
 }
 
 @end

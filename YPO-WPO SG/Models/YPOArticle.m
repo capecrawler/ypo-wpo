@@ -40,9 +40,49 @@
 
 
 + (YPOHTTPRequest *)constructRequest {
-    YPOHTTPRequest *request = [super constructRequest];
-    request.apiPath = @"news.list";
+    YPOArticleRequest *request = [[YPOArticleRequest alloc] init];
+    request.function = @"news.list";
     return request;
 }
 
 @end
+
+
+@implementation YPOArticleRequest
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.page = 1;
+        self.rowCount = 15;
+    }
+    return self;
+}
+
+
+- (NSDictionary *)params {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:[super params]];
+    [params setObject:@(self.page) forKey:@"page"];
+    [params setObject:@(self.rowCount) forKey:@"row_count"];
+    return params;
+}
+
+
+- (void) loadJSONObject:(NSDictionary *)jsonObject {
+    if ([jsonObject[@"status"] boolValue]) {
+        NSArray *data = jsonObject[@"data"];
+        [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+            for (NSDictionary *raw in data) {
+                YPOArticle * article = [YPOArticle MR_findFirstByAttribute:@"articleID" withValue:raw[@"article_id"] inContext:localContext];
+                if (article == nil) {
+                    article = [YPOArticle MR_createEntityInContext:localContext];
+                }
+                [article parseDictionary:raw];
+            }
+        }];
+    }
+}
+
+
+@end
+

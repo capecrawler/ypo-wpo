@@ -17,6 +17,7 @@
     if (self) {
         self.method = HTTPMethodGET;
         self.apiPath = @"/ypo/api/v1/";
+        self.useJSONLoader = YES;
     }
     return self;
 }
@@ -27,7 +28,7 @@
 }
 
 
-- (void)startRequestSuccess:(void (^)(NSURLSessionDataTask *task, id reponseObject))success
+- (void)startRequestSuccess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                     failure:(void (^)(NSURLSessionDataTask *task, NSError *error)) failure {
     
     switch (self.method) {
@@ -43,9 +44,24 @@
 }
 
 
-- (void)executeGETSuccess:(void (^)(NSURLSessionDataTask *task, id reponseObject))success
+- (void)executeGETSuccess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error)) failure {
-    [[YPOAPIClient sharedClient] GET:self.apiPath parameters:self.params success:success failure:failure];
+    [[YPOAPIClient sharedClient] GET:self.apiPath parameters:self.params success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (self.useJSONLoader) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [self loadJSONObject:responseObject];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (success) {
+                        success(task, responseObject);
+                    }
+                });
+            });
+        } else {
+            if (success) {
+                success(task, responseObject);
+            }
+        }
+    } failure:failure];
 }
 
 
@@ -61,5 +77,9 @@
     return params;
 }
 
+
+- (void) loadJSONObject:(id)jsonObject {
+    // must be overriden
+}
 
 @end

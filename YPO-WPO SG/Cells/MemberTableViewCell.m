@@ -7,7 +7,9 @@
 //
 
 #import "MemberTableViewCell.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "YPOMember.h"
+#import "NSDate+FormattedString.h"
 
 @interface MemberTableViewCell()
 
@@ -21,9 +23,11 @@
 @implementation MemberTableViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
     // Hack to remove autolayout warning prior to iOS 8.0 when subviews with fixed width using autolayout
     self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.showJoinedDate = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -31,5 +35,23 @@
 
     // Configure the view for the selected state
 }
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:self.member.profilePicURL]];
+}
+
+- (void)setMember:(YPOMember *)member {
+    _member = member;
+    self.nameLabel.text = self.member.name;
+    self.membershipLabel.text = self.member.chapter;
+    if (self.showJoinedDate) {
+        self.dateJoinedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Date Joined: %@", @"Date joined text"), [self.member.joinedDate stringWithFormat:@"dd MMMM yyyy"]];
+    } else {
+        self.dateJoinedLabel.text = @"";
+    }
+}
+
+
 
 @end

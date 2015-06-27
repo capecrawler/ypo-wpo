@@ -29,7 +29,21 @@
 		ACC993A81B29CBD3008E262E /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993A71B29CBD3008E262E /* NewsTableViewCell.m */; };
 		ACC993AB1B29CC97008E262E /* MemberTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993AA1B29CC97008E262E /* MemberTableViewCell.m */; };
 		ACC993B11B29D571008E262E /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993B01B29D571008E262E /* SettingsViewController.m */; };
-		ACC993B41B29DBE7008E262E /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993B31B29DBE7008E262E /* NewsViewController.m */; };
+		ACC993B41B29DBE7008E262E /* NewsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993B31B29DBE7008E262E /* NewsDetailsViewController.m */; };
+		ACCBFA0A1B3EF685004D8446 /* MembersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA091B3EF685004D8446 /* MembersListViewController.m */; };
+		ACCBFA0D1B3EFE86004D8446 /* NewMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA0C1B3EFE86004D8446 /* NewMembersViewController.m */; };
+		ACCBFA101B3F08CC004D8446 /* MemberDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA0F1B3F08CC004D8446 /* MemberDetailsViewController.m */; };
+		ACCBFA191B3F0A69004D8446 /* YPOContactDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA181B3F0A69004D8446 /* YPOContactDetails.m */; };
+		ACCBFA1C1B3F0A69004D8446 /* YPOCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA1B1B3F0A69004D8446 /* YPOCompany.m */; };
+		ACCBFA1F1B3F0B0A004D8446 /* YPOMemberDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA1E1B3F0B0A004D8446 /* YPOMemberDetails.m */; };
+		ACCBFA221B3F1DDB004D8446 /* NSString+NotEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA211B3F1DDB004D8446 /* NSString+NotEmpty.m */; };
+		ACCBFA251B3F2343004D8446 /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA241B3F2343004D8446 /* CircleImageView.m */; };
+		ACD916981B3E82E100A93A06 /* YPOSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD916971B3E82E100A93A06 /* YPOSyncManager.m */; };
+		ACD9169B1B3E836E00A93A06 /* YPOErrorhandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD9169A1B3E836E00A93A06 /* YPOErrorhandler.m */; };
+		ACD9169D1B3E869400A93A06 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD9169C1B3E869400A93A06 /* NewsTableViewCell.xib */; };
+		ACD9169F1B3E870300A93A06 /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD9169E1B3E870300A93A06 /* MemberTableViewCell.xib */; };
+		ACD916A21B3E899000A93A06 /* NSDate+FormattedString.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD916A11B3E899000A93A06 /* NSDate+FormattedString.m */; };
+		ACD916A51B3E906A00A93A06 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD916A41B3E906A00A93A06 /* NewsViewController.m */; };
 		D43EDA971B394A460022FAD4 /* YPORemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D43EDA961B394A460022FAD4 /* YPORemoteManagedObject.m */; };
 		D43EDA9A1B394A9C0022FAD4 /* YPOArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = D43EDA991B394A9C0022FAD4 /* YPOArticle.m */; };
 		D43EDA9D1B394F970022FAD4 /* NSDate+InternetDate.m in Sources */ = {isa = PBXBuildFile; fileRef = D43EDA9C1B394F970022FAD4 /* NSDate+InternetDate.m */; };
@@ -92,8 +106,34 @@
 		ACC993AA1B29CC97008E262E /* MemberTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberTableViewCell.m; sourceTree = "<group>"; };
 		ACC993AF1B29D571008E262E /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		ACC993B01B29D571008E262E /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		ACC993B21B29DBE7008E262E /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
-		ACC993B31B29DBE7008E262E /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		ACC993B21B29DBE7008E262E /* NewsDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailsViewController.h; sourceTree = "<group>"; };
+		ACC993B31B29DBE7008E262E /* NewsDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailsViewController.m; sourceTree = "<group>"; };
+		ACCBFA081B3EF685004D8446 /* MembersListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MembersListViewController.h; sourceTree = "<group>"; };
+		ACCBFA091B3EF685004D8446 /* MembersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MembersListViewController.m; sourceTree = "<group>"; };
+		ACCBFA0B1B3EFE86004D8446 /* NewMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMembersViewController.h; sourceTree = "<group>"; };
+		ACCBFA0C1B3EFE86004D8446 /* NewMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMembersViewController.m; sourceTree = "<group>"; };
+		ACCBFA0E1B3F08CC004D8446 /* MemberDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberDetailsViewController.h; sourceTree = "<group>"; };
+		ACCBFA0F1B3F08CC004D8446 /* MemberDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberDetailsViewController.m; sourceTree = "<group>"; };
+		ACCBFA171B3F0A69004D8446 /* YPOContactDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOContactDetails.h; sourceTree = "<group>"; };
+		ACCBFA181B3F0A69004D8446 /* YPOContactDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOContactDetails.m; sourceTree = "<group>"; };
+		ACCBFA1A1B3F0A69004D8446 /* YPOCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOCompany.h; sourceTree = "<group>"; };
+		ACCBFA1B1B3F0A69004D8446 /* YPOCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOCompany.m; sourceTree = "<group>"; };
+		ACCBFA1D1B3F0B0A004D8446 /* YPOMemberDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOMemberDetails.h; sourceTree = "<group>"; };
+		ACCBFA1E1B3F0B0A004D8446 /* YPOMemberDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOMemberDetails.m; sourceTree = "<group>"; };
+		ACCBFA201B3F1DDB004D8446 /* NSString+NotEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NotEmpty.h"; sourceTree = "<group>"; };
+		ACCBFA211B3F1DDB004D8446 /* NSString+NotEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NotEmpty.m"; sourceTree = "<group>"; };
+		ACCBFA231B3F2343004D8446 /* CircleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleImageView.h; sourceTree = "<group>"; };
+		ACCBFA241B3F2343004D8446 /* CircleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleImageView.m; sourceTree = "<group>"; };
+		ACD916961B3E82E100A93A06 /* YPOSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOSyncManager.h; sourceTree = "<group>"; };
+		ACD916971B3E82E100A93A06 /* YPOSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOSyncManager.m; sourceTree = "<group>"; };
+		ACD916991B3E836E00A93A06 /* YPOErrorhandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOErrorhandler.h; sourceTree = "<group>"; };
+		ACD9169A1B3E836E00A93A06 /* YPOErrorhandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOErrorhandler.m; sourceTree = "<group>"; };
+		ACD9169C1B3E869400A93A06 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		ACD9169E1B3E870300A93A06 /* MemberTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemberTableViewCell.xib; sourceTree = "<group>"; };
+		ACD916A01B3E899000A93A06 /* NSDate+FormattedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FormattedString.h"; sourceTree = "<group>"; };
+		ACD916A11B3E899000A93A06 /* NSDate+FormattedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FormattedString.m"; sourceTree = "<group>"; };
+		ACD916A31B3E906A00A93A06 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		ACD916A41B3E906A00A93A06 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		C8E24FC899ECC821D3BAF10B /* Pods-YPO-WPO SG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YPO-WPO SG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YPO-WPO SG/Pods-YPO-WPO SG.debug.xcconfig"; sourceTree = "<group>"; };
 		D43EDA951B394A460022FAD4 /* YPORemoteManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPORemoteManagedObject.h; sourceTree = "<group>"; };
 		D43EDA961B394A460022FAD4 /* YPORemoteManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPORemoteManagedObject.m; sourceTree = "<group>"; };
@@ -147,6 +187,10 @@
 				AC0605AE1B2ABB2F00EB0F5F /* UIColor+Theme.m */,
 				D43EDA9B1B394F970022FAD4 /* NSDate+InternetDate.h */,
 				D43EDA9C1B394F970022FAD4 /* NSDate+InternetDate.m */,
+				ACD916A01B3E899000A93A06 /* NSDate+FormattedString.h */,
+				ACD916A11B3E899000A93A06 /* NSDate+FormattedString.m */,
+				ACCBFA201B3F1DDB004D8446 /* NSString+NotEmpty.h */,
+				ACCBFA211B3F1DDB004D8446 /* NSString+NotEmpty.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -174,6 +218,8 @@
 				AC0605B01B2ABD1800EB0F5F /* TableViewHeader.h */,
 				AC0605B11B2ABD1800EB0F5F /* TableViewHeader.m */,
 				AC0605B31B2ABD3300EB0F5F /* TableViewHeader.xib */,
+				ACCBFA231B3F2343004D8446 /* CircleImageView.h */,
+				ACCBFA241B3F2343004D8446 /* CircleImageView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,12 +227,18 @@
 		32EA00971B2332C200B392E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ACCBFA1A1B3F0A69004D8446 /* YPOCompany.h */,
+				ACCBFA1B1B3F0A69004D8446 /* YPOCompany.m */,
+				ACCBFA171B3F0A69004D8446 /* YPOContactDetails.h */,
+				ACCBFA181B3F0A69004D8446 /* YPOContactDetails.m */,
 				D451A6A01B3A66BB0083D9C2 /* YPOMember.h */,
 				D451A6A11B3A66BB0083D9C2 /* YPOMember.m */,
 				D451A69D1B3A66BB0083D9C2 /* YPORole.h */,
 				D451A69E1B3A66BB0083D9C2 /* YPORole.m */,
 				D43EDA981B394A9C0022FAD4 /* YPOArticle.h */,
 				D43EDA991B394A9C0022FAD4 /* YPOArticle.m */,
+				ACCBFA1D1B3F0B0A004D8446 /* YPOMemberDetails.h */,
+				ACCBFA1E1B3F0B0A004D8446 /* YPOMemberDetails.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -202,6 +254,10 @@
 				D451A6A41B3A689A0083D9C2 /* YPOHTTPRequest.m */,
 				D451A6B11B3AA6470083D9C2 /* YPOHTTPRequestSerializer.h */,
 				D451A6B21B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m */,
+				ACD916961B3E82E100A93A06 /* YPOSyncManager.h */,
+				ACD916971B3E82E100A93A06 /* YPOSyncManager.m */,
+				ACD916991B3E836E00A93A06 /* YPOErrorhandler.h */,
+				ACD9169A1B3E836E00A93A06 /* YPOErrorhandler.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -281,6 +337,12 @@
 			children = (
 				AC0605AA1B2AB9FF00EB0F5F /* DirectoryViewController.h */,
 				AC0605AB1B2AB9FF00EB0F5F /* DirectoryViewController.m */,
+				ACCBFA081B3EF685004D8446 /* MembersListViewController.h */,
+				ACCBFA091B3EF685004D8446 /* MembersListViewController.m */,
+				ACCBFA0B1B3EFE86004D8446 /* NewMembersViewController.h */,
+				ACCBFA0C1B3EFE86004D8446 /* NewMembersViewController.m */,
+				ACCBFA0E1B3F08CC004D8446 /* MemberDetailsViewController.h */,
+				ACCBFA0F1B3F08CC004D8446 /* MemberDetailsViewController.m */,
 			);
 			path = Directory;
 			sourceTree = "<group>";
@@ -292,6 +354,8 @@
 				ACC993A71B29CBD3008E262E /* NewsTableViewCell.m */,
 				ACC993A91B29CC97008E262E /* MemberTableViewCell.h */,
 				ACC993AA1B29CC97008E262E /* MemberTableViewCell.m */,
+				ACD9169C1B3E869400A93A06 /* NewsTableViewCell.xib */,
+				ACD9169E1B3E870300A93A06 /* MemberTableViewCell.xib */,
 			);
 			name = Cell;
 			path = Cells;
@@ -302,8 +366,10 @@
 			children = (
 				ACC993A11B29B84B008E262E /* NewsfeedViewController.h */,
 				ACC993A21B29B84B008E262E /* NewsfeedViewController.m */,
-				ACC993B21B29DBE7008E262E /* NewsViewController.h */,
-				ACC993B31B29DBE7008E262E /* NewsViewController.m */,
+				ACC993B21B29DBE7008E262E /* NewsDetailsViewController.h */,
+				ACC993B31B29DBE7008E262E /* NewsDetailsViewController.m */,
+				ACD916A31B3E906A00A93A06 /* NewsViewController.h */,
+				ACD916A41B3E906A00A93A06 /* NewsViewController.m */,
 			);
 			path = Newsfeed;
 			sourceTree = "<group>";
@@ -417,9 +483,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC0605B41B2ABD3300EB0F5F /* TableViewHeader.xib in Resources */,
+				ACD9169F1B3E870300A93A06 /* MemberTableViewCell.xib in Resources */,
 				32F5D57E1B22A81700B40ACE /* Main.storyboard in Resources */,
 				32F5D5831B22A81700B40ACE /* LaunchScreen.xib in Resources */,
 				32F5D5801B22A81700B40ACE /* Images.xcassets in Resources */,
+				ACD9169D1B3E869400A93A06 /* NewsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,23 +542,35 @@
 				32EA009B1B2333F300B392E2 /* BaseViewController.m in Sources */,
 				ACC9939D1B29B55B008E262E /* YPOAPIClient.m in Sources */,
 				ACC993A01B29B5EA008E262E /* YPOConfig.m in Sources */,
+				ACD9169B1B3E836E00A93A06 /* YPOErrorhandler.m in Sources */,
+				ACCBFA0A1B3EF685004D8446 /* MembersListViewController.m in Sources */,
 				32EA00A41B2347D400B392E2 /* BaseNavigationViewController.m in Sources */,
 				AC0605AF1B2ABB2F00EB0F5F /* UIColor+Theme.m in Sources */,
+				ACCBFA251B3F2343004D8446 /* CircleImageView.m in Sources */,
 				32EA00A11B23351700B392E2 /* LoginViewController.m in Sources */,
 				32F5D5721B22A81700B40ACE /* main.m in Sources */,
 				D451A6B31B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m in Sources */,
 				D451A6A21B3A66BB0083D9C2 /* YPOMember.m in Sources */,
+				ACCBFA101B3F08CC004D8446 /* MemberDetailsViewController.m in Sources */,
 				ACC993AB1B29CC97008E262E /* MemberTableViewCell.m in Sources */,
 				AC0605AC1B2AB9FF00EB0F5F /* DirectoryViewController.m in Sources */,
 				32F5D5781B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld in Sources */,
 				ACC993A81B29CBD3008E262E /* NewsTableViewCell.m in Sources */,
 				32EA009E1B2334D700B392E2 /* BaseTableViewController.m in Sources */,
+				ACCBFA0D1B3EFE86004D8446 /* NewMembersViewController.m in Sources */,
+				ACD916981B3E82E100A93A06 /* YPOSyncManager.m in Sources */,
+				ACD916A51B3E906A00A93A06 /* NewsViewController.m in Sources */,
+				ACCBFA1F1B3F0B0A004D8446 /* YPOMemberDetails.m in Sources */,
 				ACC993A31B29B84B008E262E /* NewsfeedViewController.m in Sources */,
 				ACC993B11B29D571008E262E /* SettingsViewController.m in Sources */,
 				D43EDA971B394A460022FAD4 /* YPORemoteManagedObject.m in Sources */,
+				ACCBFA221B3F1DDB004D8446 /* NSString+NotEmpty.m in Sources */,
+				ACCBFA191B3F0A69004D8446 /* YPOContactDetails.m in Sources */,
+				ACCBFA1C1B3F0A69004D8446 /* YPOCompany.m in Sources */,
 				AC0605B21B2ABD1800EB0F5F /* TableViewHeader.m in Sources */,
 				D43EDA9D1B394F970022FAD4 /* NSDate+InternetDate.m in Sources */,
-				ACC993B41B29DBE7008E262E /* NewsViewController.m in Sources */,
+				ACD916A21B3E899000A93A06 /* NSDate+FormattedString.m in Sources */,
+				ACC993B41B29DBE7008E262E /* NewsDetailsViewController.m in Sources */,
 				D451A6A51B3A689A0083D9C2 /* YPOHTTPRequest.m in Sources */,
 				D43EDA9A1B394A9C0022FAD4 /* YPOArticle.m in Sources */,
 				D451A69F1B3A66BB0083D9C2 /* YPORole.m in Sources */,
@@ -651,6 +731,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -670,6 +751,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "YPO-WPO SGTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

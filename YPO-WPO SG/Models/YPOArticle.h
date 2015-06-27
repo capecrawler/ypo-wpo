@@ -24,3 +24,11 @@
 @property (nonatomic, retain) NSNumber * createdBy;
 
 @end
+
+
+@interface YPOArticleRequest : YPOHTTPRequest
+
+@property (nonatomic, assign) NSUInteger page;
+@property (nonatomic, assign) NSUInteger rowCount;
+
+@end

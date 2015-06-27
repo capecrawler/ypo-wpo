@@ -19,11 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.menuOptions = @[NSLocalizedString(@"Edit Profile", nil),
-                         NSLocalizedString(@"Upload Video", nil),
+    self.menuOptions = @[
+//                         NSLocalizedString(@"Edit Profile", nil),
+//                         NSLocalizedString(@"Upload Video", nil),
                          NSLocalizedString(@"Change Password", nil),
-                         NSLocalizedString(@"Log out", nil)];
-    
+                         NSLocalizedString(@"Log out", nil)
+                         ];
+    self.tableView.tableFooterView = [UIView new];
 }
 
 - (void)didReceiveMemoryWarning {

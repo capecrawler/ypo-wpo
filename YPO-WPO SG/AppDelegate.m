@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
+#import <MagicalRecord/MagicalRecord.h>
 
 @interface AppDelegate ()
 
@@ -21,7 +22,9 @@
     // Override point for customization after application launch.
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     [[AFNetworkActivityLogger sharedLogger]startLogging];
-    [self configureAppearanceProxy];
+    [self configureAppearanceProxy];    
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"YPOSqlite"];
+    
     return YES;
 }
 
