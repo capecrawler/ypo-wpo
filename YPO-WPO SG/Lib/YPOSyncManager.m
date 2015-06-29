@@ -53,7 +53,7 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
                     [NSNotification notificationWithName:YPODataFailedToLoadNotification
                                                   object:nil];
                     [[NSNotificationCenter defaultCenter] postNotification:errorNotification];
-                    [[YPOErrorhandler sharedHandler]handlerError:task.error];
+                    [[YPOErrorhandler sharedHandler]handleError:task.error];
                 } else {
                     NSNotification *errorNotification =
                     [NSNotification notificationWithName:YPODataFinishedLoadingNotification

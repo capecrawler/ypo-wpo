@@ -61,7 +61,7 @@
     if ([self.fetchedResultsController performFetch:&error]) {
         [self.tableView reloadData];
     } else {
-        [[YPOErrorhandler sharedHandler] handlerError:error];
+        [[YPOErrorhandler sharedHandler] handleError:error];
     }
 }
 
@@ -84,7 +84,7 @@
         }
         [self fetchData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [[YPOErrorhandler sharedHandler]handlerError:error];
+        [[YPOErrorhandler sharedHandler]handleError:error];
     }];
 }
 

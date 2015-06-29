@@ -9,6 +9,7 @@
 #import "NewsViewController.h"
 #import "YPOArticle.h"
 #import "NewsTableViewCell.h"
+#import "NewsDetailsViewController.h"
 #import <INSPullToRefresh/UIScrollView+INSPullToRefresh.h>
 #import <INSPullToRefresh/INSDefaultInfiniteIndicator.h>
 
@@ -19,23 +20,16 @@
 @property (nonatomic, assign) NSUInteger currentPage;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSFetchRequest *fetchRequest;
-@property (nonatomic, assign) BOOL loadingData;
 
 @end
 
 @implementation NewsViewController
 
-
-- (void) awakeFromNib {
-    [super awakeFromNib];
-    self.loadingData = NO;
-    self.currentPage = 0;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.currentPage = 0;
     [self.tableView ins_addInfinityScrollWithHeight:60 handler:^(UIScrollView *scrollView) {
         [self loadMoreData];
     }];
@@ -60,7 +54,7 @@
     if ([self.fetchedResultsController performFetch:&error]) {
         [self.tableView reloadData];
     } else {
-        [[YPOErrorhandler sharedHandler] handlerError:error];
+        [[YPOErrorhandler sharedHandler] handleError:error];
     }
 }
 
@@ -72,6 +66,7 @@
 - (void)loadDataWithPage:(NSUInteger)page {
     YPOArticleRequest *request = (YPOArticleRequest*)[YPOArticle constructRequest];
     request.page = page;
+    request.rowCount = BATCHSIZE;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         self.currentPage = page;
         NSDictionary *paging = responseObject[@"paging"];
@@ -83,7 +78,7 @@
         }
         [self fetchData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [[YPOErrorhandler sharedHandler]handlerError:error];
+        [[YPOErrorhandler sharedHandler]handleError:error];
     }];
 }
 
@@ -122,9 +117,20 @@
 
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"NewsDetailsViewController" sender:self];
 }
 
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    id controller = [segue destinationViewController];
+    if ([controller isKindOfClass:[NewsDetailsViewController class]]) {
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        NewsDetailsViewController *newsDetailsController = (NewsDetailsViewController *)controller;
+        newsDetailsController.article = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
+    }
+}
 
 #pragma mark - Properties
 

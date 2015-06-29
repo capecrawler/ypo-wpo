@@ -11,7 +11,7 @@
 @interface YPOErrorhandler : NSObject
 
 + (instancetype)sharedHandler;
-- (void) handlerError:(NSError *)error;
+- (void) handleError:(NSError *)error;
 
 
 @end

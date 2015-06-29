@@ -21,6 +21,7 @@
 @dynamic postDate;
 @dynamic created;
 @dynamic createdBy;
+@dynamic comments;
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
     [super parseDictionary:dictionary];

@@ -104,9 +104,6 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    NSLog(@"preparesegue");
     id controller = [segue destinationViewController];
     if ([controller isKindOfClass:[NewsDetailsViewController class]]) {
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];

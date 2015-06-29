@@ -9,6 +9,8 @@ pod 'AFNetworkActivityLogger', '~> 2.0'
 pod 'Bolts'
 pod 'SDWebImage'
 pod 'INSPullToRefresh'
+pod 'SlackTextViewController'
+
 end
 
 target 'YPO-WPO SGTests' do

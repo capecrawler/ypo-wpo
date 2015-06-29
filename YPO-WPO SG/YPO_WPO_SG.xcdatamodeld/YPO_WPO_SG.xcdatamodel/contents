@@ -11,6 +11,15 @@
         <attribute name="slug" attributeType="String" syncable="YES"/>
         <attribute name="synopsis" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPOComment" inverseName="article" inverseEntity="YPOComment" syncable="YES"/>
+    </entity>
+    <entity name="YPOComment" representedClassName="YPOComment" syncable="YES">
+        <attribute name="comment" attributeType="String" syncable="YES"/>
+        <attribute name="commentID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="postDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="profilePictureURL" attributeType="String" syncable="YES"/>
+        <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YPOArticle" inverseName="comments" inverseEntity="YPOArticle" syncable="YES"/>
     </entity>
     <entity name="YPOCompany" representedClassName="YPOCompany" syncable="YES">
         <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,10 +63,11 @@
         <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPOMember" inverseName="role" inverseEntity="YPOMember" syncable="YES"/>
     </entity>
     <elements>
-        <element name="YPOArticle" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="YPOArticle" positionX="-63" positionY="-18" width="128" height="210"/>
         <element name="YPOCompany" positionX="-27" positionY="126" width="128" height="225"/>
         <element name="YPOContactDetails" positionX="-36" positionY="108" width="128" height="120"/>
         <element name="YPOMember" positionX="-54" positionY="63" width="128" height="240"/>
         <element name="YPORole" positionX="-54" positionY="72" width="128" height="90"/>
+        <element name="YPOComment" positionX="-45" positionY="135" width="128" height="135"/>
     </elements>
 </model>

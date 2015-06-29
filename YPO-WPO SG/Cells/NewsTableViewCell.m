@@ -38,7 +38,11 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:self.article.imageURL]];
+    [self.newsImageView sd_setImageWithURL:[NSURL URLWithString:self.article.imageURL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        self.newsImageView.layer.shouldRasterize = YES;
+        self.newsImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    }];
+    
 }
 
 

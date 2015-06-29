@@ -102,3 +102,9 @@
 #define COCOAPODS_VERSION_MINOR_SVProgressHUD 1
 #define COCOAPODS_VERSION_PATCH_SVProgressHUD 3
 
+// SlackTextViewController
+#define COCOAPODS_POD_AVAILABLE_SlackTextViewController
+#define COCOAPODS_VERSION_MAJOR_SlackTextViewController 1
+#define COCOAPODS_VERSION_MINOR_SlackTextViewController 5
+#define COCOAPODS_VERSION_PATCH_SlackTextViewController 2
+

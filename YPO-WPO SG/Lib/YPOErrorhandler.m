@@ -20,7 +20,7 @@
 }
 
 
-- (void) handlerError:(NSError *)error {    
+- (void) handleError:(NSError *)error {    
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", @"Alert Ok button label") otherButtonTitles: nil];
     [alertView show];
 }

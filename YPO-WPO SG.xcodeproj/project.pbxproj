@@ -23,6 +23,11 @@
 		AC0605AF1B2ABB2F00EB0F5F /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0605AE1B2ABB2F00EB0F5F /* UIColor+Theme.m */; };
 		AC0605B21B2ABD1800EB0F5F /* TableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0605B11B2ABD1800EB0F5F /* TableViewHeader.m */; };
 		AC0605B41B2ABD3300EB0F5F /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0605B31B2ABD3300EB0F5F /* TableViewHeader.xib */; };
+		AC67C27C1B415EB20054EAB9 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C27B1B415EB20054EAB9 /* CommentsViewController.m */; };
+		AC67C27F1B415F240054EAB9 /* CommentTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C27E1B415F240054EAB9 /* CommentTextView.m */; };
+		AC67C2821B4167540054EAB9 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C2811B4167540054EAB9 /* CommentTableViewCell.m */; };
+		AC67C2851B4172100054EAB9 /* YPOComment.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C2841B4172100054EAB9 /* YPOComment.m */; };
+		AC74515E1B4149B200E081DC /* UIImage+CircleMask.m in Sources */ = {isa = PBXBuildFile; fileRef = AC74515D1B4149B200E081DC /* UIImage+CircleMask.m */; };
 		ACC9939D1B29B55B008E262E /* YPOAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9939C1B29B55B008E262E /* YPOAPIClient.m */; };
 		ACC993A01B29B5EA008E262E /* YPOConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9939F1B29B5EA008E262E /* YPOConfig.m */; };
 		ACC993A31B29B84B008E262E /* NewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993A21B29B84B008E262E /* NewsfeedViewController.m */; };
@@ -92,6 +97,16 @@
 		AC0605B01B2ABD1800EB0F5F /* TableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewHeader.h; sourceTree = "<group>"; };
 		AC0605B11B2ABD1800EB0F5F /* TableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewHeader.m; sourceTree = "<group>"; };
 		AC0605B31B2ABD3300EB0F5F /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
+		AC67C27A1B415EB20054EAB9 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		AC67C27B1B415EB20054EAB9 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		AC67C27D1B415F240054EAB9 /* CommentTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTextView.h; sourceTree = "<group>"; };
+		AC67C27E1B415F240054EAB9 /* CommentTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTextView.m; sourceTree = "<group>"; };
+		AC67C2801B4167540054EAB9 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
+		AC67C2811B4167540054EAB9 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
+		AC67C2831B4172100054EAB9 /* YPOComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOComment.h; sourceTree = "<group>"; };
+		AC67C2841B4172100054EAB9 /* YPOComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOComment.m; sourceTree = "<group>"; };
+		AC74515C1B4149B200E081DC /* UIImage+CircleMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CircleMask.h"; sourceTree = "<group>"; };
+		AC74515D1B4149B200E081DC /* UIImage+CircleMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CircleMask.m"; sourceTree = "<group>"; };
 		AC76E1161B26F94900AFB494 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		AC76E1171B26F9CF00AFB494 /* YPO-PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YPO-PrefixHeader.pch"; sourceTree = "<group>"; };
 		ACC9939B1B29B55B008E262E /* YPOAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOAPIClient.h; sourceTree = "<group>"; };
@@ -191,6 +206,8 @@
 				ACD916A11B3E899000A93A06 /* NSDate+FormattedString.m */,
 				ACCBFA201B3F1DDB004D8446 /* NSString+NotEmpty.h */,
 				ACCBFA211B3F1DDB004D8446 /* NSString+NotEmpty.m */,
+				AC74515C1B4149B200E081DC /* UIImage+CircleMask.h */,
+				AC74515D1B4149B200E081DC /* UIImage+CircleMask.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -220,6 +237,8 @@
 				AC0605B31B2ABD3300EB0F5F /* TableViewHeader.xib */,
 				ACCBFA231B3F2343004D8446 /* CircleImageView.h */,
 				ACCBFA241B3F2343004D8446 /* CircleImageView.m */,
+				AC67C27D1B415F240054EAB9 /* CommentTextView.h */,
+				AC67C27E1B415F240054EAB9 /* CommentTextView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +246,8 @@
 		32EA00971B2332C200B392E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AC67C2831B4172100054EAB9 /* YPOComment.h */,
+				AC67C2841B4172100054EAB9 /* YPOComment.m */,
 				ACCBFA1A1B3F0A69004D8446 /* YPOCompany.h */,
 				ACCBFA1B1B3F0A69004D8446 /* YPOCompany.m */,
 				ACCBFA171B3F0A69004D8446 /* YPOContactDetails.h */,
@@ -356,6 +377,8 @@
 				ACC993AA1B29CC97008E262E /* MemberTableViewCell.m */,
 				ACD9169C1B3E869400A93A06 /* NewsTableViewCell.xib */,
 				ACD9169E1B3E870300A93A06 /* MemberTableViewCell.xib */,
+				AC67C2801B4167540054EAB9 /* CommentTableViewCell.h */,
+				AC67C2811B4167540054EAB9 /* CommentTableViewCell.m */,
 			);
 			name = Cell;
 			path = Cells;
@@ -370,6 +393,8 @@
 				ACC993B31B29DBE7008E262E /* NewsDetailsViewController.m */,
 				ACD916A31B3E906A00A93A06 /* NewsViewController.h */,
 				ACD916A41B3E906A00A93A06 /* NewsViewController.m */,
+				AC67C27A1B415EB20054EAB9 /* CommentsViewController.h */,
+				AC67C27B1B415EB20054EAB9 /* CommentsViewController.m */,
 			);
 			path = Newsfeed;
 			sourceTree = "<group>";
@@ -541,6 +566,7 @@
 				32F5D5751B22A81700B40ACE /* AppDelegate.m in Sources */,
 				32EA009B1B2333F300B392E2 /* BaseViewController.m in Sources */,
 				ACC9939D1B29B55B008E262E /* YPOAPIClient.m in Sources */,
+				AC74515E1B4149B200E081DC /* UIImage+CircleMask.m in Sources */,
 				ACC993A01B29B5EA008E262E /* YPOConfig.m in Sources */,
 				ACD9169B1B3E836E00A93A06 /* YPOErrorhandler.m in Sources */,
 				ACCBFA0A1B3EF685004D8446 /* MembersListViewController.m in Sources */,
@@ -559,7 +585,11 @@
 				32EA009E1B2334D700B392E2 /* BaseTableViewController.m in Sources */,
 				ACCBFA0D1B3EFE86004D8446 /* NewMembersViewController.m in Sources */,
 				ACD916981B3E82E100A93A06 /* YPOSyncManager.m in Sources */,
+				AC67C27C1B415EB20054EAB9 /* CommentsViewController.m in Sources */,
+				AC67C2821B4167540054EAB9 /* CommentTableViewCell.m in Sources */,
+				AC67C27F1B415F240054EAB9 /* CommentTextView.m in Sources */,
 				ACD916A51B3E906A00A93A06 /* NewsViewController.m in Sources */,
+				AC67C2851B4172100054EAB9 /* YPOComment.m in Sources */,
 				ACCBFA1F1B3F0B0A004D8446 /* YPOMemberDetails.m in Sources */,
 				ACC993A31B29B84B008E262E /* NewsfeedViewController.m in Sources */,
 				ACC993B11B29D571008E262E /* SettingsViewController.m in Sources */,

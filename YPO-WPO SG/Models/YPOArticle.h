@@ -22,6 +22,7 @@
 @property (nonatomic, retain) NSDate * postDate;
 @property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSNumber * createdBy;
+@property (nonatomic, retain) NSSet * comments;
 
 @end
 

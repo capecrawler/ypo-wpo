@@ -74,7 +74,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VK4-hb-ip9">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1E-dc-4ye" userLabel="ContentView">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j1E-dc-4ye" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="509"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Klaudio Santamaria" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="0kp-Uu-0Qh">
@@ -136,7 +136,7 @@
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgC-Y3-5pb">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgC-Y3-5pb">
                                                 <rect key="frame" x="16" y="273" width="288" height="44"/>
                                                 <color key="backgroundColor" red="0.01176470588" green="0.2784313725" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -148,7 +148,7 @@
                                                 </state>
                                                 <state key="disabled" title="Email"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUW-MK-QNI">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUW-MK-QNI">
                                                 <rect key="frame" x="16" y="333" width="288" height="44"/>
                                                 <color key="backgroundColor" red="0.01176470588" green="0.2784313725" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -157,7 +157,7 @@
                                                 </state>
                                                 <state key="disabled" title="Mobile"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y37-ux-mUm">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y37-ux-mUm">
                                                 <rect key="frame" x="16" y="394" width="288" height="44"/>
                                                 <color key="backgroundColor" red="0.01176470588" green="0.2784313725" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -166,7 +166,7 @@
                                                 </state>
                                                 <state key="disabled" title="Home"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttT-a9-5jr">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttT-a9-5jr">
                                                 <rect key="frame" x="16" y="455" width="288" height="44"/>
                                                 <color key="backgroundColor" red="0.01176470588" green="0.2784313725" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -341,6 +341,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="News" id="lzS-Wn-fEb"/>
+                    <connections>
+                        <segue destination="akR-dP-DY8" kind="push" identifier="NewsDetailsViewController" id="ki7-0T-Rae"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Htt-1z-tQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -376,6 +379,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="CvS-OY-wZ5" kind="push" identifier="CommentsViewController" id="hzM-NL-nfi"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Comments" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLc-cE-EBN">
                                         <rect key="frame" x="8" y="10" width="174" height="44"/>
@@ -418,6 +424,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdg-XK-7eO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1735" y="-3716"/>
+        </scene>
+        <!--Comments-->
+        <scene sceneID="Ot9-FX-JM6">
+            <objects>
+                <viewController id="CvS-OY-wZ5" customClass="CommentsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S7N-Np-Ro1"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Q1-bQ-kJP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PeP-4b-Dys">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Comments" id="xKV-ri-C0u"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fX7-h0-LBW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2272" y="-3716"/>
         </scene>
         <!--Newsfeed-->
         <scene sceneID="Ubt-JR-8AX">
@@ -786,7 +811,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1US-bP-Do3"/>
+        <segue reference="zPr-BJ-IgD"/>
+        <segue reference="ki7-0T-Rae"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.011764705882352941" green="0.27843137254901962" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
 </document>

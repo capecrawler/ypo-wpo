@@ -7,6 +7,7 @@
 //
 
 #import "NewsDetailsViewController.h"
+#import "CommentsViewController.h"
 #import "YPOArticle.h"
 
 @interface NewsDetailsViewController ()
@@ -33,15 +34,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    id controller = [segue destinationViewController];
+    if ([controller isKindOfClass:[CommentsViewController class]]) {
+        CommentsViewController *newsDetailsController = (CommentsViewController *)controller;
+        newsDetailsController.article = self.article;
+    }
 }
-*/
 
 
 - (NSString *)constructHTML:(NSString *)title content:(NSString *)content{

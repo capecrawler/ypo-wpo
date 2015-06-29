@@ -38,7 +38,10 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:self.member.profilePicURL]];
+    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:self.member.profilePicURL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        self.profileImageView.layer.shouldRasterize = YES;
+        self.profileImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    }];
 }
 
 - (void)setMember:(YPOMember *)member {
