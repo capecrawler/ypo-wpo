@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "YPORemoteManagedObject.h"
 
-@class YPORole, YPOCompany, YPOContactDetails;
+@class YPORole, YPOCompany, YPOContactDetails, YPOForum, YPOChapter;
 
 @interface YPOMember : YPORemoteManagedObject
 
@@ -26,6 +26,8 @@
 @property (nonatomic, retain) NSSet *role;
 @property (nonatomic, retain) YPOCompany *company;
 @property (nonatomic, retain) YPOContactDetails *contactDetails;
+@property (nonatomic, retain) YPOChapter * chapterOrg;
+@property (nonatomic, retain) NSSet * forum;
 
 @end
 
@@ -35,6 +37,7 @@
 @property (nonatomic, assign) BOOL newMembers;
 @property (nonatomic, assign) NSInteger roleID;
 @property (nonatomic, assign) NSInteger chapterID;
+@property (nonatomic, assign) NSInteger forumID;
 @property (nonatomic, assign) NSUInteger page;
 @property (nonatomic, assign) NSInteger rowCount;
 

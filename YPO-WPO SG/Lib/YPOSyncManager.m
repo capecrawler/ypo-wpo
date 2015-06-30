@@ -9,6 +9,8 @@
 #import "YPOSyncManager.h"
 #import "YPOMember.h"
 #import "YPOArticle.h"
+#import "YPOChapter.h"
+#import "YPOForum.h"
 #import <Bolts/Bolts.h>
 
 NSString *const YPODataStartedLoadingNotification   = @"YPODataStartedLoadingNotification";
@@ -45,6 +47,8 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
                 NSMutableArray *parallelTask = [[NSMutableArray alloc]init];
                 [parallelTask addObject:[self loadArticles]];
                 [parallelTask addObject:[self loadNewMembers]];
+                [parallelTask addObject:[self loadChapters]];
+                [parallelTask addObject:[self loadForums]];
                 return [BFTask taskForCompletionOfAllTasks:parallelTask];
             }] continueWithBlock:^id(BFTask *task) {
                 self.syncing = NO;
@@ -91,6 +95,29 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
     return requestTask.task;
 }
 
+
+- (BFTask *)loadChapters {
+    BFTaskCompletionSource *requestTask = [BFTaskCompletionSource taskCompletionSource];
+    YPOChapterRequest *request = (YPOChapterRequest*)[YPOChapter constructRequest];
+    [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        [requestTask setResult:responseObject];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [requestTask setError:error];
+    }];
+    return requestTask.task;
+}
+
+
+- (BFTask *)loadForums {
+    BFTaskCompletionSource *requestTask = [BFTaskCompletionSource taskCompletionSource];
+    YPOForumRequest *request = (YPOForumRequest*)[YPOForum constructRequest];
+    [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        [requestTask setResult:responseObject];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [requestTask setError:error];
+    }];
+    return requestTask.task;
+}
 
 
 @end

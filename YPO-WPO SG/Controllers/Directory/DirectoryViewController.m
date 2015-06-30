@@ -81,8 +81,10 @@ typedef NS_ENUM(NSUInteger, DirectoryMenu) {
         case DirectoryMenuManagementCommittee:
             break;
         case DirectoryMenuChapterAdministrators:
+            [self performSegueWithIdentifier:@"ChapterTableViewController" sender:self];
             break;
         case DirectoryMenuForum:
+            [self performSegueWithIdentifier:@"ForumTableViewController" sender:self];            
             break;
         default:
             break;

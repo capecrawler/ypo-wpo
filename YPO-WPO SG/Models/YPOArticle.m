@@ -69,7 +69,7 @@
 }
 
 
-- (void) loadJSONObject:(NSDictionary *)jsonObject {
+- (void)loadJSONObject:(NSDictionary *)jsonObject {
     if ([jsonObject[@"status"] boolValue]) {
         NSArray *data = jsonObject[@"data"];
         [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {

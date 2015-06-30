@@ -28,6 +28,10 @@
 		AC67C2821B4167540054EAB9 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C2811B4167540054EAB9 /* CommentTableViewCell.m */; };
 		AC67C2851B4172100054EAB9 /* YPOComment.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C2841B4172100054EAB9 /* YPOComment.m */; };
 		AC74515E1B4149B200E081DC /* UIImage+CircleMask.m in Sources */ = {isa = PBXBuildFile; fileRef = AC74515D1B4149B200E081DC /* UIImage+CircleMask.m */; };
+		ACA549641B429DF500721346 /* YPOChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA549631B429DF500721346 /* YPOChapter.m */; };
+		ACA549671B429DF500721346 /* YPOForum.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA549661B429DF500721346 /* YPOForum.m */; };
+		ACA5496C1B42A96A00721346 /* ForumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA5496B1B42A96A00721346 /* ForumTableViewController.m */; };
+		ACA5496F1B42AFB000721346 /* ChapterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA5496E1B42AFB000721346 /* ChapterTableViewController.m */; };
 		ACC9939D1B29B55B008E262E /* YPOAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9939C1B29B55B008E262E /* YPOAPIClient.m */; };
 		ACC993A01B29B5EA008E262E /* YPOConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9939F1B29B5EA008E262E /* YPOConfig.m */; };
 		ACC993A31B29B84B008E262E /* NewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993A21B29B84B008E262E /* NewsfeedViewController.m */; };
@@ -109,6 +113,14 @@
 		AC74515D1B4149B200E081DC /* UIImage+CircleMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CircleMask.m"; sourceTree = "<group>"; };
 		AC76E1161B26F94900AFB494 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		AC76E1171B26F9CF00AFB494 /* YPO-PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YPO-PrefixHeader.pch"; sourceTree = "<group>"; };
+		ACA549621B429DF500721346 /* YPOChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOChapter.h; sourceTree = "<group>"; };
+		ACA549631B429DF500721346 /* YPOChapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOChapter.m; sourceTree = "<group>"; };
+		ACA549651B429DF500721346 /* YPOForum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOForum.h; sourceTree = "<group>"; };
+		ACA549661B429DF500721346 /* YPOForum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOForum.m; sourceTree = "<group>"; };
+		ACA5496A1B42A96A00721346 /* ForumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumTableViewController.h; sourceTree = "<group>"; };
+		ACA5496B1B42A96A00721346 /* ForumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumTableViewController.m; sourceTree = "<group>"; };
+		ACA5496D1B42AFB000721346 /* ChapterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterTableViewController.h; sourceTree = "<group>"; };
+		ACA5496E1B42AFB000721346 /* ChapterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterTableViewController.m; sourceTree = "<group>"; };
 		ACC9939B1B29B55B008E262E /* YPOAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOAPIClient.h; sourceTree = "<group>"; };
 		ACC9939C1B29B55B008E262E /* YPOAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOAPIClient.m; sourceTree = "<group>"; };
 		ACC9939E1B29B5EA008E262E /* YPOConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOConfig.h; sourceTree = "<group>"; };
@@ -246,6 +258,10 @@
 		32EA00971B2332C200B392E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ACA549651B429DF500721346 /* YPOForum.h */,
+				ACA549661B429DF500721346 /* YPOForum.m */,
+				ACA549621B429DF500721346 /* YPOChapter.h */,
+				ACA549631B429DF500721346 /* YPOChapter.m */,
 				AC67C2831B4172100054EAB9 /* YPOComment.h */,
 				AC67C2841B4172100054EAB9 /* YPOComment.m */,
 				ACCBFA1A1B3F0A69004D8446 /* YPOCompany.h */,
@@ -364,6 +380,10 @@
 				ACCBFA0C1B3EFE86004D8446 /* NewMembersViewController.m */,
 				ACCBFA0E1B3F08CC004D8446 /* MemberDetailsViewController.h */,
 				ACCBFA0F1B3F08CC004D8446 /* MemberDetailsViewController.m */,
+				ACA5496A1B42A96A00721346 /* ForumTableViewController.h */,
+				ACA5496B1B42A96A00721346 /* ForumTableViewController.m */,
+				ACA5496D1B42AFB000721346 /* ChapterTableViewController.h */,
+				ACA5496E1B42AFB000721346 /* ChapterTableViewController.m */,
 			);
 			path = Directory;
 			sourceTree = "<group>";
@@ -563,9 +583,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA549641B429DF500721346 /* YPOChapter.m in Sources */,
 				32F5D5751B22A81700B40ACE /* AppDelegate.m in Sources */,
 				32EA009B1B2333F300B392E2 /* BaseViewController.m in Sources */,
 				ACC9939D1B29B55B008E262E /* YPOAPIClient.m in Sources */,
+				ACA5496F1B42AFB000721346 /* ChapterTableViewController.m in Sources */,
 				AC74515E1B4149B200E081DC /* UIImage+CircleMask.m in Sources */,
 				ACC993A01B29B5EA008E262E /* YPOConfig.m in Sources */,
 				ACD9169B1B3E836E00A93A06 /* YPOErrorhandler.m in Sources */,
@@ -583,6 +605,7 @@
 				32F5D5781B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld in Sources */,
 				ACC993A81B29CBD3008E262E /* NewsTableViewCell.m in Sources */,
 				32EA009E1B2334D700B392E2 /* BaseTableViewController.m in Sources */,
+				ACA549671B429DF500721346 /* YPOForum.m in Sources */,
 				ACCBFA0D1B3EFE86004D8446 /* NewMembersViewController.m in Sources */,
 				ACD916981B3E82E100A93A06 /* YPOSyncManager.m in Sources */,
 				AC67C27C1B415EB20054EAB9 /* CommentsViewController.m in Sources */,
@@ -594,6 +617,7 @@
 				ACC993A31B29B84B008E262E /* NewsfeedViewController.m in Sources */,
 				ACC993B11B29D571008E262E /* SettingsViewController.m in Sources */,
 				D43EDA971B394A460022FAD4 /* YPORemoteManagedObject.m in Sources */,
+				ACA5496C1B42A96A00721346 /* ForumTableViewController.m in Sources */,
 				ACCBFA221B3F1DDB004D8446 /* NSString+NotEmpty.m in Sources */,
 				ACCBFA191B3F0A69004D8446 /* YPOContactDetails.m in Sources */,
 				ACCBFA1C1B3F0A69004D8446 /* YPOCompany.m in Sources */,

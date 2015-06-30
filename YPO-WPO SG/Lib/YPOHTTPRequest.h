@@ -26,5 +26,6 @@ typedef NS_ENUM(NSUInteger, HTTPMethod) {
 - (void)startRequestSuccess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                     failure:(void (^)(NSURLSessionDataTask *task, NSError *error)) failure;
 - (void)loadJSONObject:(id)jsonObject;
-
+- (void)beforeLoadJSON:(id)jsonObject;
+- (void)endLoadJSON:(id)jsonObject;
 @end

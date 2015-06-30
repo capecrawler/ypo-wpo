@@ -306,7 +306,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2331" y="-2336"/>
+            <point key="canvasLocation" x="3084" y="-2336"/>
         </scene>
         <!--New Members-->
         <scene sceneID="ToA-92-sBt">
@@ -490,11 +490,67 @@
                     <connections>
                         <segue destination="ZaO-Yu-ZSe" kind="push" identifier="MembersListViewController" id="xPq-l1-sQR"/>
                         <segue destination="GDn-VQ-xWl" kind="push" identifier="NewMembersViewController" id="1US-bP-Do3"/>
+                        <segue destination="neS-bm-cjZ" kind="push" identifier="ForumTableViewController" id="hNa-7Z-xU5"/>
+                        <segue destination="b9X-Sv-PBK" kind="push" identifier="ChapterTableViewController" id="lMd-TP-ycX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xn-Y3-3m9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1069" y="-2336"/>
+        </scene>
+        <!--Forum-->
+        <scene sceneID="5lD-dg-XXa">
+            <objects>
+                <tableViewController id="neS-bm-cjZ" customClass="ForumTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oaJ-mM-J4l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UITableViewCell" id="G2V-S3-ZbX">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G2V-S3-ZbX" id="z52-6f-wFL">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="neS-bm-cjZ" id="d0F-bM-c78"/>
+                            <outlet property="delegate" destination="neS-bm-cjZ" id="psu-hG-Xhs"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Forum" id="rm4-Fw-jf6"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wcU-Lz-96d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2466" y="-1491"/>
+        </scene>
+        <!--Chapter Administrators-->
+        <scene sceneID="qbb-v1-87Y">
+            <objects>
+                <tableViewController id="b9X-Sv-PBK" customClass="ChapterTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="p1d-z5-oxJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" id="QnH-cy-qF2">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QnH-cy-qF2" id="Ldo-el-RcL">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="b9X-Sv-PBK" id="LQj-Sg-GbR"/>
+                            <outlet property="delegate" destination="b9X-Sv-PBK" id="gph-DK-IbF"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Chapter Administrators" id="JTm-GJ-xt6"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OiK-52-U5E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2466" y="-2153"/>
         </scene>
         <!--Directory-->
         <scene sceneID="jsN-al-cwQ">
@@ -811,8 +867,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="zPr-BJ-IgD"/>
         <segue reference="ki7-0T-Rae"/>
+        <segue reference="1US-bP-Do3"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.011764705882352941" green="0.27843137254901962" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
 </document>

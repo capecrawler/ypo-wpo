@@ -49,7 +49,9 @@
     [[YPOAPIClient sharedClient] GET:self.apiPath parameters:self.params success:^(NSURLSessionDataTask *task, id responseObject) {
         if (self.useJSONLoader) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [self beforeLoadJSON:responseObject];
                 [self loadJSONObject:responseObject];
+                [self endLoadJSON:responseObject];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (success) {
                         success(task, responseObject);
@@ -80,6 +82,14 @@
 
 - (void) loadJSONObject:(id)jsonObject {
     // must be overriden
+}
+
+- (void)beforeLoadJSON:(id)jsonObject {
+    
+}
+
+- (void)endLoadJSON:(id)jsonObject {
+    
 }
 
 @end

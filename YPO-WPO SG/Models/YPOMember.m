@@ -11,7 +11,8 @@
 #import "YPOContactDetails.h"
 #import "YPOCompany.h"
 #import "YPOAPIClient.h"
-
+#import "YPOForum.h"
+#import "YPOChapter.h"
 
 @implementation YPOMember
 
@@ -28,6 +29,8 @@
 @dynamic chapter;
 @dynamic company;
 @dynamic contactDetails;
+@dynamic forum;
+@dynamic chapterOrg;
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
     [super parseDictionary:dictionary];    
@@ -62,6 +65,7 @@
         self.newMembers = NO;
         self.roleID = -1;
         self.chapterID = -1;
+        self.forumID = -1;
         self.page = 1;
         self.rowCount = 15;
     }
@@ -79,6 +83,9 @@
     }
     if (self.chapterID != -1) {
         [params setObject:@(self.chapterID) forKey:@"chapter_id"];
+    }
+    if (self.forumID != -1) {
+        [params setObject:@(self.forumID) forKey:@"forum_id"];
     }
     return params;
 }

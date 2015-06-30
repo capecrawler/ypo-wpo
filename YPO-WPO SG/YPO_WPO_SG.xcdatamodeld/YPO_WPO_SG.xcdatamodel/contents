@@ -13,6 +13,11 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPOComment" inverseName="article" inverseEntity="YPOComment" syncable="YES"/>
     </entity>
+    <entity name="YPOChapter" representedClassName="YPOChapter" syncable="YES">
+        <attribute name="chapterID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPOMember" inverseName="chapterOrg" inverseEntity="YPOMember" syncable="YES"/>
+    </entity>
     <entity name="YPOComment" representedClassName="YPOComment" syncable="YES">
         <attribute name="comment" attributeType="String" syncable="YES"/>
         <attribute name="commentID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
@@ -42,6 +47,11 @@
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="member" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YPOMember" inverseName="contactDetails" inverseEntity="YPOMember" syncable="YES"/>
     </entity>
+    <entity name="YPOForum" representedClassName="YPOForum" syncable="YES">
+        <attribute name="forumID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="members" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YPOMember" inverseName="forum" inverseEntity="YPOMember" syncable="YES"/>
+    </entity>
     <entity name="YPOMember" representedClassName="YPOMember" syncable="YES">
         <attribute name="chapter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="chapterID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
@@ -53,8 +63,10 @@
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="profilePicURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="chapterOrg" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YPOChapter" inverseName="members" inverseEntity="YPOChapter" syncable="YES"/>
         <relationship name="company" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="YPOCompany" inverseName="member" inverseEntity="YPOCompany" syncable="YES"/>
         <relationship name="contactDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="YPOContactDetails" inverseName="member" inverseEntity="YPOContactDetails" syncable="YES"/>
+        <relationship name="forum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YPOForum" inverseName="members" inverseEntity="YPOForum" syncable="YES"/>
         <relationship name="role" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPORole" inverseName="member" inverseEntity="YPORole" syncable="YES"/>
     </entity>
     <entity name="YPORole" representedClassName="YPORole" syncable="YES">
@@ -64,10 +76,12 @@
     </entity>
     <elements>
         <element name="YPOArticle" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="YPOComment" positionX="-45" positionY="135" width="128" height="135"/>
         <element name="YPOCompany" positionX="-27" positionY="126" width="128" height="225"/>
         <element name="YPOContactDetails" positionX="-36" positionY="108" width="128" height="120"/>
-        <element name="YPOMember" positionX="-54" positionY="63" width="128" height="240"/>
+        <element name="YPOMember" positionX="-54" positionY="63" width="128" height="270"/>
         <element name="YPORole" positionX="-54" positionY="72" width="128" height="90"/>
-        <element name="YPOComment" positionX="-45" positionY="135" width="128" height="135"/>
+        <element name="YPOForum" positionX="-45" positionY="135" width="128" height="90"/>
+        <element name="YPOChapter" positionX="-36" positionY="144" width="128" height="90"/>
     </elements>
 </model>
