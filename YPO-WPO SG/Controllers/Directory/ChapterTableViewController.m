@@ -8,6 +8,7 @@
 
 #import "ChapterTableViewController.h"
 #import "YPOChapter.h"
+#import "MembersFilteredViewController.h"
 
 @interface ChapterTableViewController()<NSFetchedResultsControllerDelegate>
 
@@ -70,6 +71,24 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"MembersFilteredViewController" sender:self];
+}
+
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+    id controller = segue.destinationViewController;
+    if ([controller isKindOfClass:[MembersFilteredViewController class]]) {
+        MembersFilteredViewController * filteredController = (MembersFilteredViewController *)controller;
+        filteredController.chapterFilter = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+    }
 }
 
 

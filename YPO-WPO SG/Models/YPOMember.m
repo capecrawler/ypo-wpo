@@ -2,38 +2,38 @@
 //  YPOMember.m
 //  YPO-WPO SG
 //
-//  Created by Mario Cape on 6/24/15.
+//  Created by Mario Antonio A. Cape on 6/30/15.
 //  Copyright (c) 2015 Raketeers. All rights reserved.
 //
 
 #import "YPOMember.h"
-#import "YPORole.h"
-#import "YPOContactDetails.h"
-#import "YPOCompany.h"
-#import "YPOAPIClient.h"
-#import "YPOForum.h"
 #import "YPOChapter.h"
+#import "YPOCompany.h"
+#import "YPOContactDetails.h"
+#import "YPOForum.h"
+#import "YPORole.h"
+
 
 @implementation YPOMember
 
+@dynamic chapter;
 @dynamic chapterID;
 @dynamic firstName;
+@dynamic joinedDate;
 @dynamic lastName;
 @dynamic memberID;
+@dynamic middleName;
 @dynamic name;
 @dynamic nickname;
 @dynamic profilePicURL;
-@dynamic joinedDate;
-@dynamic role;
-@dynamic middleName;
-@dynamic chapter;
 @dynamic company;
 @dynamic contactDetails;
-@dynamic forum;
+@dynamic role;
 @dynamic chapterOrg;
+@dynamic forum;
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
-    [super parseDictionary:dictionary];    
+    [super parseDictionary:dictionary];
     self.memberID = dictionary[@"member_id"];
     self.profilePicURL = dictionary[@"profile_picture_url"];
     self.name = dictionary[@"name"];
@@ -101,11 +101,19 @@
                     member = [YPOMember MR_createEntityInContext:localContext];
                 }
                 [member parseDictionary:raw];
+                
+                if (self.chapterID != -1) {
+                    YPOChapter *chapter = [YPOChapter MR_findFirstByAttribute:@"chapterID" withValue:@(self.chapterID) inContext:localContext];
+                    member.chapterOrg = chapter;
+                } else if (self.forumID != -1) {
+                    YPOForum *forum = [YPOForum MR_findFirstByAttribute:@"forumID" withValue:@(self.forumID) inContext:localContext];
+                    [forum addMembersObject:member];
+                }
             }
         }];
     }
 }
 
 
-@end
 
+@end

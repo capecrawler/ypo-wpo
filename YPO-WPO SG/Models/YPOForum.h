@@ -15,9 +15,18 @@
 
 @property (nonatomic, retain) NSNumber * forumID;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) YPOMember *members;
+@property (nonatomic, retain) NSSet *members;
+@end
+
+@interface YPOForum (CoreDataGeneratedAccessors)
+
+- (void)addMembersObject:(YPOMember *)value;
+- (void)removeMembersObject:(YPOMember *)value;
+- (void)addMembers:(NSSet *)values;
+- (void)removeMembers:(NSSet *)values;
 
 @end
+
 
 
 @interface YPOForumRequest : YPOHTTPRequest

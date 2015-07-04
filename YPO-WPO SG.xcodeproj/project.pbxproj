@@ -32,6 +32,10 @@
 		ACA549671B429DF500721346 /* YPOForum.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA549661B429DF500721346 /* YPOForum.m */; };
 		ACA5496C1B42A96A00721346 /* ForumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA5496B1B42A96A00721346 /* ForumTableViewController.m */; };
 		ACA5496F1B42AFB000721346 /* ChapterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA5496E1B42AFB000721346 /* ChapterTableViewController.m */; };
+		ACA549721B42DC1500721346 /* YPOMemberDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA549711B42DC1500721346 /* YPOMemberDetails.m */; };
+		ACA549751B42DC7800721346 /* YPOMember.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA549741B42DC7800721346 /* YPOMember.m */; };
+		ACADDC071B48222800B97FFC /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACADDC051B48222800B97FFC /* Fabric.framework */; };
+		ACADDC081B48222800B97FFC /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACADDC061B48222800B97FFC /* Crashlytics.framework */; };
 		ACC9939D1B29B55B008E262E /* YPOAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9939C1B29B55B008E262E /* YPOAPIClient.m */; };
 		ACC993A01B29B5EA008E262E /* YPOConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9939F1B29B5EA008E262E /* YPOConfig.m */; };
 		ACC993A31B29B84B008E262E /* NewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993A21B29B84B008E262E /* NewsfeedViewController.m */; };
@@ -40,11 +44,10 @@
 		ACC993B11B29D571008E262E /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993B01B29D571008E262E /* SettingsViewController.m */; };
 		ACC993B41B29DBE7008E262E /* NewsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993B31B29DBE7008E262E /* NewsDetailsViewController.m */; };
 		ACCBFA0A1B3EF685004D8446 /* MembersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA091B3EF685004D8446 /* MembersListViewController.m */; };
-		ACCBFA0D1B3EFE86004D8446 /* NewMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA0C1B3EFE86004D8446 /* NewMembersViewController.m */; };
+		ACCBFA0D1B3EFE86004D8446 /* MembersFilteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA0C1B3EFE86004D8446 /* MembersFilteredViewController.m */; };
 		ACCBFA101B3F08CC004D8446 /* MemberDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA0F1B3F08CC004D8446 /* MemberDetailsViewController.m */; };
 		ACCBFA191B3F0A69004D8446 /* YPOContactDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA181B3F0A69004D8446 /* YPOContactDetails.m */; };
 		ACCBFA1C1B3F0A69004D8446 /* YPOCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA1B1B3F0A69004D8446 /* YPOCompany.m */; };
-		ACCBFA1F1B3F0B0A004D8446 /* YPOMemberDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA1E1B3F0B0A004D8446 /* YPOMemberDetails.m */; };
 		ACCBFA221B3F1DDB004D8446 /* NSString+NotEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA211B3F1DDB004D8446 /* NSString+NotEmpty.m */; };
 		ACCBFA251B3F2343004D8446 /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA241B3F2343004D8446 /* CircleImageView.m */; };
 		ACD916981B3E82E100A93A06 /* YPOSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD916971B3E82E100A93A06 /* YPOSyncManager.m */; };
@@ -57,7 +60,6 @@
 		D43EDA9A1B394A9C0022FAD4 /* YPOArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = D43EDA991B394A9C0022FAD4 /* YPOArticle.m */; };
 		D43EDA9D1B394F970022FAD4 /* NSDate+InternetDate.m in Sources */ = {isa = PBXBuildFile; fileRef = D43EDA9C1B394F970022FAD4 /* NSDate+InternetDate.m */; };
 		D451A69F1B3A66BB0083D9C2 /* YPORole.m in Sources */ = {isa = PBXBuildFile; fileRef = D451A69E1B3A66BB0083D9C2 /* YPORole.m */; };
-		D451A6A21B3A66BB0083D9C2 /* YPOMember.m in Sources */ = {isa = PBXBuildFile; fileRef = D451A6A11B3A66BB0083D9C2 /* YPOMember.m */; };
 		D451A6A51B3A689A0083D9C2 /* YPOHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D451A6A41B3A689A0083D9C2 /* YPOHTTPRequest.m */; };
 		D451A6B31B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D451A6B21B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m */; };
 /* End PBXBuildFile section */
@@ -121,6 +123,12 @@
 		ACA5496B1B42A96A00721346 /* ForumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumTableViewController.m; sourceTree = "<group>"; };
 		ACA5496D1B42AFB000721346 /* ChapterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterTableViewController.h; sourceTree = "<group>"; };
 		ACA5496E1B42AFB000721346 /* ChapterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterTableViewController.m; sourceTree = "<group>"; };
+		ACA549701B42DC1500721346 /* YPOMemberDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOMemberDetails.h; sourceTree = "<group>"; };
+		ACA549711B42DC1500721346 /* YPOMemberDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOMemberDetails.m; sourceTree = "<group>"; };
+		ACA549731B42DC7800721346 /* YPOMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOMember.h; sourceTree = "<group>"; };
+		ACA549741B42DC7800721346 /* YPOMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOMember.m; sourceTree = "<group>"; };
+		ACADDC051B48222800B97FFC /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		ACADDC061B48222800B97FFC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		ACC9939B1B29B55B008E262E /* YPOAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOAPIClient.h; sourceTree = "<group>"; };
 		ACC9939C1B29B55B008E262E /* YPOAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOAPIClient.m; sourceTree = "<group>"; };
 		ACC9939E1B29B5EA008E262E /* YPOConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOConfig.h; sourceTree = "<group>"; };
@@ -137,16 +145,14 @@
 		ACC993B31B29DBE7008E262E /* NewsDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailsViewController.m; sourceTree = "<group>"; };
 		ACCBFA081B3EF685004D8446 /* MembersListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MembersListViewController.h; sourceTree = "<group>"; };
 		ACCBFA091B3EF685004D8446 /* MembersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MembersListViewController.m; sourceTree = "<group>"; };
-		ACCBFA0B1B3EFE86004D8446 /* NewMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMembersViewController.h; sourceTree = "<group>"; };
-		ACCBFA0C1B3EFE86004D8446 /* NewMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMembersViewController.m; sourceTree = "<group>"; };
+		ACCBFA0B1B3EFE86004D8446 /* MembersFilteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MembersFilteredViewController.h; sourceTree = "<group>"; };
+		ACCBFA0C1B3EFE86004D8446 /* MembersFilteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MembersFilteredViewController.m; sourceTree = "<group>"; };
 		ACCBFA0E1B3F08CC004D8446 /* MemberDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberDetailsViewController.h; sourceTree = "<group>"; };
 		ACCBFA0F1B3F08CC004D8446 /* MemberDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberDetailsViewController.m; sourceTree = "<group>"; };
 		ACCBFA171B3F0A69004D8446 /* YPOContactDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOContactDetails.h; sourceTree = "<group>"; };
 		ACCBFA181B3F0A69004D8446 /* YPOContactDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOContactDetails.m; sourceTree = "<group>"; };
 		ACCBFA1A1B3F0A69004D8446 /* YPOCompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOCompany.h; sourceTree = "<group>"; };
 		ACCBFA1B1B3F0A69004D8446 /* YPOCompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOCompany.m; sourceTree = "<group>"; };
-		ACCBFA1D1B3F0B0A004D8446 /* YPOMemberDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOMemberDetails.h; sourceTree = "<group>"; };
-		ACCBFA1E1B3F0B0A004D8446 /* YPOMemberDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOMemberDetails.m; sourceTree = "<group>"; };
 		ACCBFA201B3F1DDB004D8446 /* NSString+NotEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NotEmpty.h"; sourceTree = "<group>"; };
 		ACCBFA211B3F1DDB004D8446 /* NSString+NotEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NotEmpty.m"; sourceTree = "<group>"; };
 		ACCBFA231B3F2343004D8446 /* CircleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleImageView.h; sourceTree = "<group>"; };
@@ -170,8 +176,6 @@
 		D43EDA9C1B394F970022FAD4 /* NSDate+InternetDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+InternetDate.m"; sourceTree = "<group>"; };
 		D451A69D1B3A66BB0083D9C2 /* YPORole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPORole.h; sourceTree = "<group>"; };
 		D451A69E1B3A66BB0083D9C2 /* YPORole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPORole.m; sourceTree = "<group>"; };
-		D451A6A01B3A66BB0083D9C2 /* YPOMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOMember.h; sourceTree = "<group>"; };
-		D451A6A11B3A66BB0083D9C2 /* YPOMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOMember.m; sourceTree = "<group>"; };
 		D451A6A31B3A689A0083D9C2 /* YPOHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOHTTPRequest.h; sourceTree = "<group>"; };
 		D451A6A41B3A689A0083D9C2 /* YPOHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOHTTPRequest.m; sourceTree = "<group>"; };
 		D451A6B11B3AA6470083D9C2 /* YPOHTTPRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOHTTPRequestSerializer.h; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F51511992692F0E890173DC /* libPods-YPO-WPO SG.a in Frameworks */,
+				ACADDC081B48222800B97FFC /* Crashlytics.framework in Frameworks */,
+				ACADDC071B48222800B97FFC /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +264,8 @@
 		32EA00971B2332C200B392E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ACA549731B42DC7800721346 /* YPOMember.h */,
+				ACA549741B42DC7800721346 /* YPOMember.m */,
 				ACA549651B429DF500721346 /* YPOForum.h */,
 				ACA549661B429DF500721346 /* YPOForum.m */,
 				ACA549621B429DF500721346 /* YPOChapter.h */,
@@ -268,14 +276,12 @@
 				ACCBFA1B1B3F0A69004D8446 /* YPOCompany.m */,
 				ACCBFA171B3F0A69004D8446 /* YPOContactDetails.h */,
 				ACCBFA181B3F0A69004D8446 /* YPOContactDetails.m */,
-				D451A6A01B3A66BB0083D9C2 /* YPOMember.h */,
-				D451A6A11B3A66BB0083D9C2 /* YPOMember.m */,
 				D451A69D1B3A66BB0083D9C2 /* YPORole.h */,
 				D451A69E1B3A66BB0083D9C2 /* YPORole.m */,
 				D43EDA981B394A9C0022FAD4 /* YPOArticle.h */,
 				D43EDA991B394A9C0022FAD4 /* YPOArticle.m */,
-				ACCBFA1D1B3F0B0A004D8446 /* YPOMemberDetails.h */,
-				ACCBFA1E1B3F0B0A004D8446 /* YPOMemberDetails.m */,
+				ACA549701B42DC1500721346 /* YPOMemberDetails.h */,
+				ACA549711B42DC1500721346 /* YPOMemberDetails.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 		32F5D56E1B22A81700B40ACE /* YPO-WPO SG */ = {
 			isa = PBXGroup;
 			children = (
+				ACD1E3CC1B469BB500FECCEB /* Vendor */,
 				ACC993A51B29CBA8008E262E /* Cell */,
 				32EA00981B2332C900B392E2 /* Lib */,
 				32EA00971B2332C200B392E2 /* Models */,
@@ -376,8 +383,8 @@
 				AC0605AB1B2AB9FF00EB0F5F /* DirectoryViewController.m */,
 				ACCBFA081B3EF685004D8446 /* MembersListViewController.h */,
 				ACCBFA091B3EF685004D8446 /* MembersListViewController.m */,
-				ACCBFA0B1B3EFE86004D8446 /* NewMembersViewController.h */,
-				ACCBFA0C1B3EFE86004D8446 /* NewMembersViewController.m */,
+				ACCBFA0B1B3EFE86004D8446 /* MembersFilteredViewController.h */,
+				ACCBFA0C1B3EFE86004D8446 /* MembersFilteredViewController.m */,
 				ACCBFA0E1B3F08CC004D8446 /* MemberDetailsViewController.h */,
 				ACCBFA0F1B3F08CC004D8446 /* MemberDetailsViewController.m */,
 				ACA5496A1B42A96A00721346 /* ForumTableViewController.h */,
@@ -437,6 +444,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		ACD1E3CC1B469BB500FECCEB /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				ACADDC051B48222800B97FFC /* Fabric.framework */,
+				ACADDC061B48222800B97FFC /* Crashlytics.framework */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
 		E891EC75A4F103006C2D1330 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +473,7 @@
 				32F5D5691B22A81700B40ACE /* Frameworks */,
 				32F5D56A1B22A81700B40ACE /* Resources */,
 				3D0EA02CAE62FB588D01C099 /* Copy Pods Resources */,
+				ACD32C141B45735800E437F2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -576,6 +593,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		ACD32C141B45735800E437F2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 2d58c5317b8f46c506240ee1ce504345b882b72b 75734113f79d77733baaaeff48c523f8d6c19276fa96e1952d0aa3b18dd10bfc";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -598,7 +628,6 @@
 				32EA00A11B23351700B392E2 /* LoginViewController.m in Sources */,
 				32F5D5721B22A81700B40ACE /* main.m in Sources */,
 				D451A6B31B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m in Sources */,
-				D451A6A21B3A66BB0083D9C2 /* YPOMember.m in Sources */,
 				ACCBFA101B3F08CC004D8446 /* MemberDetailsViewController.m in Sources */,
 				ACC993AB1B29CC97008E262E /* MemberTableViewCell.m in Sources */,
 				AC0605AC1B2AB9FF00EB0F5F /* DirectoryViewController.m in Sources */,
@@ -606,20 +635,21 @@
 				ACC993A81B29CBD3008E262E /* NewsTableViewCell.m in Sources */,
 				32EA009E1B2334D700B392E2 /* BaseTableViewController.m in Sources */,
 				ACA549671B429DF500721346 /* YPOForum.m in Sources */,
-				ACCBFA0D1B3EFE86004D8446 /* NewMembersViewController.m in Sources */,
+				ACCBFA0D1B3EFE86004D8446 /* MembersFilteredViewController.m in Sources */,
 				ACD916981B3E82E100A93A06 /* YPOSyncManager.m in Sources */,
 				AC67C27C1B415EB20054EAB9 /* CommentsViewController.m in Sources */,
 				AC67C2821B4167540054EAB9 /* CommentTableViewCell.m in Sources */,
+				ACA549751B42DC7800721346 /* YPOMember.m in Sources */,
 				AC67C27F1B415F240054EAB9 /* CommentTextView.m in Sources */,
 				ACD916A51B3E906A00A93A06 /* NewsViewController.m in Sources */,
 				AC67C2851B4172100054EAB9 /* YPOComment.m in Sources */,
-				ACCBFA1F1B3F0B0A004D8446 /* YPOMemberDetails.m in Sources */,
 				ACC993A31B29B84B008E262E /* NewsfeedViewController.m in Sources */,
 				ACC993B11B29D571008E262E /* SettingsViewController.m in Sources */,
 				D43EDA971B394A460022FAD4 /* YPORemoteManagedObject.m in Sources */,
 				ACA5496C1B42A96A00721346 /* ForumTableViewController.m in Sources */,
 				ACCBFA221B3F1DDB004D8446 /* NSString+NotEmpty.m in Sources */,
 				ACCBFA191B3F0A69004D8446 /* YPOContactDetails.m in Sources */,
+				ACA549721B42DC1500721346 /* YPOMemberDetails.m in Sources */,
 				ACCBFA1C1B3F0A69004D8446 /* YPOCompany.m in Sources */,
 				AC0605B21B2ABD1800EB0F5F /* TableViewHeader.m in Sources */,
 				D43EDA9D1B394F970022FAD4 /* NSDate+InternetDate.m in Sources */,
@@ -757,6 +787,27 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworkActivityLogger\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
+					"\"${PODS_ROOT}/Headers/Public/INSPullToRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/MagicalRecord\"",
+					"\"${PODS_ROOT}/Headers/Public/MagicalRecord/MagicalRecord\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/SlackTextViewController\"",
+					"\"${PODS_ROOT}/Headers/Public/SlackTextViewController/Additions\"",
+					"\"${PODS_ROOT}/Headers/Public/SlackTextViewController/Classes\"",
+					"$(SRCROOT)/YPO-WPO",
+					"SG/Vendor/**",
+				);
 				INFOPLIST_FILE = "YPO-WPO SG/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -770,6 +821,27 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworkActivityLogger\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
+					"\"${PODS_ROOT}/Headers/Public/INSPullToRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/MagicalRecord\"",
+					"\"${PODS_ROOT}/Headers/Public/MagicalRecord/MagicalRecord\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/SlackTextViewController\"",
+					"\"${PODS_ROOT}/Headers/Public/SlackTextViewController/Additions\"",
+					"\"${PODS_ROOT}/Headers/Public/SlackTextViewController/Classes\"",
+					"$(SRCROOT)/YPO-WPO",
+					"SG/Vendor/**",
+				);
 				INFOPLIST_FILE = "YPO-WPO SG/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

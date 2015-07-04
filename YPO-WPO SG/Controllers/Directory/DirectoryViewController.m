@@ -76,7 +76,7 @@ typedef NS_ENUM(NSUInteger, DirectoryMenu) {
             [self performSegueWithIdentifier:@"MembersListViewController" sender:self];
             break;
         case DirectoryMenuNewMembers:
-            [self performSegueWithIdentifier:@"NewMembersViewController" sender:self];
+            [self performSegueWithIdentifier:@"MembersFilteredViewController" sender:self];
             break;
         case DirectoryMenuManagementCommittee:
             break;

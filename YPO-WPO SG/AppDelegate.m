@@ -10,6 +10,9 @@
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
 #import <MagicalRecord/MagicalRecord.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @interface AppDelegate ()
 
@@ -24,6 +27,9 @@
     [[AFNetworkActivityLogger sharedLogger]startLogging];
     [self configureAppearanceProxy];    
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"YPOSqlite"];
+    
+    [Fabric with:@[CrashlyticsKit]];
+
     
     return YES;
 }

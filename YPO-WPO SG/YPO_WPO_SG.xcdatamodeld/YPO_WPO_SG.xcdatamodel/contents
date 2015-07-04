@@ -50,7 +50,7 @@
     <entity name="YPOForum" representedClassName="YPOForum" syncable="YES">
         <attribute name="forumID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="members" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YPOMember" inverseName="forum" inverseEntity="YPOMember" syncable="YES"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPOMember" inverseName="forum" inverseEntity="YPOMember" syncable="YES"/>
     </entity>
     <entity name="YPOMember" representedClassName="YPOMember" syncable="YES">
         <attribute name="chapter" optional="YES" attributeType="String" syncable="YES"/>
@@ -66,7 +66,7 @@
         <relationship name="chapterOrg" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YPOChapter" inverseName="members" inverseEntity="YPOChapter" syncable="YES"/>
         <relationship name="company" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="YPOCompany" inverseName="member" inverseEntity="YPOCompany" syncable="YES"/>
         <relationship name="contactDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="YPOContactDetails" inverseName="member" inverseEntity="YPOContactDetails" syncable="YES"/>
-        <relationship name="forum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YPOForum" inverseName="members" inverseEntity="YPOForum" syncable="YES"/>
+        <relationship name="forum" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPOForum" inverseName="members" inverseEntity="YPOForum" syncable="YES"/>
         <relationship name="role" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPORole" inverseName="member" inverseEntity="YPORole" syncable="YES"/>
     </entity>
     <entity name="YPORole" representedClassName="YPORole" syncable="YES">

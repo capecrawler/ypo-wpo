@@ -313,7 +313,7 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
             [self performSegueWithIdentifier:@"MemberDetailsViewController" sender:self];
         } else {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            [self performSegueWithIdentifier:@"NewMembersViewController" sender:self];            
+            [self performSegueWithIdentifier:@"MembersFilteredViewController" sender:self];
         }
     }
 }

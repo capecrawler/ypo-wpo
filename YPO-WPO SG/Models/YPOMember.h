@@ -2,32 +2,45 @@
 //  YPOMember.h
 //  YPO-WPO SG
 //
-//  Created by Mario Cape on 6/24/15.
+//  Created by Mario Antonio A. Cape on 6/30/15.
 //  Copyright (c) 2015 Raketeers. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "YPORemoteManagedObject.h"
 
-@class YPORole, YPOCompany, YPOContactDetails, YPOForum, YPOChapter;
+@class YPOChapter, YPOCompany, YPOContactDetails, YPOForum, YPORole;
 
 @interface YPOMember : YPORemoteManagedObject
 
+@property (nonatomic, retain) NSString * chapter;
 @property (nonatomic, retain) NSNumber * chapterID;
 @property (nonatomic, retain) NSString * firstName;
+@property (nonatomic, retain) NSDate * joinedDate;
 @property (nonatomic, retain) NSString * lastName;
-@property (nonatomic, retain) NSString * middleName;
 @property (nonatomic, retain) NSNumber * memberID;
+@property (nonatomic, retain) NSString * middleName;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * nickname;
 @property (nonatomic, retain) NSString * profilePicURL;
-@property (nonatomic, retain) NSString * chapter;
-@property (nonatomic, retain) NSDate * joinedDate;
-@property (nonatomic, retain) NSSet *role;
 @property (nonatomic, retain) YPOCompany *company;
 @property (nonatomic, retain) YPOContactDetails *contactDetails;
-@property (nonatomic, retain) YPOChapter * chapterOrg;
-@property (nonatomic, retain) NSSet * forum;
+@property (nonatomic, retain) NSSet *role;
+@property (nonatomic, retain) YPOChapter *chapterOrg;
+@property (nonatomic, retain) NSSet *forum;
+@end
+
+@interface YPOMember (CoreDataGeneratedAccessors)
+
+- (void)addRoleObject:(YPORole *)value;
+- (void)removeRoleObject:(YPORole *)value;
+- (void)addRole:(NSSet *)values;
+- (void)removeRole:(NSSet *)values;
+
+- (void)addForumObject:(YPOForum *)value;
+- (void)removeForumObject:(YPOForum *)value;
+- (void)addForum:(NSSet *)values;
+- (void)removeForum:(NSSet *)values;
 
 @end
 
