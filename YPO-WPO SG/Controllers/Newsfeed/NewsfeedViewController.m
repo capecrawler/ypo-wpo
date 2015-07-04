@@ -81,11 +81,6 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
                 name:YPODataFailedToLoadNotification
               object:nil];
     
-    
-    
-    self.showMoreNews = YES;
-    self.showMoreNewMembers = YES;
-    
     [self fetch];
     [self loadData];
     
@@ -149,17 +144,34 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
     request.fetchLimit = 3;
     
     self.members = [[NSManagedObjectContext MR_defaultContext] executeFetchRequest:request error:nil];
+    NSUInteger newMembersCount = [YPOMember MR_countOfEntitiesWithPredicate:predicate];
+    if (newMembersCount > self.members.count) {
+        self.showMoreNewMembers = YES;
+    } else {
+        self.showMoreNewMembers = NO;
+    }
+    
     
     // Articles
     request = [YPOArticle MR_requestAllSortedBy:@"postDate" ascending:NO];
+    NSUInteger articleLimit;
     if (self.members.count > 0) {
         request.fetchLimit = 3;
+        articleLimit = 3;
     } else {
         request.fetchLimit = 15;
+        articleLimit = 15;
+    }
+    
+    NSUInteger articleCount = [YPOArticle MR_countOfEntities];
+    if (articleCount > articleLimit) {
+        self.showMoreNews = YES;
+    } else {
+        self.showMoreNews = NO;
     }
     
     self.news = [[NSManagedObjectContext MR_defaultContext] executeFetchRequest:request error:nil];
-        
+    
     [self.tableView reloadData];
 }
 
