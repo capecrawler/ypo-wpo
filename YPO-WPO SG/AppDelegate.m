@@ -12,6 +12,8 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "YPOSyncManager.h"
+#import "LoginViewController.h"
 
 
 @interface AppDelegate ()
@@ -29,6 +31,11 @@
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"YPOSqlite"];
     
     [Fabric with:@[CrashlyticsKit]];
+    
+    
+    if (![[[NSUserDefaults standardUserDefaults] stringForKey:@"memberID"] isNotEmpty]) {
+        [self showLogin:YES];
+    }
 
     
     return YES;
@@ -68,5 +75,37 @@
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} forState:UIControlStateNormal];
     
 }
+
+- (void)logout {
+    [[YPOSyncManager sharedManager]purgeAllData];
+    [self showLogin:YES];
+}
+
+
+- (void)signIn {
+    [self showLogin:NO];    
+}
+
+
+- (void)showLogin:(BOOL)show{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    if (show) {
+        UIViewController *loginController = [sb instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        [UIView transitionFromView:self.window.rootViewController.view toView:loginController.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
+            if (finished) {
+                self.window.rootViewController = loginController;
+            }
+        }];
+    } else {
+        UITabBarController *tabController = [sb instantiateViewControllerWithIdentifier:@"MainTabController"];
+        [UIView transitionFromView:self.window.rootViewController.view toView:tabController.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
+            if (finished) {
+                self.window.rootViewController = tabController;
+            }
+        }];
+    }
+}
+
+
 
 @end

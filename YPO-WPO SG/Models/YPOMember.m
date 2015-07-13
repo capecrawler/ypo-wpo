@@ -31,6 +31,7 @@
 @dynamic role;
 @dynamic chapterOrg;
 @dynamic forum;
+@dynamic memberType;
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
     [super parseDictionary:dictionary];
@@ -87,6 +88,9 @@
     if (self.forumID != -1) {
         [params setObject:@(self.forumID) forKey:@"forum_id"];
     }
+    [params setObject:@(self.memberTypeID) forKey:@"member_type_id"];
+    
+    
     return params;
 }
 
@@ -101,13 +105,15 @@
                     member = [YPOMember MR_createEntityInContext:localContext];
                 }
                 [member parseDictionary:raw];
-                
+                member.memberType = @(self.memberTypeID);
                 if (self.chapterID != -1) {
                     YPOChapter *chapter = [YPOChapter MR_findFirstByAttribute:@"chapterID" withValue:@(self.chapterID) inContext:localContext];
-                    member.chapterOrg = chapter;
+                    if (chapter != nil)
+                        member.chapterOrg = chapter;
                 } else if (self.forumID != -1) {
                     YPOForum *forum = [YPOForum MR_findFirstByAttribute:@"forumID" withValue:@(self.forumID) inContext:localContext];
-                    [forum addMembersObject:member];
+                    if (forum != nil)
+                        [forum addMembersObject:member];
                 }
             }
         }];

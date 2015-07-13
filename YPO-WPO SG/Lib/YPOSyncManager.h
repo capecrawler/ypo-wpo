@@ -20,4 +20,6 @@ extern NSString *const YPODataFailedToLoadNotification;
 
 - (void)startSync;
 
+- (void)purgeAllData;
+
 @end

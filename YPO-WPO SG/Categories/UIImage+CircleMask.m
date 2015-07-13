@@ -10,8 +10,8 @@
 
 @implementation UIImage (CircleMask)
 
-- (UIImage *)roundedImage {
-    CGRect imageRect = CGRectMake(0, 0, self.size.width, self.size.height);
+- (UIImage *)roundedImage {    
+    CGRect imageRect = CGRectMake(0, 0, self.size.width * [UIScreen mainScreen].scale, self.size.height * [UIScreen mainScreen].scale);
     UIGraphicsBeginImageContextWithOptions(imageRect.size, NO, 0.0);
     
     // set up a path to mask/clip to, and draw it.

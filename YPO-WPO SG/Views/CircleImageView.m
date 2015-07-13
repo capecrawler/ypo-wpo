@@ -9,11 +9,21 @@
 #import "CircleImageView.h"
 #import "UIImage+CircleMask.h"
 
+
+
+
 @implementation CircleImageView
 
 - (void) setImage:(UIImage *)image {
-    UIImage *circleImage = [image roundedImage];
-    [super setImage:circleImage];
+    __weak UIImageView *weakSelf = self;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImage *circleImage = [image roundedImage];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (!weakSelf)return;
+            [super setImage:circleImage];
+            [self setNeedsLayout];
+        });
+    });
 }
 
 @end

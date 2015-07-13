@@ -16,11 +16,13 @@ typedef NS_ENUM(NSUInteger, MemberFilterType) {
 #import "BaseTableViewController.h"
 #import "YPOChapter.h"
 #import "YPOForum.h"
+#import "YPOMember.h"
 
 @interface MembersFilteredViewController : BaseTableViewController
 
 @property (nonatomic, assign, readonly)MemberFilterType filterType;
 @property (nonatomic, strong) YPOChapter *chapterFilter;
 @property (nonatomic, strong) YPOForum *forumFilter;
+@property (nonatomic, assign) MemberTypeID memberTypeID;
 
 @end

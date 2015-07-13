@@ -19,6 +19,12 @@
 @property (nonatomic, retain) NSString      *profilePictureURL;
 @property (nonatomic, retain) NSDate        *postDate;
 @property (nonatomic, retain) YPOArticle    *article;
+@property (nonatomic, strong) NSNumber      *memberID;
+
+
+- (void)saveToRemote;
+- (void)saveToRemoteSucess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error)) failure;
 
 @end
 
@@ -28,5 +34,14 @@
 @property (nonatomic, assign) NSUInteger    page;
 @property (nonatomic, assign) NSUInteger    rowCount;
 @property (nonatomic, strong) NSNumber      *articleID;
+
+@end
+
+
+@interface YPOAddCommentRequest : YPOHTTPRequest
+
+@property (nonatomic, strong) NSNumber *articleID;
+@property (nonatomic, strong) NSNumber *memberID;
+@property (nonatomic, strong) NSString *comment;
 
 @end

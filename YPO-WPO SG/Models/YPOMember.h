@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "YPORemoteManagedObject.h"
 
+typedef NS_ENUM(NSUInteger, MemberTypeID) {
+    MemberTypeAll = 0,
+    MemberTypeMembers,
+    MemberTypeContributors,
+    MemberTypeChapterAdmin,
+    MemberTypeManagementCommittee,
+};
+
 @class YPOChapter, YPOCompany, YPOContactDetails, YPOForum, YPORole;
 
 @interface YPOMember : YPORemoteManagedObject
@@ -23,6 +31,7 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * nickname;
 @property (nonatomic, retain) NSString * profilePicURL;
+@property (nonatomic, retain) NSNumber * memberType;
 @property (nonatomic, retain) YPOCompany *company;
 @property (nonatomic, retain) YPOContactDetails *contactDetails;
 @property (nonatomic, retain) NSSet *role;
@@ -53,5 +62,6 @@
 @property (nonatomic, assign) NSInteger forumID;
 @property (nonatomic, assign) NSUInteger page;
 @property (nonatomic, assign) NSInteger rowCount;
+@property (nonatomic, assign) MemberTypeID memberTypeID;
 
 @end

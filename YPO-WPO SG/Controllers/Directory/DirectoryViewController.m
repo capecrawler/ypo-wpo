@@ -7,6 +7,7 @@
 //
 
 #import "DirectoryViewController.h"
+#import "ChapterTableViewController.h"
 
 
 typedef NS_ENUM(NSUInteger, DirectoryMenu) {
@@ -70,7 +71,6 @@ typedef NS_ENUM(NSUInteger, DirectoryMenu) {
 #pragma mark - UITableViewDelegate
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.row) {
         case DirectoryMenuMembers:
             [self performSegueWithIdentifier:@"MembersListViewController" sender:self];
@@ -79,6 +79,7 @@ typedef NS_ENUM(NSUInteger, DirectoryMenu) {
             [self performSegueWithIdentifier:@"MembersFilteredViewController" sender:self];
             break;
         case DirectoryMenuManagementCommittee:
+            [self performSegueWithIdentifier:@"ChapterTableViewController" sender:self];
             break;
         case DirectoryMenuChapterAdministrators:
             [self performSegueWithIdentifier:@"ChapterTableViewController" sender:self];
@@ -92,4 +93,24 @@ typedef NS_ENUM(NSUInteger, DirectoryMenu) {
 
 }
 
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+    id controller = segue.destinationViewController;
+    NSLog(@"class: %@", NSStringFromClass([controller class]));
+    if ([controller isKindOfClass:[ChapterTableViewController class]]) {
+        ChapterTableViewController * chapterController = (ChapterTableViewController *)controller;
+        NSLog(@"section: %ld", selectedIndexPath.row);
+        if (selectedIndexPath.row == DirectoryMenuManagementCommittee) {
+            NSLog(@"management: %lu", MemberTypeManagementCommittee);
+            chapterController.memberTypeID = MemberTypeManagementCommittee;
+        } else if (selectedIndexPath.row == MemberTypeChapterAdmin){
+            chapterController.memberTypeID = MemberTypeChapterAdmin;
+            NSLog(@"admin: %lu", MemberTypeChapterAdmin);
+        }
+    }
+    [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
+}
 @end

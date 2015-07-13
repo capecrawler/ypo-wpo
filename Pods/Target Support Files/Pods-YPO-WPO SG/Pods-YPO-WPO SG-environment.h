@@ -72,11 +72,23 @@
 #define COCOAPODS_VERSION_MINOR_Bolts_Tasks 2
 #define COCOAPODS_VERSION_PATCH_Bolts_Tasks 0
 
+// CSStickyHeaderFlowLayout
+#define COCOAPODS_POD_AVAILABLE_CSStickyHeaderFlowLayout
+#define COCOAPODS_VERSION_MAJOR_CSStickyHeaderFlowLayout 0
+#define COCOAPODS_VERSION_MINOR_CSStickyHeaderFlowLayout 2
+#define COCOAPODS_VERSION_PATCH_CSStickyHeaderFlowLayout 7
+
+// DZNEmptyDataSet
+#define COCOAPODS_POD_AVAILABLE_DZNEmptyDataSet
+#define COCOAPODS_VERSION_MAJOR_DZNEmptyDataSet 1
+#define COCOAPODS_VERSION_MINOR_DZNEmptyDataSet 5
+#define COCOAPODS_VERSION_PATCH_DZNEmptyDataSet 2
+
 // INSPullToRefresh
 #define COCOAPODS_POD_AVAILABLE_INSPullToRefresh
 #define COCOAPODS_VERSION_MAJOR_INSPullToRefresh 1
 #define COCOAPODS_VERSION_MINOR_INSPullToRefresh 0
-#define COCOAPODS_VERSION_PATCH_INSPullToRefresh 8
+#define COCOAPODS_VERSION_PATCH_INSPullToRefresh 9
 
 // MagicalRecord
 #define COCOAPODS_POD_AVAILABLE_MagicalRecord

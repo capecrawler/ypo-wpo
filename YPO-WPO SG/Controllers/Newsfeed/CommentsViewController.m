@@ -11,6 +11,7 @@
 #import "YPOArticle.h"
 #import "YPOComment.h"
 #import "CommentTableViewCell.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #define BATCHSIZE 15
 
@@ -18,7 +19,6 @@
 @property (nonatomic, assign) NSUInteger currentPage;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSFetchRequest *fetchRequest;
-@property (nonatomic, assign) BOOL loadingData;
 
 @end
 
@@ -59,10 +59,12 @@
     [self.tableView registerClass:[CommentTableViewCell class] forCellReuseIdentifier:@"CommentTableViewCell"];
     
     [self.rightButton setTitle:NSLocalizedString(@"Post", nil) forState:UIControlStateNormal];
-    self.textInputbar.autoHideRightButton = YES;
+    self.textInputbar.autoHideRightButton = NO;
     self.textInputbar.maxCharCount = 256;
     self.textInputbar.counterStyle = SLKCounterStyleSplit;
     self.textInputbar.counterPosition = SLKCounterPositionTop;
+    self.shouldClearTextAtRightButtonPress = NO;
+    self.textView.keyboardType = UIKeyboardTypeDefault;
     
     self.typingIndicatorView.canResignByTouch = YES;
     
@@ -108,13 +110,6 @@
     }
 }
 
-//- (void)scrollToBottom {
-//    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
-//    NSInteger count = [sectionInfo numberOfObjects];
-//    
-//    NSIndexPath* ipath = [NSIndexPath indexPathForRow: count-1 inSection: 0];
-//    [self.tableView scrollToRowAtIndexPath: ipath atScrollPosition: UITableViewScrollPositionTop animated: YES];
-//}
 
 #pragma mark - UITableViewDataSource
 
@@ -206,7 +201,7 @@
     }
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"article.articleID == %@", self.article.articleID];
-    _fetchRequest = [YPOComment MR_requestAllSortedBy:@"postDate" ascending:YES withPredicate:predicate];
+    _fetchRequest = [YPOComment MR_requestAllSortedBy:@"postDate" ascending:NO withPredicate:predicate];
     [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
     [_fetchRequest setFetchBatchSize:BATCHSIZE];
     return _fetchRequest;
@@ -220,5 +215,36 @@
     [self fetchData];
 }
 
+
+#pragma mark - Overriden Methods
+
+- (void)didPressRightButton:(id)sender {
+    [self dismissKeyboard:YES];
+    NSManagedObjectContext *localContext = [NSManagedObjectContext MR_contextWithParent:[NSManagedObjectContext MR_defaultContext]];
+    
+    YPOArticle *article = [self.article MR_inContext:localContext];
+    
+    YPOComment *comment = [YPOComment MR_createEntityInContext:localContext];
+    comment.comment = [self.textView.text copy];
+    
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    NSNumber *memberID = [f numberFromString:[[NSUserDefaults standardUserDefaults] stringForKey:@"memberID"]];
+    
+    comment.memberID = memberID;
+    comment.article = article;
+
+    [SVProgressHUD showWithStatus:@"Posting..." maskType:SVProgressHUDMaskTypeGradient];
+    [comment saveToRemoteSucess:^(NSURLSessionDataTask *task, id responseObject) {
+        [SVProgressHUD dismiss];
+        [self.textView slk_clearText:YES];
+        self.currentPage = 0;
+        [self loadMoreData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [SVProgressHUD showErrorWithStatus:error.localizedDescription maskType:SVProgressHUDMaskTypeGradient];
+    }];
+    
+    [super didPressRightButton:self];
+}
 
 @end

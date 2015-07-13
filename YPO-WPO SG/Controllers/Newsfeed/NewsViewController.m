@@ -43,8 +43,8 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"NewsTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"NewsCellIdentifier"];
     self.tableView.tableFooterView = [UIView new];
     [self fetchData];
-    
 }
+
 
 #pragma mark - Loading Data
 

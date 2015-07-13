@@ -11,7 +11,7 @@
 #import "MemberTableViewCell.h"
 #import <INSPullToRefresh/UIScrollView+INSPullToRefresh.h>
 #import <INSPullToRefresh/INSDefaultInfiniteIndicator.h>
-
+#import "MemberDetailsViewController.h"
 #define BATCHSIZE 15
 
 @interface MembersListViewController()<UISearchBarDelegate, UISearchDisplayDelegate, NSFetchedResultsControllerDelegate>
@@ -125,9 +125,21 @@
 
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"MemberDetailsViewController" sender:self];    
 }
 
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    id controller = [segue destinationViewController];
+    if ([controller isKindOfClass:[MemberDetailsViewController class]]) {
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        MemberDetailsViewController *memberController = (MemberDetailsViewController *)controller;
+        memberController.member = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
+    }
+}
 
 
 #pragma mark - Properties

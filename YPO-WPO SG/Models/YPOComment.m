@@ -8,6 +8,7 @@
 
 #import "YPOComment.h"
 #import "YPOArticle.h"
+#import "YPOAPIClient.h"
 
 
 @implementation YPOComment
@@ -18,6 +19,7 @@
 @dynamic profilePictureURL;
 @dynamic postDate;
 @dynamic article;
+@synthesize memberID;
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
     [super parseDictionary:dictionary];
@@ -28,6 +30,25 @@
     NSString *postDate      = dictionary[@"post_date"];
     self.postDate           = [NSDate dateFromInternetDateTimeString:postDate formatHint:DateFormatHintRFC3339];
 }
+
+
+- (void)saveToRemote {
+    [self saveToRemoteSucess:nil failure:nil];
+}
+
+- (void)saveToRemoteSucess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error)) failure {
+    YPOAddCommentRequest *request = [[YPOAddCommentRequest alloc] init];
+    request.function = @"news.comment";
+    request.memberID = self.memberID;
+    request.comment = self.comment;
+    request.articleID = self.article.articleID;
+    [request startRequestSuccess:success failure:failure];
+}
+
+
+
+
 
 + (YPOCommentRequest *)constructRequest {
     YPOCommentRequest *request = [[YPOCommentRequest alloc] init];
@@ -78,3 +99,21 @@
 
 
 @end
+
+
+
+@implementation YPOAddCommentRequest
+
+- (NSDictionary *)params {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:[super params]];
+    [params setObject:self.articleID forKey:@"article_id"];
+    [params setObject:self.memberID forKey:@"member_id"];
+    [params setObject:self.comment forKey:@"comment"];
+    return params;
+}
+
+
+
+
+@end
+

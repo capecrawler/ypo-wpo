@@ -49,11 +49,11 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
     self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 50, 0);
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 50, 0);
     
+    CGRect defaultFrame = CGRectMake(0, 0, 24, 24);
+    
     [self.tableView ins_addPullToRefreshWithHeight:60.0 handler:^(UIScrollView *scrollView) {
         [self loadData];
     }];
-    
-    CGRect defaultFrame = CGRectMake(0, 0, 24, 24);
     
     UIView <INSPullToRefreshBackgroundViewDelegate> *pullToRefresh = [[INSDefaultPullToRefresh alloc] initWithFrame:defaultFrame backImage:nil frontImage:[UIImage imageNamed:@"ic-loader"]];
     
@@ -68,9 +68,13 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
     
     
     NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
+//    [dnc addObserver:self
+//            selector:@selector(dataDidStartLoading:)
+//                name:YPODataFinishedLoadingNotification
+//              object:nil];
     [dnc addObserver:self
-            selector:@selector(dataDidStartLoading:)
-                name:YPODataFinishedLoadingNotification
+            selector:@selector(loadData)
+                name:UIApplicationDidBecomeActiveNotification
               object:nil];
     [dnc addObserver:self
             selector:@selector(dataDidFinishLoading:)
@@ -177,8 +181,12 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
 
 
 - (void)loadData {
-    [self.tableView ins_beginPullToRefresh];
-    [[YPOSyncManager sharedManager] startSync];
+    if ([[[NSUserDefaults standardUserDefaults] stringForKey:@"memberID"]isNotEmpty]) {
+        [self.tableView ins_beginPullToRefresh];
+        if (![YPOSyncManager sharedManager].isSyncing) {
+            [[YPOSyncManager sharedManager] startSync];
+        }
+    }
 }
 
 

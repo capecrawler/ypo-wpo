@@ -7,6 +7,9 @@
 //
 
 #import "LoginViewController.h"
+#import "YPOAPIClient.h"
+#import "AppDelegate.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
@@ -29,8 +32,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    self.userIdTextField.delegate = self;
-    self.passwordTextField.delegate = self;
 }
 
 #pragma mark - View LifeCycle
@@ -38,6 +39,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.userIdTextField.delegate = self;
+    self.passwordTextField.delegate = self;
+    
+    [self.loginButton addTarget:self action:@selector(executeLogin) forControlEvents:UIControlEventTouchUpInside];
+    
     UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
     tapGestureRecognizer.numberOfTapsRequired = 1;
     self.view.userInteractionEnabled = YES;
@@ -75,7 +81,7 @@
         [self.passwordTextField becomeFirstResponder];
         return YES;
     }else if (textField == self.passwordTextField){
-        
+        [self executeLogin];
     }
     return YES;
 }
@@ -120,9 +126,33 @@
     [UIView animateWithDuration:0.1 animations:^{
         [self.view layoutIfNeeded];
     }];
-    
-    
 }
+
+
+- (void)executeLogin {
+    if ([self.userIdTextField.text isNotEmpty] && [self.passwordTextField.text isNotEmpty]) {
+        [self.view endEditing:YES];
+        NSDictionary *param = @{@"username" : self.userIdTextField.text,
+                                @"password" : self.passwordTextField.text,
+                                @"func" : @"member.authenticate"};
+        [SVProgressHUD showWithStatus:@"Logging in..." maskType:SVProgressHUDMaskTypeBlack];
+        [[YPOAPIClient sharedClient] GET:@"/ypo/api/v1/" parameters:param success:^(NSURLSessionDataTask *task, id responseObject) {
+            if ([responseObject[@"status"] boolValue]) {
+                [SVProgressHUD dismiss];
+                NSDictionary *data = responseObject[@"data"];
+                NSString *memberID = data[@"member_id"];
+                [[NSUserDefaults standardUserDefaults] setObject:memberID forKey:@"memberID"];
+                AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+                [appDelegate showLogin:NO];
+            } else {
+                [SVProgressHUD showErrorWithStatus:responseObject[@"message"] maskType:SVProgressHUDMaskTypeBlack];
+            }
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription maskType:SVProgressHUDMaskTypeBlack];
+        }];
+    }
+}
+
 
 
 @end

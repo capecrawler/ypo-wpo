@@ -7,8 +7,8 @@
 //
 
 #import "MembersFilteredViewController.h"
-#import "YPOMember.h"
 #import "MemberTableViewCell.h"
+#import "MemberDetailsViewController.h"
 #import <INSPullToRefresh/UIScrollView+INSPullToRefresh.h>
 #import <INSPullToRefresh/INSDefaultInfiniteIndicator.h>
 
@@ -33,6 +33,7 @@
     self.currentPage = 0;
     self.fetchRequest = nil;
     self.filterType = MemberFilterNew;
+    self.memberTypeID = MemberTypeMembers;
 }
 
 
@@ -72,8 +73,10 @@
 }
 
 - (void)loadDataWithPage:(NSUInteger)page {
+    self.loadingData = YES;
     YPOMemberRequest *request = (YPOMemberRequest*)[YPOMember constructRequest];
     request.page = page;
+    request.memberTypeID = self.memberTypeID;
     if (self.filterType == MemberFilterForum) {
         request.forumID = [self.forumFilter.forumID integerValue];
     } else if (self.filterType == MemberFilterChapter) {
@@ -91,8 +94,10 @@
         } else {
             [self.tableView ins_endInfinityScrollWithStoppingContentOffset:NO];
         }
+        self.loadingData = NO;
         [self fetchData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.loadingData = NO;
         [[YPOErrorhandler sharedHandler]handleError:error];
     }];
 }
@@ -120,6 +125,7 @@
     static NSString *cellId = @"MemberCellIdentifier";
     MemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     cell.member = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSLog(@"membertype: %@",cell.member.memberType);
     
     return cell;
 }
@@ -133,14 +139,27 @@
 
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"MemberDetailsViewController" sender:self];
 }
 
 
 
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    id controller = [segue destinationViewController];
+    if ([controller isKindOfClass:[MemberDetailsViewController class]]) {
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        MemberDetailsViewController *memberController = (MemberDetailsViewController *)controller;
+        memberController.member = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
+    }
+}
+
+
 #pragma mark - Properties
 
-- (void) setChapterFilter:(YPOChapter *)chapterFilter {
+- (void)setChapterFilter:(YPOChapter *)chapterFilter {
     _chapterFilter = chapterFilter;
     self.filterType = MemberFilterChapter;
     self.fetchRequest = nil;
@@ -148,12 +167,17 @@
     self.title = chapterFilter.name;
 }
 
-- (void) setForumFilter:(YPOForum *)forumFilter {
+- (void)setForumFilter:(YPOForum *)forumFilter {
     _forumFilter = forumFilter;
     self.filterType = MemberFilterForum;
     self.fetchRequest = nil;
     self.currentPage = 0;
     self.title = forumFilter.name;
+}
+
+- (void)setMemberTypeID:(MemberTypeID)memberTypeID {
+    _memberTypeID = memberTypeID;
+    self.fetchRequest = nil;
 }
 
 - (void)setCurrentPage:(NSUInteger)currentPage {
@@ -178,7 +202,8 @@
     }
     
     if (self.filterType == MemberFilterChapter) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY chapterOrg.chapterID >= %@", self.chapterFilter.chapterID];
+        NSLog(@"membertype--: %@", @(self.memberTypeID));
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"memberType == %@ &&  chapterOrg.chapterID == %@", @(self.memberTypeID) , self.chapterFilter.chapterID];
         _fetchRequest = [YPOMember MR_requestAllSortedBy:@"name" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
         [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
         [_fetchRequest setFetchBatchSize:BATCHSIZE];

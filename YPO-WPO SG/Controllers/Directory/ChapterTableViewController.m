@@ -88,6 +88,8 @@
     if ([controller isKindOfClass:[MembersFilteredViewController class]]) {
         MembersFilteredViewController * filteredController = (MembersFilteredViewController *)controller;
         filteredController.chapterFilter = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        NSLog(@"membertype: %lud", (unsigned long)self.memberTypeID);
+        filteredController.memberTypeID = self.memberTypeID;
     }
 }
 

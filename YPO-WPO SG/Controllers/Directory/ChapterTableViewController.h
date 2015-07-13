@@ -7,7 +7,10 @@
 //
 
 #import "BaseTableViewController.h"
+#import "YPOMember.h"
 
 @interface ChapterTableViewController : BaseTableViewController
+
+@property (nonatomic, assign) MemberTypeID memberTypeID;
 
 @end

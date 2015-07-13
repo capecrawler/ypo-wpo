@@ -55,8 +55,8 @@
     if ([jsonObject[@"status"] boolValue]) {
         [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext  ) {
             NSArray *data = jsonObject[@"data"];
-            NSArray *chapterIDs = [data valueForKey:@"chapter_id"];
-            NSPredicate * predicate = [NSPredicate predicateWithFormat:@"NOT (forumID IN %@)", chapterIDs];
+            NSArray *forumID = [data valueForKey:@"forum_id"];
+            NSPredicate * predicate = [NSPredicate predicateWithFormat:@"NOT (forumID IN %@)", forumID];
             NSArray *orphan = [YPOForum MR_findAllWithPredicate:predicate inContext:localContext];
             for (YPOForum *forum in orphan) {
                 [forum MR_deleteEntityInContext:localContext];

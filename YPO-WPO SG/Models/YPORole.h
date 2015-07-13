@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import "YPORemoteManagedObject.h"
 
 @class YPOMember;
 
-@interface YPORole : NSManagedObject
+@interface YPORole : YPORemoteManagedObject
 
 @property (nonatomic, retain) NSNumber * roleID;
 @property (nonatomic, retain) NSString * name;
@@ -24,5 +24,12 @@
 - (void)removeMemberObject:(YPOMember *)value;
 - (void)addMember:(NSSet *)values;
 - (void)removeMember:(NSSet *)values;
+
+@end
+
+
+
+@interface YPORoleRequest : YPOHTTPRequest
+
 
 @end
