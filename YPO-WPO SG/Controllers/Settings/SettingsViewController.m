@@ -8,7 +8,6 @@
 
 #import "SettingsViewController.h"
 #import "AppDelegate.h"
-#import <Crashlytics/Crashlytics.h>
 
 @interface SettingsViewController ()
 
@@ -83,7 +82,6 @@
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];        
         [appDelegate logout];
     }
-    [[Crashlytics sharedInstance] crash];
 }
 
 @end
