@@ -9,6 +9,7 @@
 #import "NewsDetailsViewController.h"
 #import "CommentsViewController.h"
 #import "YPOArticle.h"
+#import "NSDate+FormattedString.h"
 
 @interface NewsDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -26,7 +27,9 @@
     self.commentCountLabel.text = @"";
     
     NSString *html = [self constructHTML:self.article.title content:self.article.content];
-    [self.webView loadHTMLString:html baseURL:nil];
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
+    [self.webView loadHTMLString:html baseURL:baseURL];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,45 +53,19 @@
 - (NSString *)constructHTML:(NSString *)title content:(NSString *)content{
     NSMutableString *html = [[NSMutableString alloc] init];
     [html appendFormat:@"<html><head><title>%@</title>", title];
-    [html appendString:@"<style>\
-                 @import url(http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);\
-                 body {\
-                 margin:20px 20px 80px 20px;\
-                     font-family: 'Roboto', 'helvetica neue', helvetica, sans-serif;\
-                     line-height: 1.6em;\
-                     font-size: 13pt;\
-                 }\
-                 h1 {\
-                     font-size:130%;\
-                     line-height: 1.3em;\
-                 }\
-                 p {\
-                 }\
-                 span {\
-                 color: #666;\
-                 }\
-                 span.date-posted {\
-                     font-size: 80%;\
-                 \
-                 div img {\
-                     max-width:100%;\
-                 height:auto;\
-                 }\
-                 #article {\
-                 border-top: 1px solid #666;\
-                 margin-top: 20px;\
-                 padding-top: 5px;\
-                 }\
-                 #article div i {\
-                 color: #666;\
-                 font-style: italic;\
-                 }\
-                 iframe {\
-                 width:100%;\
-                 }\
-                 </style></head>"];
+    [html appendString:@"<meta name=\"description\" content=\"\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"];
+    [html appendString:@"<link rel=\"stylesheet\" href=\"css/normalize.css\">"];
+    [html appendString:@"<link rel=\"stylesheet\" href=\"css/main.css\">"];
+    [html appendString:@"<link rel=\"stylesheet\" href=\"css/article.css\">"];
     [html appendString:@"<body>"];
+    [html appendString:@"<article>"];
+    [html appendString:@"<header>"];
+    [html appendFormat:@"<div class=\"banner\"><img src=\"%@\"></div>", self.article.imageURL];
+    [html appendFormat:@"<h1>%@</h1>",self.article.title];
+    [html appendFormat:@"<p style=\"color:#999;\">%@ | %@</p>", [self.article.postDate stringWithFormat:@"EEEE, dd MMMM yyyy"], self.article.author];
+    [html appendString:@"</header>"];
     [html appendString:content];
+    [html appendString:@"</article>"];
     [html appendString:@"</body></html>"];
     return html;
 }

@@ -12,15 +12,17 @@
 #import <INSPullToRefresh/UIScrollView+INSPullToRefresh.h>
 #import <INSPullToRefresh/INSDefaultInfiniteIndicator.h>
 #import "MemberDetailsViewController.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #define BATCHSIZE 15
 
-@interface MembersListViewController()<UISearchBarDelegate, UISearchDisplayDelegate, NSFetchedResultsControllerDelegate>
+@interface MembersListViewController()<UISearchBarDelegate, UISearchDisplayDelegate, NSFetchedResultsControllerDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, assign) NSUInteger currentPage;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSFetchRequest *fetchRequest;
 @property (nonatomic, assign) BOOL loadingData;
+@property (nonatomic, assign) BOOL hasError;
 
 
 @end
@@ -36,6 +38,12 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    
+    // A little trick for removing the cell separators
+    self.tableView.tableFooterView = [UIView new];
     
     [self.tableView ins_addInfinityScrollWithHeight:60 handler:^(UIScrollView *scrollView) {
         [self loadMoreData];
@@ -70,10 +78,13 @@
 }
 
 - (void)loadDataWithPage:(NSUInteger)page {
-    NSLog(@"load more page: %lud", (unsigned long)page);
+    
+    self.loadingData = YES;
+    self.hasError = NO;
     YPOMemberRequest *request = (YPOMemberRequest*)[YPOMember constructRequest];
     request.page = page;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+        self.loadingData = NO;
         self.currentPage = page;
         NSDictionary *paging = responseObject[@"paging"];
         if ([paging[@"next"]integerValue] == 0) {
@@ -84,6 +95,7 @@
         }
         [self fetchData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.hasError = YES;
         [[YPOErrorhandler sharedHandler]handleError:error];
     }];
 }
@@ -177,6 +189,40 @@
 }
 
 
+
+#pragma mark - DZNEmptyDataSetSource
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0], NSForegroundColorAttributeName: self.view.tintColor};
+    return [[NSAttributedString alloc] initWithString:@"Refresh" attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"This allows you to share photos from your library and save photos to your camera roll.";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+#pragma mark - DZNEmptyDataSetDelegate
+
+
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+    return YES;
+}
+
+
+- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
+    [self loadMoreData];
+}
 
 /*
 #pragma mark - UISearchDisplayController Delegate Methods

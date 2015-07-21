@@ -50,6 +50,7 @@
 		ACCBFA1C1B3F0A69004D8446 /* YPOCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA1B1B3F0A69004D8446 /* YPOCompany.m */; };
 		ACCBFA221B3F1DDB004D8446 /* NSString+NotEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA211B3F1DDB004D8446 /* NSString+NotEmpty.m */; };
 		ACCBFA251B3F2343004D8446 /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA241B3F2343004D8446 /* CircleImageView.m */; };
+		ACCDA5FB1B5E9911007A14A9 /* css in Resources */ = {isa = PBXBuildFile; fileRef = ACCDA5FA1B5E9911007A14A9 /* css */; };
 		ACCFD7371B50C29900DA5F06 /* YPOImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD7361B50C29900DA5F06 /* YPOImageCache.m */; };
 		ACCFD73D1B50D56B00DA5F06 /* EventView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD73C1B50D56B00DA5F06 /* EventView.m */; };
 		ACCFD73F1B50D58D00DA5F06 /* EventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACCFD73E1B50D58D00DA5F06 /* EventView.xib */; };
@@ -57,7 +58,6 @@
 		ACCFD7481B51E63600DA5F06 /* BaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD7471B51E63600DA5F06 /* BaseCollectionViewController.m */; };
 		ACCFD74C1B51E69900DA5F06 /* EventsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD74B1B51E69900DA5F06 /* EventsCollectionViewController.m */; };
 		ACCFD74F1B51E94100DA5F06 /* YPOEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD74E1B51E94100DA5F06 /* YPOEvent.m */; };
-		ACCFD7521B52438A00DA5F06 /* YPOEventFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD7511B52438A00DA5F06 /* YPOEventFlowLayout.m */; };
 		ACCFD7551B526CD100DA5F06 /* EventHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD7541B526CD100DA5F06 /* EventHeaderView.m */; };
 		ACCFD7581B54073C00DA5F06 /* EventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD7571B54073C00DA5F06 /* EventDetailsViewController.m */; };
 		ACCFD7671B5423BE00DA5F06 /* Pods-YPO-WPO SG.adhoc.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = ACCFD7651B5423BE00DA5F06 /* Pods-YPO-WPO SG.adhoc.xcconfig */; };
@@ -169,6 +169,7 @@
 		ACCBFA211B3F1DDB004D8446 /* NSString+NotEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NotEmpty.m"; sourceTree = "<group>"; };
 		ACCBFA231B3F2343004D8446 /* CircleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleImageView.h; sourceTree = "<group>"; };
 		ACCBFA241B3F2343004D8446 /* CircleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleImageView.m; sourceTree = "<group>"; };
+		ACCDA5FA1B5E9911007A14A9 /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; path = css; sourceTree = "<group>"; };
 		ACCFD7351B50C29900DA5F06 /* YPOImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOImageCache.h; sourceTree = "<group>"; };
 		ACCFD7361B50C29900DA5F06 /* YPOImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOImageCache.m; sourceTree = "<group>"; };
 		ACCFD73B1B50D56B00DA5F06 /* EventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventView.h; sourceTree = "<group>"; };
@@ -182,8 +183,6 @@
 		ACCFD74B1B51E69900DA5F06 /* EventsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsCollectionViewController.m; sourceTree = "<group>"; };
 		ACCFD74D1B51E94100DA5F06 /* YPOEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOEvent.h; sourceTree = "<group>"; };
 		ACCFD74E1B51E94100DA5F06 /* YPOEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOEvent.m; sourceTree = "<group>"; };
-		ACCFD7501B52438A00DA5F06 /* YPOEventFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOEventFlowLayout.h; sourceTree = "<group>"; };
-		ACCFD7511B52438A00DA5F06 /* YPOEventFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOEventFlowLayout.m; sourceTree = "<group>"; };
 		ACCFD7531B526CD100DA5F06 /* EventHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventHeaderView.h; sourceTree = "<group>"; };
 		ACCFD7541B526CD100DA5F06 /* EventHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventHeaderView.m; sourceTree = "<group>"; };
 		ACCFD7561B54073C00DA5F06 /* EventDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsViewController.h; sourceTree = "<group>"; };
@@ -348,8 +347,6 @@
 				ACD9169A1B3E836E00A93A06 /* YPOErrorhandler.m */,
 				ACCFD7351B50C29900DA5F06 /* YPOImageCache.h */,
 				ACCFD7361B50C29900DA5F06 /* YPOImageCache.m */,
-				ACCFD7501B52438A00DA5F06 /* YPOEventFlowLayout.h */,
-				ACCFD7511B52438A00DA5F06 /* YPOEventFlowLayout.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -401,6 +398,7 @@
 		32F5D56F1B22A81700B40ACE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ACCDA5FA1B5E9911007A14A9 /* css */,
 				32F5D5701B22A81700B40ACE /* Info.plist */,
 				32F5D5711B22A81700B40ACE /* main.m */,
 				AC76E1171B26F9CF00AFB494 /* YPO-PrefixHeader.pch */,
@@ -607,6 +605,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACCDA5FB1B5E9911007A14A9 /* css in Resources */,
 				ACCFD73F1B50D58D00DA5F06 /* EventView.xib in Resources */,
 				AC0605B41B2ABD3300EB0F5F /* TableViewHeader.xib in Resources */,
 				ACCFD7671B5423BE00DA5F06 /* Pods-YPO-WPO SG.adhoc.xcconfig in Resources */,
@@ -728,7 +727,6 @@
 				D43EDA9D1B394F970022FAD4 /* NSDate+InternetDate.m in Sources */,
 				ACD916A21B3E899000A93A06 /* NSDate+FormattedString.m in Sources */,
 				ACC993B41B29DBE7008E262E /* NewsDetailsViewController.m in Sources */,
-				ACCFD7521B52438A00DA5F06 /* YPOEventFlowLayout.m in Sources */,
 				ACCFD74F1B51E94100DA5F06 /* YPOEvent.m in Sources */,
 				D451A6A51B3A689A0083D9C2 /* YPOHTTPRequest.m in Sources */,
 				D43EDA9A1B394A9C0022FAD4 /* YPOArticle.m in Sources */,

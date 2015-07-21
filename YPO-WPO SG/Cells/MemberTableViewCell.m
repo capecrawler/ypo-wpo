@@ -12,6 +12,16 @@
 #import "NSDate+FormattedString.h"
 #import "UIImage+CircleMask.h"
 #import "YPOImageCache.h"
+#import <Bolts/Bolts.h>
+
+@interface ImageCancellationToken : NSObject
+@property (nonatomic, assign, getter=isCancelled) BOOL cancel;
+@end
+
+
+@implementation ImageCancellationToken
+@end
+
 
 @interface MemberTableViewCell()
 
@@ -20,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *membershipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateJoinedLabel;
 @property (strong, nonatomic) id <SDWebImageOperation> operation;
+@property (nonatomic, strong) ImageCancellationToken *token;
 
 @end
 
@@ -37,7 +48,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -61,7 +72,11 @@
 - (void)loadProfileImageView {
     [self.operation cancel];
     self.profileImageView.image = nil;
-    __weak UIImageView *weakImageView = self.profileImageView;
+    self.token.cancel = YES;
+    self.token = [[ImageCancellationToken alloc]init];
+    
+    NSString *imageURL = [self.member.profilePicURL copy];
+    __weak UIImageView *wselfImage = self.profileImageView;
     [[YPOImageCache sharedImageCache] queryDiskCacheForKey:self.member.profilePicURL done:^(UIImage *image, SDImageCacheType cacheType) {
         if (image == nil) {
             self.operation = [SDWebImageDownloader.sharedDownloader downloadImageWithURL:[NSURL URLWithString: self.member.profilePicURL]
@@ -69,17 +84,10 @@
                                                                                 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                                                                                     // progression tracking code
                                                                                 } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+                                                                                    NSLog(@"image downloaded");
+                                                                                    if (!wselfImage)return;
                                                                                     if (image && finished) {
-                                                                                        // do something with image
-                                                                                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                                                                                            UIImage *roundedImage = [image roundedImage];
-                                                                                            [[YPOImageCache sharedImageCache] storeImage:roundedImage forKey:self.member.profilePicURL];
-                                                                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                                                                                if (weakImageView != nil) {
-                                                                                                    weakImageView.image = roundedImage;
-                                                                                                }
-                                                                                            });
-                                                                                        });
+                                                                                        [self setImage:image toImageView:wselfImage withURL:imageURL token:self.token];
                                                                                     }
                                                                                 }];
         } else {
@@ -89,4 +97,33 @@
 }
 
 
+- (void)setImage:(UIImage *)image toImageView:(UIImageView *)imageView withURL:(NSString *)url token:(ImageCancellationToken *)token {
+    __strong UIImageView *sImageView = imageView;
+    [[self roundedImage:image withURL:url cancellationToken:token] continueWithBlock:^id(BFTask *task) {
+        if (!token.isCancelled) {
+            if (sImageView != nil && [url isEqualToString:self.member.profilePicURL]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    sImageView.image = task.result;                    
+                });
+            }
+        }
+        return nil;
+    }];
+}
+
+
+- (BFTask *)roundedImage:(UIImage *)image withURL:(NSString *)url cancellationToken:(ImageCancellationToken *)token {
+    BFTaskCompletionSource *task = [BFTaskCompletionSource taskCompletionSource];
+        NSLog(@"start rounded image");
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImage *roundedImage = [image roundedImage];
+        NSLog(@"done rounded image");
+        [[YPOImageCache sharedImageCache] storeImage:roundedImage forKey:url];
+        [task setResult:roundedImage];
+    });
+    return task.task;
+}
+
+
 @end
+

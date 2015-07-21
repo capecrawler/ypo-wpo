@@ -32,7 +32,7 @@
     [self.collectionView registerClass:[EventHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
     
     CSStickyHeaderFlowLayout *flowLayout = [[CSStickyHeaderFlowLayout alloc] init];
-    flowLayout.sectionInset = UIEdgeInsetsMake(10, 0, 0, 0);
+    flowLayout.sectionInset = UIEdgeInsetsMake(-50, 0, 0, 0);
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     [self.collectionView setCollectionViewLayout:flowLayout];
     [self fetchData];
@@ -120,6 +120,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
     return [sectionInfo numberOfObjects];
+
 }
 
 
@@ -152,7 +153,7 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     EventHeaderView * header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
-    YPOEvent *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    YPOEvent *event = [self.fetchedResultsController objectAtIndexPath:indexPath];    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MMM";
     header.monthLabel.text = [formatter stringFromDate:event.startDate];
@@ -189,52 +190,7 @@
     }
 }
 
-//- (CGSize)sizingForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    static NSString *title                  = @"This is a long title that will cause some wrapping to occur. This is a long title that will cause some wrapping to occur.";
-//    static NSString *subtitle               = @"This is a long subtitle that will cause some wrapping to occur. This is a long subtitle that will cause some wrapping to occur.";
-//    static NSString *buttonTitle            = @"This is a really long button title that will cause some wrapping to occur.";
-//    static CollectionViewCell *sizingCell   = nil;
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        sizingCell                          = [[NSBundle mainBundle] loadNibNamed:@"CollectionViewCell" owner:self options:nil][0];
-//    });
-//    [sizingCell configureWithTitle:title subtitle:[NSString stringWithFormat:@"%@: Number %d.", subtitle, (int)indexPath.row] buttonTitle:buttonTitle];
-//    [sizingCell setNeedsLayout];
-//    [sizingCell layoutIfNeeded];
-//    CGSize cellSize = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-//    NSLog(@"cellSize: %@", NSStringFromCGSize(cellSize));
-//    return cellSize;
-//}
 
-
-/*
- // Uncomment this method to specify if the specified item should be highlighted during tracking
- - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
- }
- */
-
-/*
- // Uncomment this method to specify if the specified item should be selected
- - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
- return YES;
- }
- */
-
-/*
- // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
- - (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
- }
- 
- - (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
- }
- 
- - (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
- }
- */
 
 
 @end

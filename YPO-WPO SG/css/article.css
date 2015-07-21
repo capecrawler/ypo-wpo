@@ -1,0 +1,61 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);     
+body {     
+	font-family: 'Roboto', 'helvetica neue', helvetica, sans-serif;     
+	line-height: 1.6em;     
+	font-size: 13pt;     
+}     
+h1 {     
+	font-size:130%;     
+	line-height: 1.3em;     
+	}     
+p {     }     
+span {     
+	color: #666;     
+}
+article {                
+	margin:20px;     
+}     
+article .category {     
+	padding:10px 0 0 0;     
+	margin:20px 0 0 0;     
+}     
+article h1 {         
+	line-height:1em;     
+	padding:0;     
+	margin:0;     
+}     
+article .banner {     
+	margin:-20px -20px 30px -20px;
+}
+article .banner img{     	
+	max-width:100%;
+	height:auto;
+}     	
+article p img{         
+	max-width:100%;     
+}     
+article section h2 {
+	font-size:150%;     
+}
+
+article section {         
+	border-top:1px solid #888;     
+}     
+article section article {     
+	margin:0;     
+	padding:0;     
+	padding:10px 0 10px 60px;     
+	position:relative;         
+	border-top:1px solid #ddd;     
+}
+article section article h3 {    
+	 margin:0;     
+}     
+article section article header {     }     
+article section article header img {     
+	width:50px;     
+	left:0;     
+	margin:5px 10px 0 0;     
+	position:absolute;     
+}     
+article section article p {     margin:0;     padding:0;     }     
