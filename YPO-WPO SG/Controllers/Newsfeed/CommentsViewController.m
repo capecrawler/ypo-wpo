@@ -12,6 +12,8 @@
 #import "YPOComment.h"
 #import "CommentTableViewCell.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <INSPullToRefresh/INSDefaultInfiniteIndicator.h>
+#import <INSPullToRefresh/UIScrollView+INSPullToRefresh.h>
 
 #define BATCHSIZE 15
 
@@ -48,6 +50,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.tableView ins_addInfinityScrollWithHeight:60 handler:^(UIScrollView *scrollView) {
+        [self loadMoreData];
+    }];
+    
+    CGRect defaultFrame = CGRectMake(0, 0, 24, 24);
+    UIView <INSAnimatable> *infinityIndicator = [[INSDefaultInfiniteIndicator alloc] initWithFrame:defaultFrame];
+    [self.tableView.ins_infiniteScrollBackgroundView addSubview:infinityIndicator];
+    [infinityIndicator startAnimating];
     
     self.bounces = YES;
     self.shakeToClearEnabled = YES;
@@ -89,10 +100,10 @@
         self.currentPage = page;
         NSDictionary *paging = responseObject[@"paging"];
         if ([paging[@"next"]integerValue] == 0) {
-//            self.tableView.ins_infiniteScrollBackgroundView.enabled = NO;
-//            [self.tableView ins_endInfinityScrollWithStoppingContentOffset:YES];
+            self.tableView.ins_infiniteScrollBackgroundView.enabled = NO;
+            [self.tableView ins_endInfinityScrollWithStoppingContentOffset:YES];
         } else {
-//            [self.tableView ins_endInfinityScrollWithStoppingContentOffset:NO];
+            [self.tableView ins_endInfinityScrollWithStoppingContentOffset:NO];
         }
         [self fetchData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -150,11 +161,14 @@
         
         NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:16.0],
                                      NSParagraphStyleAttributeName: paragraphStyle};
+        NSDictionary *attributesDate = @{NSFontAttributeName: [UIFont systemFontOfSize:13.0],
+                                     NSParagraphStyleAttributeName: paragraphStyle};
         
         CGFloat width = CGRectGetWidth(tableView.frame)-kAvatarSize;
         width -= 25.0;
         
         CGRect titleBounds = [comment.name boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:NULL];
+        CGRect datePosted = [comment.postDateFormatted boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributesDate context:NULL];
         CGRect bodyBounds = [comment.comment boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:NULL];
         
         if (comment.comment.length == 0) {
@@ -162,6 +176,7 @@
         }
         
         CGFloat height = CGRectGetHeight(titleBounds);
+        height += CGRectGetHeight(datePosted);
         height += CGRectGetHeight(bodyBounds);
         height += 40.0;
         

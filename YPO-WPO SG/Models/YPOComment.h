@@ -25,6 +25,7 @@
 - (void)saveToRemote;
 - (void)saveToRemoteSucess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                    failure:(void (^)(NSURLSessionDataTask *task, NSError *error)) failure;
+- (NSString *)postDateFormatted;
 
 @end
 

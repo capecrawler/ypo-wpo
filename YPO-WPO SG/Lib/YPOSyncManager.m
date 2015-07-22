@@ -13,6 +13,7 @@
 #import "YPOForum.h"
 #import "YPORole.h"
 #import "YPOEvent.h"
+#import "YPOComment.h"
 #import <Bolts/Bolts.h>
 
 NSString *const YPODataStartedLoadingNotification   = @"YPODataStartedLoadingNotification";
@@ -142,6 +143,7 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
     [YPOChapter MR_truncateAll];
     [YPOForum MR_truncateAll];
     [YPORole MR_truncateAll];
+    [YPOComment MR_truncateAll];
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];    
 }
 

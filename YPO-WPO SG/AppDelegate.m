@@ -14,6 +14,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "YPOSyncManager.h"
 #import "LoginViewController.h"
+#import "YPOAPIClient.h"
 
 
 @interface AppDelegate ()
@@ -77,6 +78,7 @@
 }
 
 - (void)logout {
+    [[YPOAPIClient sharedClient].operationQueue cancelAllOperations];
     [[YPOSyncManager sharedManager]purgeAllData];
     [self showLogin:YES];
 }

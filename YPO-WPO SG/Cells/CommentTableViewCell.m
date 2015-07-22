@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *bodyLabel;
+@property (nonatomic, strong) UILabel *datePostedLabel;
 @property (nonatomic, strong) UIImageView *thumbnailView;
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
@@ -39,9 +40,11 @@
     [self.contentView addSubview:self.thumbnailView];
     [self.contentView addSubview:self.titleLabel];
     [self.contentView addSubview:self.bodyLabel];
+    [self.contentView addSubview:self.datePostedLabel];
     
     NSDictionary *views = @{@"thumbnailView": self.thumbnailView,
                             @"titleLabel": self.titleLabel,
+                            @"datePostedLabel": self.datePostedLabel,
                             @"bodyLabel": self.bodyLabel,
                             };
     
@@ -52,18 +55,15 @@
     
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-leading-[thumbnailView(tumbSize)]-trailing-[titleLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-leading-[thumbnailView(tumbSize)]-trailing-[bodyLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-leading-[thumbnailView(tumbSize)]-trailing-[datePostedLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
     
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-trailing-[thumbnailView(tumbSize)]-(>=0)-|" options:0 metrics:metrics views:views]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[titleLabel]-leading-[bodyLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[titleLabel]-leading-[datePostedLabel]-[bodyLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
 }
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    self.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
-    self.bodyLabel.font = [UIFont systemFontOfSize:16.0];
 }
 
 - (void)layoutSubviews {
@@ -89,6 +89,21 @@
     }
     return _titleLabel;
 }
+
+- (UILabel *)datePostedLabel {
+    if (!_datePostedLabel) {
+        _datePostedLabel = [UILabel new];
+        _datePostedLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _datePostedLabel.backgroundColor = [UIColor clearColor];
+        _datePostedLabel.userInteractionEnabled = NO;
+        _datePostedLabel.numberOfLines = 1;
+        
+        _datePostedLabel.font = [UIFont systemFontOfSize:13.0];
+        _datePostedLabel.textColor = [UIColor lightGrayColor];
+    }
+    return _datePostedLabel;
+}
+
 
 - (UILabel *)bodyLabel {
     if (!_bodyLabel) {
@@ -121,7 +136,7 @@
     _comment = comment;
     _titleLabel.text = comment.name;
     _bodyLabel.text = comment.comment;
-    
+    _datePostedLabel.text = comment.postDateFormatted;
 }
 
 @end

@@ -22,8 +22,7 @@
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSFetchRequest *fetchRequest;
 @property (nonatomic, assign) BOOL loadingData;
-@property (nonatomic, assign) BOOL hasError;
-
+@property (nonatomic, assign) NSError *requestError;
 
 @end
 
@@ -56,8 +55,8 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MemberTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MemberCellIdentifier"];
     self.tableView.tableFooterView = [UIView new];
-    [self fetchData];
     [self loadMoreData];
+    [self fetchData];
     
 }
 
@@ -80,7 +79,7 @@
 - (void)loadDataWithPage:(NSUInteger)page {
     
     self.loadingData = YES;
-    self.hasError = NO;
+    self.requestError = nil;
     YPOMemberRequest *request = (YPOMemberRequest*)[YPOMember constructRequest];
     request.page = page;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
@@ -95,8 +94,9 @@
         }
         [self fetchData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        self.hasError = YES;
-        [[YPOErrorhandler sharedHandler]handleError:error];
+        self.loadingData = NO;
+        self.requestError = error;
+        [self.tableView reloadData];
     }];
 }
 
@@ -192,14 +192,33 @@
 
 #pragma mark - DZNEmptyDataSetSource
 
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text;
+    if (self.requestError) {
+        text = NSLocalizedString(@"Whooops", nil);
+    } else {
+        text = NSLocalizedString(@"How Sad", nil);
+    }
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0], NSForegroundColorAttributeName: self.view.tintColor};
     return [[NSAttributedString alloc] initWithString:@"Refresh" attributes:attributes];
 }
 
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
-{
-    NSString *text = @"This allows you to share photos from your library and save photos to your camera roll.";
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text;
+    if (self.requestError) {
+        text = self.requestError.localizedDescription;
+    } else {
+        text = NSLocalizedString(@"No members found. :(", nil);
+    }
     
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;
@@ -216,32 +235,14 @@
 
 
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
-    return YES;
+    return !self.loadingData;
 }
 
 
 - (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
     [self loadMoreData];
+    [self.tableView reloadData];
 }
-
-/*
-#pragma mark - UISearchDisplayController Delegate Methods
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    // Tells the table data source to reload when text changes
-    [self filterContentForSearchText:searchString scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
-}
-
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
-    // Tells the table data source to reload when scope bar selection changes
-    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
-}
-*/
 
 
 @end

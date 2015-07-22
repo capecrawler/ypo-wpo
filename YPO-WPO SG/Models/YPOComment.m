@@ -47,6 +47,15 @@
 }
 
 
+- (NSString *)postDateFormatted {
+    static NSDateFormatter *formatter;
+    if (formatter == nil) {
+        formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"EEEE, dd MMMM yyyy hh:mm aa";
+    }
+    return [formatter stringFromDate:self.postDate];
+}
+
 
 
 

@@ -11,17 +11,18 @@
 #import "MemberDetailsViewController.h"
 #import <INSPullToRefresh/UIScrollView+INSPullToRefresh.h>
 #import <INSPullToRefresh/INSDefaultInfiniteIndicator.h>
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
 #define BATCHSIZE 15
 
-@interface MembersFilteredViewController()<NSFetchedResultsControllerDelegate>
+@interface MembersFilteredViewController()<NSFetchedResultsControllerDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 
 @property (nonatomic, assign) NSUInteger currentPage;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSFetchRequest *fetchRequest;
 @property (nonatomic, assign) BOOL loadingData;
 @property (nonatomic, assign, readwrite)MemberFilterType filterType;
-
+@property (nonatomic, strong) NSError *requestError;
 
 @end
 
@@ -39,6 +40,9 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
     
     [self.tableView ins_addInfinityScrollWithHeight:60 handler:^(UIScrollView *scrollView) {
         [self loadMoreData];
@@ -74,6 +78,7 @@
 
 - (void)loadDataWithPage:(NSUInteger)page {
     self.loadingData = YES;
+    self.requestError = nil;
     YPOMemberRequest *request = (YPOMemberRequest*)[YPOMember constructRequest];
     request.page = page;
     request.memberTypeID = self.memberTypeID;
@@ -98,6 +103,7 @@
         [self fetchData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         self.loadingData = NO;
+        self.requestError = error;
         [[YPOErrorhandler sharedHandler]handleError:error];
     }];
 }
@@ -233,6 +239,60 @@
     [self fetchData];
 }
 
+
+#pragma mark - DZNEmptyDataSetSource
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text;
+    if (self.requestError) {
+        text = NSLocalizedString(@"Whooops", nil);
+    } else {
+        text = NSLocalizedString(@"How Sad", nil);
+    }
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0], NSForegroundColorAttributeName: self.view.tintColor};
+    return [[NSAttributedString alloc] initWithString:@"Refresh" attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text;
+    if (self.requestError) {
+        text = self.requestError.localizedDescription;
+    } else {
+        text = NSLocalizedString(@"No members found. :(", nil);
+    }
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+#pragma mark - DZNEmptyDataSetDelegate
+
+
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+    return !self.loadingData;
+}
+
+
+- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
+    [self loadMoreData];
+    [self.tableView reloadData];
+}
 
 
 @end

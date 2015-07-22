@@ -7,6 +7,7 @@
 //
 
 #import "YPOErrorhandler.h"
+#import <Bolts/Bolts.h>
 
 @implementation YPOErrorhandler
 
@@ -20,9 +21,23 @@
 }
 
 
-- (void) handleError:(NSError *)error {    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", @"Alert Ok button label") otherButtonTitles: nil];
+- (void) handleError:(NSError *)error {
+    NSError *catchError = [self extractErrorFromTaskError:error];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:catchError.localizedDescription delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", @"Alert Ok button label") otherButtonTitles: nil];
     [alertView show];
+}
+
+- (NSError *)extractErrorFromTaskError:(NSError *)taskError {
+    if ([taskError.domain isEqualToString:BFTaskErrorDomain]) {
+        if (taskError.code == kBFMultipleErrorsError) {
+            NSArray *errors = taskError.userInfo[@"errors"];
+            return [errors firstObject];
+        } else {
+            return taskError;
+        }
+    } else {
+        return taskError;
+    }
 }
 
 @end
