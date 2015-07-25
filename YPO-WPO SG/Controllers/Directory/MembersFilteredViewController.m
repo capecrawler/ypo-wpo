@@ -28,13 +28,16 @@
 
 @implementation MembersFilteredViewController
 
-- (void) awakeFromNib {
-    [super awakeFromNib];
-    self.loadingData = NO;
-    self.currentPage = 0;
-    self.fetchRequest = nil;
-    self.filterType = MemberFilterNew;
-    self.memberTypeID = MemberTypeMembers;
+- (instancetype) initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _loadingData = NO;
+        _currentPage = 0;
+        _fetchRequest = nil;
+        _filterType = MemberFilterNew;
+        _memberTypeID = MemberTypeMembers;
+    }
+    return self;
 }
 
 

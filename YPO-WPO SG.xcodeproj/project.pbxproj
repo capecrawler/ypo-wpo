@@ -51,6 +51,10 @@
 		ACCBFA221B3F1DDB004D8446 /* NSString+NotEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA211B3F1DDB004D8446 /* NSString+NotEmpty.m */; };
 		ACCBFA251B3F2343004D8446 /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA241B3F2343004D8446 /* CircleImageView.m */; };
 		ACCDA5FB1B5E9911007A14A9 /* css in Resources */ = {isa = PBXBuildFile; fileRef = ACCDA5FA1B5E9911007A14A9 /* css */; };
+		ACCF4C981B63750D00F40CEE /* YPONotification.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCF4C971B63750D00F40CEE /* YPONotification.m */; };
+		ACCF4C9C1B6377F700F40CEE /* NotificationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCF4C9B1B6377F700F40CEE /* NotificationTableViewController.m */; };
+		ACCF4C9F1B637DCA00F40CEE /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCF4C9E1B637DCA00F40CEE /* NotificationTableViewCell.m */; };
+		ACCF4CA21B63BBBF00F40CEE /* UIImageView+YPOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCF4CA11B63BBBF00F40CEE /* UIImageView+YPOCache.m */; };
 		ACCFD7371B50C29900DA5F06 /* YPOImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD7361B50C29900DA5F06 /* YPOImageCache.m */; };
 		ACCFD73D1B50D56B00DA5F06 /* EventView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD73C1B50D56B00DA5F06 /* EventView.m */; };
 		ACCFD73F1B50D58D00DA5F06 /* EventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACCFD73E1B50D58D00DA5F06 /* EventView.xib */; };
@@ -170,6 +174,14 @@
 		ACCBFA231B3F2343004D8446 /* CircleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleImageView.h; sourceTree = "<group>"; };
 		ACCBFA241B3F2343004D8446 /* CircleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleImageView.m; sourceTree = "<group>"; };
 		ACCDA5FA1B5E9911007A14A9 /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; path = css; sourceTree = "<group>"; };
+		ACCF4C961B63750D00F40CEE /* YPONotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPONotification.h; sourceTree = "<group>"; };
+		ACCF4C971B63750D00F40CEE /* YPONotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPONotification.m; sourceTree = "<group>"; };
+		ACCF4C9A1B6377F700F40CEE /* NotificationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewController.h; sourceTree = "<group>"; };
+		ACCF4C9B1B6377F700F40CEE /* NotificationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewController.m; sourceTree = "<group>"; };
+		ACCF4C9D1B637DCA00F40CEE /* NotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
+		ACCF4C9E1B637DCA00F40CEE /* NotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewCell.m; sourceTree = "<group>"; };
+		ACCF4CA01B63BBBF00F40CEE /* UIImageView+YPOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+YPOCache.h"; sourceTree = "<group>"; };
+		ACCF4CA11B63BBBF00F40CEE /* UIImageView+YPOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+YPOCache.m"; sourceTree = "<group>"; };
 		ACCFD7351B50C29900DA5F06 /* YPOImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOImageCache.h; sourceTree = "<group>"; };
 		ACCFD7361B50C29900DA5F06 /* YPOImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOImageCache.m; sourceTree = "<group>"; };
 		ACCFD73B1B50D56B00DA5F06 /* EventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventView.h; sourceTree = "<group>"; };
@@ -260,6 +272,8 @@
 				ACCBFA211B3F1DDB004D8446 /* NSString+NotEmpty.m */,
 				AC74515C1B4149B200E081DC /* UIImage+CircleMask.h */,
 				AC74515D1B4149B200E081DC /* UIImage+CircleMask.m */,
+				ACCF4CA01B63BBBF00F40CEE /* UIImageView+YPOCache.h */,
+				ACCF4CA11B63BBBF00F40CEE /* UIImageView+YPOCache.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -267,6 +281,7 @@
 		32EA00951B2332B100B392E2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				ACCF4C991B63774500F40CEE /* Notification */,
 				ACCFD7491B51E66600DA5F06 /* Events */,
 				AC0605A91B2AB98800EB0F5F /* Directory */,
 				ACC993AE1B29D546008E262E /* Settings */,
@@ -306,6 +321,8 @@
 		32EA00971B2332C200B392E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ACCF4C961B63750D00F40CEE /* YPONotification.h */,
+				ACCF4C971B63750D00F40CEE /* YPONotification.m */,
 				ACCFD74D1B51E94100DA5F06 /* YPOEvent.h */,
 				ACCFD74E1B51E94100DA5F06 /* YPOEvent.m */,
 				ACA549731B42DC7800721346 /* YPOMember.h */,
@@ -455,6 +472,8 @@
 				AC67C2811B4167540054EAB9 /* CommentTableViewCell.m */,
 				ACCFD7431B51E4FD00DA5F06 /* EventCollectionViewCell.h */,
 				ACCFD7441B51E4FD00DA5F06 /* EventCollectionViewCell.m */,
+				ACCF4C9D1B637DCA00F40CEE /* NotificationTableViewCell.h */,
+				ACCF4C9E1B637DCA00F40CEE /* NotificationTableViewCell.m */,
 			);
 			name = Cell;
 			path = Cells;
@@ -491,6 +510,15 @@
 				ACC993B01B29D571008E262E /* SettingsViewController.m */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		ACCF4C991B63774500F40CEE /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				ACCF4C9A1B6377F700F40CEE /* NotificationTableViewController.h */,
+				ACCF4C9B1B6377F700F40CEE /* NotificationTableViewController.m */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		ACCFD7491B51E66600DA5F06 /* Events */ = {
@@ -689,10 +717,12 @@
 				ACCBFA0A1B3EF685004D8446 /* MembersListViewController.m in Sources */,
 				32EA00A41B2347D400B392E2 /* BaseNavigationViewController.m in Sources */,
 				AC0605AF1B2ABB2F00EB0F5F /* UIColor+Theme.m in Sources */,
+				ACCF4C981B63750D00F40CEE /* YPONotification.m in Sources */,
 				ACCBFA251B3F2343004D8446 /* CircleImageView.m in Sources */,
 				32EA00A11B23351700B392E2 /* LoginViewController.m in Sources */,
 				32F5D5721B22A81700B40ACE /* main.m in Sources */,
 				ACCFD74C1B51E69900DA5F06 /* EventsCollectionViewController.m in Sources */,
+				ACCF4C9F1B637DCA00F40CEE /* NotificationTableViewCell.m in Sources */,
 				D451A6B31B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m in Sources */,
 				ACCBFA101B3F08CC004D8446 /* MemberDetailsViewController.m in Sources */,
 				ACC993AB1B29CC97008E262E /* MemberTableViewCell.m in Sources */,
@@ -708,6 +738,7 @@
 				AC67C27C1B415EB20054EAB9 /* CommentsViewController.m in Sources */,
 				AC67C2821B4167540054EAB9 /* CommentTableViewCell.m in Sources */,
 				ACA549751B42DC7800721346 /* YPOMember.m in Sources */,
+				ACCF4C9C1B6377F700F40CEE /* NotificationTableViewController.m in Sources */,
 				AC67C27F1B415F240054EAB9 /* CommentTextView.m in Sources */,
 				ACCFD7451B51E4FD00DA5F06 /* EventCollectionViewCell.m in Sources */,
 				ACD916A51B3E906A00A93A06 /* NewsViewController.m in Sources */,
@@ -726,6 +757,7 @@
 				ACCFD7551B526CD100DA5F06 /* EventHeaderView.m in Sources */,
 				D43EDA9D1B394F970022FAD4 /* NSDate+InternetDate.m in Sources */,
 				ACD916A21B3E899000A93A06 /* NSDate+FormattedString.m in Sources */,
+				ACCF4CA21B63BBBF00F40CEE /* UIImageView+YPOCache.m in Sources */,
 				ACC993B41B29DBE7008E262E /* NewsDetailsViewController.m in Sources */,
 				ACCFD74F1B51E94100DA5F06 /* YPOEvent.m in Sources */,
 				D451A6A51B3A689A0083D9C2 /* YPOHTTPRequest.m in Sources */,
@@ -813,7 +845,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "3fb1b621-ce37-436d-a477-124eb84d7d10";
+				PROVISIONING_PROFILE = "48eae535-052b-4be8-8a11-c03af9023c37";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -852,7 +884,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "3fb1b621-ce37-436d-a477-124eb84d7d10";
+				PROVISIONING_PROFILE = "48eae535-052b-4be8-8a11-c03af9023c37";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -891,7 +923,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3fb1b621-ce37-436d-a477-124eb84d7d10";
+				PROVISIONING_PROFILE = "48eae535-052b-4be8-8a11-c03af9023c37";
 			};
 			name = Debug;
 		};
@@ -928,7 +960,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3fb1b621-ce37-436d-a477-124eb84d7d10";
+				PROVISIONING_PROFILE = "48eae535-052b-4be8-8a11-c03af9023c37";
 			};
 			name = Release;
 		};
@@ -1002,7 +1034,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "45c10867-0793-4ab7-89ad-dc0b20a081da";
+				PROVISIONING_PROFILE = "b541a71b-b389-46d0-9678-e4af3d91e26e";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1041,7 +1073,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "45c10867-0793-4ab7-89ad-dc0b20a081da";
+				PROVISIONING_PROFILE = "b541a71b-b389-46d0-9678-e4af3d91e26e";
 			};
 			name = Adhoc;
 		};

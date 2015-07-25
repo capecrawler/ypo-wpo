@@ -14,8 +14,10 @@
 #import "YPOImageCache.h"
 #import "UIImage+CircleMask.h"
 #import <SDWebImage/SDWebImageManager.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface MemberDetailsViewController()
+
+@interface MemberDetailsViewController()<MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *chapterLabel;
@@ -58,6 +60,12 @@
     
     [self processMemberDetails];
     [self loadData];
+    
+    [self.emailButton addTarget:self action:@selector(sendEmail) forControlEvents:UIControlEventTouchUpInside];
+    [self.mobileButton addTarget:self action:@selector(callMobile) forControlEvents:UIControlEventTouchUpInside];
+    [self.homeButton addTarget:self action:@selector(callHome) forControlEvents:UIControlEventTouchUpInside];
+    [self.businessButton addTarget:self action:@selector(callBusiness) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 
@@ -132,6 +140,60 @@
             self.profileView.image = image;
         }
     }];
+}
+
+
+- (void) callMobile {
+    NSString *mobile = self.member.contactDetails.mobile;
+    if ([mobile isNotEmpty]) {
+        [self callPhoneNumber:mobile];
+    }
+}
+
+- (void) callHome {
+    NSString *home = self.member.contactDetails.home;
+    if ([home isNotEmpty]) {
+        [self callPhoneNumber:home];
+    }
+}
+
+- (void) callBusiness {
+    NSString *business = self.member.contactDetails.business;
+    if ([business isNotEmpty]) {
+        [self callPhoneNumber:business];
+    }
+}
+
+
+
+#pragma mark - Email
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)sendEmail {
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *composeController = [[MFMailComposeViewController alloc] init];
+        [[composeController navigationBar] setTintColor: self.navigationController.navigationBar.barTintColor];
+        composeController.mailComposeDelegate = self;
+        [composeController setToRecipients:@[self.member.contactDetails.email]];
+        [self presentViewController:composeController animated:YES completion:nil];
+    }
+}
+
+
+#pragma mark - Call
+
+- (void)callPhoneNumber: (NSString *)number {
+    if ([UIApplication instancesRespondToSelector:@selector(canOpenURL:)]) {
+        NSURL *aURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", number]];
+        if ([[UIApplication sharedApplication] canOpenURL:aURL]) {
+            [[UIApplication sharedApplication] openURL:aURL];
+        }
+    }
 }
 
 

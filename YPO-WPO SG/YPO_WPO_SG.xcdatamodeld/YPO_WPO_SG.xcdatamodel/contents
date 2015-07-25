@@ -79,10 +79,13 @@
         <relationship name="forum" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPOForum" inverseName="members" inverseEntity="YPOForum" syncable="YES"/>
         <relationship name="role" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPORole" inverseName="member" inverseEntity="YPORole" syncable="YES"/>
     </entity>
-    <entity name="YPONotification" syncable="YES">
+    <entity name="YPONotification" representedClassName="YPONotification" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="notificationID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
-        <attribute name="postDate" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="postDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="sorting" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="thumbURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" attributeType="String" indexed="YES" syncable="YES"/>
@@ -101,7 +104,7 @@
         <element name="YPOEvent" positionX="-45" positionY="135" width="128" height="150"/>
         <element name="YPOForum" positionX="-45" positionY="135" width="128" height="90"/>
         <element name="YPOMember" positionX="-54" positionY="63" width="128" height="285"/>
+        <element name="YPONotification" positionX="-45" positionY="135" width="128" height="180"/>
         <element name="YPORole" positionX="-54" positionY="72" width="128" height="90"/>
-        <element name="YPONotification" positionX="-45" positionY="135" width="128" height="135"/>
     </elements>
 </model>

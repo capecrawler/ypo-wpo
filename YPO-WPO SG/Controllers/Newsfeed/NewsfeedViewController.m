@@ -38,9 +38,6 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
 
 @implementation NewsfeedViewController
 
-- (void)awakeFromNib{
-    [super awakeFromNib];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

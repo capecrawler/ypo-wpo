@@ -11,5 +11,4 @@
 @interface UIImage (CircleMask)
 
 - (UIImage *)roundedImage;
-
 @end

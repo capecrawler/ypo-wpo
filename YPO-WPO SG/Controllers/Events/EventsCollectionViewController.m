@@ -68,7 +68,7 @@
     request.rowCount = BATCHSIZE;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         self.currentPage = page;
-        
+        [self fetchData];        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [[YPOErrorhandler sharedHandler]handleError:error];
     }];

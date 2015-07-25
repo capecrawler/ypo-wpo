@@ -28,10 +28,13 @@
 
 @implementation MembersListViewController
 
-- (void) awakeFromNib {
-    [super awakeFromNib];
-    self.loadingData = NO;
-    self.currentPage = 0;
+- (instancetype) initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _loadingData = NO;
+        _currentPage = 0;
+    }
+    return self;
 }
 
 
