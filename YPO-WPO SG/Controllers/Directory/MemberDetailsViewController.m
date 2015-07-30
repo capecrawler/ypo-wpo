@@ -14,6 +14,7 @@
 #import "YPOImageCache.h"
 #import "UIImage+CircleMask.h"
 #import <SDWebImage/SDWebImageManager.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
 
@@ -57,6 +58,13 @@
     self.followButton.layer.cornerRadius = 4;
     self.followButton.layer.borderWidth = 1;
     self.followButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    CAShapeLayer *mask = [CAShapeLayer layer];
+    CGRect imageRect = CGRectMake(0, 0, self.profileView.bounds.size.width, self.profileView.bounds.size.height);\
+    UIBezierPath *circlePath = [UIBezierPath bezierPathWithOvalInRect:imageRect];
+    mask.path = circlePath.CGPath;
+    self.profileView.layer.mask = mask;
+    
     
     [self processMemberDetails];
     [self loadData];
@@ -115,31 +123,34 @@
 
 
 - (void)loadProfileImageView {
-    __weak UIImageView *weakImageView = self.profileView;
-    [[YPOImageCache sharedImageCache] queryDiskCacheForKey:self.member.profilePicURL done:^(UIImage *image, SDImageCacheType cacheType) {
-        if (image == nil) {
-            [SDWebImageDownloader.sharedDownloader downloadImageWithURL:[NSURL URLWithString: self.member.profilePicURL]
-                                                                                 options:0
-                                                                                progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                                                                    // progression tracking code
-                                                                                } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-                                                                                    if (image && finished) {
-                                                                                        // do something with image
-                                                                                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                                                                                            UIImage *roundedImage = [image roundedImage];
-                                                                                            [[YPOImageCache sharedImageCache] storeImage:roundedImage forKey:self.member.profilePicURL];
-                                                                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                                                                                if (weakImageView != nil) {
-                                                                                                    weakImageView.image = roundedImage;
-                                                                                                }
-                                                                                            });
-                                                                                        });
-                                                                                    }
-                                                                                }];
-        } else {
-            self.profileView.image = image;
-        }
-    }];
+    
+    [self.profileView sd_setImageWithURL:[NSURL URLWithString:self.member.profilePicURL]];
+    
+//    __weak UIImageView *weakImageView = self.profileView;
+//    [[YPOImageCache sharedImageCache] queryDiskCacheForKey:self.member.profilePicURL done:^(UIImage *image, SDImageCacheType cacheType) {
+//        if (image == nil) {
+//            [SDWebImageDownloader.sharedDownloader downloadImageWithURL:[NSURL URLWithString: self.member.profilePicURL]
+//                                                                                 options:0
+//                                                                                progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//                                                                                    // progression tracking code
+//                                                                                } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+//                                                                                    if (image && finished) {
+//                                                                                        // do something with image
+//                                                                                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                                                                                            UIImage *roundedImage = [image roundedImage];
+//                                                                                            [[YPOImageCache sharedImageCache] storeImage:roundedImage forKey:self.member.profilePicURL];
+//                                                                                            dispatch_async(dispatch_get_main_queue(), ^{
+//                                                                                                if (weakImageView != nil) {
+//                                                                                                    weakImageView.image = roundedImage;
+//                                                                                                }
+//                                                                                            });
+//                                                                                        });
+//                                                                                    }
+//                                                                                }];
+//        } else {
+//            self.profileView.image = image;
+//        }
+//    }];
 }
 
 
