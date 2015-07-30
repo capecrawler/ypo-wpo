@@ -217,7 +217,7 @@
         [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
         [_fetchRequest setFetchBatchSize:BATCHSIZE];
     } else if (self.filterType == MemberFilterForum) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY forum.forumID >= %@", self.forumFilter.forumID];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY forum.forumID == %@", self.forumFilter.forumID];
         _fetchRequest = [YPOMember MR_requestAllSortedBy:@"name" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
         [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
         [_fetchRequest setFetchBatchSize:BATCHSIZE];

@@ -12,6 +12,7 @@ pod 'INSPullToRefresh'
 pod 'SlackTextViewController'
 pod 'DZNEmptyDataSet'
 pod 'CSStickyHeaderFlowLayout'
+pod 'GPUImage', '~> 0.1'
 
 end
 

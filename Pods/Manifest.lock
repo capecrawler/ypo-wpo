@@ -29,13 +29,14 @@ PODS:
   - Bolts/AppLinks (1.2.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.2.0)
-  - CSStickyHeaderFlowLayout (0.2.7)
-  - DZNEmptyDataSet (1.5.2)
-  - INSPullToRefresh (1.0.9)
+  - CSStickyHeaderFlowLayout (0.2.8)
+  - DZNEmptyDataSet (1.6.1)
+  - GPUImage (0.1.7)
+  - INSPullToRefresh (1.0.11)
   - MagicalRecord (2.3.0)
-  - SDWebImage (3.7.2):
-    - SDWebImage/Core (= 3.7.2)
-  - SDWebImage/Core (3.7.2)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
   - SlackTextViewController (1.5.2)
   - SVProgressHUD (1.1.3)
 
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - Bolts
   - CSStickyHeaderFlowLayout
   - DZNEmptyDataSet
+  - GPUImage (~> 0.1)
   - INSPullToRefresh
   - MagicalRecord
   - SDWebImage
@@ -55,11 +57,12 @@ SPEC CHECKSUMS:
   AFNetworkActivityLogger: 121486778117d53b3ab1c61d264b88081d0c3eee
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
-  CSStickyHeaderFlowLayout: 739445e36fd96ab2cee9b9826a902396567fb6a5
-  DZNEmptyDataSet: 741da409081a4bf707c949c964623a6ad1799772
-  INSPullToRefresh: 364a38682f41b0d4ff00990e5054ac4919fa909a
+  CSStickyHeaderFlowLayout: e919dd425fa12bba1155f66d87edfe540eb8f89a
+  DZNEmptyDataSet: 3d31c27758230f03c71199f8c522bcfa99fba16c
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
+  INSPullToRefresh: fe1792e49a869f90389aa7761ef2a794309fe5aa
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
-  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SlackTextViewController: ab240cda4c7fe1f70f6c6cf64578f3fea495ce99
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 

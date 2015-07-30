@@ -10,6 +10,7 @@
 #import "YPOAPIClient.h"
 #import "AppDelegate.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "CCLoginBackgroundView.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
@@ -22,10 +23,15 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *forgotPasswordBottomConstraint;
 
 @property (assign, nonatomic) BOOL                      keyboardVisible;
+@property (strong, nonatomic) CCLoginBackgroundView     *backgroundSlideShow;
 
 @end
 
 @implementation LoginViewController
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 #pragma mark - LifeCycle
 
@@ -39,6 +45,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.backgroundSlideShow = [[CCLoginBackgroundView alloc] initWithFrame:self.view.bounds];
+    self.backgroundSlideShow.images = @[ [UIImage imageNamed:@"1.jpg"], [UIImage imageNamed:@"2.jpg"], [UIImage imageNamed:@"3.jpg"], [UIImage imageNamed:@"4.jpg"]];
+    self.backgroundSlideShow.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.backgroundSlideShow.contentMode = UIViewContentModeScaleAspectFill;
+    [self.backgroundSlideShow startSlideShow];
+    [self.view insertSubview:self.backgroundSlideShow atIndex:0];
+
+    
     self.userIdTextField.delegate = self;
     self.passwordTextField.delegate = self;
     
@@ -66,6 +80,7 @@
     
     NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter removeObserver:self];
+    [self.backgroundSlideShow invalidateSlideShow];
 }
 
 #pragma mark - Private Methods

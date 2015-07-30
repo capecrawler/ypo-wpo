@@ -416,7 +416,7 @@
             <objects>
                 <navigationController id="PYR-Q6-iG6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Newsfeed" image="ic-newsfeed" id="gkA-a2-Wx0"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="62y-Ym-vI6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="62y-Ym-vI6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -530,7 +530,7 @@
             <objects>
                 <navigationController id="dp2-f7-uEc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Directory" image="ic-directory" id="ok6-Jd-2uk"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xTa-mP-O3Q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="xTa-mP-O3Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -547,7 +547,7 @@
             <objects>
                 <navigationController id="x6X-m0-IUu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="ic-events" id="Al0-9M-xbQ"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ObH-S1-PcO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="ObH-S1-PcO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -685,7 +685,7 @@
             <objects>
                 <navigationController id="431-8X-xKk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notifications" image="ic-notifications" id="47I-AK-yPG"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZBp-fb-VEy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="ZBp-fb-VEy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -778,7 +778,7 @@
             <objects>
                 <navigationController id="vUn-8h-Ssp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="ic-settings" id="aHq-4v-NwE"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tVT-8E-JpC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="tVT-8E-JpC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -830,7 +830,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="0aP-EZ-AOS" userLabel="Background">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="0aP-EZ-AOS" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YdF-uW-Uvv" userLabel="LoginFormView">
@@ -882,16 +882,17 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-ct-fSV">
-                                <rect key="frame" x="194" y="540" width="110" height="28"/>
+                                <rect key="frame" x="194" y="532" width="110" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Forgot Password?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="BAu-ct-fSV" secondAttribute="bottom" id="ACQ-JW-Idg"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="BAu-ct-fSV" secondAttribute="bottom" constant="8" id="ACQ-JW-Idg"/>
                             <constraint firstAttribute="centerX" secondItem="YdF-uW-Uvv" secondAttribute="centerX" id="Dtb-yY-Lee"/>
                             <constraint firstAttribute="trailing" secondItem="0aP-EZ-AOS" secondAttribute="trailing" id="Iih-cY-QMu"/>
                             <constraint firstItem="BAu-ct-fSV" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="UxT-nq-3xY"/>
@@ -979,7 +980,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="ki7-0T-Rae"/>
-        <segue reference="Ehj-jM-hi7"/>
+        <segue reference="1US-bP-Do3"/>
         <segue reference="R04-LD-aOr"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.011764705882352941" green="0.27843137254901962" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
