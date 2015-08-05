@@ -9,7 +9,7 @@
 #import "NotificationTableViewCell.h"
 #import "YPONotification.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import <DateTools/NSDate+DateTools.h>
 @interface NotificationTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UIImageView *thumbView;
@@ -31,6 +31,7 @@
     _notification = notification;
     [self.thumbView sd_setImageWithURL:[NSURL URLWithString:self.notification.thumbURL]];
     [self processLabelForNotification:notification];
+    self.dateLabel.text = notification.sorting.timeAgoSinceNow;
 }
 
 - (void) processLabelForNotification:(YPONotification *)notification {
@@ -39,18 +40,19 @@
         NSString *text = [NSString stringWithFormat:@"New event %@", notification.title];
         attributedString = [[NSMutableAttributedString alloc] initWithString:text];
         NSRange range = [text rangeOfString:notification.title];
-        [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:range];
+        [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:range];
     } else if ([notification.type isEqualToString:@"comment"]) {
-        NSString *text = [NSString stringWithFormat:@"%@ commented on", notification.title];
+        NSString *text = [NSString stringWithFormat:@"%@ commented on %@", notification.title, notification.articleTitle];
         attributedString = [[NSMutableAttributedString alloc] initWithString:text];
         NSRange range = [text rangeOfString:notification.title];
-        [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:range];
-//    } if ([notification.type isEqualToString:@"news"]) {
+        [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:range];
+        range = [text rangeOfString:notification.articleTitle];
+        [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:range];
     } else {
         NSString *text = [NSString stringWithFormat:@"%@", notification.title];
         attributedString = [[NSMutableAttributedString alloc] initWithString:text];
         NSRange range = [text rangeOfString:notification.title];
-        [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:range];
+        [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:range];
     }
     
     self.titleLabel.attributedText = attributedString;

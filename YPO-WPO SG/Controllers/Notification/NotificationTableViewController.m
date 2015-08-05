@@ -9,7 +9,9 @@
 #import "NotificationTableViewController.h"
 #import "YPONotification.h"
 #import "NotificationTableViewCell.h"
-
+#import <INSPullToRefresh/UIScrollView+INSPullToRefresh.h>
+#import <INSPullToRefresh/INSDefaultPullToRefresh.h>
+#import <INSPullToRefresh/INSDefaultInfiniteIndicator.h>
 
 @interface NotificationTableViewController()<NSFetchedResultsControllerDelegate>
 
@@ -35,6 +37,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableFooterView = [UIView new];
+    
+    [self.tableView ins_addPullToRefreshWithHeight:60.0 handler:^(UIScrollView *scrollView) {
+        self.currentPage = 0;
+        [self loadMoreData];
+    }];
+    
+    CGRect defaultFrame = CGRectMake(0, 0, 24, 24);
+    
+    UIView <INSPullToRefreshBackgroundViewDelegate> *pullToRefresh = [[INSDefaultPullToRefresh alloc] initWithFrame:defaultFrame backImage:nil frontImage:[UIImage imageNamed:@"ic-loader"]];
+    
+    self.tableView.ins_pullToRefreshBackgroundView.delegate = pullToRefresh;
+    [self.tableView.ins_pullToRefreshBackgroundView addSubview:pullToRefresh];
+    
+    
+    [self.tableView ins_addInfinityScrollWithHeight:60 handler:^(UIScrollView *scrollView) {
+        [self loadMoreData];
+    }];
+    
+    UIView <INSAnimatable> *infinityIndicator = [[INSDefaultInfiniteIndicator alloc] initWithFrame:defaultFrame];
+    [self.tableView.ins_infiniteScrollBackgroundView addSubview:infinityIndicator];
+    [infinityIndicator startAnimating];
+
+    
     [self loadMoreData];
     [self fetchData];
 }
@@ -44,7 +69,6 @@
 
 - (void)fetchData {
     NSError *error;
-    NSLog(@"notification count: %ld", [YPONotification MR_countOfEntities]);
     if ([self.fetchedResultsController performFetch:&error]) {
         [self.tableView reloadData];
     } else {
@@ -64,6 +88,15 @@
     request.rowCount = BATCHSIZE;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         self.currentPage = page;
+        [self.tableView ins_endPullToRefresh];
+        NSDictionary *paging = responseObject[@"paging"];
+        if ([paging[@"next"]integerValue] == 0) {
+            self.tableView.ins_infiniteScrollBackgroundView.enabled = NO;
+            [self.tableView ins_endInfinityScrollWithStoppingContentOffset:NO];
+        } else {
+            self.tableView.ins_infiniteScrollBackgroundView.enabled = YES;
+            [self.tableView ins_endInfinityScrollWithStoppingContentOffset:YES];
+        }
         [self fetchData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [[YPOErrorhandler sharedHandler]handleError:error];
@@ -132,6 +165,23 @@
     return cell;
 }
 
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    YPONotification *notification = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    if ([notification.type isEqualToString:@"event"]) {
+        
+        
+    } else if ([notification.type isEqualToString:@"comment"]) {
+        
+        
+    } else {
+        
+        
+    }
+}
 
 
 

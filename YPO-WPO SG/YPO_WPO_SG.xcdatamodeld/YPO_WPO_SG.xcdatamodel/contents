@@ -48,11 +48,16 @@
         <relationship name="member" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YPOMember" inverseName="contactDetails" inverseEntity="YPOMember" syncable="YES"/>
     </entity>
     <entity name="YPOEvent" representedClassName="YPOEvent" syncable="YES">
-        <attribute name="endDate" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="capacityLimit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="eventID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
-        <attribute name="startDate" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parking" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="thumbUrl" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -80,6 +85,8 @@
         <relationship name="role" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPORole" inverseName="member" inverseEntity="YPORole" syncable="YES"/>
     </entity>
     <entity name="YPONotification" representedClassName="YPONotification" syncable="YES">
+        <attribute name="articleID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="articleTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="notificationID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
@@ -95,16 +102,24 @@
         <attribute name="roleID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
         <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPOMember" inverseName="role" inverseEntity="YPOMember" syncable="YES"/>
     </entity>
+    <entity name="YPOUser" representedClassName="YPOUser" syncable="YES">
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="memberID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="profilePictureURL" attributeType="String" syncable="YES"/>
+        <attribute name="userName" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="YPOArticle" positionX="-63" positionY="-18" width="128" height="210"/>
         <element name="YPOChapter" positionX="-36" positionY="144" width="128" height="90"/>
         <element name="YPOComment" positionX="-45" positionY="135" width="128" height="135"/>
         <element name="YPOCompany" positionX="-27" positionY="126" width="128" height="225"/>
         <element name="YPOContactDetails" positionX="-36" positionY="108" width="128" height="120"/>
-        <element name="YPOEvent" positionX="-45" positionY="135" width="128" height="150"/>
+        <element name="YPOEvent" positionX="-45" positionY="135" width="128" height="225"/>
         <element name="YPOForum" positionX="-45" positionY="135" width="128" height="90"/>
         <element name="YPOMember" positionX="-54" positionY="63" width="128" height="285"/>
-        <element name="YPONotification" positionX="-45" positionY="135" width="128" height="180"/>
+        <element name="YPONotification" positionX="-45" positionY="135" width="128" height="210"/>
         <element name="YPORole" positionX="-54" positionY="72" width="128" height="90"/>
+        <element name="YPOUser" positionX="-45" positionY="135" width="128" height="120"/>
     </elements>
 </model>

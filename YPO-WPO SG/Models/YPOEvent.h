@@ -19,6 +19,11 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSDate * startDate;
 @property (nonatomic, retain) NSDate * endDate;
+@property (nonatomic, retain) NSString * location;
+@property (nonatomic, retain) NSString * latitude;
+@property (nonatomic, retain) NSString * longitude;
+@property (nonatomic, retain) NSString * capacityLimit;
+@property (nonatomic, retain) NSString * parking;
 
 - (NSString *)startMonth;
 

@@ -21,6 +21,8 @@
 @property (nonatomic, retain) NSDate *startDate;
 @property (nonatomic, retain) NSDate *endDate;
 @property (nonatomic, retain) NSDate *sorting;
+@property (nonatomic, retain) NSNumber * articleID;
+@property (nonatomic, retain) NSString * articleTitle;
 
 @end
 

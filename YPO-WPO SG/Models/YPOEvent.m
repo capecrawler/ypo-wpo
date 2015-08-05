@@ -18,6 +18,11 @@
 @dynamic title;
 @dynamic startDate;
 @dynamic endDate;
+@dynamic location;
+@dynamic latitude;
+@dynamic longitude;
+@dynamic capacityLimit;
+@dynamic parking;
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
     [super parseDictionary:dictionary];
@@ -30,6 +35,16 @@
     self.startDate          = [NSDate dateFromInternetDateTimeString:startDate formatHint:DateFormatHintRFC3339];
     NSString *endDate       = dictionary[@"end_date"];
     self.endDate            = [NSDate dateFromInternetDateTimeString:endDate formatHint:DateFormatHintRFC3339];
+    
+    id venue     = dictionary[@"venue"];
+    if (venue && [venue isKindOfClass:[NSDictionary class]]) {
+        self.location       = venue[@"location"];
+        self.latitude       = venue[@"latitude"];
+        self.longitude      = venue[@"longitude"];
+        self.capacityLimit  = venue[@"capacity_limit"];
+        self.parking        = venue[@"parking"];
+    }
+    
 }
 
 - (NSString *)startMonth {

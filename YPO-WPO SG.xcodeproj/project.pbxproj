@@ -37,6 +37,9 @@
 		ACADDC071B48222800B97FFC /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACADDC051B48222800B97FFC /* Fabric.framework */; };
 		ACADDC081B48222800B97FFC /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACADDC061B48222800B97FFC /* Crashlytics.framework */; };
 		ACB3F5381B6A4CE400A8B279 /* YPOTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB3F5371B6A4CE400A8B279 /* YPOTabBarController.m */; };
+		ACB3F53B1B6A57B200A8B279 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB3F53A1B6A57B200A8B279 /* ChangePasswordController.m */; };
+		ACBF24E81B70C6C600C6B0B3 /* Pods-YPO-WPO SG.adhoc.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = ACBF24E61B70C6C600C6B0B3 /* Pods-YPO-WPO SG.adhoc.xcconfig */; };
+		ACBF24E91B70C6C600C6B0B3 /* Pods-YPO-WPO SG.distribution.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = ACBF24E71B70C6C600C6B0B3 /* Pods-YPO-WPO SG.distribution.xcconfig */; };
 		ACC9939D1B29B55B008E262E /* YPOAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9939C1B29B55B008E262E /* YPOAPIClient.m */; };
 		ACC993A01B29B5EA008E262E /* YPOConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9939F1B29B5EA008E262E /* YPOConfig.m */; };
 		ACC993A31B29B84B008E262E /* NewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC993A21B29B84B008E262E /* NewsfeedViewController.m */; };
@@ -65,8 +68,7 @@
 		ACCFD74F1B51E94100DA5F06 /* YPOEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD74E1B51E94100DA5F06 /* YPOEvent.m */; };
 		ACCFD7551B526CD100DA5F06 /* EventHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD7541B526CD100DA5F06 /* EventHeaderView.m */; };
 		ACCFD7581B54073C00DA5F06 /* EventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD7571B54073C00DA5F06 /* EventDetailsViewController.m */; };
-		ACCFD7671B5423BE00DA5F06 /* Pods-YPO-WPO SG.adhoc.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = ACCFD7651B5423BE00DA5F06 /* Pods-YPO-WPO SG.adhoc.xcconfig */; };
-		ACCFD7681B5423BE00DA5F06 /* Pods-YPO-WPO SG.distribution.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = ACCFD7661B5423BE00DA5F06 /* Pods-YPO-WPO SG.distribution.xcconfig */; };
+		ACD1B9DF1B6F62780051A870 /* YPOUser.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD1B9DE1B6F62780051A870 /* YPOUser.m */; };
 		ACD916981B3E82E100A93A06 /* YPOSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD916971B3E82E100A93A06 /* YPOSyncManager.m */; };
 		ACD9169B1B3E836E00A93A06 /* YPOErrorhandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD9169A1B3E836E00A93A06 /* YPOErrorhandler.m */; };
 		ACD9169D1B3E869400A93A06 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD9169C1B3E869400A93A06 /* NewsTableViewCell.xib */; };
@@ -149,6 +151,10 @@
 		ACADDC061B48222800B97FFC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		ACB3F5361B6A4CE400A8B279 /* YPOTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOTabBarController.h; sourceTree = "<group>"; };
 		ACB3F5371B6A4CE400A8B279 /* YPOTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOTabBarController.m; sourceTree = "<group>"; };
+		ACB3F5391B6A57B200A8B279 /* ChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordController.h; sourceTree = "<group>"; };
+		ACB3F53A1B6A57B200A8B279 /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
+		ACBF24E61B70C6C600C6B0B3 /* Pods-YPO-WPO SG.adhoc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-YPO-WPO SG.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-YPO-WPO SG/Pods-YPO-WPO SG.adhoc.xcconfig"; sourceTree = "<group>"; };
+		ACBF24E71B70C6C600C6B0B3 /* Pods-YPO-WPO SG.distribution.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-YPO-WPO SG.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-YPO-WPO SG/Pods-YPO-WPO SG.distribution.xcconfig"; sourceTree = "<group>"; };
 		ACC9939B1B29B55B008E262E /* YPOAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOAPIClient.h; sourceTree = "<group>"; };
 		ACC9939C1B29B55B008E262E /* YPOAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOAPIClient.m; sourceTree = "<group>"; };
 		ACC9939E1B29B5EA008E262E /* YPOConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOConfig.h; sourceTree = "<group>"; };
@@ -203,8 +209,8 @@
 		ACCFD7541B526CD100DA5F06 /* EventHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventHeaderView.m; sourceTree = "<group>"; };
 		ACCFD7561B54073C00DA5F06 /* EventDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsViewController.h; sourceTree = "<group>"; };
 		ACCFD7571B54073C00DA5F06 /* EventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsViewController.m; sourceTree = "<group>"; };
-		ACCFD7651B5423BE00DA5F06 /* Pods-YPO-WPO SG.adhoc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-YPO-WPO SG.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-YPO-WPO SG/Pods-YPO-WPO SG.adhoc.xcconfig"; sourceTree = "<group>"; };
-		ACCFD7661B5423BE00DA5F06 /* Pods-YPO-WPO SG.distribution.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-YPO-WPO SG.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-YPO-WPO SG/Pods-YPO-WPO SG.distribution.xcconfig"; sourceTree = "<group>"; };
+		ACD1B9DD1B6F62780051A870 /* YPOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOUser.h; sourceTree = "<group>"; };
+		ACD1B9DE1B6F62780051A870 /* YPOUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOUser.m; sourceTree = "<group>"; };
 		ACD916961B3E82E100A93A06 /* YPOSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOSyncManager.h; sourceTree = "<group>"; };
 		ACD916971B3E82E100A93A06 /* YPOSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOSyncManager.m; sourceTree = "<group>"; };
 		ACD916991B3E836E00A93A06 /* YPOErrorhandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOErrorhandler.h; sourceTree = "<group>"; };
@@ -257,8 +263,8 @@
 		07AED282F102099F0407BBAA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ACCFD7651B5423BE00DA5F06 /* Pods-YPO-WPO SG.adhoc.xcconfig */,
-				ACCFD7661B5423BE00DA5F06 /* Pods-YPO-WPO SG.distribution.xcconfig */,
+				ACBF24E61B70C6C600C6B0B3 /* Pods-YPO-WPO SG.adhoc.xcconfig */,
+				ACBF24E71B70C6C600C6B0B3 /* Pods-YPO-WPO SG.distribution.xcconfig */,
 				C8E24FC899ECC821D3BAF10B /* Pods-YPO-WPO SG.debug.xcconfig */,
 				0D09B34936790A424A4B858C /* Pods-YPO-WPO SG.release.xcconfig */,
 			);
@@ -329,6 +335,8 @@
 		32EA00971B2332C200B392E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ACD1B9DD1B6F62780051A870 /* YPOUser.h */,
+				ACD1B9DE1B6F62780051A870 /* YPOUser.m */,
 				ACCF4C961B63750D00F40CEE /* YPONotification.h */,
 				ACCF4C971B63750D00F40CEE /* YPONotification.m */,
 				ACCFD74D1B51E94100DA5F06 /* YPOEvent.h */,
@@ -516,6 +524,8 @@
 			children = (
 				ACC993AF1B29D571008E262E /* SettingsViewController.h */,
 				ACC993B01B29D571008E262E /* SettingsViewController.m */,
+				ACB3F5391B6A57B200A8B279 /* ChangePasswordController.h */,
+				ACB3F53A1B6A57B200A8B279 /* ChangePasswordController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -614,7 +624,7 @@
 		32F5D5641B22A81700B40ACE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Raketeers;
 				TargetAttributes = {
 					32F5D56B1B22A81700B40ACE = {
@@ -653,11 +663,11 @@
 			files = (
 				ACCDA5FB1B5E9911007A14A9 /* css in Resources */,
 				ACCFD73F1B50D58D00DA5F06 /* EventView.xib in Resources */,
+				ACBF24E81B70C6C600C6B0B3 /* Pods-YPO-WPO SG.adhoc.xcconfig in Resources */,
 				AC0605B41B2ABD3300EB0F5F /* TableViewHeader.xib in Resources */,
-				ACCFD7671B5423BE00DA5F06 /* Pods-YPO-WPO SG.adhoc.xcconfig in Resources */,
 				ACD9169F1B3E870300A93A06 /* MemberTableViewCell.xib in Resources */,
-				ACCFD7681B5423BE00DA5F06 /* Pods-YPO-WPO SG.distribution.xcconfig in Resources */,
 				32F5D57E1B22A81700B40ACE /* Main.storyboard in Resources */,
+				ACBF24E91B70C6C600C6B0B3 /* Pods-YPO-WPO SG.distribution.xcconfig in Resources */,
 				32F5D5831B22A81700B40ACE /* LaunchScreen.xib in Resources */,
 				32F5D5801B22A81700B40ACE /* Images.xcassets in Resources */,
 				ACD9169D1B3E869400A93A06 /* NewsTableViewCell.xib in Resources */,
@@ -750,6 +760,7 @@
 				ACC993A81B29CBD3008E262E /* NewsTableViewCell.m in Sources */,
 				32EA009E1B2334D700B392E2 /* BaseTableViewController.m in Sources */,
 				ACA549671B429DF500721346 /* YPOForum.m in Sources */,
+				ACD1B9DF1B6F62780051A870 /* YPOUser.m in Sources */,
 				ACCFD7581B54073C00DA5F06 /* EventDetailsViewController.m in Sources */,
 				ACCBFA0D1B3EFE86004D8446 /* MembersFilteredViewController.m in Sources */,
 				ACD916981B3E82E100A93A06 /* YPOSyncManager.m in Sources */,
@@ -778,6 +789,7 @@
 				ACD916A21B3E899000A93A06 /* NSDate+FormattedString.m in Sources */,
 				ACCF4CA21B63BBBF00F40CEE /* UIImageView+YPOCache.m in Sources */,
 				ACC993B41B29DBE7008E262E /* NewsDetailsViewController.m in Sources */,
+				ACB3F53B1B6A57B200A8B279 /* ChangePasswordController.m in Sources */,
 				ACCFD74F1B51E94100DA5F06 /* YPOEvent.m in Sources */,
 				ACB3F5381B6A4CE400A8B279 /* YPOTabBarController.m in Sources */,
 				D451A6A51B3A689A0083D9C2 /* YPOHTTPRequest.m in Sources */,
@@ -865,7 +877,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "48eae535-052b-4be8-8a11-c03af9023c37";
+				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -904,7 +916,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "48eae535-052b-4be8-8a11-c03af9023c37";
+				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -943,7 +955,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "48eae535-052b-4be8-8a11-c03af9023c37";
+				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
 			};
 			name = Debug;
 		};
@@ -980,7 +992,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "48eae535-052b-4be8-8a11-c03af9023c37";
+				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
 			};
 			name = Release;
 		};
@@ -1020,7 +1032,7 @@
 			};
 			name = Release;
 		};
-		ACCFD7591B541EFA00DA5F06 /* Adhoc */ = {
+		ACBF24E01B70C69000C6B0B3 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1037,8 +1049,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1054,20 +1066,20 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "b541a71b-b389-46d0-9678-e4af3d91e26e";
+				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Adhoc;
 		};
-		ACCFD75A1B541EFA00DA5F06 /* Adhoc */ = {
+		ACBF24E11B70C69000C6B0B3 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D09B34936790A424A4B858C /* Pods-YPO-WPO SG.release.xcconfig */;
+			baseConfigurationReference = ACBF24E61B70C6C600C6B0B3 /* Pods-YPO-WPO SG.adhoc.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1093,11 +1105,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b541a71b-b389-46d0-9678-e4af3d91e26e";
+				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
 			};
 			name = Adhoc;
 		};
-		ACCFD75B1B541EFA00DA5F06 /* Adhoc */ = {
+		ACBF24E21B70C69000C6B0B3 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1113,7 +1125,7 @@
 			};
 			name = Adhoc;
 		};
-		ACCFD75C1B541F0000DA5F06 /* Distribution */ = {
+		ACBF24E31B70C69500C6B0B3 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1130,8 +1142,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1147,20 +1159,20 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "a7ea10d7-b802-40c8-b7fb-05d69c305100";
+				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
 		};
-		ACCFD75D1B541F0000DA5F06 /* Distribution */ = {
+		ACBF24E41B70C69500C6B0B3 /* Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D09B34936790A424A4B858C /* Pods-YPO-WPO SG.release.xcconfig */;
+			baseConfigurationReference = ACBF24E71B70C6C600C6B0B3 /* Pods-YPO-WPO SG.distribution.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1186,11 +1198,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a7ea10d7-b802-40c8-b7fb-05d69c305100";
+				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
 			};
 			name = Distribution;
 		};
-		ACCFD75E1B541F0000DA5F06 /* Distribution */ = {
+		ACBF24E51B70C69500C6B0B3 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1214,8 +1226,8 @@
 			buildConfigurations = (
 				32F5D5901B22A81700B40ACE /* Debug */,
 				32F5D5911B22A81700B40ACE /* Release */,
-				ACCFD75C1B541F0000DA5F06 /* Distribution */,
-				ACCFD7591B541EFA00DA5F06 /* Adhoc */,
+				ACBF24E31B70C69500C6B0B3 /* Distribution */,
+				ACBF24E01B70C69000C6B0B3 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1225,8 +1237,8 @@
 			buildConfigurations = (
 				32F5D5931B22A81700B40ACE /* Debug */,
 				32F5D5941B22A81700B40ACE /* Release */,
-				ACCFD75D1B541F0000DA5F06 /* Distribution */,
-				ACCFD75A1B541EFA00DA5F06 /* Adhoc */,
+				ACBF24E41B70C69500C6B0B3 /* Distribution */,
+				ACBF24E11B70C69000C6B0B3 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1236,8 +1248,8 @@
 			buildConfigurations = (
 				32F5D5961B22A81700B40ACE /* Debug */,
 				32F5D5971B22A81700B40ACE /* Release */,
-				ACCFD75E1B541F0000DA5F06 /* Distribution */,
-				ACCFD75B1B541EFA00DA5F06 /* Adhoc */,
+				ACBF24E51B70C69500C6B0B3 /* Distribution */,
+				ACBF24E21B70C69000C6B0B3 /* Adhoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

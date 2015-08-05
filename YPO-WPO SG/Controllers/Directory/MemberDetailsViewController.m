@@ -13,7 +13,7 @@
 #import "YPOContactDetails.h"
 #import "YPOImageCache.h"
 #import "UIImage+CircleMask.h"
-#import <SDWebImage/SDWebImageManager.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
 
@@ -57,6 +57,12 @@
     self.followButton.layer.cornerRadius = 4;
     self.followButton.layer.borderWidth = 1;
     self.followButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    CAShapeLayer *mask = [CAShapeLayer layer];
+    CGRect imageRect = CGRectMake(0, 0, self.profileView.bounds.size.width, self.profileView.bounds.size.height);
+    UIBezierPath *circlePath = [UIBezierPath bezierPathWithOvalInRect:imageRect];
+    mask.path = circlePath.CGPath;
+    self.profileView.layer.mask = mask;
     
     [self processMemberDetails];
     [self loadData];
@@ -115,6 +121,8 @@
 
 
 - (void)loadProfileImageView {
+    [self.profileView sd_setImageWithURL:[NSURL URLWithString:self.member.profilePicURL]];
+    /*
     __weak UIImageView *weakImageView = self.profileView;
     [[YPOImageCache sharedImageCache] queryDiskCacheForKey:self.member.profilePicURL done:^(UIImage *image, SDImageCacheType cacheType) {
         if (image == nil) {
@@ -140,6 +148,7 @@
             self.profileView.image = image;
         }
     }];
+     */
 }
 
 

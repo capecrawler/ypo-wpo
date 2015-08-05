@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "CCLoginBackgroundView.h"
+#import "YPOUser.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
@@ -45,6 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.userIdTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.backgroundSlideShow = [[CCLoginBackgroundView alloc] initWithFrame:self.view.bounds];
     self.backgroundSlideShow.images = @[ [UIImage imageNamed:@"1.jpg"], [UIImage imageNamed:@"2.jpg"], [UIImage imageNamed:@"3.jpg"], [UIImage imageNamed:@"4.jpg"]];
     self.backgroundSlideShow.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -94,7 +96,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.userIdTextField){
         [self.passwordTextField becomeFirstResponder];
-        return YES;
+        return NO;
     }else if (textField == self.passwordTextField){
         [self executeLogin];
     }
@@ -151,12 +153,16 @@
                                 @"password" : self.passwordTextField.text,
                                 @"func" : @"member.authenticate"};
         [SVProgressHUD showWithStatus:@"Logging in..." maskType:SVProgressHUDMaskTypeBlack];
-        [[YPOAPIClient sharedClient] GET:@"/ypo/api/v1/" parameters:param success:^(NSURLSessionDataTask *task, id responseObject) {
+        [[YPOAPIClient sharedClient] GET:@"/api/v1/" parameters:param success:^(NSURLSessionDataTask *task, id responseObject) {
             if ([responseObject[@"status"] boolValue]) {
                 [SVProgressHUD dismiss];
-                NSDictionary *data = responseObject[@"data"];
-                NSString *memberID = data[@"member_id"];
-                [[NSUserDefaults standardUserDefaults] setObject:memberID forKey:@"memberID"];
+//                NSDictionary *data = responseObject[@"data"];
+//                NSString *memberID = data[@"member_id"];
+//                [[NSUserDefaults standardUserDefaults] setObject:memberID forKey:@"memberID"];
+                YPOUser *user = [YPOUser MR_createEntity];
+                [user parseDictionary:responseObject[@"data"]];
+                [YPOUser setCurrentUser:user];
+                [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
                 AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
                 [appDelegate showLogin:NO];
             } else {

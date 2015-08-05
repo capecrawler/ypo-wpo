@@ -93,6 +93,7 @@
             self.tableView.ins_infiniteScrollBackgroundView.enabled = NO;
             [self.tableView ins_endInfinityScrollWithStoppingContentOffset:YES];
         } else {
+            self.tableView.ins_infiniteScrollBackgroundView.enabled = YES;
             [self.tableView ins_endInfinityScrollWithStoppingContentOffset:NO];
         }
         [self fetchData];

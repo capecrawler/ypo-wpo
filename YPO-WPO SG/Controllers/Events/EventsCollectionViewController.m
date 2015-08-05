@@ -12,6 +12,9 @@
 #import "EventHeaderView.h"
 #import <CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout.h>
 #import "EventDetailsViewController.h"
+#import <INSPullToRefresh/UIScrollView+INSPullToRefresh.h>
+#import <INSPullToRefresh/INSDefaultPullToRefresh.h>
+#import <INSPullToRefresh/INSDefaultInfiniteIndicator.h>
 
 @interface EventsCollectionViewController ()<NSFetchedResultsControllerDelegate>
 @property (nonatomic, assign) NSUInteger currentPage;
@@ -26,7 +29,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self loadMoreData];
+    self.collectionView.alwaysBounceVertical = YES;
+    [self.collectionView ins_addPullToRefreshWithHeight:60.0 handler:^(UIScrollView *scrollView) {
+        self.currentPage = 0;
+        [self loadMoreData];
+    }];
+    
+    CGRect defaultFrame = CGRectMake(0, 0, 24, 24);
+    
+    UIView <INSPullToRefreshBackgroundViewDelegate> *pullToRefresh = [[INSDefaultPullToRefresh alloc] initWithFrame:defaultFrame backImage:nil frontImage:[UIImage imageNamed:@"ic-loader"]];
+    
+    self.collectionView.ins_pullToRefreshBackgroundView.delegate = pullToRefresh;
+    [self.collectionView.ins_pullToRefreshBackgroundView addSubview:pullToRefresh];
+    
+    
+    [self.collectionView ins_addInfinityScrollWithHeight:60 handler:^(UIScrollView *scrollView) {
+        [self loadMoreData];
+    }];
+    
+    UIView <INSAnimatable> *infinityIndicator = [[INSDefaultInfiniteIndicator alloc] initWithFrame:defaultFrame];
+    [self.collectionView.ins_infiniteScrollBackgroundView addSubview:infinityIndicator];
+    [infinityIndicator startAnimating];
+
     
     [self.collectionView registerClass:[EventCollectionViewCell class] forCellWithReuseIdentifier:@"EventCollectionViewCellID"];
     [self.collectionView registerClass:[EventHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
@@ -35,6 +59,8 @@
     flowLayout.sectionInset = UIEdgeInsetsMake(-50, 0, 0, 0);
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     [self.collectionView setCollectionViewLayout:flowLayout];
+    
+    [self loadMoreData];
     [self fetchData];
 }
 
@@ -68,6 +94,16 @@
     request.rowCount = BATCHSIZE;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         self.currentPage = page;
+        [self.collectionView ins_endPullToRefresh];
+        NSDictionary *paging = responseObject[@"paging"];
+        if ([paging[@"next"]integerValue] == 0) {
+            self.collectionView.ins_infiniteScrollBackgroundView.enabled = NO;
+            [self.collectionView ins_endInfinityScrollWithStoppingContentOffset:NO];
+        } else {
+            self.collectionView.ins_infiniteScrollBackgroundView.enabled = YES;
+            [self.collectionView ins_endInfinityScrollWithStoppingContentOffset:YES];
+        }
+        
         [self fetchData];        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [[YPOErrorhandler sharedHandler]handleError:error];
@@ -153,6 +189,7 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     EventHeaderView * header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
+    header.userInteractionEnabled = NO;
     YPOEvent *event = [self.fetchedResultsController objectAtIndexPath:indexPath];    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MMM";

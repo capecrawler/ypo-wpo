@@ -20,6 +20,8 @@
 @dynamic startDate;
 @dynamic endDate;
 @dynamic sorting;
+@dynamic articleID;
+@dynamic articleTitle;
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
     [super parseDictionary:dictionary];
@@ -48,6 +50,16 @@
     }
     
     self.comment        = dictionary[@"comment"];
+    
+    NSNumber *articleID = dictionary[@"article_id"];
+    if (articleID) {
+        self.articleID = articleID;
+    }
+    
+    NSString *articleTitle = dictionary[@"article_title"];
+    if (articleTitle) {
+        self.articleTitle = articleTitle;
+    }
     
 }
 

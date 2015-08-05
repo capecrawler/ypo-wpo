@@ -16,7 +16,7 @@
     self = [super init];
     if (self) {
         self.method = HTTPMethodGET;
-        self.apiPath = @"/ypo/api/v1/";
+        self.apiPath = YPOAPIPathPrefix;
         self.useJSONLoader = YES;
     }
     return self;
