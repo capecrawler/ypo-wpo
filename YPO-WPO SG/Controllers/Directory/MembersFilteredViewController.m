@@ -58,8 +58,8 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MemberTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MemberCellIdentifier"];
     self.tableView.tableFooterView = [UIView new];
-    [self fetchData];
     [self loadMoreData];
+    [self fetchData];
     
 }
 
@@ -94,13 +94,17 @@
     }
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         self.currentPage = page;
-        NSDictionary *paging = responseObject[@"paging"];
-
-        if ([paging[@"next"]integerValue] == 0) {
-            self.tableView.ins_infiniteScrollBackgroundView.enabled = NO;
-            [self.tableView ins_endInfinityScrollWithStoppingContentOffset:YES];
+        if ([responseObject[@"status"] boolValue]) {
+            NSDictionary *paging = responseObject[@"paging"];
+            if ([paging[@"next"]integerValue] == 0) {
+                self.tableView.ins_infiniteScrollBackgroundView.enabled = NO;
+                [self.tableView ins_endInfinityScrollWithStoppingContentOffset:YES];
+            } else {
+                self.tableView.ins_infiniteScrollBackgroundView.enabled = YES;
+                [self.tableView ins_endInfinityScrollWithStoppingContentOffset:NO];
+            }
         } else {
-            [self.tableView ins_endInfinityScrollWithStoppingContentOffset:NO];
+                [self.tableView ins_endInfinityScrollWithStoppingContentOffset:NO];
         }
         self.loadingData = NO;
         [self fetchData];
@@ -160,7 +164,7 @@
     if ([controller isKindOfClass:[MemberDetailsViewController class]]) {
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
         MemberDetailsViewController *memberController = (MemberDetailsViewController *)controller;
-        memberController.member = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        memberController.memberID = [[self.fetchedResultsController objectAtIndexPath:selectedIndexPath] memberID];
         [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
     }
 }

@@ -88,12 +88,16 @@
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         self.loadingData = NO;
         self.currentPage = page;
-        NSDictionary *paging = responseObject[@"paging"];
-        if ([paging[@"next"]integerValue] == 0) {
-            self.tableView.ins_infiniteScrollBackgroundView.enabled = NO;
-            [self.tableView ins_endInfinityScrollWithStoppingContentOffset:YES];
+        if ([responseObject[@"status"] boolValue]) {
+            NSDictionary *paging = responseObject[@"paging"];
+            if ([paging[@"next"]integerValue] == 0) {
+                self.tableView.ins_infiniteScrollBackgroundView.enabled = NO;
+                [self.tableView ins_endInfinityScrollWithStoppingContentOffset:YES];
+            } else {
+                self.tableView.ins_infiniteScrollBackgroundView.enabled = YES;
+                [self.tableView ins_endInfinityScrollWithStoppingContentOffset:NO];
+            }
         } else {
-            self.tableView.ins_infiniteScrollBackgroundView.enabled = YES;
             [self.tableView ins_endInfinityScrollWithStoppingContentOffset:NO];
         }
         [self fetchData];
@@ -152,7 +156,7 @@
     if ([controller isKindOfClass:[MemberDetailsViewController class]]) {
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
         MemberDetailsViewController *memberController = (MemberDetailsViewController *)controller;
-        memberController.member = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        memberController.memberID = [[self.fetchedResultsController objectAtIndexPath:selectedIndexPath] memberID];
         [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
     }
 }

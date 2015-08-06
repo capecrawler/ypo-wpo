@@ -68,6 +68,12 @@
     if ([jsonObject[@"status"] boolValue]) {
         NSDictionary *data = jsonObject[@"data"];
         [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+            YPOMember * member = [YPOMember MR_findFirstByAttribute:@"memberID" withValue:data[@"member_id"] inContext:localContext];
+            if (member == nil) {
+                member = [YPOMember MR_createEntityInContext:localContext];
+            }
+            [member parseDictionary:data];
+            NSLog(@"member url: %@", member.profilePicURL);
             YPOMemberDetails * memberDetails = [[YPOMemberDetails alloc]init];
             memberDetails.memberID = self.memberID;
             memberDetails.context = localContext;

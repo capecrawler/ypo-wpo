@@ -133,7 +133,7 @@
     if (_fetchRequest != nil) {
         return _fetchRequest;
     }
-    _fetchRequest = [YPOEvent MR_requestAllSortedBy:@"startDate" ascending:YES];
+    _fetchRequest = [YPOEvent MR_requestAllSortedBy:@"startDate" ascending:YES inContext:[NSManagedObjectContext MR_defaultContext]];
     [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
     [_fetchRequest setFetchBatchSize:BATCHSIZE];
     return _fetchRequest;
@@ -222,7 +222,7 @@
         EventDetailsViewController *controller = (EventDetailsViewController *)segue.destinationViewController;
         NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] firstObject];
         YPOEvent * event = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
-        controller.event = event;
+        controller.eventID = event.eventID;
         [self.collectionView deselectItemAtIndexPath:selectedIndexPath animated:YES];
     }
 }

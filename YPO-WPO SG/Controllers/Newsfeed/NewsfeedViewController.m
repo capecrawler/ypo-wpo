@@ -109,7 +109,7 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
     } else if ([controller isKindOfClass:[MemberDetailsViewController class]]) {
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
         MemberDetailsViewController *memberController = (MemberDetailsViewController *)controller;
-        memberController.member = self.members[selectedIndexPath.row];
+        memberController.memberID = [self.members[selectedIndexPath.row] memberID];
         [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
     }
 }

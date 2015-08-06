@@ -30,8 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *mobileButton;
 @property (weak, nonatomic) IBOutlet UIButton *homeButton;
 @property (weak, nonatomic) IBOutlet UIButton *businessButton;
-
-
+@property (nonatomic, strong) YPOMember *member;
 
 @end
 
@@ -64,31 +63,34 @@
     mask.path = circlePath.CGPath;
     self.profileView.layer.mask = mask;
     
-    [self processMemberDetails];
+    [self fetchMemberDetails];
     [self loadData];
     
     [self.emailButton addTarget:self action:@selector(sendEmail) forControlEvents:UIControlEventTouchUpInside];
     [self.mobileButton addTarget:self action:@selector(callMobile) forControlEvents:UIControlEventTouchUpInside];
     [self.homeButton addTarget:self action:@selector(callHome) forControlEvents:UIControlEventTouchUpInside];
     [self.businessButton addTarget:self action:@selector(callBusiness) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 
 - (void)loadData {
     YPOMemberDetailsRequest *request = (YPOMemberDetailsRequest *)[YPOMemberDetails constructRequest];
-    request.memberID = self.member.memberID;
+    request.memberID = self.memberID;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-        [self processMemberDetails];
+    [self fetchMemberDetails];
     } failure:nil];
 }
 
 
-
-- (void)processMemberDetails {
+- (void)fetchMemberDetails{
+    if (self.member == nil) {
+        self.nameLabel.text = @" ";
+        self.chapterLabel.text = @" ";
+        return;
+    }
     self.nameLabel.text = self.member.name;
     self.chapterLabel.text = self.member.chapter;
-    [self loadProfileImageView];
+    [self.profileView sd_setImageWithURL:[NSURL URLWithString:self.member.profilePicURL]];
     
     if ([self.member.company.name isNotEmpty]) {
         self.companyLabel.text = self.member.company.name;
@@ -117,38 +119,6 @@
         [self.businessButton setTitle:self.member.contactDetails.business forState:UIControlStateNormal];
         self.businessButton.enabled = YES;
     }
-}
-
-
-- (void)loadProfileImageView {
-    [self.profileView sd_setImageWithURL:[NSURL URLWithString:self.member.profilePicURL]];
-    /*
-    __weak UIImageView *weakImageView = self.profileView;
-    [[YPOImageCache sharedImageCache] queryDiskCacheForKey:self.member.profilePicURL done:^(UIImage *image, SDImageCacheType cacheType) {
-        if (image == nil) {
-            [SDWebImageDownloader.sharedDownloader downloadImageWithURL:[NSURL URLWithString: self.member.profilePicURL]
-                                                                                 options:0
-                                                                                progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                                                                    // progression tracking code
-                                                                                } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-                                                                                    if (image && finished) {
-                                                                                        // do something with image
-                                                                                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                                                                                            UIImage *roundedImage = [image roundedImage];
-                                                                                            [[YPOImageCache sharedImageCache] storeImage:roundedImage forKey:self.member.profilePicURL];
-                                                                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                                                                                if (weakImageView != nil) {
-                                                                                                    weakImageView.image = roundedImage;
-                                                                                                }
-                                                                                            });
-                                                                                        });
-                                                                                    }
-                                                                                }];
-        } else {
-            self.profileView.image = image;
-        }
-    }];
-     */
 }
 
 
@@ -203,6 +173,14 @@
             [[UIApplication sharedApplication] openURL:aURL];
         }
     }
+}
+
+
+- (YPOMember *)member {
+    if (_member == nil) {
+        _member = [YPOMember MR_findFirstByAttribute:@"memberID" withValue:self.memberID inContext:[NSManagedObjectContext MR_defaultContext]];
+    }
+    return _member;
 }
 
 

@@ -7,10 +7,9 @@
 //
 
 #import "BaseViewController.h"
-@class YPOEvent;
 
 @interface EventDetailsViewController : BaseViewController
 
-@property (nonatomic, strong) YPOEvent *event;
+@property (nonatomic, strong) NSNumber *eventID;
 
 @end

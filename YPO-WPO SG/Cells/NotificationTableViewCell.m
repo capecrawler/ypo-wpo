@@ -48,6 +48,11 @@
         [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:range];
         range = [text rangeOfString:notification.articleTitle];
         [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:range];
+    } else if ([notification.type isEqualToString:@"member"]) {
+        NSString *text = [NSString stringWithFormat:@"%@ has joined the group.", notification.title];
+        attributedString = [[NSMutableAttributedString alloc] initWithString:text];
+        NSRange range = [text rangeOfString:notification.title];
+        [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:range];
     } else {
         NSString *text = [NSString stringWithFormat:@"%@", notification.title];
         attributedString = [[NSMutableAttributedString alloc] initWithString:text];

@@ -7,10 +7,9 @@
 //
 
 #import "BaseViewController.h"
-@class YPOMember;
 
 @interface MemberDetailsViewController : BaseViewController
 
-@property (nonatomic, strong) YPOMember *member;
+@property (nonatomic, copy) NSNumber *memberID;
 
 @end
