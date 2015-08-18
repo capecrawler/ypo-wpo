@@ -36,7 +36,7 @@ NSString * const SLKTextViewPastedItemData =                        @"SLKTextVie
 // The keyboard commands available for external keyboards
 @property (nonatomic, strong) NSArray *keyboardCommands;
 
-// Used for moving the care up/down
+// Used for moving the caret up/down
 @property (nonatomic) UITextLayoutDirection verticalMoveDirection;
 @property (nonatomic) CGRect verticalMoveStartCaretRect;
 @property (nonatomic) CGRect verticalMoveLastCaretRect;
@@ -175,7 +175,7 @@ NSString * const SLKTextViewPastedItemData =                        @"SLKTextVie
 {
     NSString *contentType = [self slk_pasteboardContentType];
     NSData *data = [[UIPasteboard generalPasteboard] dataForPasteboardType:contentType];
-
+    
     if (data && [data isKindOfClass:[NSData class]])
     {
         SLKPastableMediaType mediaType = SLKPastableMediaTypeFromNSString(contentType);
@@ -422,14 +422,6 @@ SLKPastableMediaType SLKPastableMediaTypeFromNSString(NSString *string)
 }
 
 
-#pragma mark - UITextInputTraits Overrides
-
-- (void)insertText:(NSString *)text
-{
-    [super insertText:text];
-}
-
-
 #pragma mark - UIResponder Overrides
 
 - (BOOL)canBecomeFirstResponder
@@ -475,7 +467,7 @@ SLKPastableMediaType SLKPastableMediaTypeFromNSString(NSString *string)
         && self.selectedRange.length > 0) {
         return YES;
     }
-
+    
     if (action == @selector(paste:) && [self slk_isPasteboardItemSupported]) {
         return YES;
     }

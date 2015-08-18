@@ -137,6 +137,12 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
 
 
 - (void)purgeAllData {
+    [YPOEvent purgeData];
+}
+
+
+
+- (void)deleteAllData {
     [YPOEvent MR_truncateAll];
     [YPOMember MR_truncateAll];
     [YPOArticle MR_truncateAll];

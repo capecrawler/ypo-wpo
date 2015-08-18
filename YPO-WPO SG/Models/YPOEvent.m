@@ -7,6 +7,13 @@
 //
 
 #import "YPOEvent.h"
+#import "UIColor+Hex.h"
+
+@interface YPOEvent()
+
+@property (nonatomic, strong) NSAttributedString *formattedDescriptionAttributedString;
+
+@end
 
 
 @implementation YPOEvent
@@ -23,6 +30,11 @@
 @dynamic longitude;
 @dynamic capacityLimit;
 @dynamic parking;
+@dynamic registrationStatus;
+@dynamic resource;
+@dynamic eventDescription;
+
+@synthesize formattedDescriptionAttributedString;
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
     [super parseDictionary:dictionary];
@@ -44,6 +56,10 @@
         self.capacityLimit  = venue[@"capacity_limit"];
         self.parking        = venue[@"parking"];
     }
+    self.registrationStatus = dictionary[@"registration_status"];
+    self.resource           = dictionary[@"resource"];
+    self.eventDescription   = dictionary[@"description"];
+    
     
 }
 
@@ -53,10 +69,29 @@
     return [formatter stringFromDate:self.startDate];
 }
 
+- (NSAttributedString *)formattedDescriptionWithFont:(UIFont *)font textColor:(UIColor *)textColor{
+    if (self.formattedDescriptionAttributedString == nil) {
+        NSString *styleFont = [NSString stringWithFormat:@"<style>body{font-family: '%@';font-size: %fpx; color:%@} p{display:inline;}</style>", font.fontName, font.pointSize, textColor.hexString];
+        NSString *htmlString = [self.eventDescription stringByAppendingString:styleFont];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+        self.formattedDescriptionAttributedString = attributedString;
+    }
+    return self.formattedDescriptionAttributedString;
+}
+
 + (YPOHTTPRequest *)constructRequest {
     YPOEventRequest *request = [[YPOEventRequest alloc] init];
     request.function = @"events.list";
     return request;
+}
+
++ (void)purgeData {
+    NSDate *finishedEventDate = [NSDate new];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"endDate < %@", finishedEventDate];
+    NSArray *oldEvents = [YPOEvent MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+    for (YPOEvent *event in oldEvents) {
+        [event MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+    }
 }
 
 

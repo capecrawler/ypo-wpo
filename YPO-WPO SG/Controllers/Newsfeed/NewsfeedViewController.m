@@ -136,7 +136,7 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
     // Members
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setMonth:-1];
+    [offsetComponents setYear:-1];
     NSDate *oneMonthAgo = [gregorian dateByAddingComponents:offsetComponents toDate:[NSDate date] options:0];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"joinedDate >= %@", oneMonthAgo];

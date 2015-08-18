@@ -81,7 +81,7 @@
 // DZNEmptyDataSet
 #define COCOAPODS_POD_AVAILABLE_DZNEmptyDataSet
 #define COCOAPODS_VERSION_MAJOR_DZNEmptyDataSet 1
-#define COCOAPODS_VERSION_MINOR_DZNEmptyDataSet 6
+#define COCOAPODS_VERSION_MINOR_DZNEmptyDataSet 7
 #define COCOAPODS_VERSION_PATCH_DZNEmptyDataSet 1
 
 // DateTools
@@ -129,6 +129,12 @@
 // SlackTextViewController
 #define COCOAPODS_POD_AVAILABLE_SlackTextViewController
 #define COCOAPODS_VERSION_MAJOR_SlackTextViewController 1
-#define COCOAPODS_VERSION_MINOR_SlackTextViewController 5
-#define COCOAPODS_VERSION_PATCH_SlackTextViewController 2
+#define COCOAPODS_VERSION_MINOR_SlackTextViewController 6
+#define COCOAPODS_VERSION_PATCH_SlackTextViewController 0
+
+// TTTAttributedLabel
+#define COCOAPODS_POD_AVAILABLE_TTTAttributedLabel
+#define COCOAPODS_VERSION_MAJOR_TTTAttributedLabel 1
+#define COCOAPODS_VERSION_MINOR_TTTAttributedLabel 13
+#define COCOAPODS_VERSION_PATCH_TTTAttributedLabel 4
 

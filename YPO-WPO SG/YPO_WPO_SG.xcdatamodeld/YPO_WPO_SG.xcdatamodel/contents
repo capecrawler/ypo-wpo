@@ -50,11 +50,14 @@
     <entity name="YPOEvent" representedClassName="YPOEvent" syncable="YES">
         <attribute name="capacityLimit" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="eventDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eventID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="parking" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="registrationStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resource" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="thumbUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
@@ -115,7 +118,7 @@
         <element name="YPOComment" positionX="-45" positionY="135" width="128" height="135"/>
         <element name="YPOCompany" positionX="-27" positionY="126" width="128" height="225"/>
         <element name="YPOContactDetails" positionX="-36" positionY="108" width="128" height="120"/>
-        <element name="YPOEvent" positionX="-45" positionY="135" width="128" height="225"/>
+        <element name="YPOEvent" positionX="-45" positionY="135" width="128" height="270"/>
         <element name="YPOForum" positionX="-45" positionY="135" width="128" height="90"/>
         <element name="YPOMember" positionX="-54" positionY="63" width="128" height="285"/>
         <element name="YPONotification" positionX="-45" positionY="135" width="128" height="210"/>

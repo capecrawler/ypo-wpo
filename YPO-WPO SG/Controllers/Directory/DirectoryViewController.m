@@ -11,8 +11,8 @@
 
 
 typedef NS_ENUM(NSUInteger, DirectoryMenu) {
-    DirectoryMenuMembers = 0,
-    DirectoryMenuNewMembers,
+    DirectoryMenuNewMembers = 0,
+    DirectoryMenuMembers,
     DirectoryMenuManagementCommittee,
     DirectoryMenuChapterAdministrators,
     DirectoryMenuForum,
@@ -30,10 +30,10 @@ typedef NS_ENUM(NSUInteger, DirectoryMenu) {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.menuOptions = @[NSLocalizedString(@"Members", nil),
-                         NSLocalizedString(@"New Members", nil),
+    self.menuOptions = @[NSLocalizedString(@"New Members", nil),
+                         NSLocalizedString(@"Members", nil),
                          NSLocalizedString(@"Management Committe", nil),
-                         NSLocalizedString(@"Chapter Administrators", nil),
+                         NSLocalizedString(@"Chapter Managers", nil),
                          NSLocalizedString(@"Forum", nil)];
     self.tableView.tableFooterView = [UIView new];
     

@@ -19,7 +19,7 @@ extern NSString *const YPODataFailedToLoadNotification;
 + (instancetype)sharedManager;
 
 - (void)startSync;
-
+- (void)deleteAllData;
 - (void)purgeAllData;
 
 @end

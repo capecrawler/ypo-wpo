@@ -36,6 +36,7 @@
 		ACA549751B42DC7800721346 /* YPOMember.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA549741B42DC7800721346 /* YPOMember.m */; };
 		ACADDC071B48222800B97FFC /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACADDC051B48222800B97FFC /* Fabric.framework */; };
 		ACADDC081B48222800B97FFC /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACADDC061B48222800B97FFC /* Crashlytics.framework */; };
+		ACB2C5DD1B7B63D3000FFC52 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB2C5DC1B7B63D3000FFC52 /* UIColor+Hex.m */; };
 		ACB3F5381B6A4CE400A8B279 /* YPOTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB3F5371B6A4CE400A8B279 /* YPOTabBarController.m */; };
 		ACB3F53B1B6A57B200A8B279 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACB3F53A1B6A57B200A8B279 /* ChangePasswordController.m */; };
 		ACBF24E81B70C6C600C6B0B3 /* Pods-YPO-WPO SG.adhoc.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = ACBF24E61B70C6C600C6B0B3 /* Pods-YPO-WPO SG.adhoc.xcconfig */; };
@@ -69,6 +70,7 @@
 		ACCFD7551B526CD100DA5F06 /* EventHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD7541B526CD100DA5F06 /* EventHeaderView.m */; };
 		ACCFD7581B54073C00DA5F06 /* EventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD7571B54073C00DA5F06 /* EventDetailsViewController.m */; };
 		ACD1B9DF1B6F62780051A870 /* YPOUser.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD1B9DE1B6F62780051A870 /* YPOUser.m */; };
+		ACD3F2771B834E8E00485FD3 /* YPOAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD3F2761B834E8E00485FD3 /* YPOAttributedLabel.m */; };
 		ACD916981B3E82E100A93A06 /* YPOSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD916971B3E82E100A93A06 /* YPOSyncManager.m */; };
 		ACD9169B1B3E836E00A93A06 /* YPOErrorhandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD9169A1B3E836E00A93A06 /* YPOErrorhandler.m */; };
 		ACD9169D1B3E869400A93A06 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD9169C1B3E869400A93A06 /* NewsTableViewCell.xib */; };
@@ -149,6 +151,8 @@
 		ACA549741B42DC7800721346 /* YPOMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOMember.m; sourceTree = "<group>"; };
 		ACADDC051B48222800B97FFC /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		ACADDC061B48222800B97FFC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		ACB2C5DB1B7B63D3000FFC52 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		ACB2C5DC1B7B63D3000FFC52 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		ACB3F5361B6A4CE400A8B279 /* YPOTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOTabBarController.h; sourceTree = "<group>"; };
 		ACB3F5371B6A4CE400A8B279 /* YPOTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOTabBarController.m; sourceTree = "<group>"; };
 		ACB3F5391B6A57B200A8B279 /* ChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordController.h; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 		ACCFD7571B54073C00DA5F06 /* EventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsViewController.m; sourceTree = "<group>"; };
 		ACD1B9DD1B6F62780051A870 /* YPOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOUser.h; sourceTree = "<group>"; };
 		ACD1B9DE1B6F62780051A870 /* YPOUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOUser.m; sourceTree = "<group>"; };
+		ACD3F2751B834E8E00485FD3 /* YPOAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOAttributedLabel.h; sourceTree = "<group>"; };
+		ACD3F2761B834E8E00485FD3 /* YPOAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOAttributedLabel.m; sourceTree = "<group>"; };
 		ACD916961B3E82E100A93A06 /* YPOSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOSyncManager.h; sourceTree = "<group>"; };
 		ACD916971B3E82E100A93A06 /* YPOSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOSyncManager.m; sourceTree = "<group>"; };
 		ACD916991B3E836E00A93A06 /* YPOErrorhandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOErrorhandler.h; sourceTree = "<group>"; };
@@ -286,6 +292,8 @@
 				AC74515D1B4149B200E081DC /* UIImage+CircleMask.m */,
 				ACCF4CA01B63BBBF00F40CEE /* UIImageView+YPOCache.h */,
 				ACCF4CA11B63BBBF00F40CEE /* UIImageView+YPOCache.m */,
+				ACB2C5DB1B7B63D3000FFC52 /* UIColor+Hex.h */,
+				ACB2C5DC1B7B63D3000FFC52 /* UIColor+Hex.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -328,6 +336,8 @@
 				ACCFD73E1B50D58D00DA5F06 /* EventView.xib */,
 				ACCFD7531B526CD100DA5F06 /* EventHeaderView.h */,
 				ACCFD7541B526CD100DA5F06 /* EventHeaderView.m */,
+				ACD3F2751B834E8E00485FD3 /* YPOAttributedLabel.h */,
+				ACD3F2761B834E8E00485FD3 /* YPOAttributedLabel.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -745,6 +755,7 @@
 				ACCBFA0A1B3EF685004D8446 /* MembersListViewController.m in Sources */,
 				32EA00A41B2347D400B392E2 /* BaseNavigationViewController.m in Sources */,
 				AC0605AF1B2ABB2F00EB0F5F /* UIColor+Theme.m in Sources */,
+				ACB2C5DD1B7B63D3000FFC52 /* UIColor+Hex.m in Sources */,
 				ACCF4C981B63750D00F40CEE /* YPONotification.m in Sources */,
 				ACCBFA251B3F2343004D8446 /* CircleImageView.m in Sources */,
 				32EA00A11B23351700B392E2 /* LoginViewController.m in Sources */,
@@ -757,6 +768,7 @@
 				AC0605AC1B2AB9FF00EB0F5F /* DirectoryViewController.m in Sources */,
 				32F5D5781B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld in Sources */,
 				ACCFD7371B50C29900DA5F06 /* YPOImageCache.m in Sources */,
+				ACD3F2771B834E8E00485FD3 /* YPOAttributedLabel.m in Sources */,
 				ACC993A81B29CBD3008E262E /* NewsTableViewCell.m in Sources */,
 				32EA009E1B2334D700B392E2 /* BaseTableViewController.m in Sources */,
 				ACA549671B429DF500721346 /* YPOForum.m in Sources */,

@@ -13,17 +13,51 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface EventDetailsViewController ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *resourceLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *resourceTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icResourceHeightConstraint;
+
+
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *icTimeHeightConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dateTopConstraint;
+
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *icLocationHeightConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *locationTopConstraint;
+
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *capacityTopConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *capacityLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icCapacityHeightConstraint;
+
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *icParkingHeightConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *parkingLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *parkingTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *locationTopConstraint;
+
+
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *registrationTopConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *registrationLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icRegistrationHeightConstraint;
+
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inviteesTopConstraint;
+
+@property (weak, nonatomic) IBOutlet UILabel *inviteesLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icInviteesHeightConstraint;
+
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+
 @property (nonatomic, strong) YPOEvent *event;
 
 @end
@@ -75,6 +109,16 @@
         self.typeLabel.text = self.event.type;
     }
     
+    if ([self.event.resource isNotEmpty]) {
+        self.icResourceHeightConstraint.constant = 24;
+        self.resourceTopConstraint.constant = 16;
+        self.resourceLabel.text = self.event.resource;
+    } else {
+        self.icResourceHeightConstraint.constant = 0;
+        self.resourceTopConstraint.constant = 0;
+        self.resourceLabel.text = @"";
+    }
+    
     if (self.event.endDate != nil) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"EEEE, MMM d 'at' hh:mm aa";
@@ -98,6 +142,17 @@
     }
     
     
+    if ([self.event.capacityLimit isNotEmpty]) {
+        self.icCapacityHeightConstraint.constant = 24;
+        self.capacityTopConstraint.constant = 16;
+        self.capacityLabel.text = self.event.capacityLimit;
+    } else {
+        self.icCapacityHeightConstraint.constant = 0;
+        self.capacityTopConstraint.constant = 0;
+        self.capacityLabel.text = self.event.capacityLimit;
+    }
+    
+    
     if ([self.event.parking isNotEmpty]) {
         self.icParkingHeightConstraint.constant = 24;
         self.parkingTopConstraint.constant = 16;
@@ -108,6 +163,23 @@
         self.parkingLabel.text = @"";
     }
     
+    
+    if ([self.event.registrationStatus isNotEmpty]) {
+        self.icRegistrationHeightConstraint.constant = 24;
+        self.registrationTopConstraint.constant = 16;
+        self.registrationLabel.text = self.event.registrationStatus;
+    } else {
+        self.icRegistrationHeightConstraint.constant = 0;
+        self.registrationTopConstraint.constant = 0;
+        self.registrationLabel.text = self.event.registrationStatus;
+    }
+ 
+    if ([self.event.eventDescription isNotEmpty]) {
+        self.descriptionLabel.attributedText = [self.event formattedDescriptionWithFont:self.descriptionLabel.font textColor:self.descriptionLabel.textColor];
+    } else {
+        self.descriptionLabel.text = nil;
+        self.descriptionLabel.attributedText = nil;
+    }
 
 }
 

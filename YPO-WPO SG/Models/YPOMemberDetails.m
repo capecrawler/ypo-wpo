@@ -10,6 +10,7 @@
 #import "YPOMember.h"
 #import "YPOCompany.h"
 #import "YPOContactDetails.h"
+#import "YPORole.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface YPOMemberDetails()
@@ -24,9 +25,9 @@
 - (void)parseDictionary:(NSDictionary *)dictionary {
     YPOMember *member = [YPOMember MR_findFirstByAttribute:@"memberID" withValue:self.memberID inContext:self.context];
     if (member != nil) {
-        NSDictionary *contactRaw = dictionary[@"contact"];
-        NSDictionary *companyRaw = dictionary[@"company"];
-        
+        NSDictionary    *contactRaw = dictionary[@"contact"];
+        NSDictionary    *companyRaw = dictionary[@"company"];
+        NSArray         *roles      = dictionary[@"role"];
         YPOCompany *company = member.company;
         if (company == nil) {
             company = [YPOCompany MR_createEntityInContext:self.context];
@@ -40,6 +41,16 @@
             member.contactDetails = contactDetails;
         }
         [contactDetails parseDictionary:contactRaw];
+        
+        for (NSDictionary *roleRaw in roles) {
+            NSNumber *roleID = roleRaw[@"role_id"];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"roleID == %@", roleID];
+            NSSet *roleAssigned = [member.role filteredSetUsingPredicate:predicate];
+            if (roleAssigned.count == 0) {
+                YPORole *role = [YPORole MR_findFirstByAttribute:@"roleID" withValue:roleID inContext:self.context];
+                [member addRoleObject:role];
+            }
+        }
     }
 }
 

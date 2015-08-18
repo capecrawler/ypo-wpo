@@ -29,6 +29,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UIEdgeInsets inset = self.collectionView.contentInset;
+    inset.bottom = 50;
+    self.collectionView.contentInset = inset;
+    
     self.collectionView.alwaysBounceVertical = YES;
     [self.collectionView ins_addPullToRefreshWithHeight:60.0 handler:^(UIScrollView *scrollView) {
         self.currentPage = 0;
@@ -47,6 +52,8 @@
         [self loadMoreData];
     }];
     
+    self.collectionView.ins_infiniteScrollBackgroundView.preserveContentInset = YES;
+    
     UIView <INSAnimatable> *infinityIndicator = [[INSDefaultInfiniteIndicator alloc] initWithFrame:defaultFrame];
     [self.collectionView.ins_infiniteScrollBackgroundView addSubview:infinityIndicator];
     [infinityIndicator startAnimating];
@@ -56,7 +63,7 @@
     [self.collectionView registerClass:[EventHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
     
     CSStickyHeaderFlowLayout *flowLayout = [[CSStickyHeaderFlowLayout alloc] init];
-    flowLayout.sectionInset = UIEdgeInsetsMake(-50, 0, 0, 0);
+    flowLayout.sectionInset = UIEdgeInsetsMake(-50, 0, 10, 0);
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     [self.collectionView setCollectionViewLayout:flowLayout];
     
@@ -134,6 +141,10 @@
         return _fetchRequest;
     }
     _fetchRequest = [YPOEvent MR_requestAllSortedBy:@"startDate" ascending:YES inContext:[NSManagedObjectContext MR_defaultContext]];
+    NSDate *currentDate = [NSDate new];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"endDate >= %@", currentDate];
+    _fetchRequest.predicate = predicate;
     [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
     [_fetchRequest setFetchBatchSize:BATCHSIZE];
     return _fetchRequest;

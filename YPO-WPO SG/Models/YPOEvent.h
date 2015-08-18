@@ -24,8 +24,13 @@
 @property (nonatomic, retain) NSString * longitude;
 @property (nonatomic, retain) NSString * capacityLimit;
 @property (nonatomic, retain) NSString * parking;
+@property (nonatomic, retain) NSString * registrationStatus;
+@property (nonatomic, retain) NSString * resource;
+@property (nonatomic, retain) NSString * eventDescription;
 
 - (NSString *)startMonth;
+- (NSAttributedString *)formattedDescriptionWithFont:(UIFont *)font textColor:(UIColor *)textColor;
++ (void)purgeData;
 
 @end
 

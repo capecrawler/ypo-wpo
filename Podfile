@@ -14,6 +14,7 @@ pod 'DZNEmptyDataSet'
 pod 'CSStickyHeaderFlowLayout'
 pod 'GPUImage', '~> 0.1'
 pod 'DateTools'
+pod 'TTTAttributedLabel'
 
 end
 
