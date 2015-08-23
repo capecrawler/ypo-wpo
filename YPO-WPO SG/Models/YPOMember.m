@@ -55,6 +55,10 @@
     return request;
 }
 
+- (NSString *)firstLetterName {
+    return [self.name substringToIndex:1];
+}
+
 @end
 
 

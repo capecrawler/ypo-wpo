@@ -50,6 +50,7 @@ typedef NS_ENUM(NSUInteger, MemberTypeID) {
 - (void)removeForumObject:(YPOForum *)value;
 - (void)addForum:(NSSet *)values;
 - (void)removeForum:(NSSet *)values;
+- (NSString *)firstLetterName;
 
 @end
 

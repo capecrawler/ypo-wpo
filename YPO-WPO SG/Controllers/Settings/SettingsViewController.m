@@ -21,7 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.menuOptions = @[
-//                         NSLocalizedString(@"Edit Profile", nil),
+                         NSLocalizedString(@"Edit Profile", nil),
 //                         NSLocalizedString(@"Upload Video", nil),
                          NSLocalizedString(@"Change Password", nil),
                          NSLocalizedString(@"Log out", nil)
@@ -79,8 +79,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 0) {
-        [self performSegueWithIdentifier:@"ChangePasswordController" sender:self];
+        [self performSegueWithIdentifier:@"EditProfileViewController" sender:self];
     } else if (indexPath.row == 1) {
+        [self performSegueWithIdentifier:@"ChangePasswordController" sender:self];
+    }else if (indexPath.row == 2) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"memberID"];
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];        
         [appDelegate logout];

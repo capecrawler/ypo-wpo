@@ -34,8 +34,8 @@
         _loadingData = NO;
         _currentPage = 0;
         _fetchRequest = nil;
-        _filterType = MemberFilterNew;
-        _memberTypeID = MemberTypeMembers;
+        _filterType = MemberFilterNone;
+        _memberTypeID = MemberTypeAll;
     }
     return self;
 }
@@ -84,14 +84,21 @@
     self.requestError = nil;
     YPOMemberRequest *request = (YPOMemberRequest*)[YPOMember constructRequest];
     request.page = page;
-    request.memberTypeID = self.memberTypeID;
+    request.memberTypeID = self.memberTypeID;    
     if (self.filterType == MemberFilterForum) {
         request.forumID = [self.forumFilter.forumID integerValue];
+        request.newMembers = NO;
     } else if (self.filterType == MemberFilterChapter) {
         request.chapterID = [self.chapterFilter.chapterID integerValue];
-    } else {
-        request.newMembers = YES;
+        request.newMembers = NO;
     }
+    
+    if (self.newMembers) {
+        request.newMembers = YES;
+    } else {
+        request.newMembers = NO;
+    }
+    
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         self.currentPage = page;
         if ([responseObject[@"status"] boolValue]) {
@@ -175,6 +182,7 @@
 - (void)setChapterFilter:(YPOChapter *)chapterFilter {
     _chapterFilter = chapterFilter;
     self.filterType = MemberFilterChapter;
+    self.memberTypeID = MemberTypeMembers;
     self.fetchRequest = nil;
     self.currentPage = 0;
     self.title = chapterFilter.name;
@@ -183,6 +191,7 @@
 - (void)setForumFilter:(YPOForum *)forumFilter {
     _forumFilter = forumFilter;
     self.filterType = MemberFilterForum;
+    self.memberTypeID = MemberTypeMembers;
     self.fetchRequest = nil;
     self.currentPage = 0;
     self.title = forumFilter.name;
@@ -214,14 +223,15 @@
         return _fetchRequest;
     }
     
-    if (self.filterType == MemberFilterChapter) {
-        NSLog(@"membertype--: %@", @(self.memberTypeID));
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"memberType == %@ &&  chapterOrg.chapterID == %@", @(self.memberTypeID) , self.chapterFilter.chapterID];
+    
+    if (self.filterType == MemberFilterForum) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY forum.forumID == %@", self.forumFilter.forumID];
         _fetchRequest = [YPOMember MR_requestAllSortedBy:@"name" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
         [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
         [_fetchRequest setFetchBatchSize:BATCHSIZE];
-    } else if (self.filterType == MemberFilterForum) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY forum.forumID == %@", self.forumFilter.forumID];
+    } else if (self.filterType == MemberFilterChapter) {
+        NSLog(@"membertype--: %@", @(self.memberTypeID));
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"memberType == %@ &&  chapterOrg.chapterID == %@", @(self.memberTypeID) , self.chapterFilter.chapterID];
         _fetchRequest = [YPOMember MR_requestAllSortedBy:@"name" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
         [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
         [_fetchRequest setFetchBatchSize:BATCHSIZE];
@@ -231,7 +241,12 @@
         [offsetComponents setYear:-1];
         NSDate *oneMonthAgo = [gregorian dateByAddingComponents:offsetComponents toDate:[NSDate date] options:0];
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"joinedDate >= %@", oneMonthAgo];
+        NSPredicate *predicate;
+        if (self.newMembers) {
+            predicate = [NSPredicate predicateWithFormat:@"joinedDate >= %@", oneMonthAgo];
+        } else {
+            predicate = [NSPredicate predicateWithFormat:@"memberType == %@", @(self.memberTypeID)];
+        }
         _fetchRequest = [YPOMember MR_requestAllSortedBy:@"joinedDate" ascending:NO withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
         [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
         [_fetchRequest setFetchBatchSize:BATCHSIZE];

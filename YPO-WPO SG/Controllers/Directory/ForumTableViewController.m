@@ -88,6 +88,7 @@
     if ([controller isKindOfClass:[MembersFilteredViewController class]]) {
         MembersFilteredViewController * filteredController = (MembersFilteredViewController *)controller;
         filteredController.forumFilter = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        filteredController.memberTypeID = MemberTypeAll;
     }
 }
 

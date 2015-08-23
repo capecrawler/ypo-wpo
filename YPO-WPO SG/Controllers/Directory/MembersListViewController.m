@@ -13,6 +13,7 @@
 #import <INSPullToRefresh/INSDefaultInfiniteIndicator.h>
 #import "MemberDetailsViewController.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
+#import "TableViewHeader.h"
 #define BATCHSIZE 15
 
 @interface MembersListViewController()<UISearchBarDelegate, UISearchDisplayDelegate, NSFetchedResultsControllerDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
@@ -112,7 +113,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [[self.fetchedResultsController sections] count];
 }
 
 
@@ -135,6 +136,15 @@
     
     return cell;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    TableViewHeader * headerView = [[[NSBundle mainBundle] loadNibNamed:@"TableViewHeader" owner:self options:nil] lastObject];
+    headerView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    headerView.textLabel.text = [[[self.fetchedResultsController sections] objectAtIndex:section] name];;
+    
+    return headerView;
+}
+
 
 
 #pragma mark - UITableViewDelegate
@@ -173,7 +183,7 @@
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
-    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:self.fetchRequest managedObjectContext:[NSManagedObjectContext MR_defaultContext] sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *theFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:self.fetchRequest managedObjectContext:[NSManagedObjectContext MR_defaultContext] sectionNameKeyPath:@"firstLetterName" cacheName:nil];
     _fetchedResultsController = theFetchedResultsController;
     _fetchedResultsController.delegate = self;
     return _fetchedResultsController;

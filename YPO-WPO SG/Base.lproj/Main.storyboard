@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ayk-5E-GOZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ayk-5E-GOZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -375,13 +375,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EkG-j6-G7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4062" y="-778"/>
+            <point key="canvasLocation" x="4186" y="-998"/>
         </scene>
         <!--Members-->
         <scene sceneID="kQ2-BE-H4b">
             <objects>
                 <tableViewController id="ZaO-Yu-ZSe" customClass="MembersListViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8yl-X0-qIt">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="32" sectionFooterHeight="22" id="8yl-X0-qIt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -566,7 +566,6 @@
                         <segue destination="ZaO-Yu-ZSe" kind="push" identifier="MembersListViewController" id="xPq-l1-sQR"/>
                         <segue destination="GDn-VQ-xWl" kind="push" identifier="MembersFilteredViewController" id="1US-bP-Do3"/>
                         <segue destination="neS-bm-cjZ" kind="push" identifier="ForumTableViewController" id="hNa-7Z-xU5"/>
-                        <segue destination="b9X-Sv-PBK" kind="push" identifier="ChapterTableViewController" id="lMd-TP-ycX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xn-Y3-3m9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -601,7 +600,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wcU-Lz-96d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4062" y="-1491"/>
+            <point key="canvasLocation" x="1770" y="-1911"/>
         </scene>
         <!--Chapter Administrators-->
         <scene sceneID="qbb-v1-87Y">
@@ -631,7 +630,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OiK-52-U5E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4062" y="-2153"/>
+            <point key="canvasLocation" x="1726" y="-2637"/>
         </scene>
         <!--Directory-->
         <scene sceneID="jsN-al-cwQ">
@@ -945,7 +944,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7E-uc-W7t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3334" y="-1559"/>
+            <point key="canvasLocation" x="2398" y="-1423"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="h30-YG-eqU">
@@ -1087,6 +1086,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="T66-3r-lwO"/>
                     <connections>
                         <segue destination="3bh-Bm-0lL" kind="push" identifier="ChangePasswordController" id="7Mq-HV-DyT"/>
+                        <segue destination="GUW-Ay-Slj" kind="push" identifier="EditProfileViewController" id="CSi-Dn-e2d"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6r-bb-k4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1208,6 +1208,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGK-VJ-t0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1623" y="-352"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="Rq6-P2-eST">
+            <objects>
+                <viewController id="GUW-Ay-Slj" customClass="EditProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p1d-Nu-TqM"/>
+                        <viewControllerLayoutGuide type="bottom" id="p9t-oC-ns1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Le3-FH-rHy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKm-q0-dYL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cKm-q0-dYL" secondAttribute="trailing" id="DY7-U8-iQB"/>
+                            <constraint firstItem="cKm-q0-dYL" firstAttribute="leading" secondItem="Le3-FH-rHy" secondAttribute="leading" id="W5G-EH-Ptd"/>
+                            <constraint firstItem="cKm-q0-dYL" firstAttribute="top" secondItem="Le3-FH-rHy" secondAttribute="top" id="Wm4-rc-V2f"/>
+                            <constraint firstAttribute="bottom" secondItem="cKm-q0-dYL" secondAttribute="bottom" id="sbG-WE-2Kp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="UMj-Je-zyk"/>
+                    <connections>
+                        <outlet property="scrollView" destination="cKm-q0-dYL" id="QMm-6a-Ihd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OJQ-VE-biO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2156" y="356"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -1377,10 +1410,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="zPr-BJ-IgD"/>
-        <segue reference="jgX-hT-tlG"/>
-        <segue reference="7nJ-SL-Da7"/>
         <segue reference="U6s-vm-gdh"/>
+        <segue reference="sit-nL-KgS"/>
+        <segue reference="zPr-BJ-IgD"/>
+        <segue reference="R04-LD-aOr"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.011764705882352941" green="0.27843137254901962" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
 </document>

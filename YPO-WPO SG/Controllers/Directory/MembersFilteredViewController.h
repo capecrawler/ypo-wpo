@@ -7,7 +7,7 @@
 //
 
 typedef NS_ENUM(NSUInteger, MemberFilterType) {
-    MemberFilterNew,
+    MemberFilterNone,
     MemberFilterForum,
     MemberFilterChapter,
 };
@@ -20,9 +20,10 @@ typedef NS_ENUM(NSUInteger, MemberFilterType) {
 
 @interface MembersFilteredViewController : BaseTableViewController
 
-@property (nonatomic, assign, readonly)MemberFilterType filterType;
+//@property (nonatomic, assign, readonly)MemberFilterType filterType;
 @property (nonatomic, strong) YPOChapter *chapterFilter;
 @property (nonatomic, strong) YPOForum *forumFilter;
 @property (nonatomic, assign) MemberTypeID memberTypeID;
+@property (nonatomic, assign) BOOL newMembers;
 
 @end

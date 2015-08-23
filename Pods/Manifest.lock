@@ -2,25 +2,25 @@ PODS:
   - AFNetworkActivityLogger (2.0.4):
     - AFNetworking/NSURLConnection (~> 2.0)
     - AFNetworking/NSURLSession (~> 2.0)
-  - AFNetworking (2.5.4):
-    - AFNetworking/NSURLConnection (= 2.5.4)
-    - AFNetworking/NSURLSession (= 2.5.4)
-    - AFNetworking/Reachability (= 2.5.4)
-    - AFNetworking/Security (= 2.5.4)
-    - AFNetworking/Serialization (= 2.5.4)
-    - AFNetworking/UIKit (= 2.5.4)
-  - AFNetworking/NSURLConnection (2.5.4):
+  - AFNetworking (2.6.0):
+    - AFNetworking/NSURLConnection (= 2.6.0)
+    - AFNetworking/NSURLSession (= 2.6.0)
+    - AFNetworking/Reachability (= 2.6.0)
+    - AFNetworking/Security (= 2.6.0)
+    - AFNetworking/Serialization (= 2.6.0)
+    - AFNetworking/UIKit (= 2.6.0)
+  - AFNetworking/NSURLConnection (2.6.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.4):
+  - AFNetworking/NSURLSession (2.6.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.4)
-  - AFNetworking/Security (2.5.4)
-  - AFNetworking/Serialization (2.5.4)
-  - AFNetworking/UIKit (2.5.4):
+  - AFNetworking/Reachability (2.6.0)
+  - AFNetworking/Security (2.6.0)
+  - AFNetworking/Serialization (2.6.0)
+  - AFNetworking/UIKit (2.6.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Bolts (1.2.0):
@@ -34,7 +34,9 @@ PODS:
   - DZNEmptyDataSet (1.7.1)
   - GPUImage (0.1.7)
   - INSPullToRefresh (1.0.11)
+  - JVFloatLabeledTextField (1.1.0)
   - MagicalRecord (2.3.0)
+  - MaterialControls (1.0.2)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
@@ -51,7 +53,9 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - GPUImage (~> 0.1)
   - INSPullToRefresh
+  - JVFloatLabeledTextField
   - MagicalRecord
+  - MaterialControls (~> 1.0.2)
   - SDWebImage
   - SlackTextViewController
   - SVProgressHUD
@@ -59,14 +63,16 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworkActivityLogger: 121486778117d53b3ab1c61d264b88081d0c3eee
-  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   CSStickyHeaderFlowLayout: e919dd425fa12bba1155f66d87edfe540eb8f89a
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
   DZNEmptyDataSet: 2a398066c2bf5848f7f693fb50954b5064debd12
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   INSPullToRefresh: fe1792e49a869f90389aa7761ef2a794309fe5aa
+  JVFloatLabeledTextField: ea4a3d8387ddd43724c472bb2b8ab39b79af05d4
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
+  MaterialControls: bdeeb94aa049b73f70739a5514be137d2d45c08a
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SlackTextViewController: 84e1e4b7f12a8e3691cf97ca61c934b99058a2e8
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
