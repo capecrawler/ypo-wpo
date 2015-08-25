@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="YPOArticle" representedClassName="YPOArticle" syncable="YES">
         <attribute name="articleID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
@@ -52,12 +52,16 @@
         <attribute name="endDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="eventDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eventID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <attribute name="inviteeType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inviteeTypeID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="parking" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="registrationStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="resource" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rsvpEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rsvpName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="thumbUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
@@ -70,16 +74,20 @@
         <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YPOMember" inverseName="forum" inverseEntity="YPOMember" syncable="YES"/>
     </entity>
     <entity name="YPOMember" representedClassName="YPOMember" syncable="YES">
+        <attribute name="birthdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="chapter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="chapterID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
         <attribute name="firstName" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="joinedDate" attributeType="Date" syncable="YES"/>
+        <attribute name="lastModifiedDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastName" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="memberID" attributeType="Integer 32" indexed="YES" syncable="YES"/>
         <attribute name="memberType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="middleName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="profilePicURL" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="chapterOrg" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YPOChapter" inverseName="members" inverseEntity="YPOChapter" syncable="YES"/>
         <relationship name="company" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="YPOCompany" inverseName="member" inverseEntity="YPOCompany" syncable="YES"/>
@@ -118,9 +126,9 @@
         <element name="YPOComment" positionX="-45" positionY="135" width="128" height="135"/>
         <element name="YPOCompany" positionX="-27" positionY="126" width="128" height="225"/>
         <element name="YPOContactDetails" positionX="-36" positionY="108" width="128" height="120"/>
-        <element name="YPOEvent" positionX="-45" positionY="135" width="128" height="270"/>
+        <element name="YPOEvent" positionX="-45" positionY="135" width="128" height="330"/>
         <element name="YPOForum" positionX="-45" positionY="135" width="128" height="90"/>
-        <element name="YPOMember" positionX="-54" positionY="63" width="128" height="285"/>
+        <element name="YPOMember" positionX="-54" positionY="63" width="128" height="345"/>
         <element name="YPONotification" positionX="-45" positionY="135" width="128" height="210"/>
         <element name="YPORole" positionX="-54" positionY="72" width="128" height="90"/>
         <element name="YPOUser" positionX="-45" positionY="135" width="128" height="120"/>

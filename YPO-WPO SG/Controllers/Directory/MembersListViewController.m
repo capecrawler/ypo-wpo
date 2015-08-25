@@ -22,6 +22,10 @@
 @property (nonatomic, assign) NSUInteger currentPage;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSFetchRequest *fetchRequest;
+
+@property (nonatomic, strong) NSArray *searchResult;
+@property (nonatomic, assign) BOOL                          didSelectedSearchTableViewCell;
+
 @property (nonatomic, assign) BOOL loadingData;
 @property (nonatomic, assign) NSError *requestError;
 
@@ -59,8 +63,15 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MemberTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MemberCellIdentifier"];
     self.tableView.tableFooterView = [UIView new];
+    
+    [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:@"MemberTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MemberCellIdentifier"];
+    self.searchDisplayController.searchResultsTableView.tableFooterView = [UIView new];
+    
     [self loadMoreData];
     [self fetchData];
+    
+    
+    
     
 }
 
@@ -110,14 +121,34 @@
 }
 
 
+#pragma mark - Search
+
+- (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller {
+    self.searchResult = nil;
+}
+
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    [self filter:searchString];
+    return NO;
+}
+
+-(void)filter:(NSString*)text {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(firstName BEGINSWITH[cd] %@)", text];
+    self.searchResult = [YPOMember MR_findAllWithPredicate:predicate];
+    [self.searchDisplayController.searchResultsTableView reloadData];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (self.searchDisplayController.searchResultsTableView == tableView)return 1;
     return [[self.fetchedResultsController sections] count];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.searchDisplayController.searchResultsTableView == tableView) return self.searchResult.count;
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
     return [sectionInfo numberOfObjects];
 }
@@ -132,22 +163,44 @@
     static NSString *cellId = @"MemberCellIdentifier";
     MemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     cell.showJoinedDate = NO;
-    cell.member = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if (self.searchDisplayController.searchResultsTableView == tableView) {
+        cell.member = self.searchResult[indexPath.row];
+    } else {
+        cell.member = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    }
     
     return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (self.searchDisplayController.searchResultsTableView == tableView) return nil;
     TableViewHeader * headerView = [[[NSBundle mainBundle] loadNibNamed:@"TableViewHeader" owner:self options:nil] lastObject];
     headerView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    headerView.textLabel.text = [[[self.fetchedResultsController sections] objectAtIndex:section] name];;
-    
+    headerView.textLabel.text = [[[self.fetchedResultsController sections] objectAtIndex:section] name];
     return headerView;
 }
 
 
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    if (tableView == self.searchDisplayController.searchResultsTableView) return nil;
+    return [self.fetchedResultsController sectionIndexTitles];
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    if (tableView == self.searchDisplayController.searchResultsTableView) return 0;
+    return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
+}
+
 
 #pragma mark - UITableViewDelegate
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (tableView == self.searchDisplayController.searchResultsTableView) return 0;
+    return 32;
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 76;
@@ -155,6 +208,11 @@
 
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        self.didSelectedSearchTableViewCell = YES;
+    } else {
+        self.didSelectedSearchTableViewCell = NO;
+    }
     [self performSegueWithIdentifier:@"MemberDetailsViewController" sender:self];    
 }
 
@@ -164,9 +222,17 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     id controller = [segue destinationViewController];
     if ([controller isKindOfClass:[MemberDetailsViewController class]]) {
-        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        NSIndexPath *selectedIndexPath;
+        YPOMember *member;
+        if (self.didSelectedSearchTableViewCell) {
+            selectedIndexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            member = self.searchResult[selectedIndexPath.row];
+        } else {
+            selectedIndexPath = [self.tableView indexPathForSelectedRow];
+            member = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        }
         MemberDetailsViewController *memberController = (MemberDetailsViewController *)controller;
-        memberController.memberID = [[self.fetchedResultsController objectAtIndexPath:selectedIndexPath] memberID];
+        memberController.memberID = member.memberID;
         [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
     }
 }
@@ -203,7 +269,8 @@
 #pragma mark - Fetched results controller delegate methods
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self fetchData];
+    if (!self.searchDisplayController.isActive)
+        [self fetchData];
 }
 
 

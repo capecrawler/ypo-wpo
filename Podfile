@@ -15,8 +15,8 @@ target 'YPO-WPO SG' do
     pod 'GPUImage', '~> 0.1'
     pod 'DateTools'
     pod 'TTTAttributedLabel'
-    pod 'MaterialControls', '~> 1.0.2'
     pod 'JVFloatLabeledTextField'
+    pod 'WYPopoverController', :git => 'https://github.com/nicolaschengdev/WYPopoverController.git'
 end
 
 target 'YPO-WPO SGTests' do

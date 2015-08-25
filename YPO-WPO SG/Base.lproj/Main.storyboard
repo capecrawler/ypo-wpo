@@ -385,14 +385,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableFooterView" contentMode="redraw" id="133-kG-Gcc">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="omj-4K-It0">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <outlet property="delegate" destination="ZaO-Yu-ZSe" id="uny-X5-LFy"/>
+                                <outlet property="delegate" destination="ZaO-Yu-ZSe" id="P1w-7Y-i5Y"/>
                             </connections>
                         </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dGC-GZ-Vw9">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dGC-GZ-Vw9" id="k3q-7s-ZBC">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="ZaO-Yu-ZSe" id="9yu-zt-lSe"/>
                             <outlet property="delegate" destination="ZaO-Yu-ZSe" id="Hrd-sc-K3p"/>
@@ -400,8 +408,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Members" id="a1S-eg-2h2"/>
                     <connections>
-                        <outlet property="searchBar" destination="133-kG-Gcc" id="yaz-fw-raK"/>
-                        <outlet property="searchDisplayController" destination="rGw-qG-jnQ" id="FzL-jG-ga2"/>
+                        <outlet property="searchDisplayController" destination="fbk-zZ-cXc" id="h7A-cx-EYa"/>
                         <segue destination="fkt-7y-uto" kind="push" identifier="MemberDetailsViewController" id="R04-LD-aOr"/>
                     </connections>
                 </tableViewController>
@@ -409,10 +416,18 @@
                 <searchDisplayController id="rGw-qG-jnQ">
                     <connections>
                         <outlet property="delegate" destination="ZaO-Yu-ZSe" id="uFq-AE-3Bf"/>
-                        <outlet property="searchBar" destination="133-kG-Gcc" id="3Pc-EA-utP"/>
                         <outlet property="searchContentsController" destination="ZaO-Yu-ZSe" id="xWF-H8-KBR"/>
                         <outlet property="searchResultsDataSource" destination="ZaO-Yu-ZSe" id="q7E-CH-j4o"/>
                         <outlet property="searchResultsDelegate" destination="ZaO-Yu-ZSe" id="c7j-yQ-Naz"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="fbk-zZ-cXc">
+                    <connections>
+                        <outlet property="delegate" destination="ZaO-Yu-ZSe" id="xiK-hq-KYC"/>
+                        <outlet property="searchBar" destination="omj-4K-It0" id="Qf9-ym-NqD"/>
+                        <outlet property="searchContentsController" destination="ZaO-Yu-ZSe" id="uUQ-QM-wGB"/>
+                        <outlet property="searchResultsDataSource" destination="ZaO-Yu-ZSe" id="3bW-uc-Ihk"/>
+                        <outlet property="searchResultsDelegate" destination="ZaO-Yu-ZSe" id="t9J-C5-fQd"/>
                     </connections>
                 </searchDisplayController>
             </objects>
@@ -712,7 +727,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avg-W3-uUJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="507.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="541"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OJz-i3-o5a">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
@@ -837,11 +852,25 @@
                                                     <constraint firstAttribute="height" constant="1" id="pcw-Ib-OSj"/>
                                                 </constraints>
                                             </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-rsvp" translatesAutoresizingMaskIntoConstraints="NO" id="oe1-kv-aTb">
+                                                <rect key="frame" x="16" y="507" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="HeR-HG-wob"/>
+                                                    <constraint firstAttribute="height" constant="24" id="OxH-zx-xbx"/>
+                                                    <constraint firstAttribute="width" constant="24" id="eQf-NA-39K"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="oen-Op-879"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSVP" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="2Fc-X7-qjc" customClass="YPOAttributedLabel">
+                                                <rect key="frame" x="56" y="507" width="342" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="lGy-Ez-bR4" secondAttribute="bottom" constant="16" id="1nm-6s-6nJ"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="NNE-Q3-wjC" secondAttribute="trailing" constant="8" id="1vU-xb-LqZ"/>
                                             <constraint firstItem="xEF-Gj-6xA" firstAttribute="top" secondItem="fGq-s5-GQc" secondAttribute="bottom" constant="16" id="2tW-Yo-GQR"/>
                                             <constraint firstAttribute="trailing" secondItem="clL-nu-5cz" secondAttribute="trailing" constant="16" id="4Fj-HD-ha9"/>
@@ -855,13 +884,17 @@
                                             <constraint firstItem="fGq-s5-GQc" firstAttribute="top" secondItem="MpW-IR-QQM" secondAttribute="top" constant="3" id="Bq5-Xt-gJR"/>
                                             <constraint firstItem="ylN-a3-ANg" firstAttribute="leading" secondItem="avg-W3-uUJ" secondAttribute="leadingMargin" constant="8" id="DmC-ap-dE0"/>
                                             <constraint firstAttribute="trailing" secondItem="enZ-Ne-lSO" secondAttribute="trailing" constant="16" id="FhV-LP-9pr"/>
+                                            <constraint firstItem="oe1-kv-aTb" firstAttribute="leading" secondItem="avg-W3-uUJ" secondAttribute="leading" constant="16" id="HSG-DS-Gf5"/>
                                             <constraint firstItem="uzY-rR-gKm" firstAttribute="leading" secondItem="avg-W3-uUJ" secondAttribute="leading" constant="16" id="K5U-sd-Ghz"/>
                                             <constraint firstItem="0Pe-vl-3yp" firstAttribute="leading" secondItem="avg-W3-uUJ" secondAttribute="leading" constant="16" id="MDj-74-xuo"/>
+                                            <constraint firstItem="2Fc-X7-qjc" firstAttribute="top" secondItem="lGy-Ez-bR4" secondAttribute="bottom" constant="16" id="NmP-Jl-KHx"/>
                                             <constraint firstItem="SRq-QC-ag6" firstAttribute="top" secondItem="VgW-xL-xPy" secondAttribute="top" id="Pmh-ni-ImM"/>
                                             <constraint firstItem="w0h-2I-qsC" firstAttribute="leading" secondItem="avg-W3-uUJ" secondAttribute="leadingMargin" constant="8" id="Pmr-90-aBK"/>
                                             <constraint firstAttribute="trailing" secondItem="n6W-qn-EQc" secondAttribute="trailing" constant="16" id="Q4q-Uf-wor"/>
                                             <constraint firstItem="n6W-qn-EQc" firstAttribute="top" secondItem="nux-GL-M5C" secondAttribute="bottom" constant="16" id="QaE-DA-PjQ"/>
+                                            <constraint firstItem="2Fc-X7-qjc" firstAttribute="top" secondItem="oe1-kv-aTb" secondAttribute="top" id="Tse-dD-3W8"/>
                                             <constraint firstItem="wh7-PW-TaE" firstAttribute="leading" secondItem="avg-W3-uUJ" secondAttribute="leading" constant="16" id="URA-Nb-stJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="2Fc-X7-qjc" secondAttribute="bottom" constant="16" id="X9j-qT-0b8"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="ylN-a3-ANg" secondAttribute="trailing" constant="8" id="XC2-Op-oeP"/>
                                             <constraint firstAttribute="trailing" secondItem="nux-GL-M5C" secondAttribute="trailing" constant="16" id="YhK-5A-c2k"/>
                                             <constraint firstItem="KHb-xW-o9e" firstAttribute="top" secondItem="xEF-Gj-6xA" secondAttribute="top" id="a5h-Tg-K1m"/>
@@ -876,6 +909,7 @@
                                             <constraint firstItem="xEF-Gj-6xA" firstAttribute="leading" secondItem="KHb-xW-o9e" secondAttribute="trailing" constant="16" id="f3c-NG-Qaa"/>
                                             <constraint firstItem="fGq-s5-GQc" firstAttribute="top" secondItem="clL-nu-5cz" secondAttribute="bottom" constant="16" id="fse-kJ-1Sv"/>
                                             <constraint firstItem="VgW-xL-xPy" firstAttribute="leading" secondItem="SRq-QC-ag6" secondAttribute="trailing" constant="16" id="hOt-s5-Lt6"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Fc-X7-qjc" secondAttribute="trailing" constant="16" id="kaM-Yz-5Re"/>
                                             <constraint firstItem="KHb-xW-o9e" firstAttribute="leading" secondItem="avg-W3-uUJ" secondAttribute="leading" constant="16" id="lKE-wf-h9n"/>
                                             <constraint firstItem="lGy-Ez-bR4" firstAttribute="top" secondItem="xEF-Gj-6xA" secondAttribute="bottom" constant="16" id="lxi-yW-ayI"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="fGq-s5-GQc" secondAttribute="trailing" constant="8" id="mho-us-5H6"/>
@@ -887,6 +921,7 @@
                                             <constraint firstItem="jMM-Tl-e4W" firstAttribute="leading" secondItem="avg-W3-uUJ" secondAttribute="leading" constant="16" id="qgI-Fa-zyJ"/>
                                             <constraint firstItem="nux-GL-M5C" firstAttribute="leading" secondItem="avg-W3-uUJ" secondAttribute="leading" constant="16" id="rDi-hd-FEX"/>
                                             <constraint firstItem="OJz-i3-o5a" firstAttribute="leading" secondItem="avg-W3-uUJ" secondAttribute="leading" id="thD-5W-unv"/>
+                                            <constraint firstItem="2Fc-X7-qjc" firstAttribute="leading" secondItem="oe1-kv-aTb" secondAttribute="trailing" constant="16" id="tmV-3E-65c"/>
                                             <constraint firstItem="SRq-QC-ag6" firstAttribute="leading" secondItem="avg-W3-uUJ" secondAttribute="leadingMargin" constant="8" id="uId-ag-AgA"/>
                                             <constraint firstItem="ylN-a3-ANg" firstAttribute="top" secondItem="OJz-i3-o5a" secondAttribute="bottom" constant="16" id="wFW-oU-CM1"/>
                                             <constraint firstItem="enZ-Ne-lSO" firstAttribute="leading" secondItem="avg-W3-uUJ" secondAttribute="leading" constant="16" id="x0T-MR-uga"/>
@@ -926,6 +961,7 @@
                         <outlet property="icInviteesHeightConstraint" destination="xS9-zU-B0q" id="fso-3m-9nX"/>
                         <outlet property="icLocationHeightConstraint" destination="Rh2-2G-fwU" id="3Te-Mz-PXk"/>
                         <outlet property="icParkingHeightConstraint" destination="Zfe-pU-NW2" id="p0T-el-tPY"/>
+                        <outlet property="icRSVPHeightConstraint" destination="OxH-zx-xbx" id="wO8-bL-7OJ"/>
                         <outlet property="icRegistrationHeightConstraint" destination="hv4-Lt-fkw" id="pzZ-dS-Sdr"/>
                         <outlet property="icResourceHeightConstraint" destination="0bd-3G-aNu" id="6NS-Rl-D2S"/>
                         <outlet property="icTimeHeightConstraint" destination="GaI-BW-OrM" id="rhL-rF-5uk"/>
@@ -938,6 +974,8 @@
                         <outlet property="registrationLabel" destination="xEF-Gj-6xA" id="ShI-bW-OHw"/>
                         <outlet property="registrationTopConstraint" destination="2tW-Yo-GQR" id="aDi-iC-pAc"/>
                         <outlet property="resourceLabel" destination="n6W-qn-EQc" id="C34-XB-5VV"/>
+                        <outlet property="rsvpLabel" destination="2Fc-X7-qjc" id="lJd-Uq-XT7"/>
+                        <outlet property="rsvpTopConstraint" destination="NmP-Jl-KHx" id="qJw-Tl-qcJ"/>
                         <outlet property="titleLabel" destination="enZ-Ne-lSO" id="DMJ-tO-wc0"/>
                         <outlet property="typeLabel" destination="ylN-a3-ANg" id="g3R-9o-6qv"/>
                     </connections>
@@ -1233,7 +1271,13 @@
                             <constraint firstAttribute="bottom" secondItem="cKm-q0-dYL" secondAttribute="bottom" id="sbG-WE-2Kp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="UMj-Je-zyk"/>
+                    <navigationItem key="navigationItem" title="Profile" id="UMj-Je-zyk">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="j1P-74-Zh2">
+                            <connections>
+                                <action selector="saveProfile:" destination="GUW-Ay-Slj" id="1qW-4F-vEj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="cKm-q0-dYL" id="QMm-6a-Ihd"/>
                     </connections>
@@ -1400,6 +1444,7 @@
         <image name="ic-parking" width="24" height="24"/>
         <image name="ic-registration" width="24" height="24"/>
         <image name="ic-resource" width="24" height="24"/>
+        <image name="ic-rsvp" width="24" height="24"/>
         <image name="ic-settings" width="25" height="25"/>
         <image name="ic-time" width="24" height="24"/>
         <image name="logo-ypo-login" width="526" height="160"/>

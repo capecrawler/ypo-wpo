@@ -29,14 +29,18 @@ typedef NS_ENUM(NSUInteger, MemberTypeID) {
 @property (nonatomic, retain) NSNumber * memberID;
 @property (nonatomic, retain) NSString * middleName;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * gender;
 @property (nonatomic, retain) NSString * nickname;
 @property (nonatomic, retain) NSString * profilePicURL;
 @property (nonatomic, retain) NSNumber * memberType;
+@property (nonatomic, retain) NSDate * birthdate;
 @property (nonatomic, retain) YPOCompany *company;
 @property (nonatomic, retain) YPOContactDetails *contactDetails;
 @property (nonatomic, retain) NSSet *role;
 @property (nonatomic, retain) YPOChapter *chapterOrg;
 @property (nonatomic, retain) NSSet *forum;
+@property (nonatomic, retain) NSDate *lastModifiedDate;
+@property (nonatomic, retain) NSString *passion;
 @end
 
 @interface YPOMember (CoreDataGeneratedAccessors)
@@ -51,6 +55,9 @@ typedef NS_ENUM(NSUInteger, MemberTypeID) {
 - (void)addForum:(NSSet *)values;
 - (void)removeForum:(NSSet *)values;
 - (NSString *)firstLetterName;
+- (NSString *)joinedDateFormatted;
+- (NSString *)birthdateFormatted;
+- (NSString *)genderLabel;
 
 @end
 

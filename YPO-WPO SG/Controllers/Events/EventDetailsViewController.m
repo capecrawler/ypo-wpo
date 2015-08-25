@@ -11,8 +11,10 @@
 #import "YPOEvent.h"
 #import "YPOAPIClient.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <MessageUI/MFMailComposeViewController.h>
+#import "YPOAttributedLabel.h"
 
-@interface EventDetailsViewController ()
+@interface EventDetailsViewController ()<MFMailComposeViewControllerDelegate, TTTAttributedLabelDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -55,6 +57,12 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *inviteesLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *icInviteesHeightConstraint;
+
+
+@property (weak, nonatomic) IBOutlet YPOAttributedLabel *rsvpLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rsvpTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icRSVPHeightConstraint;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
@@ -180,8 +188,84 @@
         self.descriptionLabel.text = nil;
         self.descriptionLabel.attributedText = nil;
     }
-
+    
+    
+    if ([self.event.inviteeType isNotEmpty]) {
+        self.inviteesLabel.text = self.event.inviteeType;
+        self.icInviteesHeightConstraint.constant = 24;
+        self.inviteesTopConstraint.constant = 16;
+    } else {
+        self.inviteesLabel.text = @"";
+        self.icInviteesHeightConstraint.constant = 0;
+        self.inviteesTopConstraint.constant = 0;
+    }
+    
+    
+    if ([self.event.rsvpName isNotEmpty]) {
+        self.rsvpLabel.text = self.event.rsvpName;
+        self.icRSVPHeightConstraint.constant = 24;
+        self.rsvpTopConstraint.constant = 16;
+        if ([self.event.rsvpEmail isNotEmpty]) {
+            self.rsvpLabel.activeLinkAttributes = @{(NSString *)kCTForegroundColorAttributeName : [UIColor lightGrayColor]};
+            self.rsvpLabel.linkAttributes = @{(NSString *)kCTForegroundColorAttributeName : [UIColor darkGrayColor]};
+            self.rsvpLabel.delegate = self;
+            
+            NSRange range = NSMakeRange(0, self.event.rsvpName.length);
+            [self.rsvpLabel addLinkToURL:[NSURL URLWithString:@"ypo://event/rsvp"] withRange:range];
+        }
+    } else {
+        self.rsvpLabel.text = @"";
+        self.icRSVPHeightConstraint.constant = 0;
+        self.rsvpTopConstraint.constant = 0;
+    }
+    
+    if ([self.event.rsvpEmail isNotEmpty]) {
+        UIBarButtonItem *rsvpItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic-rsvp"] style:UIBarButtonItemStylePlain target:self action:@selector(sendRSVP)];
+        self.navigationItem.rightBarButtonItem = rsvpItem;
+    }
 }
+
+
+#pragma mark - TTTAttributedLabelDelegate
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    NSString *absoluteUrl = url.absoluteString;
+    if ([absoluteUrl isEqualToString:@"ypo://event/rsvp"]) {
+        [self sendRSVP];
+    }
+}
+
+
+
+#pragma mark - Mail compose methods
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)sendRSVP{
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *composeController = [[MFMailComposeViewController alloc] init];
+        [[composeController navigationBar] setTintColor: [UIColor whiteColor]];
+        composeController.mailComposeDelegate = self;
+        
+        NSString *subject = [NSString stringWithFormat: NSLocalizedString(@"RSVP: %@", nil), self.event.title];
+        
+        [composeController setSubject:subject];
+        [composeController setMessageBody:@"" isHTML:NO];
+        [composeController setToRecipients:[NSArray arrayWithObjects:self.event.rsvpEmail, nil]];
+        
+        [self presentViewController:composeController animated:YES completion:nil];
+    } else {
+        NSString *message = NSLocalizedString(@"Device is currently unable to send email. You need to set an email account first on your device.", nil);
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Can't send email", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles: nil];
+        [alertView show];
+    }
+}
+
 
 
 #pragma mark - Properties

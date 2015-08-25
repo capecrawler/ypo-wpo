@@ -32,6 +32,10 @@
 @dynamic chapterOrg;
 @dynamic forum;
 @dynamic memberType;
+@dynamic gender;
+@dynamic birthdate;
+@dynamic lastModifiedDate;
+@dynamic passion;
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
     [super parseDictionary:dictionary];
@@ -44,8 +48,17 @@
     self.nickname = dictionary[@"nickname"];
     self.chapterID = dictionary[@"chapter_id"];
     self.chapter = dictionary[@"chapter"];
+    self.gender = dictionary[@"gender"];
+    NSString *birthdate = dictionary[@"birth_date"];
+    if (birthdate != nil) {
+        self.birthdate = [NSDate dateFromString:birthdate format:ISODateFormat];
+    }
     NSString * joinedDate = dictionary[@"chapter_joined"];
     self.joinedDate = [NSDate dateFromString:joinedDate format:ISODateFormat];
+    NSString * passion = dictionary[@"passion"];
+    if (passion != nil) {
+        self.passion = passion;
+    }
 }
 
 
@@ -58,6 +71,27 @@
 - (NSString *)firstLetterName {
     return [self.name substringToIndex:1];
 }
+
+- (NSString *)joinedDateFormatted {
+    if (self.joinedDate == nil) return @"";
+    return [self.joinedDate stringWithFormat:@"dd MMMM YYYY"];
+}
+
+- (NSString *)birthdateFormatted {
+    if (self.birthdate == nil)return @"";
+    return [self.birthdate stringWithFormat:@"dd MMMM YYYY"];
+}
+
+- (NSString *)genderLabel {
+    if ([[self.gender lowercaseString] isEqual:@"m"]) {
+        return NSLocalizedString(@"Male", nil);
+    } else if ([[self.gender lowercaseString] isEqual:@"f"]) {
+        return NSLocalizedString(@"Female", nil);
+    } else {
+        return @"";
+    }
+}
+
 
 @end
 

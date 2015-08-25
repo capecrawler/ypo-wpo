@@ -27,6 +27,11 @@
 @property (nonatomic, retain) NSString * registrationStatus;
 @property (nonatomic, retain) NSString * resource;
 @property (nonatomic, retain) NSString * eventDescription;
+@property (nonatomic, retain) NSNumber * inviteeTypeID;
+@property (nonatomic, retain) NSString * inviteeType;
+@property (nonatomic, retain) NSString * rsvpName;
+@property (nonatomic, retain) NSString * rsvpEmail;
+
 
 - (NSString *)startMonth;
 - (NSAttributedString *)formattedDescriptionWithFont:(UIFont *)font textColor:(UIColor *)textColor;

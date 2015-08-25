@@ -11,6 +11,7 @@
 #import "YPOCompany.h"
 #import "YPOContactDetails.h"
 #import "YPORole.h"
+#import "YPOChapter.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface YPOMemberDetails()
@@ -24,7 +25,14 @@
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
     YPOMember *member = [YPOMember MR_findFirstByAttribute:@"memberID" withValue:self.memberID inContext:self.context];
+    [member parseDictionary:dictionary];    
     if (member != nil) {
+        
+        NSNumber *chapterID = dictionary[@"chapter_id"];
+        YPOChapter *chapter = [YPOChapter MR_findFirstByAttribute:@"chapterID" withValue:chapterID inContext:self.context];
+        member.chapterID = chapterID;
+        member.chapterOrg = chapter;        
+        
         NSDictionary    *contactRaw = dictionary[@"contact"];
         NSDictionary    *companyRaw = dictionary[@"company"];
         NSArray         *roles      = dictionary[@"role"];
@@ -41,6 +49,8 @@
             member.contactDetails = contactDetails;
         }
         [contactDetails parseDictionary:contactRaw];
+        
+        
         
         for (NSDictionary *roleRaw in roles) {
             NSNumber *roleID = roleRaw[@"role_id"];

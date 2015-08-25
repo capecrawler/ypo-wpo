@@ -60,7 +60,7 @@
     
     [self.loginButton addTarget:self action:@selector(executeLogin) forControlEvents:UIControlEventTouchUpInside];
     
-    UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
     tapGestureRecognizer.numberOfTapsRequired = 1;
     self.view.userInteractionEnabled = YES;
     [self.view addGestureRecognizer:tapGestureRecognizer];
@@ -70,7 +70,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [notificationCenter addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     [notificationCenter addObserver:self selector:@selector(keyboardFrameDidChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
@@ -80,7 +80,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    NSNotificationCenter * notificationCenter = [NSNotificationCenter defaultCenter];
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter removeObserver:self];
     [self.backgroundSlideShow invalidateSlideShow];
 }
@@ -156,9 +156,6 @@
         [[YPOAPIClient sharedClient] GET:@"/api/v1/" parameters:param success:^(NSURLSessionDataTask *task, id responseObject) {
             if ([responseObject[@"status"] boolValue]) {
                 [SVProgressHUD dismiss];
-//                NSDictionary *data = responseObject[@"data"];
-//                NSString *memberID = data[@"member_id"];
-//                [[NSUserDefaults standardUserDefaults] setObject:memberID forKey:@"memberID"];
                 YPOUser *user = [YPOUser MR_createEntity];
                 [user parseDictionary:responseObject[@"data"]];
                 [YPOUser setCurrentUser:user];

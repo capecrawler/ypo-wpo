@@ -23,6 +23,9 @@
 		AC0605AF1B2ABB2F00EB0F5F /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0605AE1B2ABB2F00EB0F5F /* UIColor+Theme.m */; };
 		AC0605B21B2ABD1800EB0F5F /* TableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0605B11B2ABD1800EB0F5F /* TableViewHeader.m */; };
 		AC0605B41B2ABD3300EB0F5F /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0605B31B2ABD3300EB0F5F /* TableViewHeader.xib */; };
+		AC6793B81B89E6EF00A751E9 /* YPOGenderController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6793B71B89E6EF00A751E9 /* YPOGenderController.m */; };
+		AC6793BB1B89E71700A751E9 /* YPOChapterController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6793BA1B89E71700A751E9 /* YPOChapterController.m */; };
+		AC6793BE1B89FE2600A751E9 /* YPODateController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6793BD1B89FE2600A751E9 /* YPODateController.m */; };
 		AC67C27C1B415EB20054EAB9 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C27B1B415EB20054EAB9 /* CommentsViewController.m */; };
 		AC67C27F1B415F240054EAB9 /* CommentTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C27E1B415F240054EAB9 /* CommentTextView.m */; };
 		AC67C2821B4167540054EAB9 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C2811B4167540054EAB9 /* CommentTableViewCell.m */; };
@@ -70,7 +73,6 @@
 		ACCFD7551B526CD100DA5F06 /* EventHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD7541B526CD100DA5F06 /* EventHeaderView.m */; };
 		ACCFD7581B54073C00DA5F06 /* EventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCFD7571B54073C00DA5F06 /* EventDetailsViewController.m */; };
 		ACD1B9DF1B6F62780051A870 /* YPOUser.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD1B9DE1B6F62780051A870 /* YPOUser.m */; };
-		ACD28EDB1B883FCE0037FD50 /* MaterialTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD28EDA1B883FCE0037FD50 /* MaterialTextFieldCell.m */; };
 		ACD3F2771B834E8E00485FD3 /* YPOAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD3F2761B834E8E00485FD3 /* YPOAttributedLabel.m */; };
 		ACD916981B3E82E100A93A06 /* YPOSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD916971B3E82E100A93A06 /* YPOSyncManager.m */; };
 		ACD9169B1B3E836E00A93A06 /* YPOErrorhandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD9169A1B3E836E00A93A06 /* YPOErrorhandler.m */; };
@@ -131,6 +133,12 @@
 		AC0605B01B2ABD1800EB0F5F /* TableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewHeader.h; sourceTree = "<group>"; };
 		AC0605B11B2ABD1800EB0F5F /* TableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewHeader.m; sourceTree = "<group>"; };
 		AC0605B31B2ABD3300EB0F5F /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
+		AC6793B61B89E6EF00A751E9 /* YPOGenderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOGenderController.h; sourceTree = "<group>"; };
+		AC6793B71B89E6EF00A751E9 /* YPOGenderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOGenderController.m; sourceTree = "<group>"; };
+		AC6793B91B89E71700A751E9 /* YPOChapterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOChapterController.h; sourceTree = "<group>"; };
+		AC6793BA1B89E71700A751E9 /* YPOChapterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOChapterController.m; sourceTree = "<group>"; };
+		AC6793BC1B89FE2600A751E9 /* YPODateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPODateController.h; sourceTree = "<group>"; };
+		AC6793BD1B89FE2600A751E9 /* YPODateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPODateController.m; sourceTree = "<group>"; };
 		AC67C27A1B415EB20054EAB9 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
 		AC67C27B1B415EB20054EAB9 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		AC67C27D1B415F240054EAB9 /* CommentTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTextView.h; sourceTree = "<group>"; };
@@ -221,8 +229,6 @@
 		ACCFD7571B54073C00DA5F06 /* EventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsViewController.m; sourceTree = "<group>"; };
 		ACD1B9DD1B6F62780051A870 /* YPOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOUser.h; sourceTree = "<group>"; };
 		ACD1B9DE1B6F62780051A870 /* YPOUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOUser.m; sourceTree = "<group>"; };
-		ACD28ED91B883FCE0037FD50 /* MaterialTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialTextFieldCell.h; sourceTree = "<group>"; };
-		ACD28EDA1B883FCE0037FD50 /* MaterialTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialTextFieldCell.m; sourceTree = "<group>"; };
 		ACD3F2751B834E8E00485FD3 /* YPOAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOAttributedLabel.h; sourceTree = "<group>"; };
 		ACD3F2761B834E8E00485FD3 /* YPOAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOAttributedLabel.m; sourceTree = "<group>"; };
 		ACD916961B3E82E100A93A06 /* YPOSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOSyncManager.h; sourceTree = "<group>"; };
@@ -405,6 +411,12 @@
 				ACD9169A1B3E836E00A93A06 /* YPOErrorhandler.m */,
 				ACCFD7351B50C29900DA5F06 /* YPOImageCache.h */,
 				ACCFD7361B50C29900DA5F06 /* YPOImageCache.m */,
+				AC6793B61B89E6EF00A751E9 /* YPOGenderController.h */,
+				AC6793B71B89E6EF00A751E9 /* YPOGenderController.m */,
+				AC6793B91B89E71700A751E9 /* YPOChapterController.h */,
+				AC6793BA1B89E71700A751E9 /* YPOChapterController.m */,
+				AC6793BC1B89FE2600A751E9 /* YPODateController.h */,
+				AC6793BD1B89FE2600A751E9 /* YPODateController.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -521,8 +533,6 @@
 				ACFD3EEE1B860FBE00CBF6E6 /* TextFieldTableViewCell.m */,
 				ACFD3EF01B86107200CBF6E6 /* TextViewTableViewCell.h */,
 				ACFD3EF11B86107200CBF6E6 /* TextViewTableViewCell.m */,
-				ACD28ED91B883FCE0037FD50 /* MaterialTextFieldCell.h */,
-				ACD28EDA1B883FCE0037FD50 /* MaterialTextFieldCell.m */,
 			);
 			name = Cell;
 			path = Cells;
@@ -773,6 +783,7 @@
 				32F5D5751B22A81700B40ACE /* AppDelegate.m in Sources */,
 				32EA009B1B2333F300B392E2 /* BaseViewController.m in Sources */,
 				ACC9939D1B29B55B008E262E /* YPOAPIClient.m in Sources */,
+				AC6793BB1B89E71700A751E9 /* YPOChapterController.m in Sources */,
 				ACA5496F1B42AFB000721346 /* ChapterTableViewController.m in Sources */,
 				AC74515E1B4149B200E081DC /* UIImage+CircleMask.m in Sources */,
 				ACC993A01B29B5EA008E262E /* YPOConfig.m in Sources */,
@@ -799,11 +810,11 @@
 				ACD3F2771B834E8E00485FD3 /* YPOAttributedLabel.m in Sources */,
 				ACC993A81B29CBD3008E262E /* NewsTableViewCell.m in Sources */,
 				32EA009E1B2334D700B392E2 /* BaseTableViewController.m in Sources */,
-				ACD28EDB1B883FCE0037FD50 /* MaterialTextFieldCell.m in Sources */,
 				ACA549671B429DF500721346 /* YPOForum.m in Sources */,
 				ACD1B9DF1B6F62780051A870 /* YPOUser.m in Sources */,
 				ACFD3EEC1B860CFE00CBF6E6 /* LabelTableViewCell.m in Sources */,
 				ACCFD7581B54073C00DA5F06 /* EventDetailsViewController.m in Sources */,
+				AC6793B81B89E6EF00A751E9 /* YPOGenderController.m in Sources */,
 				ACCBFA0D1B3EFE86004D8446 /* MembersFilteredViewController.m in Sources */,
 				ACD916981B3E82E100A93A06 /* YPOSyncManager.m in Sources */,
 				AC67C27C1B415EB20054EAB9 /* CommentsViewController.m in Sources */,
@@ -836,6 +847,7 @@
 				ACB3F5381B6A4CE400A8B279 /* YPOTabBarController.m in Sources */,
 				D451A6A51B3A689A0083D9C2 /* YPOHTTPRequest.m in Sources */,
 				D43EDA9A1B394A9C0022FAD4 /* YPOArticle.m in Sources */,
+				AC6793BE1B89FE2600A751E9 /* YPODateController.m in Sources */,
 				D451A69F1B3A66BB0083D9C2 /* YPORole.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

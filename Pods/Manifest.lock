@@ -36,13 +36,13 @@ PODS:
   - INSPullToRefresh (1.0.11)
   - JVFloatLabeledTextField (1.1.0)
   - MagicalRecord (2.3.0)
-  - MaterialControls (1.0.2)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
   - SlackTextViewController (1.6)
   - SVProgressHUD (1.1.3)
   - TTTAttributedLabel (1.13.4)
+  - WYPopoverController (0.1.8)
 
 DEPENDENCIES:
   - AFNetworkActivityLogger (~> 2.0)
@@ -55,11 +55,20 @@ DEPENDENCIES:
   - INSPullToRefresh
   - JVFloatLabeledTextField
   - MagicalRecord
-  - MaterialControls (~> 1.0.2)
   - SDWebImage
   - SlackTextViewController
   - SVProgressHUD
   - TTTAttributedLabel
+  - WYPopoverController (from `https://github.com/nicolaschengdev/WYPopoverController.git`)
+
+EXTERNAL SOURCES:
+  WYPopoverController:
+    :git: https://github.com/nicolaschengdev/WYPopoverController.git
+
+CHECKOUT OPTIONS:
+  WYPopoverController:
+    :commit: a5fc1276f3e7ae9bfbf97f5e7b504f18005f5e92
+    :git: https://github.com/nicolaschengdev/WYPopoverController.git
 
 SPEC CHECKSUMS:
   AFNetworkActivityLogger: 121486778117d53b3ab1c61d264b88081d0c3eee
@@ -72,10 +81,10 @@ SPEC CHECKSUMS:
   INSPullToRefresh: fe1792e49a869f90389aa7761ef2a794309fe5aa
   JVFloatLabeledTextField: ea4a3d8387ddd43724c472bb2b8ab39b79af05d4
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
-  MaterialControls: bdeeb94aa049b73f70739a5514be137d2d45c08a
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SlackTextViewController: 84e1e4b7f12a8e3691cf97ca61c934b99058a2e8
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
+  WYPopoverController: a7f420833d355d868e5836415ba07ce0dbec1a27
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2

@@ -33,6 +33,10 @@
 @dynamic registrationStatus;
 @dynamic resource;
 @dynamic eventDescription;
+@dynamic inviteeTypeID;
+@dynamic inviteeType;
+@dynamic rsvpName;
+@dynamic rsvpEmail;
 
 @synthesize formattedDescriptionAttributedString;
 
@@ -59,8 +63,14 @@
     self.registrationStatus = dictionary[@"registration_status"];
     self.resource           = dictionary[@"resource"];
     self.eventDescription   = dictionary[@"description"];
+    self.inviteeType        = dictionary[@"invitee_type_name"];
+    self.inviteeTypeID      = dictionary[@"invitee_type_id"];
     
-    
+    NSDictionary *rsvp      = dictionary[@"rsvp_to"];
+    if (rsvp != nil) {
+        self.rsvpEmail = rsvp[@"email"];
+        self.rsvpName = rsvp[@"name"];
+    }
 }
 
 - (NSString *)startMonth {

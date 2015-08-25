@@ -18,7 +18,7 @@
 #import <SDWebImage/SDImageCache.h>
 #import "YPOImageCache.h"
 #import "YPOUser.h"
-
+#import <WYPopoverController/WYPopoverController.h>
 
 @interface AppDelegate ()
 
@@ -37,11 +37,9 @@
     [Fabric with:@[CrashlyticsKit]];
     
     
-    if (![[[NSUserDefaults standardUserDefaults] stringForKey:@"memberID"] isNotEmpty]) {
+    if (![YPOUser currentUser]) {
         [self showLogin:YES];
     }
-
-    
     
     return YES;
 }
@@ -82,8 +80,7 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
                                                            NSFontAttributeName: [UIFont fontWithName:@"Georgia-Bold" size:18]}];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor whiteColor]];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} forState:UIControlStateNormal];
-    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} forState:UIControlStateNormal];    
 }
 
 - (void)logout {
