@@ -53,7 +53,7 @@
     self.tableView.tableFooterView = [UIView new];
     
     [self.tableView ins_addInfinityScrollWithHeight:60 handler:^(UIScrollView *scrollView) {
-        [self loadMoreData];
+//        [self loadMoreData];
     }];
     
     CGRect defaultFrame = CGRectMake(0, 0, 24, 24);
@@ -67,12 +67,9 @@
     [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:@"MemberTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MemberCellIdentifier"];
     self.searchDisplayController.searchResultsTableView.tableFooterView = [UIView new];
     
-    [self loadMoreData];
+//    [self loadMoreData];
     [self fetchData];
-    
-    
-    
-    
+
 }
 
 #pragma mark - Loading Data
@@ -261,8 +258,8 @@
         return _fetchRequest;
     }
     _fetchRequest = [YPOMember MR_requestAllSortedBy:@"name" ascending:YES];
-    [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
-    [_fetchRequest setFetchBatchSize:BATCHSIZE];
+//    [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
+//    [_fetchRequest setFetchBatchSize:BATCHSIZE];
     return _fetchRequest;
 }
 

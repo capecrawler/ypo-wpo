@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, MemberTypeID) {
     MemberTypeManagementCommittee,
 };
 
-@class YPOChapter, YPOCompany, YPOContactDetails, YPOForum, YPORole;
+@class YPOChapter, YPOCompany, YPOContactDetails, YPOForum, YPORole, YPOCountry;
 
 @interface YPOMember : YPORemoteManagedObject
 
@@ -68,6 +68,7 @@ typedef NS_ENUM(NSUInteger, MemberTypeID) {
 @property (nonatomic, assign) NSInteger roleID;
 @property (nonatomic, assign) NSInteger chapterID;
 @property (nonatomic, assign) NSInteger forumID;
+@property (nonatomic, assign) NSDate *lastUpdate;
 @property (nonatomic, assign) NSUInteger page;
 @property (nonatomic, assign) NSInteger rowCount;
 @property (nonatomic, assign) MemberTypeID memberTypeID;

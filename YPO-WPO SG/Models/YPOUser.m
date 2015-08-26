@@ -18,6 +18,7 @@ static NSString * const kYPOUserMemberIdKey = @"memberID";
 @dynamic email;
 @dynamic userName;
 @dynamic profilePictureURL;
+@dynamic lastUpdate;
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
     self.memberID = dictionary[@"member_id"];

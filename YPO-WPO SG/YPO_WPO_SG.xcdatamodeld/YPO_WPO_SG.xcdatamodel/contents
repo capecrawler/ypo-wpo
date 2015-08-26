@@ -47,6 +47,10 @@
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="member" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YPOMember" inverseName="contactDetails" inverseEntity="YPOMember" syncable="YES"/>
     </entity>
+    <entity name="YPOCountry" representedClassName="YPOCountry" syncable="YES">
+        <attribute name="countryID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
+    </entity>
     <entity name="YPOEvent" representedClassName="YPOEvent" syncable="YES">
         <attribute name="capacityLimit" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
@@ -115,6 +119,7 @@
     </entity>
     <entity name="YPOUser" representedClassName="YPOUser" syncable="YES">
         <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="lastUpdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="memberID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="profilePictureURL" attributeType="String" syncable="YES"/>
@@ -131,6 +136,7 @@
         <element name="YPOMember" positionX="-54" positionY="63" width="128" height="345"/>
         <element name="YPONotification" positionX="-45" positionY="135" width="128" height="210"/>
         <element name="YPORole" positionX="-54" positionY="72" width="128" height="90"/>
-        <element name="YPOUser" positionX="-45" positionY="135" width="128" height="120"/>
+        <element name="YPOUser" positionX="-45" positionY="135" width="128" height="135"/>
+        <element name="YPOCountry" positionX="-45" positionY="135" width="128" height="75"/>
     </elements>
 </model>

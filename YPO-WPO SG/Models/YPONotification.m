@@ -70,6 +70,20 @@
     return request;
 }
 
+
++ (void)purgeData {
+    NSFetchRequest *fetchRequest = [YPONotification MR_requestAllSortedBy:@"sorting" ascending:NO];
+    NSError *error;
+    YPONotification *last = [[[NSManagedObjectContext MR_defaultContext] executeFetchRequest:fetchRequest error:&error] lastObject];
+    if (!error && last) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"sorting < %@", last.sorting];
+        NSArray *oldNotifications = [YPONotification MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+        for (YPONotification *notification in oldNotifications) {
+            [notification MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+        }
+    }
+}
+
 @end
 
 
@@ -108,6 +122,7 @@
         }];
     }
 }
+
 
 
 @end

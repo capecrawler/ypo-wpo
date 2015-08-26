@@ -15,5 +15,6 @@
 - (void)signIn;
 - (void)logout;
 - (void)showLogin:(BOOL)show;
+- (double) getDidEnteredBGTimestamp;
 @end
 

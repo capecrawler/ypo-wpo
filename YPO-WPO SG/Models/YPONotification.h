@@ -24,6 +24,8 @@
 @property (nonatomic, retain) NSNumber * articleID;
 @property (nonatomic, retain) NSString * articleTitle;
 
++ (void)purgeData;
+
 @end
 
 

@@ -59,6 +59,9 @@
 		ACCBFA221B3F1DDB004D8446 /* NSString+NotEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA211B3F1DDB004D8446 /* NSString+NotEmpty.m */; };
 		ACCBFA251B3F2343004D8446 /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCBFA241B3F2343004D8446 /* CircleImageView.m */; };
 		ACCDA5FB1B5E9911007A14A9 /* css in Resources */ = {isa = PBXBuildFile; fileRef = ACCDA5FA1B5E9911007A14A9 /* css */; };
+		ACCDF32E1B8DF47900933E33 /* YPOCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCDF32D1B8DF47900933E33 /* YPOCountry.m */; };
+		ACCDF3311B8DF5FF00933E33 /* YPOCountryController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCDF3301B8DF5FF00933E33 /* YPOCountryController.m */; };
+		ACCDF3341B8DF9AB00933E33 /* KeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCDF3331B8DF9AB00933E33 /* KeyboardAccessoryView.m */; };
 		ACCF4C981B63750D00F40CEE /* YPONotification.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCF4C971B63750D00F40CEE /* YPONotification.m */; };
 		ACCF4C9C1B6377F700F40CEE /* NotificationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCF4C9B1B6377F700F40CEE /* NotificationTableViewController.m */; };
 		ACCF4C9F1B637DCA00F40CEE /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCF4C9E1B637DCA00F40CEE /* NotificationTableViewCell.m */; };
@@ -202,6 +205,12 @@
 		ACCBFA231B3F2343004D8446 /* CircleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleImageView.h; sourceTree = "<group>"; };
 		ACCBFA241B3F2343004D8446 /* CircleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleImageView.m; sourceTree = "<group>"; };
 		ACCDA5FA1B5E9911007A14A9 /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; path = css; sourceTree = "<group>"; };
+		ACCDF32C1B8DF47900933E33 /* YPOCountry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOCountry.h; sourceTree = "<group>"; };
+		ACCDF32D1B8DF47900933E33 /* YPOCountry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOCountry.m; sourceTree = "<group>"; };
+		ACCDF32F1B8DF5FF00933E33 /* YPOCountryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOCountryController.h; sourceTree = "<group>"; };
+		ACCDF3301B8DF5FF00933E33 /* YPOCountryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOCountryController.m; sourceTree = "<group>"; };
+		ACCDF3321B8DF9AB00933E33 /* KeyboardAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardAccessoryView.h; sourceTree = "<group>"; };
+		ACCDF3331B8DF9AB00933E33 /* KeyboardAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardAccessoryView.m; sourceTree = "<group>"; };
 		ACCF4C961B63750D00F40CEE /* YPONotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPONotification.h; sourceTree = "<group>"; };
 		ACCF4C971B63750D00F40CEE /* YPONotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPONotification.m; sourceTree = "<group>"; };
 		ACCF4C9A1B6377F700F40CEE /* NotificationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewController.h; sourceTree = "<group>"; };
@@ -359,6 +368,8 @@
 				ACCFD7541B526CD100DA5F06 /* EventHeaderView.m */,
 				ACD3F2751B834E8E00485FD3 /* YPOAttributedLabel.h */,
 				ACD3F2761B834E8E00485FD3 /* YPOAttributedLabel.m */,
+				ACCDF3321B8DF9AB00933E33 /* KeyboardAccessoryView.h */,
+				ACCDF3331B8DF9AB00933E33 /* KeyboardAccessoryView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -366,6 +377,8 @@
 		32EA00971B2332C200B392E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ACCDF32C1B8DF47900933E33 /* YPOCountry.h */,
+				ACCDF32D1B8DF47900933E33 /* YPOCountry.m */,
 				ACD1B9DD1B6F62780051A870 /* YPOUser.h */,
 				ACD1B9DE1B6F62780051A870 /* YPOUser.m */,
 				ACCF4C961B63750D00F40CEE /* YPONotification.h */,
@@ -417,6 +430,8 @@
 				AC6793BA1B89E71700A751E9 /* YPOChapterController.m */,
 				AC6793BC1B89FE2600A751E9 /* YPODateController.h */,
 				AC6793BD1B89FE2600A751E9 /* YPODateController.m */,
+				ACCDF32F1B8DF5FF00933E33 /* YPOCountryController.h */,
+				ACCDF3301B8DF5FF00933E33 /* YPOCountryController.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -780,6 +795,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACA549641B429DF500721346 /* YPOChapter.m in Sources */,
+				ACCDF3311B8DF5FF00933E33 /* YPOCountryController.m in Sources */,
 				32F5D5751B22A81700B40ACE /* AppDelegate.m in Sources */,
 				32EA009B1B2333F300B392E2 /* BaseViewController.m in Sources */,
 				ACC9939D1B29B55B008E262E /* YPOAPIClient.m in Sources */,
@@ -819,6 +835,7 @@
 				ACD916981B3E82E100A93A06 /* YPOSyncManager.m in Sources */,
 				AC67C27C1B415EB20054EAB9 /* CommentsViewController.m in Sources */,
 				AC67C2821B4167540054EAB9 /* CommentTableViewCell.m in Sources */,
+				ACCDF3341B8DF9AB00933E33 /* KeyboardAccessoryView.m in Sources */,
 				ACA549751B42DC7800721346 /* YPOMember.m in Sources */,
 				ACCF4C9C1B6377F700F40CEE /* NotificationTableViewController.m in Sources */,
 				AC67C27F1B415F240054EAB9 /* CommentTextView.m in Sources */,
@@ -836,6 +853,7 @@
 				ACCBFA191B3F0A69004D8446 /* YPOContactDetails.m in Sources */,
 				ACA549721B42DC1500721346 /* YPOMemberDetails.m in Sources */,
 				ACCBFA1C1B3F0A69004D8446 /* YPOCompany.m in Sources */,
+				ACCDF32E1B8DF47900933E33 /* YPOCountry.m in Sources */,
 				AC0605B21B2ABD1800EB0F5F /* TableViewHeader.m in Sources */,
 				ACCFD7551B526CD100DA5F06 /* EventHeaderView.m in Sources */,
 				D43EDA9D1B394F970022FAD4 /* NSDate+InternetDate.m in Sources */,

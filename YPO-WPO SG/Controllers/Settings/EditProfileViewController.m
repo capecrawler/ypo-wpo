@@ -21,7 +21,8 @@
 #import "YPODateController.h"
 #import "YPOChapter.h"
 #import "YPOChapterController.h"
-
+#import "YPOCountryController.h"
+#import "YPOCountry.h"
 
 typedef NS_ENUM(NSInteger, ProfileField) {
     ProfileFieldFirstName,
@@ -50,7 +51,7 @@ typedef NS_ENUM(NSInteger, ProfileField) {
 };
 
 
-@interface EditProfileViewController()<UITextFieldDelegate, UITextViewDelegate, YPODateControllerDelegate, YPOGenderControllerDelegate, YPOChapterControllerDelegate>
+@interface EditProfileViewController()<UITextFieldDelegate, UITextViewDelegate, YPODateControllerDelegate, YPOGenderControllerDelegate, YPOChapterControllerDelegate,YPOCountryControllerDelegate>
 
 @property (nonatomic, strong) JVFloatLabeledTextField *firstNameTextField;
 @property (nonatomic, strong) JVFloatLabeledTextField *lastNameTextField;
@@ -84,6 +85,7 @@ typedef NS_ENUM(NSInteger, ProfileField) {
 @property (assign, nonatomic) BOOL keyboardVisible;
 @property (nonatomic, assign) UIEdgeInsets scrollViewInset;
 @property (nonatomic, strong) YPOChapter *chapter;
+@property (nonatomic, strong) YPOCountry *country;
 @end
 
 
@@ -145,6 +147,7 @@ typedef NS_ENUM(NSInteger, ProfileField) {
 
 - (void)fetchMemberDetails{
     self.chapter = self.member.chapterOrg;
+    self.country = [YPOCountry MR_findFirstByAttribute:@"countryID" withValue:self.member.company.countryID];
     
     self.firstNameTextField.text = self.member.firstName;
     self.lastNameTextField.text = self.member.lastName;
@@ -211,7 +214,7 @@ typedef NS_ENUM(NSInteger, ProfileField) {
                                  @"company_address2": self.companyAddress2TextView.text,
                                  @"company_city": self.cityTextField.text,
                                  @"company_province": self.provinceTextField.text,
-                                 @"company_country_id": @"1",
+                                 @"company_country_id": self.country.countryID,
                                  @"company_zip_code": self.zipCodeTextField.text,
                                  @"company_website": self.websiteTextField.text,
                                  };
@@ -255,6 +258,11 @@ typedef NS_ENUM(NSInteger, ProfileField) {
         controller.delegate = self;
         [controller show];
         return NO;
+    } else if (textField == self.countryLabel) {
+        YPOCountryController *controller = [[YPOCountryController alloc] init];
+        controller.countryDelegate = self;
+        [controller presentPopoverFromRect:textField.bounds inView:textField];
+        return NO;
     }
     return YES;
 }
@@ -293,6 +301,13 @@ typedef NS_ENUM(NSInteger, ProfileField) {
     } else if (controller.tag == ProfileFieldChapterJoinedDate) {
         self.chapterJoinedDateLabel.text = [date stringWithFormat:@"dd MMMM yyyy"];
     }
+}
+
+#pragma mark - YPOCountryControllerDelegate
+
+- (void)countryController:(YPOCountryController *)controller didSelectCountry:(YPOCountry *)country {
+    self.country = country;
+    self.countryLabel.text = self.country.name;
 }
 
 

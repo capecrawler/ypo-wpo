@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * userName;
 @property (nonatomic, retain) NSString * profilePictureURL;
+@property (nonatomic, retain) NSDate * lastUpdate;
 
 + (YPOUser *)currentUser;
 + (void)setCurrentUser:(YPOUser *)user;

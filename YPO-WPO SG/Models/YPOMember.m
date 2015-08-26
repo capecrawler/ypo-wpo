@@ -127,6 +127,10 @@
         [params setObject:@(self.forumID) forKey:@"forum_id"];
     }
     [params setObject:@(self.memberTypeID) forKey:@"member_type_id"];
+    if (self.lastUpdate != nil) {
+        NSString *date = [self.lastUpdate stringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
+        [params setObject:date forKey:@"last_modified"];
+    }
     
     
     return params;

@@ -18,7 +18,9 @@
 #import "YPOSyncManager.h"
 #import "NewsDetailsViewController.h"
 #import "MemberDetailsViewController.h"
+#import "AppDelegate.h"
 
+#define ACCEPTABLE_INTERVAL_IN_SECONDS_TO_RESTART_ROOT 10800 // 3 hours
 
 typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
     YPONewsfeedSectionArticle = 0,
@@ -70,7 +72,8 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
 //                name:YPODataFinishedLoadingNotification
 //              object:nil];
     [dnc addObserver:self
-            selector:@selector(loadData)
+            selector:@selector(tryRefreshData)
+//            selector:@selector(loadData)
                 name:UIApplicationDidBecomeActiveNotification
               object:nil];
     [dnc addObserver:self
@@ -174,6 +177,17 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
     self.news = [[NSManagedObjectContext MR_defaultContext] executeFetchRequest:request error:nil];
     
     [self.tableView reloadData];
+}
+
+
+- (void)tryRefreshData {
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    double now = CACurrentMediaTime();
+    double before = [appDelegate getDidEnteredBGTimestamp];
+    double difference = now - before;
+    if (difference > ACCEPTABLE_INTERVAL_IN_SECONDS_TO_RESTART_ROOT){
+        [self loadData];
+    }
 }
 
 
