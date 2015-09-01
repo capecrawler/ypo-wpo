@@ -145,7 +145,6 @@
     static NSString *cellId = @"MemberCellIdentifier";
     MemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     cell.member = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSLog(@"membertype: %@",cell.member.memberType);
     
     return cell;
 }

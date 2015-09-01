@@ -206,7 +206,7 @@
     formatter.dateFormat = @"MMM";
     header.monthLabel.text = [formatter stringFromDate:event.startDate];
     formatter.dateFormat = @"dd";
-    header.dateLabel.text = [formatter stringFromDate:event.endDate];
+    header.dateLabel.text = [formatter stringFromDate:event.startDate];
     
     return header;
 }
