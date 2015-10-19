@@ -120,7 +120,7 @@
     if ([self.event.resource isNotEmpty]) {
         self.icResourceHeightConstraint.constant = 24;
         self.resourceTopConstraint.constant = 16;
-        self.resourceLabel.text = self.event.resource;
+        self.resourceLabel.attributedText = [self.event formattedResourceWithFont:self.resourceLabel.font textColor:self.resourceLabel.textColor];
     } else {
         self.icResourceHeightConstraint.constant = 0;
         self.resourceTopConstraint.constant = 0;

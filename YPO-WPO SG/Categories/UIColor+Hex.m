@@ -10,7 +10,7 @@
 
 @implementation UIColor (Hex)
 
-- (NSString *)hexString{
+- (NSString *)hexValue{
     const CGFloat *components = CGColorGetComponents(self.CGColor);
     
     CGFloat r = components[0];

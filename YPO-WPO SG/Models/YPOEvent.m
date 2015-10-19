@@ -12,6 +12,7 @@
 @interface YPOEvent()
 
 @property (nonatomic, strong) NSAttributedString *formattedDescriptionAttributedString;
+@property (nonatomic, strong) NSAttributedString *formattedResourceAttributedString;
 
 @end
 
@@ -39,6 +40,7 @@
 @dynamic rsvpEmail;
 
 @synthesize formattedDescriptionAttributedString;
+@synthesize formattedResourceAttributedString;
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
     [super parseDictionary:dictionary];
@@ -81,13 +83,36 @@
 
 - (NSAttributedString *)formattedDescriptionWithFont:(UIFont *)font textColor:(UIColor *)textColor{
     if (self.formattedDescriptionAttributedString == nil) {
-        NSString *styleFont = [NSString stringWithFormat:@"<style>body{font-family: '%@';font-size: %fpx; color:%@} p{display:inline;}</style>", font.fontName, font.pointSize, textColor.hexString];
-        NSString *htmlString = [self.eventDescription stringByAppendingString:styleFont];
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil];
-        self.formattedDescriptionAttributedString = attributedString;
+        self.formattedDescriptionAttributedString = [self formattedString:self.eventDescription font:font textColor:textColor];
     }
     return self.formattedDescriptionAttributedString;
 }
+
+- (NSAttributedString *)formattedResourceWithFont:(UIFont *)font textColor:(UIColor *)textColor{
+    if (self.formattedResourceAttributedString == nil) {
+        self.formattedResourceAttributedString = [self formattedString:self.resource font:font textColor:textColor];
+    }
+    return self.formattedResourceAttributedString;
+}
+
+- (NSAttributedString *)formattedString:(NSString *)text font:(UIFont *)font textColor:(UIColor *)textColor{
+    NSString *styleFont = [NSString stringWithFormat:@"<style>body, p, li, span {font-family: '%@';font-size: %fpx; color:%@} p{display:inline;}</style>",
+                           font.fontName,
+                           font.pointSize,
+                           textColor.hexValue];
+    NSString *htmlString = [text stringByAppendingString:styleFont];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:
+                                                   [htmlString dataUsingEncoding:NSUTF8StringEncoding]
+                                                                                          options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType}
+                                                                               documentAttributes:nil
+                                                                                            error:nil];
+//    [attributedString addAttribute:NSForegroundColorAttributeName value:textColor range:];
+    return attributedString;
+
+}
+
+
+
 
 + (YPOHTTPRequest *)constructRequest {
     YPOEventRequest *request = [[YPOEventRequest alloc] init];

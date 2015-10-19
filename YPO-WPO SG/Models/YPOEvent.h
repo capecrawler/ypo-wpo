@@ -35,6 +35,7 @@
 
 - (NSString *)startMonth;
 - (NSAttributedString *)formattedDescriptionWithFont:(UIFont *)font textColor:(UIColor *)textColor;
+- (NSAttributedString *)formattedResourceWithFont:(UIFont *)font textColor:(UIColor *)textColor;
 + (void)purgeData;
 
 @end
