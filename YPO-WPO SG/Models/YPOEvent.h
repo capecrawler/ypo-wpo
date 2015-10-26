@@ -31,11 +31,11 @@
 @property (nonatomic, retain) NSString * inviteeType;
 @property (nonatomic, retain) NSString * rsvpName;
 @property (nonatomic, retain) NSString * rsvpEmail;
+@property (nonatomic, retain) NSString * dayChairName;
+@property (nonatomic, retain) NSString * cancellationPolicy;
 
 
 - (NSString *)startMonth;
-- (NSAttributedString *)formattedDescriptionWithFont:(UIFont *)font textColor:(UIColor *)textColor;
-- (NSAttributedString *)formattedResourceWithFont:(UIFont *)font textColor:(UIColor *)textColor;
 + (void)purgeData;
 
 @end

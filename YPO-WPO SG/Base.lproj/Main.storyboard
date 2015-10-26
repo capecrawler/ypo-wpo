@@ -712,7 +712,7 @@
                     <tabBarItem key="tabBarItem" title="Events" image="ic-events" id="gwT-Px-lW4"/>
                     <navigationItem key="navigationItem" title="Events" id="Ipm-sA-hCV"/>
                     <connections>
-                        <segue destination="p3v-Yh-kiP" kind="push" identifier="EventDetailsViewController" id="U6s-vm-gdh"/>
+                        <segue destination="Zck-64-ryJ" kind="push" identifier="EventDetailsViewController" id="7LE-WR-FjD"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6rP-GC-uOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -720,18 +720,37 @@
             <point key="canvasLocation" x="1069" y="-1687"/>
         </scene>
         <!--Details-->
+        <scene sceneID="hBv-gd-OBV">
+            <objects>
+                <tableViewController id="Zck-64-ryJ" customClass="EventDetailsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pgk-Mj-7pv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Zck-64-ryJ" id="lyR-h9-zF0"/>
+                            <outlet property="delegate" destination="Zck-64-ryJ" id="dQG-tn-bUP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Details" id="Ywf-3i-1Ba"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LcJ-ao-bNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1770" y="-1266"/>
+        </scene>
+        <!--Details-->
         <scene sceneID="JeC-un-NMD">
             <objects>
-                <viewController id="p3v-Yh-kiP" customClass="EventDetailsViewController" sceneMemberID="viewController">
+                <viewController id="p3v-Yh-kiP" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AeH-0j-FHC"/>
                         <viewControllerLayoutGuide type="bottom" id="Obz-WP-qQh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lDV-sX-Srk">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwc-Df-oGi">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hwc-Df-oGi">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avg-W3-uUJ">
@@ -1083,9 +1102,9 @@
                     <tabBarItem key="tabBarItem" title="Notifications" image="ic-notifications" id="3kD-ci-xUL"/>
                     <navigationItem key="navigationItem" title="Notifications" id="A7q-hj-lSJ"/>
                     <connections>
-                        <segue destination="p3v-Yh-kiP" kind="push" identifier="EventDetailsViewController" id="fWZ-hx-ehc"/>
                         <segue destination="akR-dP-DY8" kind="push" identifier="NewsDetailsViewController" id="7nJ-SL-Da7"/>
                         <segue destination="fkt-7y-uto" kind="push" identifier="MemberDetailsViewController" id="jgX-hT-tlG"/>
+                        <segue destination="Zck-64-ryJ" kind="push" identifier="EventDetailsViewController" id="kxn-wt-eek"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AbY-Yn-LhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1464,10 +1483,10 @@
         <image name="logo-ypo-login" width="526" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U6s-vm-gdh"/>
-        <segue reference="sit-nL-KgS"/>
         <segue reference="zPr-BJ-IgD"/>
-        <segue reference="R04-LD-aOr"/>
+        <segue reference="7LE-WR-FjD"/>
+        <segue reference="jgX-hT-tlG"/>
+        <segue reference="7nJ-SL-Da7"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.011764705882352941" green="0.27843137254901962" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
 </document>

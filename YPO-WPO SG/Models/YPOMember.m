@@ -49,6 +49,11 @@
     self.chapterID = dictionary[@"chapter_id"];
     self.chapter = dictionary[@"chapter"];
     self.gender = dictionary[@"gender"];
+    
+    NSNumber *memberTypeID = dictionary[@"member_type_id"];
+    if (memberTypeID != nil) {
+        self.memberType = memberTypeID;
+    }
     NSString *birthdate = dictionary[@"birth_date"];
     if (birthdate != nil) {
         self.birthdate = [NSDate dateFromString:birthdate format:ISODateFormat];
@@ -147,7 +152,7 @@
                     member = [YPOMember MR_createEntityInContext:localContext];
                 }
                 [member parseDictionary:raw];
-                member.memberType = @(self.memberTypeID);
+//                member.memberType = @(self.memberTypeID);
                 if (self.chapterID != -1) {
                     YPOChapter *chapter = [YPOChapter MR_findFirstByAttribute:@"chapterID" withValue:@(self.chapterID) inContext:localContext];
                     if (chapter != nil)

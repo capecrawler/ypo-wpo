@@ -38,6 +38,8 @@
 @dynamic inviteeType;
 @dynamic rsvpName;
 @dynamic rsvpEmail;
+@dynamic cancellationPolicy;
+@dynamic dayChairName;
 
 @synthesize formattedDescriptionAttributedString;
 @synthesize formattedResourceAttributedString;
@@ -67,7 +69,9 @@
     self.eventDescription   = dictionary[@"description"];
     self.inviteeType        = dictionary[@"invitee_type_name"];
     self.inviteeTypeID      = dictionary[@"invitee_type_id"];
-    
+    self.dayChairName       = dictionary[@"day_chair_name"];
+    self.cancellationPolicy = dictionary[@"cancellation_policy"];
+
     NSDictionary *rsvp      = dictionary[@"rsvp_to"];
     if (rsvp != nil) {
         self.rsvpEmail = rsvp[@"email"];
@@ -80,39 +84,6 @@
     formatter.dateFormat = @"MMMM dd, yyyy";
     return [formatter stringFromDate:self.startDate];
 }
-
-- (NSAttributedString *)formattedDescriptionWithFont:(UIFont *)font textColor:(UIColor *)textColor{
-    if (self.formattedDescriptionAttributedString == nil) {
-        self.formattedDescriptionAttributedString = [self formattedString:self.eventDescription font:font textColor:textColor];
-    }
-    return self.formattedDescriptionAttributedString;
-}
-
-- (NSAttributedString *)formattedResourceWithFont:(UIFont *)font textColor:(UIColor *)textColor{
-    if (self.formattedResourceAttributedString == nil) {
-        self.formattedResourceAttributedString = [self formattedString:self.resource font:font textColor:textColor];
-    }
-    return self.formattedResourceAttributedString;
-}
-
-- (NSAttributedString *)formattedString:(NSString *)text font:(UIFont *)font textColor:(UIColor *)textColor{
-    NSString *styleFont = [NSString stringWithFormat:@"<style>body, p, li, span {font-family: '%@';font-size: %fpx; color:%@} p{display:inline;}</style>",
-                           font.fontName,
-                           font.pointSize,
-                           textColor.hexValue];
-    NSString *htmlString = [text stringByAppendingString:styleFont];
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:
-                                                   [htmlString dataUsingEncoding:NSUTF8StringEncoding]
-                                                                                          options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType}
-                                                                               documentAttributes:nil
-                                                                                            error:nil];
-//    [attributedString addAttribute:NSForegroundColorAttributeName value:textColor range:];
-    return attributedString;
-
-}
-
-
-
 
 + (YPOHTTPRequest *)constructRequest {
     YPOEventRequest *request = [[YPOEventRequest alloc] init];

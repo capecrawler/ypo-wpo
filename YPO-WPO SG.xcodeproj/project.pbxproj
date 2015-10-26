@@ -83,6 +83,10 @@
 		ACD9169F1B3E870300A93A06 /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD9169E1B3E870300A93A06 /* MemberTableViewCell.xib */; };
 		ACD916A21B3E899000A93A06 /* NSDate+FormattedString.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD916A11B3E899000A93A06 /* NSDate+FormattedString.m */; };
 		ACD916A51B3E906A00A93A06 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD916A41B3E906A00A93A06 /* NewsViewController.m */; };
+		ACF490731BDDBDF8002DE753 /* EventDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF490711BDDBDF8002DE753 /* EventDetailsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		ACF490741BDDBDF8002DE753 /* EventDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF490721BDDBDF8002DE753 /* EventDetailsTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		ACF490771BDDBFA1002DE753 /* EventDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF490761BDDBFA1002DE753 /* EventDetailsView.m */; settings = {ASSET_TAGS = (); }; };
+		ACF490791BDDBFB4002DE753 /* EventDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF490781BDDBFB4002DE753 /* EventDetailsView.xib */; settings = {ASSET_TAGS = (); }; };
 		ACFD3EE91B85DD7000CBF6E6 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFD3EE81B85DD7000CBF6E6 /* EditProfileViewController.m */; };
 		ACFD3EEC1B860CFE00CBF6E6 /* LabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFD3EEB1B860CFE00CBF6E6 /* LabelTableViewCell.m */; };
 		ACFD3EEF1B860FBE00CBF6E6 /* TextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFD3EEE1B860FBE00CBF6E6 /* TextFieldTableViewCell.m */; };
@@ -250,6 +254,13 @@
 		ACD916A11B3E899000A93A06 /* NSDate+FormattedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FormattedString.m"; sourceTree = "<group>"; };
 		ACD916A31B3E906A00A93A06 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		ACD916A41B3E906A00A93A06 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		ACEFF8D41BD793BB00CF3F7D /* YPO_WPO_SG 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YPO_WPO_SG 2.xcdatamodel"; sourceTree = "<group>"; };
+		ACF490701BDDBDF8002DE753 /* EventDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsTableViewCell.h; sourceTree = "<group>"; };
+		ACF490711BDDBDF8002DE753 /* EventDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsTableViewCell.m; sourceTree = "<group>"; };
+		ACF490721BDDBDF8002DE753 /* EventDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		ACF490751BDDBFA1002DE753 /* EventDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsView.h; sourceTree = "<group>"; };
+		ACF490761BDDBFA1002DE753 /* EventDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsView.m; sourceTree = "<group>"; };
+		ACF490781BDDBFB4002DE753 /* EventDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailsView.xib; sourceTree = "<group>"; };
 		ACFD3EE71B85DD7000CBF6E6 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		ACFD3EE81B85DD7000CBF6E6 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		ACFD3EEA1B860CFE00CBF6E6 /* LabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelTableViewCell.h; sourceTree = "<group>"; };
@@ -370,6 +381,9 @@
 				ACD3F2761B834E8E00485FD3 /* YPOAttributedLabel.m */,
 				ACCDF3321B8DF9AB00933E33 /* KeyboardAccessoryView.h */,
 				ACCDF3331B8DF9AB00933E33 /* KeyboardAccessoryView.m */,
+				ACF490751BDDBFA1002DE753 /* EventDetailsView.h */,
+				ACF490761BDDBFA1002DE753 /* EventDetailsView.m */,
+				ACF490781BDDBFB4002DE753 /* EventDetailsView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -548,6 +562,9 @@
 				ACFD3EEE1B860FBE00CBF6E6 /* TextFieldTableViewCell.m */,
 				ACFD3EF01B86107200CBF6E6 /* TextViewTableViewCell.h */,
 				ACFD3EF11B86107200CBF6E6 /* TextViewTableViewCell.m */,
+				ACF490701BDDBDF8002DE753 /* EventDetailsTableViewCell.h */,
+				ACF490711BDDBDF8002DE753 /* EventDetailsTableViewCell.m */,
+				ACF490721BDDBDF8002DE753 /* EventDetailsTableViewCell.xib */,
 			);
 			name = Cell;
 			path = Cells;
@@ -721,6 +738,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACF490741BDDBDF8002DE753 /* EventDetailsTableViewCell.xib in Resources */,
 				ACCDA5FB1B5E9911007A14A9 /* css in Resources */,
 				ACCFD73F1B50D58D00DA5F06 /* EventView.xib in Resources */,
 				ACBF24E81B70C6C600C6B0B3 /* Pods-YPO-WPO SG.adhoc.xcconfig in Resources */,
@@ -728,6 +746,7 @@
 				ACD9169F1B3E870300A93A06 /* MemberTableViewCell.xib in Resources */,
 				32F5D57E1B22A81700B40ACE /* Main.storyboard in Resources */,
 				ACBF24E91B70C6C600C6B0B3 /* Pods-YPO-WPO SG.distribution.xcconfig in Resources */,
+				ACF490791BDDBFB4002DE753 /* EventDetailsView.xib in Resources */,
 				32F5D5831B22A81700B40ACE /* LaunchScreen.xib in Resources */,
 				32F5D5801B22A81700B40ACE /* Images.xcassets in Resources */,
 				ACD9169D1B3E869400A93A06 /* NewsTableViewCell.xib in Resources */,
@@ -815,6 +834,7 @@
 				32F5D5721B22A81700B40ACE /* main.m in Sources */,
 				ACFD3EEF1B860FBE00CBF6E6 /* TextFieldTableViewCell.m in Sources */,
 				ACCFD74C1B51E69900DA5F06 /* EventsCollectionViewController.m in Sources */,
+				ACF490771BDDBFA1002DE753 /* EventDetailsView.m in Sources */,
 				ACCF4C9F1B637DCA00F40CEE /* NotificationTableViewCell.m in Sources */,
 				D451A6B31B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m in Sources */,
 				ACCBFA101B3F08CC004D8446 /* MemberDetailsViewController.m in Sources */,
@@ -837,6 +857,7 @@
 				AC67C2821B4167540054EAB9 /* CommentTableViewCell.m in Sources */,
 				ACCDF3341B8DF9AB00933E33 /* KeyboardAccessoryView.m in Sources */,
 				ACA549751B42DC7800721346 /* YPOMember.m in Sources */,
+				ACF490731BDDBDF8002DE753 /* EventDetailsTableViewCell.m in Sources */,
 				ACCF4C9C1B6377F700F40CEE /* NotificationTableViewController.m in Sources */,
 				AC67C27F1B415F240054EAB9 /* CommentTextView.m in Sources */,
 				ACCFD7451B51E4FD00DA5F06 /* EventCollectionViewCell.m in Sources */,
@@ -949,7 +970,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
+				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -988,7 +1009,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
+				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1027,7 +1048,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
+				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
 			};
 			name = Debug;
 		};
@@ -1064,7 +1085,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
+				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
 			};
 			name = Release;
 		};
@@ -1138,7 +1159,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
+				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1177,7 +1198,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
+				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
 			};
 			name = Adhoc;
 		};
@@ -1231,7 +1252,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
+				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1270,7 +1291,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "01c6caa0-565b-408a-8139-2f2d342c5a25";
+				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
 			};
 			name = Distribution;
 		};
@@ -1332,9 +1353,10 @@
 		32F5D5761B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				ACEFF8D41BD793BB00CF3F7D /* YPO_WPO_SG 2.xcdatamodel */,
 				32F5D5771B22A81700B40ACE /* YPO_WPO_SG.xcdatamodel */,
 			);
-			currentVersion = 32F5D5771B22A81700B40ACE /* YPO_WPO_SG.xcdatamodel */;
+			currentVersion = ACEFF8D41BD793BB00CF3F7D /* YPO_WPO_SG 2.xcdatamodel */;
 			path = YPO_WPO_SG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

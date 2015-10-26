@@ -12,60 +12,41 @@
 #import "YPOAPIClient.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <MessageUI/MFMailComposeViewController.h>
-#import "YPOAttributedLabel.h"
+#import "EventDetailsView.h"
+#import "EventDetailsTableViewCell.h"
+#import "UIColor+Hex.h"
 
-@interface EventDetailsViewController ()<MFMailComposeViewControllerDelegate, TTTAttributedLabelDelegate>
-
-@property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *resourceLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *resourceTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icResourceHeightConstraint;
-
-
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icTimeHeightConstraint;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dateTopConstraint;
-
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icLocationHeightConstraint;
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *locationTopConstraint;
+typedef NS_ENUM(NSInteger, EventDetailsItemType) {
+    EventDetailsItemTypeResource = 0,
+    EventDetailsItemTypeDate,
+    EventDetailsItemTypeLocation,
+    EventDetailsItemTypeVenue,
+    EventDetailsItemTypeCapacity,
+    EventDetailsItemTypeParking,
+    EventDetailsItemTypeRegistration,
+    EventDetailsItemTypeInvitees,
+    EventDetailsItemTypeDayChair,
+    EventDetailsItemTypeRSVP,
+    EventDetailsItemTypeCancellation
+};
 
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *capacityTopConstraint;
-@property (weak, nonatomic) IBOutlet UILabel *capacityLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icCapacityHeightConstraint;
+@interface EventDetailsItem : NSObject
+
+@property (nonatomic, strong) NSString *imageName;
+@property (nonatomic, strong) NSString *value;
+@property (nonatomic, assign) NSInteger type;
+
+@end
+
+@implementation EventDetailsItem
+@end
 
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icParkingHeightConstraint;
-@property (weak, nonatomic) IBOutlet UILabel *parkingLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *parkingTopConstraint;
+@interface EventDetailsViewController ()<MFMailComposeViewControllerDelegate>
 
-
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *registrationTopConstraint;
-@property (weak, nonatomic) IBOutlet UILabel *registrationLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icRegistrationHeightConstraint;
-
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inviteesTopConstraint;
-
-@property (weak, nonatomic) IBOutlet UILabel *inviteesLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icInviteesHeightConstraint;
-
-
-@property (weak, nonatomic) IBOutlet YPOAttributedLabel *rsvpLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rsvpTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *icRSVPHeightConstraint;
-
-
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-
+@property (nonatomic, strong) EventDetailsView *eventDetailsView;
+@property (nonatomic, strong) NSMutableArray *eventItems;
 @property (nonatomic, strong) YPOEvent *event;
 
 @end
@@ -75,6 +56,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.tableView registerNib:[UINib nibWithNibName:@"EventDetailsTableViewCell" bundle:nil]
+         forCellReuseIdentifier:@"EventDetailsTableViewCellID"];
+    self.tableView.separatorColor = [UIColor clearColor];
     [self fetchEventDetails];
     [self loadEventDetails];
 }
@@ -84,9 +68,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (void)loadEventDetails {
-    
     NSDictionary *parameters = @{@"func" : @"event.details",
                                  @"event_id" : self.eventID};
     [[YPOAPIClient sharedClient] GET:YPOAPIPathPrefix parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -102,140 +84,197 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [SVProgressHUD showErrorWithStatus:error.localizedDescription maskType:SVProgressHUDMaskTypeBlack];
     }];
-    
 }
 
 
 - (void)fetchEventDetails{
     
-    if (self.event == nil) {
-        self.titleLabel.text = @"";
-        self.typeLabel.text = @"";
-    } else {
-        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:self.event.thumbUrl]];
-        self.titleLabel.text = self.event.title;
-        self.typeLabel.text = self.event.type;
-    }
+    [self.eventDetailsView.coverView sd_setImageWithURL:[NSURL URLWithString:self.event.thumbUrl]];
+    self.eventDetailsView.titleLabel.text = self.event.title;
+    self.eventDetailsView.eventTypeLabel.text = self.event.type;
+    self.eventDetailsView.descriptionLabel.attributedText = [self formattedString:self.event.eventDescription
+                                                                             font:self.eventDetailsView.descriptionLabel.font
+                                                                        textColor:self.eventDetailsView.descriptionLabel.textColor];
     
+    [self.eventDetailsView setNeedsLayout];
+    [self.eventDetailsView layoutIfNeeded];
+    CGFloat height = [self.eventDetailsView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    CGRect headerFrame = self.eventDetailsView.frame;
+    headerFrame.size.height = height;
+    self.eventDetailsView.frame = headerFrame;
+    self.tableView.tableHeaderView = self.eventDetailsView;
+    
+    NSMutableArray *eventItems = [[NSMutableArray alloc] init];
     if ([self.event.resource isNotEmpty]) {
-        self.icResourceHeightConstraint.constant = 24;
-        self.resourceTopConstraint.constant = 16;
-        self.resourceLabel.attributedText = [self.event formattedResourceWithFont:self.resourceLabel.font textColor:self.resourceLabel.textColor];
-    } else {
-        self.icResourceHeightConstraint.constant = 0;
-        self.resourceTopConstraint.constant = 0;
-        self.resourceLabel.text = @"";
+        EventDetailsItem *item = [[EventDetailsItem alloc] init];
+        item.imageName = @"ic-resource";
+        item.value = self.event.resource;
+        item.type = EventDetailsItemTypeResource;
+        [eventItems addObject:item];
     }
-    
+
     if (self.event.endDate != nil) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"EEEE, MMM d 'at' hh:mm aa";
-        NSString *dateString = [NSString stringWithFormat:@"%@ - %@", [formatter stringFromDate:self.event.startDate], [formatter stringFromDate:self.event.endDate]];
-        self.dateLabel.text = dateString;
-        self.icTimeHeightConstraint.constant = 24;
-    } else {
-        self.dateLabel.text = @"";
-        self.icTimeHeightConstraint.constant = 0;
+        NSString *dateString = [NSString stringWithFormat:@"%@ - %@",
+                                [formatter stringFromDate:self.event.startDate],
+                                [formatter stringFromDate:self.event.endDate]];
+        EventDetailsItem *item = [[EventDetailsItem alloc] init];
+        item.imageName = @"ic-time";
+        item.value = dateString;
+        item.type = EventDetailsItemTypeDate;
+        [eventItems addObject:item];
     }
-    
     
     if ([self.event.location isNotEmpty]) {
-        self.icLocationHeightConstraint.constant = 24;
-        self.locationTopConstraint.constant = 16;
-        self.locationLabel.text = self.event.location;
-    } else {
-        self.icLocationHeightConstraint.constant = 0;
-        self.locationTopConstraint.constant = 0;
-        self.locationLabel.text = @"";
+        EventDetailsItem *item = [[EventDetailsItem alloc] init];
+        item.imageName = @"ic-location";
+        item.value = self.event.location;
+        item.type = EventDetailsItemTypeLocation;
+        [eventItems addObject:item];
     }
-    
-    
+
     if ([self.event.capacityLimit isNotEmpty]) {
-        self.icCapacityHeightConstraint.constant = 24;
-        self.capacityTopConstraint.constant = 16;
-        self.capacityLabel.text = self.event.capacityLimit;
-    } else {
-        self.icCapacityHeightConstraint.constant = 0;
-        self.capacityTopConstraint.constant = 0;
-        self.capacityLabel.text = self.event.capacityLimit;
+        EventDetailsItem *item = [[EventDetailsItem alloc] init];
+        item.imageName = @"ic-capacity";
+        item.value = self.event.capacityLimit;
+        item.type = EventDetailsItemTypeCapacity;
+        [eventItems addObject:item];
     }
-    
     
     if ([self.event.parking isNotEmpty]) {
-        self.icParkingHeightConstraint.constant = 24;
-        self.parkingTopConstraint.constant = 16;
-        self.parkingLabel.text = self.event.parking;
-    } else {
-        self.icParkingHeightConstraint.constant = 0;
-        self.parkingTopConstraint.constant = 0;
-        self.parkingLabel.text = @"";
+        EventDetailsItem *item = [[EventDetailsItem alloc] init];
+        item.imageName = @"ic-parking";
+        item.value = self.event.parking;
+        item.type = EventDetailsItemTypeParking;
+        [eventItems addObject:item];
     }
-    
     
     if ([self.event.registrationStatus isNotEmpty]) {
-        self.icRegistrationHeightConstraint.constant = 24;
-        self.registrationTopConstraint.constant = 16;
-        self.registrationLabel.text = self.event.registrationStatus;
-    } else {
-        self.icRegistrationHeightConstraint.constant = 0;
-        self.registrationTopConstraint.constant = 0;
-        self.registrationLabel.text = self.event.registrationStatus;
+        EventDetailsItem *item = [[EventDetailsItem alloc] init];
+        item.imageName = @"ic-registration";
+        item.value = self.event.registrationStatus;
+        item.type = EventDetailsItemTypeRegistration;
+        [eventItems addObject:item];
     }
- 
-    if ([self.event.eventDescription isNotEmpty]) {
-        self.descriptionLabel.attributedText = [self.event formattedDescriptionWithFont:self.descriptionLabel.font textColor:self.descriptionLabel.textColor];
-    } else {
-        self.descriptionLabel.text = nil;
-        self.descriptionLabel.attributedText = nil;
-    }
-    
     
     if ([self.event.inviteeType isNotEmpty]) {
-        self.inviteesLabel.text = self.event.inviteeType;
-        self.icInviteesHeightConstraint.constant = 24;
-        self.inviteesTopConstraint.constant = 16;
-    } else {
-        self.inviteesLabel.text = @"";
-        self.icInviteesHeightConstraint.constant = 0;
-        self.inviteesTopConstraint.constant = 0;
+        EventDetailsItem *item = [[EventDetailsItem alloc] init];
+        item.imageName = @"ic-invitees";
+        item.value = self.event.inviteeType;
+        item.type = EventDetailsItemTypeInvitees;
+        [eventItems addObject:item];
     }
     
+    if ([self.event.dayChairName isNotEmpty]) {
+        EventDetailsItem *item = [[EventDetailsItem alloc] init];
+        item.imageName = @"ic-daychair";
+        item.value = self.event.dayChairName;
+        item.type = EventDetailsItemTypeDayChair;
+        [eventItems addObject:item];
+    }
     
     if ([self.event.rsvpName isNotEmpty]) {
-        self.rsvpLabel.text = self.event.rsvpName;
-        self.icRSVPHeightConstraint.constant = 24;
-        self.rsvpTopConstraint.constant = 16;
-        if ([self.event.rsvpEmail isNotEmpty]) {
-            self.rsvpLabel.activeLinkAttributes = @{(NSString *)kCTForegroundColorAttributeName : [UIColor lightGrayColor]};
-            self.rsvpLabel.linkAttributes = @{(NSString *)kCTForegroundColorAttributeName : [UIColor darkGrayColor]};
-            self.rsvpLabel.delegate = self;
-            
-            NSRange range = NSMakeRange(0, self.event.rsvpName.length);
-            [self.rsvpLabel addLinkToURL:[NSURL URLWithString:@"ypo://event/rsvp"] withRange:range];
-        }
-    } else {
-        self.rsvpLabel.text = @"";
-        self.icRSVPHeightConstraint.constant = 0;
-        self.rsvpTopConstraint.constant = 0;
+        EventDetailsItem *item = [[EventDetailsItem alloc] init];
+        item.imageName = @"ic-rsvp";
+        item.value = self.event.rsvpName;
+        item.type = EventDetailsItemTypeRSVP;
+        [eventItems addObject:item];
     }
     
     if ([self.event.rsvpEmail isNotEmpty]) {
         UIBarButtonItem *rsvpItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic-rsvp"] style:UIBarButtonItemStylePlain target:self action:@selector(sendRSVP)];
         self.navigationItem.rightBarButtonItem = rsvpItem;
     }
+    
+    if ([self.event.cancellationPolicy isNotEmpty]) {
+        EventDetailsItem *item = [[EventDetailsItem alloc] init];
+        item.imageName = @"ic-cancellation";
+        item.value = self.event.cancellationPolicy;
+        item.type = EventDetailsItemTypeCancellation;
+        [eventItems addObject:item];
+    }
+    
+    self.eventItems = eventItems;
+    [self.tableView reloadData];
 }
 
 
-#pragma mark - TTTAttributedLabelDelegate
+#pragma mark - UITableViewDataSource
 
-- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
-    NSString *absoluteUrl = url.absoluteString;
-    if ([absoluteUrl isEqualToString:@"ypo://event/rsvp"]) {
-        [self sendRSVP];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.eventItems.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *const cellID = @"EventDetailsTableViewCellID";
+    EventDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
+
+- (void)configureCell:(EventDetailsTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    EventDetailsItem *item = self.eventItems[indexPath.row];
+    cell.iconView.image = [[UIImage imageNamed:item.imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    if (item.type == EventDetailsItemTypeResource ||
+        item.type == EventDetailsItemTypeCancellation) {
+        cell.detailLabel.attributedText = [self formattedString:item.value
+                                                           font:cell.detailLabel.font
+                                                      textColor:cell.detailLabel.textColor];
+    } else {
+        cell.detailLabel.text = item.value;
     }
 }
 
+#pragma mark - UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    EventDetailsItem *item = self.eventItems[indexPath.row];
+    if (item.type == EventDetailsItemTypeRSVP) {
+        if ([self.event.rsvpEmail isNotEmpty]) {
+            [self sendRSVP];
+        }
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *const cellID = @"EventDetailsTableViewCellID";
+    static EventDetailsTableViewCell *cell;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        cell = [self.tableView dequeueReusableCellWithIdentifier:cellID];
+    });
+    [self configureCell:cell atIndexPath:indexPath];
+    return [self calculateHeightForConfiguredSizingCell:cell];
+}
+
+- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+    sizingCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.frame), CGRectGetHeight(sizingCell.bounds));
+    [sizingCell setNeedsLayout];
+    [sizingCell layoutIfNeeded];
+    
+    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 1.0f; // Add 1.0f for the cell separator height
+}
+
+- (NSAttributedString *)formattedString:(NSString *)text font:(UIFont *)font textColor:(UIColor *)textColor{
+    NSString *styleFont = [NSString stringWithFormat:@"<style>body, p, li, span {font-family: '%@';font-size: %fpx; color:%@} p{display:inline;}</style>",
+                           font.fontName,
+                           font.pointSize,
+                           textColor.hexValue];
+    NSString *htmlString = [text stringByAppendingString:styleFont];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:
+                                                   [htmlString dataUsingEncoding:NSUTF8StringEncoding]
+                                                                                          options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType}
+                                                                               documentAttributes:nil
+                                                                                            error:nil];
+    return attributedString;
+}
 
 #pragma mark - Mail compose methods
 
@@ -267,7 +306,6 @@
 }
 
 
-
 #pragma mark - Properties
 
 - (YPOEvent *)event {
@@ -275,6 +313,15 @@
         _event = [YPOEvent MR_findFirstByAttribute:@"eventID" withValue:self.eventID inContext:[NSManagedObjectContext MR_defaultContext]];
     }
     return _event;
+}
+
+
+- (EventDetailsView *)eventDetailsView {
+    if (_eventDetailsView == nil) {
+        _eventDetailsView = [[[NSBundle mainBundle] loadNibNamed:@"EventDetailsView" owner:self options:nil]firstObject];
+        _eventDetailsView.frame = CGRectMake(0, 0, self.tableView.bounds.size.width, 0);
+    }
+    return _eventDetailsView;
 }
 
 

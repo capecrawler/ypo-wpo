@@ -131,7 +131,7 @@
 }
 
 -(void)filter:(NSString*)text {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(firstName BEGINSWITH[cd] %@)", text];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(firstName BEGINSWITH[cd] %@) && memberType != %@", text, @(MemberTypeChapterAdmin)];
     self.searchResult = [YPOMember MR_findAllWithPredicate:predicate];
     [self.searchDisplayController.searchResultsTableView reloadData];
 }
@@ -257,7 +257,11 @@
     if (_fetchRequest != nil) {
         return _fetchRequest;
     }
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"memberType != %@", @(MemberTypeChapterAdmin)];
     _fetchRequest = [YPOMember MR_requestAllSortedBy:@"name" ascending:YES];
+    _fetchRequest.predicate = predicate;
+    NSLog(@"predicate");
 //    [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
 //    [_fetchRequest setFetchBatchSize:BATCHSIZE];
     return _fetchRequest;

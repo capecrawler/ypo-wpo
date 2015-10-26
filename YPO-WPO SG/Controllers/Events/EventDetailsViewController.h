@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Raketeers. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseTableViewController.h"
 
-@interface EventDetailsViewController : BaseViewController
+@interface EventDetailsViewController : BaseTableViewController
 
 @property (nonatomic, strong) NSNumber *eventID;
 
