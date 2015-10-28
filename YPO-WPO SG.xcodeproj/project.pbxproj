@@ -140,6 +140,7 @@
 		AC0605B01B2ABD1800EB0F5F /* TableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewHeader.h; sourceTree = "<group>"; };
 		AC0605B11B2ABD1800EB0F5F /* TableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewHeader.m; sourceTree = "<group>"; };
 		AC0605B31B2ABD3300EB0F5F /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
+		AC2A72681BE0FC8C003B7F72 /* YPO_WPO_SG 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YPO_WPO_SG 3.xcdatamodel"; sourceTree = "<group>"; };
 		AC6793B61B89E6EF00A751E9 /* YPOGenderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOGenderController.h; sourceTree = "<group>"; };
 		AC6793B71B89E6EF00A751E9 /* YPOGenderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOGenderController.m; sourceTree = "<group>"; };
 		AC6793B91B89E71700A751E9 /* YPOChapterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOChapterController.h; sourceTree = "<group>"; };
@@ -1353,10 +1354,11 @@
 		32F5D5761B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				AC2A72681BE0FC8C003B7F72 /* YPO_WPO_SG 3.xcdatamodel */,
 				ACEFF8D41BD793BB00CF3F7D /* YPO_WPO_SG 2.xcdatamodel */,
 				32F5D5771B22A81700B40ACE /* YPO_WPO_SG.xcdatamodel */,
 			);
-			currentVersion = ACEFF8D41BD793BB00CF3F7D /* YPO_WPO_SG 2.xcdatamodel */;
+			currentVersion = AC2A72681BE0FC8C003B7F72 /* YPO_WPO_SG 3.xcdatamodel */;
 			path = YPO_WPO_SG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

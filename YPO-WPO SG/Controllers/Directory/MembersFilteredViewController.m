@@ -89,8 +89,10 @@
         request.forumID = [self.forumFilter.forumID integerValue];
         request.newMembers = NO;
     } else if (self.filterType == MemberFilterChapter) {
-        request.chapterID = [self.chapterFilter.chapterID integerValue];
+//        request.chapterID = [self.chapterFilter.chapterID integerValue];
         request.newMembers = NO;
+    } else if (self.filterType == MemberFilterManagementCommittee) {
+        request.managementCommittee = YES;
     }
     
     if (self.newMembers) {
@@ -144,7 +146,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForMemberAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellId = @"MemberCellIdentifier";
     MemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    cell.member = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    YPOMember *member = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if (self.memberTypeID == MemberTypeChapterAdmin) {
+        cell.showJoinedDate = NO;
+    } else {
+        cell.showJoinedDate = YES;
+    }
+    if (self.filterType == MemberFilterManagementCommittee ||
+        self.filterType == MemberFilterChapter) {
+        cell.showRole = YES;
+    } else {
+        cell.showRole = NO;
+    }
+    
+    
+    cell.member = member;    
     
     return cell;
 }
@@ -201,6 +217,11 @@
     self.fetchRequest = nil;
 }
 
+- (void)setManagementCommittee:(BOOL)managementCommittee {
+    _managementCommittee = managementCommittee;
+    self.filterType = MemberFilterManagementCommittee;
+}
+
 - (void)setCurrentPage:(NSUInteger)currentPage {
     _currentPage = currentPage;
     [self.fetchRequest setFetchLimit:_currentPage * BATCHSIZE];
@@ -229,8 +250,13 @@
         [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
         [_fetchRequest setFetchBatchSize:BATCHSIZE];
     } else if (self.filterType == MemberFilterChapter) {
-        NSLog(@"membertype--: %@", @(self.memberTypeID));
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"memberType == %@ &&  chapterOrg.chapterID == %@", @(self.memberTypeID) , self.chapterFilter.chapterID];
+//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"memberType == %@ &&  chapterOrg.chapterID == %@", @(self.memberTypeID) , self.chapterFilter.chapterID];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"memberType == %@", @(self.memberTypeID)];
+        _fetchRequest = [YPOMember MR_requestAllSortedBy:@"name" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+        [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
+        [_fetchRequest setFetchBatchSize:BATCHSIZE];
+    } else if (self.filterType == MemberFilterManagementCommittee) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"managementCommittee == %@", @(YES)];
         _fetchRequest = [YPOMember MR_requestAllSortedBy:@"name" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
         [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
         [_fetchRequest setFetchBatchSize:BATCHSIZE];

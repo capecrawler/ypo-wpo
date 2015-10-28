@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong) YPOMember *member;
 @property (nonatomic, assign) BOOL showJoinedDate;
+@property (nonatomic, assign) BOOL showRole;
 
 @end

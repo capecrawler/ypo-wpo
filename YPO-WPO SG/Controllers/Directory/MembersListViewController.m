@@ -165,6 +165,7 @@
     } else {
         cell.member = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
+    cell.showJoinedDate = YES;
     
     return cell;
 }

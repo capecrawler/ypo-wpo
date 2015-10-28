@@ -9,6 +9,7 @@
 #import "MemberTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "YPOMember.h"
+#import "YPORole.h"
 #import "NSDate+FormattedString.h"
 
 @interface MemberTableViewCell()
@@ -52,7 +53,18 @@
 - (void)setMember:(YPOMember *)member {
     _member = member;
     self.nameLabel.text = self.member.name;
-    self.membershipLabel.text = self.member.chapter;
+    
+    if (self.showRole) {
+        YPORole *role = self.member.role.allObjects.firstObject;
+        if ([role.name isNotEmpty]) {
+            self.membershipLabel.text = role.name;
+        } else {
+            self.membershipLabel.text = self.member.chapter;
+        }
+    } else {
+        self.membershipLabel.text = self.member.chapter;
+    }
+    
     [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:self.member.profilePicURL]];
     if (self.showJoinedDate) {
         self.dateJoinedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Date Joined: %@", @"Date joined text"), [self.member.joinedDate stringWithFormat:@"dd MMMM yyyy"]];
@@ -61,6 +73,16 @@
     }
 }
 
+- (void)setShowJoinedDate:(BOOL)showJoinedDate {
+    _showJoinedDate = showJoinedDate;
+    if (showJoinedDate) {
+        if (self.member != nil){
+            self.dateJoinedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Date Joined: %@", @"Date joined text"), [self.member.joinedDate stringWithFormat:@"dd MMMM yyyy"]];
+        }
+    } else {
+        self.dateJoinedLabel.text = @"";
+    }
+}
 
 @end
 

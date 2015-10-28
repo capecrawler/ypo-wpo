@@ -111,7 +111,7 @@ typedef NS_ENUM(NSUInteger, DirectoryMenu) {
             memberFilteredController.newMembers = YES;
         }else if (selectedIndexPath.row == DirectoryMenuManagementCommittee) {
             NSLog(@"management: %lu", MemberTypeManagementCommittee);
-            memberFilteredController.memberTypeID = MemberTypeManagementCommittee;
+            memberFilteredController.managementCommittee = YES;
         } else if (selectedIndexPath.row == MemberTypeChapterAdmin){
             memberFilteredController.memberTypeID = MemberTypeChapterAdmin;
             NSLog(@"admin: %lu", MemberTypeChapterAdmin);

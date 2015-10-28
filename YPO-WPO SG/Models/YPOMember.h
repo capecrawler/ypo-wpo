@@ -41,6 +41,7 @@ typedef NS_ENUM(NSUInteger, MemberTypeID) {
 @property (nonatomic, retain) NSSet *forum;
 @property (nonatomic, retain) NSDate *lastModifiedDate;
 @property (nonatomic, retain) NSString *passion;
+@property (nonatomic, retain) NSNumber *managementCommittee;
 @end
 
 @interface YPOMember (CoreDataGeneratedAccessors)
@@ -72,5 +73,6 @@ typedef NS_ENUM(NSUInteger, MemberTypeID) {
 @property (nonatomic, assign) NSUInteger page;
 @property (nonatomic, assign) NSInteger rowCount;
 @property (nonatomic, assign) MemberTypeID memberTypeID;
+@property (nonatomic, assign) BOOL managementCommittee;
 
 @end

@@ -37,6 +37,7 @@
 @dynamic lastModifiedDate;
 @dynamic passion;
 
+
 - (void)parseDictionary:(NSDictionary *)dictionary {
     [super parseDictionary:dictionary];
     self.memberID = dictionary[@"member_id"];
@@ -131,6 +132,9 @@
     if (self.forumID != -1) {
         [params setObject:@(self.forumID) forKey:@"forum_id"];
     }
+    if (self.managementCommittee) {
+        [params setObject:@(YES) forKey:@"management_committee"];
+    }
     [params setObject:@(self.memberTypeID) forKey:@"member_type_id"];
     if (self.lastUpdate != nil) {
         NSString *date = [self.lastUpdate stringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -153,6 +157,9 @@
                 }
                 [member parseDictionary:raw];
 //                member.memberType = @(self.memberTypeID);
+                if (self.managementCommittee) {
+                    member.managementCommittee = @(YES);
+                }
                 if (self.chapterID != -1) {
                     YPOChapter *chapter = [YPOChapter MR_findFirstByAttribute:@"chapterID" withValue:@(self.chapterID) inContext:localContext];
                     if (chapter != nil)
@@ -162,6 +169,18 @@
                     if (forum != nil)
                         [forum addMembersObject:member];
                 }
+                
+                NSArray *roles = raw[@"role"];
+                for (NSDictionary *roleRaw in roles) {
+                    NSNumber *roleID = roleRaw[@"role_id"];
+                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"roleID == %@", roleID];
+                    NSSet *roleAssigned = [member.role filteredSetUsingPredicate:predicate];
+                    if (roleAssigned.count == 0) {
+                        YPORole *role = [YPORole MR_findFirstByAttribute:@"roleID" withValue:roleID inContext:localContext];
+                        [member addRoleObject:role];
+                    }
+                }
+                
             }
         }];
     }

@@ -10,6 +10,7 @@ typedef NS_ENUM(NSUInteger, MemberFilterType) {
     MemberFilterNone,
     MemberFilterForum,
     MemberFilterChapter,
+    MemberFilterManagementCommittee,
 };
 
 
@@ -25,5 +26,5 @@ typedef NS_ENUM(NSUInteger, MemberFilterType) {
 @property (nonatomic, strong) YPOForum *forumFilter;
 @property (nonatomic, assign) MemberTypeID memberTypeID;
 @property (nonatomic, assign) BOOL newMembers;
-
+@property (nonatomic, assign) BOOL managementCommittee;
 @end

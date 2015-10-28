@@ -18,6 +18,7 @@
 #import "YPOSyncManager.h"
 #import "NewsDetailsViewController.h"
 #import "MemberDetailsViewController.h"
+#import "MembersFilteredViewController.h"
 #import "AppDelegate.h"
 
 #define ACCEPTABLE_INTERVAL_IN_SECONDS_TO_RESTART_ROOT 10800 // 3 hours
@@ -114,6 +115,9 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
         MemberDetailsViewController *memberController = (MemberDetailsViewController *)controller;
         memberController.memberID = [self.members[selectedIndexPath.row] memberID];
         [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
+    } else if ([controller isKindOfClass:[MembersFilteredViewController class]]) {
+        MembersFilteredViewController * memberFilteredController = (MembersFilteredViewController *)controller;
+        memberFilteredController.newMembers = YES;
     }
 }
 
