@@ -33,7 +33,7 @@ typedef NS_ENUM(NSUInteger, DirectoryMenu) {
     
     self.menuOptions = @[NSLocalizedString(@"New Members", nil),
                          NSLocalizedString(@"Members", nil),
-                         NSLocalizedString(@"Management Committe", nil),
+                         NSLocalizedString(@"Management Committee", nil),
                          NSLocalizedString(@"Chapter Managers", nil),
                          NSLocalizedString(@"Forum", nil)];
     self.tableView.tableFooterView = [UIView new];

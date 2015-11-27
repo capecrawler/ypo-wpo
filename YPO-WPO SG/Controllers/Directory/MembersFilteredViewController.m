@@ -23,6 +23,7 @@
 @property (nonatomic, assign) BOOL loadingData;
 @property (nonatomic, assign, readwrite)MemberFilterType filterType;
 @property (nonatomic, strong) NSError *requestError;
+@property (nonatomic, strong) YPOCancellationToken *cancellationToken;
 
 @end
 
@@ -58,9 +59,15 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"MemberTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MemberCellIdentifier"];
     self.tableView.tableFooterView = [UIView new];
+    
     [self loadMoreData];
     [self fetchData];
     
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.cancellationToken cancel];
 }
 
 #pragma mark - Loading Data
@@ -82,7 +89,8 @@
 - (void)loadDataWithPage:(NSUInteger)page {
     self.loadingData = YES;
     self.requestError = nil;
-    YPOMemberRequest *request = (YPOMemberRequest*)[YPOMember constructRequest];
+    self.cancellationToken = [[YPOCancellationToken alloc] init];
+    YPOMemberRequest *request = (YPOMemberRequest*)[YPOMember constructRequest:self.cancellationToken];
     request.page = page;
     request.memberTypeID = self.memberTypeID;    
     if (self.filterType == MemberFilterForum) {
@@ -209,7 +217,11 @@
     self.memberTypeID = MemberTypeMembers;
     self.fetchRequest = nil;
     self.currentPage = 0;
-    self.title = forumFilter.name;
+    if (forumFilter != nil) {
+        self.title = forumFilter.name;
+    } else {
+        self.title = @"Not in Local Forum";
+    }
 }
 
 - (void)setMemberTypeID:(MemberTypeID)memberTypeID {
@@ -245,7 +257,9 @@
     
     
     if (self.filterType == MemberFilterForum) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY forum.forumID == %@", self.forumFilter.forumID];
+        
+        NSPredicate *predicate = nil;
+       predicate = [NSPredicate predicateWithFormat:@"ANY forum.forumID == %@", self.forumFilter.forumID];
         _fetchRequest = [YPOMember MR_requestAllSortedBy:@"name" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
         [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
         [_fetchRequest setFetchBatchSize:BATCHSIZE];
@@ -257,7 +271,7 @@
         [_fetchRequest setFetchBatchSize:BATCHSIZE];
     } else if (self.filterType == MemberFilterManagementCommittee) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"managementCommittee == %@", @(YES)];
-        _fetchRequest = [YPOMember MR_requestAllSortedBy:@"name" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+        _fetchRequest = [YPOMember MR_requestAllSortedBy:@"managementCommitteeOrder" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
         [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
         [_fetchRequest setFetchBatchSize:BATCHSIZE];
     } else {
@@ -268,7 +282,8 @@
         
         NSPredicate *predicate;
         if (self.newMembers) {
-            predicate = [NSPredicate predicateWithFormat:@"joinedDate >= %@", oneMonthAgo];
+            // YPO members only
+            predicate = [NSPredicate predicateWithFormat:@"joinedDate >= %@ && chapterOrg.chapterID == %@", oneMonthAgo, @(1)];
         } else {
             predicate = [NSPredicate predicateWithFormat:@"memberType == %@", @(self.memberTypeID)];
         }

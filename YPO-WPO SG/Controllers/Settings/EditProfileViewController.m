@@ -86,6 +86,7 @@ typedef NS_ENUM(NSInteger, ProfileField) {
 @property (nonatomic, assign) UIEdgeInsets scrollViewInset;
 @property (nonatomic, strong) YPOChapter *chapter;
 @property (nonatomic, strong) YPOCountry *country;
+@property (nonatomic, strong) YPOCancellationToken *cancellationToken;
 @end
 
 
@@ -109,6 +110,7 @@ typedef NS_ENUM(NSInteger, ProfileField) {
 - (void)viewWillDisappear:(BOOL)animated {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter removeObserver:self];
+    [self.cancellationToken cancel];
 }
 
 
@@ -135,7 +137,8 @@ typedef NS_ENUM(NSInteger, ProfileField) {
 #pragma mark - Load Data
 
 - (void)loadData {
-    YPOMemberDetailsRequest *request = (YPOMemberDetailsRequest *)[YPOMemberDetails constructRequest];
+    self.cancellationToken = [[YPOCancellationToken alloc] init];
+    YPOMemberDetailsRequest *request = (YPOMemberDetailsRequest *)[YPOMemberDetails constructRequest:self.cancellationToken];
     request.memberID = [YPOUser currentUser].memberID;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         [self fetchMemberDetails];

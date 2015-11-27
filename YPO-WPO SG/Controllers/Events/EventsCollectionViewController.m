@@ -20,6 +20,7 @@
 @property (nonatomic, assign) NSUInteger currentPage;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSFetchRequest *fetchRequest;
+@property (nonatomic, strong) YPOCancellationToken *cancellationToken;
 @end
 
 #define BATCHSIZE 15
@@ -71,6 +72,11 @@
     [self fetchData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.cancellationToken cancel];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -96,7 +102,8 @@
 
 
 - (void)loadDataWithPage:(NSUInteger)page {
-    YPOEventRequest *request = (YPOEventRequest *)[YPOEvent constructRequest];
+    self.cancellationToken = [[YPOCancellationToken alloc] init];
+    YPOEventRequest *request = (YPOEventRequest *)[YPOEvent constructRequest:self.cancellationToken];
     request.page = page;
     request.rowCount = BATCHSIZE;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {

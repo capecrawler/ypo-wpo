@@ -14,8 +14,9 @@
     
 }
 
-+ (YPOHTTPRequest *)constructRequest {
++ (YPOHTTPRequest *)constructRequest:(YPOCancellationToken *)cancellationToken {
     YPOHTTPRequest * request = [[YPOHTTPRequest alloc] init];
+    request.cancellationToken = cancellationToken;
     return request;
 }
 

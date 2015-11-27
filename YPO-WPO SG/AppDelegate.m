@@ -19,6 +19,7 @@
 #import "YPOImageCache.h"
 #import "YPOUser.h"
 #import <WYPopoverController/WYPopoverController.h>
+#import <Parse/Parse.h>
 
 #define APP_DID_ENTER_BG_TIMESTAMP @"app_did_background_timestamp"
 
@@ -42,8 +43,16 @@
     
     [[YPOSyncManager sharedManager] purgeAllData];
     if (![YPOUser currentUser]) {
+        [[YPOSyncManager sharedManager]deleteAllData];
         [self showLogin:YES];
-    }    
+    }
+    
+    [Parse setApplicationId:@"Ohujzor69llWxaI1CZ6865ecABH9DMSeoPpo2bQO"
+                  clientKey:@"tom8KEfqogegzaiNI8YMeykmWZJvAwa2T8jCwZc0"];
+    
+    
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
     
     return YES;
 }
@@ -77,6 +86,25 @@
     [[YPOImageCache sharedImageCache] cleanDisk];
 }
 
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    [application registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    NSLog(@"did register notification");
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    currentInstallation.channels = @[ @"global" ];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+    NSLog(@"notificaiton: %@", userInfo);
+}
+
 #pragma mark - AppearanceProxy
 
 - (void)configureAppearanceProxy{
@@ -105,6 +133,7 @@
 
 
 - (void)logout {
+    [[YPOSyncManager sharedManager] cancelSync];    
     [[YPOAPIClient sharedClient].operationQueue cancelAllOperations];
     [[YPOSyncManager sharedManager]deleteAllData];
     [YPOUser setCurrentUser:nil];

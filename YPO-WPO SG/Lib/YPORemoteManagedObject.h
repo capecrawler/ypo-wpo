@@ -13,7 +13,7 @@
 
 - (void)parseDictionary:(NSDictionary *)dictionary;
 
-+ (YPOHTTPRequest *)constructRequest;
++ (YPOHTTPRequest *)constructRequest:(YPOCancellationToken *)cancellationToken;
 
 
 @end

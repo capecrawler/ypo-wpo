@@ -13,6 +13,7 @@
 @interface ChapterTableViewController()<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) YPOCancellationToken *cancellationToken;
 
 @end
 
@@ -25,6 +26,11 @@
     self.tableView.tableFooterView = [UIView new];
     [self fetchData];
     [self loadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.cancellationToken cancel];
 }
 
 
@@ -41,7 +47,8 @@
 }
 
 - (void)loadData {
-    YPOChapterRequest *request = (YPOChapterRequest *)[YPOChapter constructRequest];
+    self.cancellationToken = [[YPOCancellationToken alloc] init];
+    YPOChapterRequest *request = (YPOChapterRequest *)[YPOChapter constructRequest:self.cancellationToken];
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         [self fetchData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

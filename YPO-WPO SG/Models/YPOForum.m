@@ -23,8 +23,9 @@
 }
 
 
-+ (YPOHTTPRequest *)constructRequest {
++ (YPOHTTPRequest *)constructRequest:(YPOCancellationToken *)cancellationToken {
     YPOForumRequest *request = [[YPOForumRequest alloc] init];
+    request.cancellationToken = cancellationToken;
     request.function = @"forums.list";
     return request;
 }
@@ -60,6 +61,12 @@
             NSArray *orphan = [YPOForum MR_findAllWithPredicate:predicate inContext:localContext];
             for (YPOForum *forum in orphan) {
                 [forum MR_deleteEntityInContext:localContext];
+            }
+            YPOForum * forum = [YPOForum MR_findFirstByAttribute:@"forumID" withValue:@(-99) inContext:localContext];
+            if (forum == nil) {
+                forum = [YPOForum MR_createEntityInContext:localContext];
+                forum.forumID = @(-99);
+                forum.name = @"Not in Local Forum";
             }
         }];
     }

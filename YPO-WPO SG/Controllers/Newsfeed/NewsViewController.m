@@ -20,6 +20,7 @@
 @property (nonatomic, assign) NSUInteger currentPage;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSFetchRequest *fetchRequest;
+@property (nonatomic, strong) YPOCancellationToken *cancellationToken;
 
 @end
 
@@ -45,6 +46,11 @@
     [self fetchData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.cancellationToken cancel];
+}
+
 
 #pragma mark - Loading Data
 
@@ -64,7 +70,8 @@
 }
 
 - (void)loadDataWithPage:(NSUInteger)page {
-    YPOArticleRequest *request = (YPOArticleRequest*)[YPOArticle constructRequest];
+    self.cancellationToken = [[YPOCancellationToken alloc] init];
+    YPOArticleRequest *request = (YPOArticleRequest*)[YPOArticle constructRequest:self.cancellationToken];
     request.page = page;
     request.rowCount = BATCHSIZE;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {

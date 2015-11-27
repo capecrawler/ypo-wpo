@@ -42,6 +42,8 @@ typedef NS_ENUM(NSUInteger, MemberTypeID) {
 @property (nonatomic, retain) NSDate *lastModifiedDate;
 @property (nonatomic, retain) NSString *passion;
 @property (nonatomic, retain) NSNumber *managementCommittee;
+@property (nonatomic, retain) NSNumber *managementCommitteeOrder;
+@property (nonatomic, retain) NSDate *dateSynced;
 @end
 
 @interface YPOMember (CoreDataGeneratedAccessors)
@@ -59,6 +61,7 @@ typedef NS_ENUM(NSUInteger, MemberTypeID) {
 - (NSString *)joinedDateFormatted;
 - (NSString *)birthdateFormatted;
 - (NSString *)genderLabel;
++ (void)purgeDataPriorToSyncDate:(NSDate *)lastSyncDate;
 
 @end
 
@@ -74,5 +77,6 @@ typedef NS_ENUM(NSUInteger, MemberTypeID) {
 @property (nonatomic, assign) NSInteger rowCount;
 @property (nonatomic, assign) MemberTypeID memberTypeID;
 @property (nonatomic, assign) BOOL managementCommittee;
+@property (nonatomic, strong) NSDate *dateSynced;
 
 @end

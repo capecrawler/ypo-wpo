@@ -52,9 +52,11 @@
     self.type               = dictionary[@"type"];
     self.title              = dictionary[@"title"];
     NSString *startDate     = dictionary[@"start_date"];
-    self.startDate          = [NSDate dateFromInternetDateTimeString:startDate formatHint:DateFormatHintRFC3339];
+    self.startDate          = [NSDate dateFromString:startDate format:ISODateTimeFormat];
+//    self.startDate          = [NSDate dateFromInternetDateTimeString:startDate formatHint:DateFormatHintRFC3339];
     NSString *endDate       = dictionary[@"end_date"];
-    self.endDate            = [NSDate dateFromInternetDateTimeString:endDate formatHint:DateFormatHintRFC3339];
+    self.endDate          = [NSDate dateFromString:endDate format:ISODateTimeFormat];
+//    self.endDate            = [NSDate dateFromInternetDateTimeString:endDate formatHint:DateFormatHintRFC3339];
     
     id venue     = dictionary[@"venue"];
     if (venue && [venue isKindOfClass:[NSDictionary class]]) {
@@ -85,8 +87,9 @@
     return [formatter stringFromDate:self.startDate];
 }
 
-+ (YPOHTTPRequest *)constructRequest {
++ (YPOHTTPRequest *)constructRequest:(YPOCancellationToken *)cancellationToken {
     YPOEventRequest *request = [[YPOEventRequest alloc] init];
+    request.cancellationToken = cancellationToken;
     request.function = @"events.list";
     return request;
 }

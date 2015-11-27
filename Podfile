@@ -6,7 +6,6 @@ target 'YPO-WPO SG' do
     pod 'MagicalRecord'
     pod 'SVProgressHUD'
     pod 'AFNetworkActivityLogger', '~> 2.0'
-    pod 'Bolts'
     pod 'SDWebImage'
     pod 'INSPullToRefresh'
     pod 'SlackTextViewController'

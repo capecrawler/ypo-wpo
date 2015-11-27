@@ -14,6 +14,7 @@
 #import "MemberDetailsViewController.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "TableViewHeader.h"
+#import "YPOSyncManager.h"
 #define BATCHSIZE 15
 
 @interface MembersListViewController()<UISearchBarDelegate, UISearchDisplayDelegate, NSFetchedResultsControllerDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
@@ -52,22 +53,12 @@
     // A little trick for removing the cell separators
     self.tableView.tableFooterView = [UIView new];
     
-    [self.tableView ins_addInfinityScrollWithHeight:60 handler:^(UIScrollView *scrollView) {
-//        [self loadMoreData];
-    }];
-    
-    CGRect defaultFrame = CGRectMake(0, 0, 24, 24);
-    UIView <INSAnimatable> *infinityIndicator = [[INSDefaultInfiniteIndicator alloc] initWithFrame:defaultFrame];
-    [self.tableView.ins_infiniteScrollBackgroundView addSubview:infinityIndicator];
-    [infinityIndicator startAnimating];
-    
     [self.tableView registerNib:[UINib nibWithNibName:@"MemberTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MemberCellIdentifier"];
     self.tableView.tableFooterView = [UIView new];
     
     [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:@"MemberTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MemberCellIdentifier"];
     self.searchDisplayController.searchResultsTableView.tableFooterView = [UIView new];
     
-//    [self loadMoreData];
     [self fetchData];
 
 }
@@ -83,40 +74,6 @@
         [[YPOErrorhandler sharedHandler] handleError:error];
     }
 }
-
-- (void)loadMoreData{
-    [self loadDataWithPage:self.currentPage+1];
-}
-
-- (void)loadDataWithPage:(NSUInteger)page {
-    
-    self.loadingData = YES;
-    self.requestError = nil;
-    YPOMemberRequest *request = (YPOMemberRequest*)[YPOMember constructRequest];
-    request.page = page;
-    [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-        self.loadingData = NO;
-        self.currentPage = page;
-        if ([responseObject[@"status"] boolValue]) {
-            NSDictionary *paging = responseObject[@"paging"];
-            if ([paging[@"next"]integerValue] == 0) {
-                self.tableView.ins_infiniteScrollBackgroundView.enabled = NO;
-                [self.tableView ins_endInfinityScrollWithStoppingContentOffset:YES];
-            } else {
-                self.tableView.ins_infiniteScrollBackgroundView.enabled = YES;
-                [self.tableView ins_endInfinityScrollWithStoppingContentOffset:NO];
-            }
-        } else {
-            [self.tableView ins_endInfinityScrollWithStoppingContentOffset:NO];
-        }
-        [self fetchData];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        self.loadingData = NO;
-        self.requestError = error;
-        [self.tableView reloadData];
-    }];
-}
-
 
 #pragma mark - Search
 
@@ -262,9 +219,6 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"memberType != %@", @(MemberTypeChapterAdmin)];
     _fetchRequest = [YPOMember MR_requestAllSortedBy:@"name" ascending:YES];
     _fetchRequest.predicate = predicate;
-    NSLog(@"predicate");
-//    [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
-//    [_fetchRequest setFetchBatchSize:BATCHSIZE];
     return _fetchRequest;
 }
 
@@ -327,7 +281,7 @@
 
 
 - (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
-    [self loadMoreData];
+    [[YPOSyncManager sharedManager] startSync];
     [self.tableView reloadData];
 }
 

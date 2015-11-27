@@ -36,6 +36,9 @@
 @dynamic birthdate;
 @dynamic lastModifiedDate;
 @dynamic passion;
+@dynamic managementCommittee;
+@dynamic managementCommitteeOrder;
+@dynamic dateSynced;
 
 
 - (void)parseDictionary:(NSDictionary *)dictionary {
@@ -68,8 +71,9 @@
 }
 
 
-+ (YPOMemberRequest *)constructRequest {
++ (YPOMemberRequest *)constructRequest:(YPOCancellationToken *)cancellationToken {
     YPOMemberRequest *request = [[YPOMemberRequest alloc] init];
+    request.cancellationToken = cancellationToken;
     request.function = @"members.list";
     return request;
 }
@@ -97,6 +101,15 @@
         return @"";
     }
 }
+
++ (void)purgeDataPriorToSyncDate:(NSDate *)lastSyncDate {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"dateSynced < %@", lastSyncDate];
+    NSArray *deletedMembers = [YPOMember MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+    for (YPOMember *member in deletedMembers) {
+        [member MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+    }
+}
+
 
 
 @end
@@ -130,7 +143,11 @@
         [params setObject:@(self.chapterID) forKey:@"chapter_id"];
     }
     if (self.forumID != -1) {
-        [params setObject:@(self.forumID) forKey:@"forum_id"];
+        if (self.forumID == -99) {
+            [params setObject:@"not-in-local-forum" forKey:@"forum_id"];
+        } else {
+            [params setObject:@(self.forumID) forKey:@"forum_id"];
+        }
     }
     if (self.managementCommittee) {
         [params setObject:@(YES) forKey:@"management_committee"];
@@ -146,20 +163,36 @@
 }
 
 
-- (void) loadJSONObject:(NSDictionary *)jsonObject {
+- (void)loadJSONObject:(NSDictionary *)jsonObject {
     if ([jsonObject[@"status"] boolValue]) {
         NSArray *data = jsonObject[@"data"];
         [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+            
+            if (self.managementCommittee && self.page == 1) {
+                [self purgeManagementCommiteeInContext:localContext];
+            }
+            NSInteger latestManagementCommitteeOrder = [self latestOrderOfManagementCommittee:localContext] + 1;
             for (NSDictionary *raw in data) {
-                YPOMember * member = [YPOMember MR_findFirstByAttribute:@"memberID" withValue:raw[@"member_id"] inContext:localContext];
+                NSNumber *memberID = raw[@"member_id"];
+                YPOMember * member = [YPOMember MR_findFirstByAttribute:@"memberID" withValue:memberID inContext:localContext];
                 if (member == nil) {
                     member = [YPOMember MR_createEntityInContext:localContext];
                 }
                 [member parseDictionary:raw];
+                member.dateSynced = self.dateSynced;
 //                member.memberType = @(self.memberTypeID);
                 if (self.managementCommittee) {
                     member.managementCommittee = @(YES);
+                    member.managementCommitteeOrder = @(latestManagementCommitteeOrder++);
                 }
+                
+                NSNumber *chapterID = raw[@"chapter_id"];
+                if (chapterID != nil) {
+                    YPOChapter *chapter = [YPOChapter MR_findFirstByAttribute:@"chapterID" withValue:chapterID inContext:localContext];
+                    if (chapter != nil)
+                        member.chapterOrg = chapter;
+                }
+                
                 if (self.chapterID != -1) {
                     YPOChapter *chapter = [YPOChapter MR_findFirstByAttribute:@"chapterID" withValue:@(self.chapterID) inContext:localContext];
                     if (chapter != nil)
@@ -180,10 +213,30 @@
                         [member addRoleObject:role];
                     }
                 }
-                
             }
         }];
     }
+}
+
+
+- (void)purgeManagementCommiteeInContext:(NSManagedObjectContext *)context {
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"managementCommittee == %@", @(YES)];
+    NSArray *committee = [YPOMember MR_findAllWithPredicate:predicate inContext:context];
+    for (YPOMember *member in committee) {
+        member.managementCommittee = @(NO);
+        member.managementCommitteeOrder = @(0);
+    }
+    
+}
+
+- (NSInteger)latestOrderOfManagementCommittee:(NSManagedObjectContext *)context {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"managementCommittee == %@", @(YES)];
+    YPOMember *member = [YPOMember MR_findFirstWithPredicate:predicate sortedBy:@"managementCommitteeOrder" ascending:NO inContext:context];
+    if (member) {
+        return member.managementCommitteeOrder.integerValue;
+    }
+    return 0;
 }
 
 

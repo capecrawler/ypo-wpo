@@ -40,8 +40,9 @@
 }
 
 
-+ (YPOHTTPRequest *)constructRequest {
++ (YPOHTTPRequest *)constructRequest:(YPOCancellationToken *)cancellationToken {
     YPOArticleRequest *request = [[YPOArticleRequest alloc] init];
+    request.cancellationToken = cancellationToken;
     request.function = @"news.list";
     return request;
 }

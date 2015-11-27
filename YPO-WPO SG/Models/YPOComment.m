@@ -59,8 +59,9 @@
 
 
 
-+ (YPOCommentRequest *)constructRequest {
++ (YPOCommentRequest *)constructRequest:(YPOCancellationToken *)cancellationToken {
     YPOCommentRequest *request = [[YPOCommentRequest alloc] init];
+    request.cancellationToken = cancellationToken;
     request.function = @"news.comments.list";
     return request;
 }

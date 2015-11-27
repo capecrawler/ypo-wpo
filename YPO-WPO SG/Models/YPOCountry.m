@@ -21,7 +21,7 @@
     self.name = dictionary[@"name"];
 }
 
-+ (YPOHTTPRequest *)constructRequest {
++ (YPOHTTPRequest *)constructRequest:(YPOCancellationToken *)cancellationToken {
     YPOCountryRequest *request = [[YPOCountryRequest alloc] init];
     request.function = @"country.list";
     return request;

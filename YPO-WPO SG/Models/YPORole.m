@@ -22,8 +22,9 @@
     self.name   = dictionary[@"name"];
 }
 
-+ (YPOHTTPRequest *)constructRequest {
++ (YPOHTTPRequest *)constructRequest:(YPOCancellationToken *)cancellationToken {
     YPORoleRequest *request = [[YPORoleRequest alloc] init];
+    request.cancellationToken = cancellationToken;
     request.function = @"roles.list";
     return request;
 }

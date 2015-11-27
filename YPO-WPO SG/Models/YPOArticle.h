@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "YPORemoteManagedObject.h"
 
-
 @interface YPOArticle : YPORemoteManagedObject
 
 @property (nonatomic, retain) NSNumber * articleID;

@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSFetchRequest *fetchRequest;
 @property (nonatomic, strong) NSManagedObjectContext *temporaryContext;
+@property (nonatomic, strong) YPOCancellationToken *cancellationToken;
 
 @end
 
@@ -90,7 +91,8 @@
 
 
 - (void)loadDataWithPage:(NSUInteger)page {
-    YPONotificationRequest *request = (YPONotificationRequest *)[YPONotification constructRequest];
+    self.cancellationToken = [[YPOCancellationToken alloc] init];
+    YPONotificationRequest *request = (YPONotificationRequest *)[YPONotification constructRequest:self.cancellationToken];
     request.page = page;
     request.rowCount = BATCHSIZE;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {

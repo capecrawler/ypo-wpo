@@ -19,6 +19,7 @@
 #import "YPOUser.h"
 #import "YPOCountry.h"
 #import "YPONotification.h"
+#import "YPOCancellationToken.h"
 
 NSString *const YPODataStartedLoadingNotification   = @"YPODataStartedLoadingNotification";
 NSString *const YPODataFinishedLoadingNotification  = @"YPODataFinishedLoadingNotification";
@@ -27,6 +28,8 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
 @interface YPOSyncManager()
 
 @property (nonatomic, assign, readwrite, getter=isSyncing) BOOL syncing;
+@property (nonatomic, strong) NSDate *syncDate;
+@property (nonatomic, strong) YPOCancellationToken *cancellationToken;
 
 @end
 
@@ -45,6 +48,8 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
     @synchronized(self) {
         if (!self.isSyncing){
             self.syncing = YES;
+            self.syncDate = [[NSDate alloc] init];
+            self.cancellationToken = [[YPOCancellationToken alloc]init];
             NSNotification *startNotification =
             [NSNotification notificationWithName:YPODataStartedLoadingNotification
                                           object:nil];
@@ -52,13 +57,13 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
             
             [[[BFTask taskWithResult:nil] continueWithBlock:^id(BFTask *task) {
                 NSMutableArray *parallelTask = [[NSMutableArray alloc]init];
-                [parallelTask addObject:[self loadCountry]];                
-                [parallelTask addObject:[self loadArticles]];
-                [parallelTask addObject:[self loadNewMembers]];
-                [parallelTask addObject:[self loadChapters]];
-                [parallelTask addObject:[self loadRoles]];
-                [parallelTask addObject:[self loadForums]];
-                [parallelTask addObject:[self loadMembers]];
+                [parallelTask addObject:[self loadCountry:self.cancellationToken]];
+                [parallelTask addObject:[self loadArticles:self.cancellationToken]];
+                [parallelTask addObject:[self loadNewMembers:self.cancellationToken]];
+                [parallelTask addObject:[self loadChapters:self.cancellationToken]];
+                [parallelTask addObject:[self loadRoles:self.cancellationToken]];
+                [parallelTask addObject:[self loadForums:self.cancellationToken]];
+                [parallelTask addObject:[self loadMembers:self.cancellationToken]];
                 return [BFTask taskForCompletionOfAllTasks:parallelTask];
             }] continueWithBlock:^id(BFTask *task) {
                 self.syncing = NO;
@@ -69,6 +74,7 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
                     [[NSNotificationCenter defaultCenter] postNotification:errorNotification];
                     [[YPOErrorhandler sharedHandler]handleError:task.error];
                 } else {
+                    [YPOMember purgeDataPriorToSyncDate:self.syncDate];                    
                     NSNotification *errorNotification =
                     [NSNotification notificationWithName:YPODataFinishedLoadingNotification
                                                   object:nil];
@@ -81,9 +87,9 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
 }
 
 
-- (BFTask *)loadArticles {
+- (BFTask *)loadArticles:(YPOCancellationToken *)cancellationToken {
     BFTaskCompletionSource *requestTask = [BFTaskCompletionSource taskCompletionSource];
-    YPOArticleRequest *request = (YPOArticleRequest*)[YPOArticle constructRequest];
+    YPOArticleRequest *request = (YPOArticleRequest*)[YPOArticle constructRequest:cancellationToken];
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         [requestTask setResult:responseObject];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -93,10 +99,11 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
 }
 
 
-- (BFTask *)loadNewMembers {
+- (BFTask *)loadNewMembers:(YPOCancellationToken *)cancellationToken {
     BFTaskCompletionSource *requestTask = [BFTaskCompletionSource taskCompletionSource];
-    YPOMemberRequest *request = (YPOMemberRequest*)[YPOMember constructRequest];
+    YPOMemberRequest *request = (YPOMemberRequest*)[YPOMember constructRequest:cancellationToken];
     request.newMembers = YES;
+    request.dateSynced = self.syncDate;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         [requestTask setResult:responseObject];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -106,9 +113,9 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
 }
 
 
-- (BFTask *)loadChapters {
+- (BFTask *)loadChapters:(YPOCancellationToken *)cancellationToken {
     BFTaskCompletionSource *requestTask = [BFTaskCompletionSource taskCompletionSource];
-    YPOChapterRequest *request = (YPOChapterRequest*)[YPOChapter constructRequest];
+    YPOChapterRequest *request = (YPOChapterRequest*)[YPOChapter constructRequest:cancellationToken];
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         [requestTask setResult:responseObject];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -118,9 +125,9 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
 }
 
 
-- (BFTask *)loadRoles {
+- (BFTask *)loadRoles:(YPOCancellationToken *)cancellationToken {
     BFTaskCompletionSource *requestTask = [BFTaskCompletionSource taskCompletionSource];
-    YPORoleRequest *request = (YPORoleRequest *)[YPORole constructRequest];
+    YPORoleRequest *request = (YPORoleRequest *)[YPORole constructRequest:cancellationToken];
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         [requestTask setResult:responseObject];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -130,10 +137,10 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
 }
 
 
-- (BFTask *)loadForums {
+- (BFTask *)loadForums:(YPOCancellationToken *)cancellationToken {
     BFTaskCompletionSource *requestTask = [BFTaskCompletionSource taskCompletionSource];
-    YPOForumRequest *request = (YPOForumRequest*)[YPOForum constructRequest];
-    [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
+    YPOForumRequest *request = (YPOForumRequest*)[YPOForum constructRequest:cancellationToken];
+    [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {        
         [requestTask setResult:responseObject];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [requestTask setError:error];
@@ -142,9 +149,9 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
 }
 
 
-- (BFTask *)loadCountry {
+- (BFTask *)loadCountry:(YPOCancellationToken *)cancellationToken {
     BFTaskCompletionSource *requestTask = [BFTaskCompletionSource taskCompletionSource];
-    YPOCountryRequest *request = (YPOCountryRequest *)[YPOCountry constructRequest];
+    YPOCountryRequest *request = (YPOCountryRequest *)[YPOCountry constructRequest:cancellationToken];
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         [requestTask setResult:responseObject];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -154,8 +161,9 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
 }
 
 
-- (BFTask *)loadMembers {
-    return [[self loadMembersLastUpdate:[YPOUser currentUser].lastUpdate page:1] continueWithBlock:^id(BFTask *task) {
+- (BFTask *)loadMembers:(YPOCancellationToken *)cancellationToken {
+//    return [[self loadMembersLastUpdate:[YPOUser currentUser].lastUpdate page:1] continueWithBlock:^id(BFTask *task) {
+    return [[self loadMembersLastUpdate:nil page:1 cancellationToken:cancellationToken] continueWithBlock:^id(BFTask *task) {
         if ([task.result isKindOfClass:[NSNumber class]]) {
             NSNumber *number = task.result;
             if (number.integerValue == 0) {
@@ -168,11 +176,12 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
     }];
 }
 
-- (BFTask *)loadMembersLastUpdate:(NSDate *)date page:(NSInteger)page {
+- (BFTask *)loadMembersLastUpdate:(NSDate *)date page:(NSInteger)page cancellationToken:(YPOCancellationToken *)cancellationToken{
     __block BFTaskCompletionSource *requestTask = [BFTaskCompletionSource taskCompletionSource];
     [[BFTask taskWithResult:nil] continueWithBlock:^id(BFTask *task) {
-        YPOMemberRequest *request = (YPOMemberRequest *)[YPOMember constructRequest];
+        YPOMemberRequest *request = (YPOMemberRequest *)[YPOMember constructRequest:cancellationToken];
         request.lastUpdate = date;
+        request.dateSynced = self.syncDate;
         request.page = page;
         [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
             NSDictionary *response = responseObject;
@@ -181,7 +190,8 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
             if (next.integerValue == 0) {
                 [requestTask setResult:next];
             } else {
-                [[self loadMembersLastUpdate:date page:next.integerValue] continueWithBlock:^id(BFTask *task) {
+                [[self loadMembersLastUpdate:date page:next.integerValue cancellationToken:cancellationToken]
+                 continueWithBlock:^id(BFTask *task) {
                     [requestTask setResult:task.result];
                     return nil;
                 }];
@@ -192,6 +202,11 @@ NSString *const YPODataFailedToLoadNotification     = @"YPODataFailedToLoadNotif
         return nil;
     }];
     return requestTask.task;
+}
+
+- (void)cancelSync {
+    [self.cancellationToken cancel];            
+    self.syncing = NO;
 }
 
 

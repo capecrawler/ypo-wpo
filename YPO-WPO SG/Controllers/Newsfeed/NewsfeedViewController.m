@@ -204,32 +204,6 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
     }
 }
 
-
-- (BFTask *)loadArticles {
-    BFTaskCompletionSource *requestTask = [BFTaskCompletionSource taskCompletionSource];
-    YPOArticleRequest *request = (YPOArticleRequest*)[YPOArticle constructRequest];
-    [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-        [requestTask setResult:responseObject];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [requestTask setError:error];
-    }];
-    return requestTask.task;
-}
-
-
-- (BFTask *)loadNewMembers {
-    BFTaskCompletionSource *requestTask = [BFTaskCompletionSource taskCompletionSource];
-    YPOMemberRequest *request = (YPOMemberRequest*)[YPOMember constructRequest];
-    request.newMembers = YES;
-    [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
-        [requestTask setResult:responseObject];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [requestTask setError:error];
-    }];
-    return requestTask.task;
-}
-
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

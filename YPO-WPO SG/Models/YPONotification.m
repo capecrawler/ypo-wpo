@@ -64,8 +64,9 @@
 }
 
 
-+ (YPOHTTPRequest *)constructRequest {
++ (YPOHTTPRequest *)constructRequest:(YPOCancellationToken *)cancellationToken {
     YPONotificationRequest *request = [[YPONotificationRequest alloc] init];
+    request.cancellationToken = cancellationToken;
     request.function = @"notification.list";
     return request;
 }

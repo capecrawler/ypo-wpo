@@ -24,8 +24,9 @@
     
 }
 
-+ (YPOHTTPRequest *)constructRequest {
++ (YPOHTTPRequest *)constructRequest:(YPOCancellationToken *)cancellationToken {
     YPOChapterRequest *request = [[YPOChapterRequest alloc] init];
+    request.cancellationToken = cancellationToken;
     request.function = @"chapters.list";
     return request;
 }

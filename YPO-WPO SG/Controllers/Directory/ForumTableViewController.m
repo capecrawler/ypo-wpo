@@ -10,9 +10,11 @@
 #import "YPOForum.h"
 #import "MembersFilteredViewController.h"
 
+
 @interface ForumTableViewController()<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) YPOCancellationToken *cancellationToken;
 
 @end
 
@@ -25,6 +27,11 @@
     self.tableView.tableFooterView = [UIView new];
     [self fetchData];
     [self loadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.cancellationToken cancel];
 }
 
 
@@ -41,7 +48,8 @@
 }
 
 - (void)loadData {
-    YPOForumRequest *request = (YPOForumRequest *)[YPOForum constructRequest];
+    self.cancellationToken = [[YPOCancellationToken alloc] init];
+    YPOForumRequest *request = (YPOForumRequest *)[YPOForum constructRequest:self.cancellationToken];
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         [self fetchData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -57,20 +65,30 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
+    NSInteger numbeOfSections = [self fetchNumbeOfRowsInSection:section];
+    return (numbeOfSections > 0)? numbeOfSections+1 : numbeOfSections;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellId = @"UITableViewCell";
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    YPOForum *forum = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = forum.name;
+    if (indexPath.row < [self fetchNumbeOfRowsInSection:indexPath.section]) {
+        YPOForum *forum = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        cell.textLabel.text = forum.name;
+    } else {
+        cell.textLabel.text = @"Not in Local Forum";
+    }
     cell.textLabel.textColor = [UIColor colorBlueTheme];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+
+- (NSInteger)fetchNumbeOfRowsInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 #pragma mark - UITableViewDelegate
@@ -87,7 +105,11 @@
     id controller = segue.destinationViewController;
     if ([controller isKindOfClass:[MembersFilteredViewController class]]) {
         MembersFilteredViewController * filteredController = (MembersFilteredViewController *)controller;
-        filteredController.forumFilter = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        if (selectedIndexPath.row < [self fetchNumbeOfRowsInSection:selectedIndexPath.section]) {
+            filteredController.forumFilter = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        } else {
+            filteredController.forumFilter = [YPOForum MR_findFirstByAttribute:@"forumID" withValue:@(-99)];
+        }
         filteredController.memberTypeID = MemberTypeAll;
     }
 }
@@ -98,7 +120,8 @@
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
-    _fetchedResultsController = [YPOForum MR_fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:self];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"forumID != %@", @(-99)];
+    _fetchedResultsController = [YPOForum MR_fetchAllSortedBy:@"name" ascending:YES withPredicate:predicate groupBy:nil delegate:self];
     return _fetchedResultsController;
 }
 

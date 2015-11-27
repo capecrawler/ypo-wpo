@@ -45,7 +45,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *countryTitle;
 @property (weak, nonatomic) IBOutlet UILabel *websiteTitle;
 
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mobileTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *emailTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *companyTopConstraint;
@@ -56,9 +55,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *countryTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *websiteTopConstraint;
 
-
-
 @property (nonatomic, strong) YPOMember *member;
+@property (nonatomic, strong) YPOCancellationToken *cancellationToken;
 
 @end
 
@@ -92,8 +90,15 @@
 }
 
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.cancellationToken cancel];
+}
+
+
 - (void)loadData {
-    YPOMemberDetailsRequest *request = (YPOMemberDetailsRequest *)[YPOMemberDetails constructRequest];
+    self.cancellationToken = [[YPOCancellationToken alloc] init];
+    YPOMemberDetailsRequest *request = (YPOMemberDetailsRequest *)[YPOMemberDetails constructRequest:self.cancellationToken];
     request.memberID = self.memberID;
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
     [self fetchMemberDetails];

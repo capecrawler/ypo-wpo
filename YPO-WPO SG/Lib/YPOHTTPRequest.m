@@ -31,15 +31,17 @@
 - (void)startRequestSuccess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                     failure:(void (^)(NSURLSessionDataTask *task, NSError *error)) failure {
     
-    switch (self.method) {
-        case HTTPMethodGET:
-            [self executeGETSuccess:success failure:failure];
-            break;
-        case HTTPMethodPOST:
-            [self executePOSTSuccess:success failure:failure];
-            break;
-        default:
-            break;
+    if (![self.cancellationToken isCancelled]) {
+        switch (self.method) {
+            case HTTPMethodGET:
+                [self executeGETSuccess:success failure:failure];
+                break;
+            case HTTPMethodPOST:
+                [self executePOSTSuccess:success failure:failure];
+                break;
+            default:
+                break;
+        }
     }
 }
 
@@ -49,18 +51,32 @@
     [[YPOAPIClient sharedClient] GET:self.apiPath parameters:self.params success:^(NSURLSessionDataTask *task, id responseObject) {
         if (self.useJSONLoader) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [self beforeLoadJSON:responseObject];
-                [self loadJSONObject:responseObject];
-                [self endLoadJSON:responseObject];
+                if (![self.cancellationToken isCancelled]){
+                    [self beforeLoadJSON:responseObject];
+                }
+                if (![self.cancellationToken isCancelled]){
+                    [self loadJSONObject:responseObject];
+                }
+                if (![self.cancellationToken isCancelled]){
+                    [self endLoadJSON:responseObject];
+                }
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (success) {
-                        success(task, responseObject);
+                    if (![self.cancellationToken isCancelled]){
+                        if (success) {
+                            success(task, responseObject);
+                        }
+                    }else {
+                        NSLog(@"cancelled");
                     }
                 });
             });
         } else {
-            if (success) {
-                success(task, responseObject);
+            if (![self.cancellationToken isCancelled]){
+                if (success) {
+                    success(task, responseObject);
+                } else {
+                    NSLog(@"cancelled");
+                }
             }
         }
     } failure:failure];

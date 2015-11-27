@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YPOCancellationToken.h"
 
 typedef NS_ENUM(NSUInteger, HTTPMethod) {
     HTTPMethodGET = 0,
@@ -21,6 +22,7 @@ typedef NS_ENUM(NSUInteger, HTTPMethod) {
 @property (nonatomic, strong) NSString *apiPath;
 @property (nonatomic, strong) NSDictionary *params;
 @property (nonatomic, assign) BOOL useJSONLoader;
+@property (nonatomic, strong) YPOCancellationToken * cancellationToken;
 
 - (void)startRequest;
 - (void)startRequestSuccess:(void (^)(NSURLSessionDataTask *task, id responseObject))success

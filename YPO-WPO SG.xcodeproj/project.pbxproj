@@ -31,6 +31,7 @@
 		AC67C2821B4167540054EAB9 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C2811B4167540054EAB9 /* CommentTableViewCell.m */; };
 		AC67C2851B4172100054EAB9 /* YPOComment.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C2841B4172100054EAB9 /* YPOComment.m */; };
 		AC74515E1B4149B200E081DC /* UIImage+CircleMask.m in Sources */ = {isa = PBXBuildFile; fileRef = AC74515D1B4149B200E081DC /* UIImage+CircleMask.m */; };
+		ACA3FA211C0903E900043E26 /* YPOCancellationToken.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA3FA201C0903E900043E26 /* YPOCancellationToken.m */; };
 		ACA549641B429DF500721346 /* YPOChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA549631B429DF500721346 /* YPOChapter.m */; };
 		ACA549671B429DF500721346 /* YPOForum.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA549661B429DF500721346 /* YPOForum.m */; };
 		ACA5496C1B42A96A00721346 /* ForumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA5496B1B42A96A00721346 /* ForumTableViewController.m */; };
@@ -83,10 +84,24 @@
 		ACD9169F1B3E870300A93A06 /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD9169E1B3E870300A93A06 /* MemberTableViewCell.xib */; };
 		ACD916A21B3E899000A93A06 /* NSDate+FormattedString.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD916A11B3E899000A93A06 /* NSDate+FormattedString.m */; };
 		ACD916A51B3E906A00A93A06 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD916A41B3E906A00A93A06 /* NewsViewController.m */; };
-		ACF490731BDDBDF8002DE753 /* EventDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF490711BDDBDF8002DE753 /* EventDetailsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		ACF490741BDDBDF8002DE753 /* EventDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF490721BDDBDF8002DE753 /* EventDetailsTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		ACF490771BDDBFA1002DE753 /* EventDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF490761BDDBFA1002DE753 /* EventDetailsView.m */; settings = {ASSET_TAGS = (); }; };
-		ACF490791BDDBFB4002DE753 /* EventDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF490781BDDBFB4002DE753 /* EventDetailsView.xib */; settings = {ASSET_TAGS = (); }; };
+		ACF490731BDDBDF8002DE753 /* EventDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF490711BDDBDF8002DE753 /* EventDetailsTableViewCell.m */; };
+		ACF490741BDDBDF8002DE753 /* EventDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF490721BDDBDF8002DE753 /* EventDetailsTableViewCell.xib */; };
+		ACF490771BDDBFA1002DE753 /* EventDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF490761BDDBFA1002DE753 /* EventDetailsView.m */; };
+		ACF490791BDDBFB4002DE753 /* EventDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF490781BDDBFB4002DE753 /* EventDetailsView.xib */; };
+		ACF78E781BF78D5E00F63644 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E771BF78D5E00F63644 /* Parse.framework */; };
+		ACF78E7A1BF78D8800F63644 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E791BF78D8800F63644 /* AudioToolbox.framework */; };
+		ACF78E7C1BF78D9000F63644 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E7B1BF78D9000F63644 /* CFNetwork.framework */; };
+		ACF78E7E1BF78D9900F63644 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E7D1BF78D9900F63644 /* CoreGraphics.framework */; };
+		ACF78E801BF78DA000F63644 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E7F1BF78DA000F63644 /* CoreLocation.framework */; };
+		ACF78E821BF78DA800F63644 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E811BF78DA800F63644 /* QuartzCore.framework */; };
+		ACF78E841BF78DAF00F63644 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E831BF78DAF00F63644 /* Security.framework */; };
+		ACF78E861BF78DBB00F63644 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E851BF78DBB00F63644 /* StoreKit.framework */; };
+		ACF78E881BF78DC200F63644 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E871BF78DC200F63644 /* SystemConfiguration.framework */; };
+		ACF78E8A1BF78DD000F63644 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E891BF78DD000F63644 /* libz.tbd */; };
+		ACF78E8C1BF78DDB00F63644 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E8B1BF78DDB00F63644 /* libsqlite3.tbd */; };
+		ACF78E8E1BF78DF900F63644 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E8D1BF78DF900F63644 /* Accounts.framework */; };
+		ACF78E901BF78DFE00F63644 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E8F1BF78DFE00F63644 /* Social.framework */; };
+		ACF78E921BF78F4200F63644 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF78E911BF78F4200F63644 /* Bolts.framework */; };
 		ACFD3EE91B85DD7000CBF6E6 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFD3EE81B85DD7000CBF6E6 /* EditProfileViewController.m */; };
 		ACFD3EEC1B860CFE00CBF6E6 /* LabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFD3EEB1B860CFE00CBF6E6 /* LabelTableViewCell.m */; };
 		ACFD3EEF1B860FBE00CBF6E6 /* TextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFD3EEE1B860FBE00CBF6E6 /* TextFieldTableViewCell.m */; };
@@ -140,6 +155,7 @@
 		AC0605B01B2ABD1800EB0F5F /* TableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewHeader.h; sourceTree = "<group>"; };
 		AC0605B11B2ABD1800EB0F5F /* TableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewHeader.m; sourceTree = "<group>"; };
 		AC0605B31B2ABD3300EB0F5F /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
+		AC1B721D1BE768DC004ECD70 /* YPO_WPO_SG 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YPO_WPO_SG 4.xcdatamodel"; sourceTree = "<group>"; };
 		AC2A72681BE0FC8C003B7F72 /* YPO_WPO_SG 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YPO_WPO_SG 3.xcdatamodel"; sourceTree = "<group>"; };
 		AC6793B61B89E6EF00A751E9 /* YPOGenderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOGenderController.h; sourceTree = "<group>"; };
 		AC6793B71B89E6EF00A751E9 /* YPOGenderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOGenderController.m; sourceTree = "<group>"; };
@@ -159,6 +175,8 @@
 		AC74515D1B4149B200E081DC /* UIImage+CircleMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CircleMask.m"; sourceTree = "<group>"; };
 		AC76E1161B26F94900AFB494 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		AC76E1171B26F9CF00AFB494 /* YPO-PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YPO-PrefixHeader.pch"; sourceTree = "<group>"; };
+		ACA3FA1F1C0903E900043E26 /* YPOCancellationToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOCancellationToken.h; sourceTree = "<group>"; };
+		ACA3FA201C0903E900043E26 /* YPOCancellationToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOCancellationToken.m; sourceTree = "<group>"; };
 		ACA549621B429DF500721346 /* YPOChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOChapter.h; sourceTree = "<group>"; };
 		ACA549631B429DF500721346 /* YPOChapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOChapter.m; sourceTree = "<group>"; };
 		ACA549651B429DF500721346 /* YPOForum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOForum.h; sourceTree = "<group>"; };
@@ -255,6 +273,7 @@
 		ACD916A11B3E899000A93A06 /* NSDate+FormattedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FormattedString.m"; sourceTree = "<group>"; };
 		ACD916A31B3E906A00A93A06 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		ACD916A41B3E906A00A93A06 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		ACE5C4231BEB5B8500FF9613 /* YPO_WPO_SG 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YPO_WPO_SG 5.xcdatamodel"; sourceTree = "<group>"; };
 		ACEFF8D41BD793BB00CF3F7D /* YPO_WPO_SG 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YPO_WPO_SG 2.xcdatamodel"; sourceTree = "<group>"; };
 		ACF490701BDDBDF8002DE753 /* EventDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsTableViewCell.h; sourceTree = "<group>"; };
 		ACF490711BDDBDF8002DE753 /* EventDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsTableViewCell.m; sourceTree = "<group>"; };
@@ -262,6 +281,20 @@
 		ACF490751BDDBFA1002DE753 /* EventDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailsView.h; sourceTree = "<group>"; };
 		ACF490761BDDBFA1002DE753 /* EventDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailsView.m; sourceTree = "<group>"; };
 		ACF490781BDDBFB4002DE753 /* EventDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailsView.xib; sourceTree = "<group>"; };
+		ACF78E771BF78D5E00F63644 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		ACF78E791BF78D8800F63644 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		ACF78E7B1BF78D9000F63644 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		ACF78E7D1BF78D9900F63644 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		ACF78E7F1BF78DA000F63644 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		ACF78E811BF78DA800F63644 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		ACF78E831BF78DAF00F63644 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		ACF78E851BF78DBB00F63644 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		ACF78E871BF78DC200F63644 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		ACF78E891BF78DD000F63644 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		ACF78E8B1BF78DDB00F63644 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		ACF78E8D1BF78DF900F63644 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		ACF78E8F1BF78DFE00F63644 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		ACF78E911BF78F4200F63644 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		ACFD3EE71B85DD7000CBF6E6 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		ACFD3EE81B85DD7000CBF6E6 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		ACFD3EEA1B860CFE00CBF6E6 /* LabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelTableViewCell.h; sourceTree = "<group>"; };
@@ -292,8 +325,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACF78E901BF78DFE00F63644 /* Social.framework in Frameworks */,
+				ACF78E8E1BF78DF900F63644 /* Accounts.framework in Frameworks */,
+				ACF78E8C1BF78DDB00F63644 /* libsqlite3.tbd in Frameworks */,
+				ACF78E8A1BF78DD000F63644 /* libz.tbd in Frameworks */,
+				ACF78E881BF78DC200F63644 /* SystemConfiguration.framework in Frameworks */,
+				ACF78E861BF78DBB00F63644 /* StoreKit.framework in Frameworks */,
+				ACF78E841BF78DAF00F63644 /* Security.framework in Frameworks */,
+				ACF78E821BF78DA800F63644 /* QuartzCore.framework in Frameworks */,
+				ACF78E801BF78DA000F63644 /* CoreLocation.framework in Frameworks */,
+				ACF78E7E1BF78D9900F63644 /* CoreGraphics.framework in Frameworks */,
+				ACF78E7C1BF78D9000F63644 /* CFNetwork.framework in Frameworks */,
+				ACF78E7A1BF78D8800F63644 /* AudioToolbox.framework in Frameworks */,
+				ACF78E921BF78F4200F63644 /* Bolts.framework in Frameworks */,
 				ACADDC081B48222800B97FFC /* Crashlytics.framework in Frameworks */,
 				ACADDC071B48222800B97FFC /* Fabric.framework in Frameworks */,
+				ACF78E781BF78D5E00F63644 /* Parse.framework in Frameworks */,
 				3E32B7AC6DABA5F5077D1AA1 /* libPods-YPO-WPO SG.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +494,8 @@
 				AC6793BD1B89FE2600A751E9 /* YPODateController.m */,
 				ACCDF32F1B8DF5FF00933E33 /* YPOCountryController.h */,
 				ACCDF3301B8DF5FF00933E33 /* YPOCountryController.m */,
+				ACA3FA1F1C0903E900043E26 /* YPOCancellationToken.h */,
+				ACA3FA201C0903E900043E26 /* YPOCancellationToken.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -650,6 +699,20 @@
 		E891EC75A4F103006C2D1330 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ACF78E911BF78F4200F63644 /* Bolts.framework */,
+				ACF78E8F1BF78DFE00F63644 /* Social.framework */,
+				ACF78E8D1BF78DF900F63644 /* Accounts.framework */,
+				ACF78E8B1BF78DDB00F63644 /* libsqlite3.tbd */,
+				ACF78E891BF78DD000F63644 /* libz.tbd */,
+				ACF78E871BF78DC200F63644 /* SystemConfiguration.framework */,
+				ACF78E851BF78DBB00F63644 /* StoreKit.framework */,
+				ACF78E831BF78DAF00F63644 /* Security.framework */,
+				ACF78E811BF78DA800F63644 /* QuartzCore.framework */,
+				ACF78E7F1BF78DA000F63644 /* CoreLocation.framework */,
+				ACF78E7D1BF78D9900F63644 /* CoreGraphics.framework */,
+				ACF78E7B1BF78D9000F63644 /* CFNetwork.framework */,
+				ACF78E791BF78D8800F63644 /* AudioToolbox.framework */,
+				ACF78E771BF78D5E00F63644 /* Parse.framework */,
 				547DEDEE397C6AE7AD269310 /* libPods-YPO-WPO SG.a */,
 			);
 			name = Frameworks;
@@ -668,6 +731,7 @@
 				32F5D56A1B22A81700B40ACE /* Resources */,
 				3D0EA02CAE62FB588D01C099 /* Copy Pods Resources */,
 				ACD32C141B45735800E437F2 /* ShellScript */,
+				13E94FC18D861FE0C26F0CC9 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -707,7 +771,12 @@
 				TargetAttributes = {
 					32F5D56B1B22A81700B40ACE = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = E74MJ3YL9A;
+						DevelopmentTeam = J8FCH4W66R;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					32F5D5871B22A81700B40ACE = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -764,6 +833,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		13E94FC18D861FE0C26F0CC9 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YPO-WPO SG/Pods-YPO-WPO SG-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3D0EA02CAE62FB588D01C099 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -841,6 +925,7 @@
 				ACCBFA101B3F08CC004D8446 /* MemberDetailsViewController.m in Sources */,
 				ACC993AB1B29CC97008E262E /* MemberTableViewCell.m in Sources */,
 				AC0605AC1B2AB9FF00EB0F5F /* DirectoryViewController.m in Sources */,
+				ACA3FA211C0903E900043E26 /* YPOCancellationToken.m in Sources */,
 				32F5D5781B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld in Sources */,
 				ACFD3EF21B86107200CBF6E6 /* TextViewTableViewCell.m in Sources */,
 				ACCFD7371B50C29900DA5F06 /* YPOImageCache.m in Sources */,
@@ -971,7 +1056,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
+				PROVISIONING_PROFILE = "28bb27e5-925e-4a31-8ac5-93bd4112e514";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1010,7 +1095,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
+				PROVISIONING_PROFILE = "28bb27e5-925e-4a31-8ac5-93bd4112e514";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1022,6 +1107,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1046,10 +1132,10 @@
 					"SG/Vendor/**",
 				);
 				INFOPLIST_FILE = "YPO-WPO SG/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
+				PROVISIONING_PROFILE = "d4c30b5f-d819-4092-a532-fe665b0310a8";
 			};
 			name = Debug;
 		};
@@ -1059,6 +1145,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1083,10 +1170,10 @@
 					"SG/Vendor/**",
 				);
 				INFOPLIST_FILE = "YPO-WPO SG/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
+				PROVISIONING_PROFILE = "d4c30b5f-d819-4092-a532-fe665b0310a8";
 			};
 			name = Release;
 		};
@@ -1160,7 +1247,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
+				PROVISIONING_PROFILE = "28bb27e5-925e-4a31-8ac5-93bd4112e514";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1172,8 +1259,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1196,10 +1284,10 @@
 					"SG/Vendor/**",
 				);
 				INFOPLIST_FILE = "YPO-WPO SG/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
+				PROVISIONING_PROFILE = "a7ea10d7-b802-40c8-b7fb-05d69c305100";
 			};
 			name = Adhoc;
 		};
@@ -1253,7 +1341,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
+				PROVISIONING_PROFILE = "28bb27e5-925e-4a31-8ac5-93bd4112e514";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1265,8 +1353,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1289,10 +1378,10 @@
 					"SG/Vendor/**",
 				);
 				INFOPLIST_FILE = "YPO-WPO SG/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "de130c96-8210-40f4-af89-ce53fabe0ced";
+				PROVISIONING_PROFILE = "a7ea10d7-b802-40c8-b7fb-05d69c305100";
 			};
 			name = Distribution;
 		};
@@ -1354,11 +1443,13 @@
 		32F5D5761B22A81700B40ACE /* YPO_WPO_SG.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				ACE5C4231BEB5B8500FF9613 /* YPO_WPO_SG 5.xcdatamodel */,
+				AC1B721D1BE768DC004ECD70 /* YPO_WPO_SG 4.xcdatamodel */,
 				AC2A72681BE0FC8C003B7F72 /* YPO_WPO_SG 3.xcdatamodel */,
 				ACEFF8D41BD793BB00CF3F7D /* YPO_WPO_SG 2.xcdatamodel */,
 				32F5D5771B22A81700B40ACE /* YPO_WPO_SG.xcdatamodel */,
 			);
-			currentVersion = AC2A72681BE0FC8C003B7F72 /* YPO_WPO_SG 3.xcdatamodel */;
+			currentVersion = ACE5C4231BEB5B8500FF9613 /* YPO_WPO_SG 5.xcdatamodel */;
 			path = YPO_WPO_SG.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -65,8 +65,9 @@
 }
 
 
-+ (YPOHTTPRequest *)constructRequest {
++ (YPOHTTPRequest *)constructRequest:(YPOCancellationToken *)cancellationToken {
     YPOMemberDetailsRequest *request = [[YPOMemberDetailsRequest alloc] init];
+    request.cancellationToken = cancellationToken;
     request.function = @"members.details";
     return request;
 }
