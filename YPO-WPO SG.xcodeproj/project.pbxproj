@@ -30,6 +30,8 @@
 		AC67C27F1B415F240054EAB9 /* CommentTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C27E1B415F240054EAB9 /* CommentTextView.m */; };
 		AC67C2821B4167540054EAB9 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C2811B4167540054EAB9 /* CommentTableViewCell.m */; };
 		AC67C2851B4172100054EAB9 /* YPOComment.m in Sources */ = {isa = PBXBuildFile; fileRef = AC67C2841B4172100054EAB9 /* YPOComment.m */; };
+		AC6DB4AA1C0DFAB900A152E0 /* YPODeeplinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6DB4A91C0DFAB900A152E0 /* YPODeeplinkManager.m */; };
+		AC6DB4B31C0F333400A152E0 /* YPONotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6DB4B21C0F333400A152E0 /* YPONotificationManager.m */; };
 		AC74515E1B4149B200E081DC /* UIImage+CircleMask.m in Sources */ = {isa = PBXBuildFile; fileRef = AC74515D1B4149B200E081DC /* UIImage+CircleMask.m */; };
 		ACA3FA211C0903E900043E26 /* YPOCancellationToken.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA3FA201C0903E900043E26 /* YPOCancellationToken.m */; };
 		ACA549641B429DF500721346 /* YPOChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA549631B429DF500721346 /* YPOChapter.m */; };
@@ -171,6 +173,10 @@
 		AC67C2811B4167540054EAB9 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		AC67C2831B4172100054EAB9 /* YPOComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOComment.h; sourceTree = "<group>"; };
 		AC67C2841B4172100054EAB9 /* YPOComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPOComment.m; sourceTree = "<group>"; };
+		AC6DB4A81C0DFAB900A152E0 /* YPODeeplinkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPODeeplinkManager.h; sourceTree = "<group>"; };
+		AC6DB4A91C0DFAB900A152E0 /* YPODeeplinkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPODeeplinkManager.m; sourceTree = "<group>"; };
+		AC6DB4B11C0F333400A152E0 /* YPONotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPONotificationManager.h; sourceTree = "<group>"; };
+		AC6DB4B21C0F333400A152E0 /* YPONotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPONotificationManager.m; sourceTree = "<group>"; };
 		AC74515C1B4149B200E081DC /* UIImage+CircleMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CircleMask.h"; sourceTree = "<group>"; };
 		AC74515D1B4149B200E081DC /* UIImage+CircleMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CircleMask.m"; sourceTree = "<group>"; };
 		AC76E1161B26F94900AFB494 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
@@ -496,6 +502,10 @@
 				ACCDF3301B8DF5FF00933E33 /* YPOCountryController.m */,
 				ACA3FA1F1C0903E900043E26 /* YPOCancellationToken.h */,
 				ACA3FA201C0903E900043E26 /* YPOCancellationToken.m */,
+				AC6DB4A81C0DFAB900A152E0 /* YPODeeplinkManager.h */,
+				AC6DB4A91C0DFAB900A152E0 /* YPODeeplinkManager.m */,
+				AC6DB4B11C0F333400A152E0 /* YPONotificationManager.h */,
+				AC6DB4B21C0F333400A152E0 /* YPONotificationManager.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -780,6 +790,7 @@
 					};
 					32F5D5871B22A81700B40ACE = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = E74MJ3YL9A;
 						TestTargetID = 32F5D56B1B22A81700B40ACE;
 					};
 				};
@@ -904,6 +915,7 @@
 				32EA009B1B2333F300B392E2 /* BaseViewController.m in Sources */,
 				ACC9939D1B29B55B008E262E /* YPOAPIClient.m in Sources */,
 				AC6793BB1B89E71700A751E9 /* YPOChapterController.m in Sources */,
+				AC6DB4AA1C0DFAB900A152E0 /* YPODeeplinkManager.m in Sources */,
 				ACA5496F1B42AFB000721346 /* ChapterTableViewController.m in Sources */,
 				AC74515E1B4149B200E081DC /* UIImage+CircleMask.m in Sources */,
 				ACC993A01B29B5EA008E262E /* YPOConfig.m in Sources */,
@@ -920,6 +932,7 @@
 				ACFD3EEF1B860FBE00CBF6E6 /* TextFieldTableViewCell.m in Sources */,
 				ACCFD74C1B51E69900DA5F06 /* EventsCollectionViewController.m in Sources */,
 				ACF490771BDDBFA1002DE753 /* EventDetailsView.m in Sources */,
+				AC6DB4B31C0F333400A152E0 /* YPONotificationManager.m in Sources */,
 				ACCF4C9F1B637DCA00F40CEE /* NotificationTableViewCell.m in Sources */,
 				D451A6B31B3AA6470083D9C2 /* YPOHTTPRequestSerializer.m in Sources */,
 				ACCBFA101B3F08CC004D8446 /* MemberDetailsViewController.m in Sources */,
@@ -1056,7 +1069,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "28bb27e5-925e-4a31-8ac5-93bd4112e514";
+				PROVISIONING_PROFILE = "4ef9524f-7437-4c4e-ac35-c495a26b0cb2";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1095,7 +1108,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "28bb27e5-925e-4a31-8ac5-93bd4112e514";
+				PROVISIONING_PROFILE = "4ef9524f-7437-4c4e-ac35-c495a26b0cb2";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1135,7 +1148,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d4c30b5f-d819-4092-a532-fe665b0310a8";
+				PROVISIONING_PROFILE = "4ef9524f-7437-4c4e-ac35-c495a26b0cb2";
 			};
 			name = Debug;
 		};
@@ -1173,7 +1186,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d4c30b5f-d819-4092-a532-fe665b0310a8";
+				PROVISIONING_PROFILE = "4ef9524f-7437-4c4e-ac35-c495a26b0cb2";
 			};
 			name = Release;
 		};
@@ -1181,6 +1194,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1193,6 +1208,7 @@
 				INFOPLIST_FILE = "YPO-WPO SGTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YPO-WPO SG.app/YPO-WPO SG";
 			};
 			name = Debug;
@@ -1201,6 +1217,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1209,6 +1227,7 @@
 				INFOPLIST_FILE = "YPO-WPO SGTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YPO-WPO SG.app/YPO-WPO SG";
 			};
 			name = Release;
@@ -1230,8 +1249,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1247,7 +1266,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "28bb27e5-925e-4a31-8ac5-93bd4112e514";
+				PROVISIONING_PROFILE = "aa789c12-6bbf-4002-8cea-82132cec32e7";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1287,7 +1306,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a7ea10d7-b802-40c8-b7fb-05d69c305100";
+				PROVISIONING_PROFILE = "aa789c12-6bbf-4002-8cea-82132cec32e7";
 			};
 			name = Adhoc;
 		};
@@ -1295,6 +1314,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1303,6 +1324,7 @@
 				INFOPLIST_FILE = "YPO-WPO SGTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YPO-WPO SG.app/YPO-WPO SG";
 			};
 			name = Adhoc;
@@ -1324,8 +1346,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mario Antonio Cape (HXADRPNTLT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matador Systems Pte Ltd (E74MJ3YL9A)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1341,7 +1363,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "28bb27e5-925e-4a31-8ac5-93bd4112e514";
+				PROVISIONING_PROFILE = "a7ea10d7-b802-40c8-b7fb-05d69c305100";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1389,6 +1411,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1397,6 +1421,7 @@
 				INFOPLIST_FILE = "YPO-WPO SGTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YPO-WPO SG.app/YPO-WPO SG";
 			};
 			name = Distribution;

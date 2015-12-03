@@ -102,7 +102,7 @@
     YPOCommentRequest *request = (YPOCommentRequest *)[YPOComment constructRequest:self.cancellationToken];
     request.page = page;
     request.rowCount = BATCHSIZE;
-    request.articleID = self.article.articleID;
+    request.articleID = @(self.articleID);
     [request startRequestSuccess:^(NSURLSessionDataTask *task, id responseObject) {
         self.currentPage = page;
         NSDictionary *paging = responseObject[@"paging"];
@@ -222,7 +222,7 @@
         return _fetchRequest;
     }
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"article.articleID == %@", self.article.articleID];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"article.articleID == %@", self.articleID];
     _fetchRequest = [YPOComment MR_requestAllSortedBy:@"postDate" ascending:NO withPredicate:predicate];
     [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
     [_fetchRequest setFetchBatchSize:BATCHSIZE];
@@ -244,7 +244,8 @@
     [self dismissKeyboard:YES];
     NSManagedObjectContext *localContext = [NSManagedObjectContext MR_contextWithParent:[NSManagedObjectContext MR_defaultContext]];
     
-    YPOArticle *article = [self.article MR_inContext:localContext];
+//    YPOArticle *article = [self.article MR_inContext:localContext];
+    YPOArticle *article = [YPOArticle MR_findFirstByAttribute:@"articleID" withValue:@(self.articleID) inContext:localContext];
     
     YPOComment *comment = [YPOComment MR_createEntityInContext:localContext];
     comment.comment = [self.textView.text copy];

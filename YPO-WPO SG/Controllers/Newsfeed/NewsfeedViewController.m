@@ -108,7 +108,8 @@ typedef NS_ENUM(NSUInteger, YPONewsfeedSection) {
     if ([controller isKindOfClass:[NewsDetailsViewController class]]) {
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
         NewsDetailsViewController *newsDetailsController = (NewsDetailsViewController *)controller;
-        newsDetailsController.article = self.news[selectedIndexPath.row];
+        YPOArticle *article = self.news[selectedIndexPath.row];
+        newsDetailsController.articleID = [article.articleID integerValue];
         [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
     } else if ([controller isKindOfClass:[MemberDetailsViewController class]]) {
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];

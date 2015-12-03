@@ -10,5 +10,7 @@
 
 @interface YPOTabBarController : UITabBarController
 
+- (void)pushViewControllerOnTop:(UIViewController *)controller animated:(BOOL)animated;
+- (void)setNotificationBadge;
 
 @end

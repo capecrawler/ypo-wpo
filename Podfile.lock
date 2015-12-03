@@ -25,6 +25,7 @@ PODS:
     - AFNetworking/NSURLSession
   - CSStickyHeaderFlowLayout (0.2.10)
   - DateTools (1.7.0)
+  - DeepLinkKit (1.1.0)
   - DZNEmptyDataSet (1.7.2)
   - GPUImage (0.1.7)
   - INSPullToRefresh (1.0.12)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - CSStickyHeaderFlowLayout
   - DateTools
+  - DeepLinkKit
   - DZNEmptyDataSet
   - GPUImage (~> 0.1)
   - INSPullToRefresh
@@ -68,6 +70,7 @@ SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   CSStickyHeaderFlowLayout: 5366582779d8b7c9ba9b9cc729c218cc23888776
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  DeepLinkKit: 3979713c8a0b6bd3259fb7917e572acf56645a35
   DZNEmptyDataSet: 0ec00bfc230d7450997b60c127afdd0b9f24f3b6
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   INSPullToRefresh: 3c3840b1837870d6553f749dab6520e31f551a76

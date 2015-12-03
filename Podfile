@@ -16,6 +16,7 @@ target 'YPO-WPO SG' do
     pod 'TTTAttributedLabel'
     pod 'JVFloatLabeledTextField'
     pod 'WYPopoverController', :git => 'https://github.com/nicolaschengdev/WYPopoverController.git'
+    pod 'DeepLinkKit'
 end
 
 target 'YPO-WPO SGTests' do

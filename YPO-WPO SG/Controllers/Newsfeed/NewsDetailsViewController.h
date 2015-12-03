@@ -11,6 +11,7 @@
 
 @interface NewsDetailsViewController : BaseViewController
 
-@property (nonatomic, strong) YPOArticle *article;
+@property (nonatomic, assign) NSInteger articleID;
+@property (nonatomic, strong) NSString *articleTitle;
 
 @end

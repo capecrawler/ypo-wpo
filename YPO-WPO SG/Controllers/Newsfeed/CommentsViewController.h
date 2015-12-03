@@ -11,6 +11,7 @@
 
 @interface CommentsViewController : SLKTextViewController
 
-@property (nonatomic, strong) YPOArticle *article;
+//@property (nonatomic, strong) YPOArticle *article;
+@property (nonatomic, assign) NSInteger articleID;
 
 @end

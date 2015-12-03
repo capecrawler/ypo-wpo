@@ -240,7 +240,7 @@
         NSString *articleTitle = ([notification.type isEqualToString:@"comment"])?notification.articleTitle: notification.title;
         YPOArticle *article = [self fetchOrCreateArticleWithID:articleID];
         article.title = articleTitle;
-        newsController.article = article;
+        newsController.articleID = [article.articleID integerValue];
     } else if ([controller isKindOfClass:[EventDetailsViewController class]]) {
         EventDetailsViewController *eventController = (EventDetailsViewController *)controller;
         eventController.eventID = notification.notificationID;

@@ -134,7 +134,9 @@
     if ([controller isKindOfClass:[NewsDetailsViewController class]]) {
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
         NewsDetailsViewController *newsDetailsController = (NewsDetailsViewController *)controller;
-        newsDetailsController.article = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        YPOArticle *article = [self.fetchedResultsController objectAtIndexPath:selectedIndexPath];
+        newsDetailsController.articleID = [article.articleID integerValue];
+        newsDetailsController.articleTitle = article.title;
         [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
     }
 }

@@ -20,10 +20,15 @@
 #import "YPOUser.h"
 #import <WYPopoverController/WYPopoverController.h>
 #import <Parse/Parse.h>
+#import "YPODeeplinkManager.h"
+#import "YPONotificationManager.h"
+#import "YPOTabBarController.h"
 
 #define APP_DID_ENTER_BG_TIMESTAMP @"app_did_background_timestamp"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) YPOTabBarController *tabController;
 
 @end
 
@@ -32,7 +37,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
+    
+    if (launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]) {
+        [self handleRemoteNotification:launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]];
+        [self decrementBadge];
+    }
+    
+    [[YPODeeplinkManager sharedManager] setRoutes];
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     [[AFNetworkActivityLogger sharedLogger]startLogging];
@@ -45,14 +56,13 @@
     if (![YPOUser currentUser]) {
         [[YPOSyncManager sharedManager]deleteAllData];
         [self showLogin:YES];
+    } else {
+        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
     }
     
     [Parse setApplicationId:@"Ohujzor69llWxaI1CZ6865ecABH9DMSeoPpo2bQO"
                   clientKey:@"tom8KEfqogegzaiNI8YMeykmWZJvAwa2T8jCwZc0"];
-    
-    
-    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
     
     return YES;
 }
@@ -60,7 +70,6 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -72,6 +81,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -86,6 +96,17 @@
     [[YPOImageCache sharedImageCache] cleanDisk];
 }
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+
+    if ([YPOUser currentUser]) {
+        [[YPODeeplinkManager sharedManager]handleURL:url withCompletion:nil];
+    }
+    
+    return YES;
+}
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
     [application registerForRemoteNotifications];
@@ -93,16 +114,19 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Store the deviceToken in the current installation and save it to Parse.
-    NSLog(@"did register notification");
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     currentInstallation.channels = @[ @"global" ];
+    currentInstallation[@"member_id"] = [[YPOUser currentUser] memberID];
     [currentInstallation saveInBackground];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
-    NSLog(@"notificaiton: %@", userInfo);
+//    [PFPush handlePush:userInfo];
+    if ( application.applicationState != UIApplicationStateActive ) {
+        [self handleRemoteNotification:userInfo];
+        [self decrementBadge];
+    }
 }
 
 #pragma mark - AppearanceProxy
@@ -118,6 +142,19 @@
 
 
 #pragma mark - Routines
+
+- (void)handleRemoteNotification:(NSDictionary *)userInfo {
+    [[YPONotificationManager sharedManager]handleNotification:userInfo];
+}
+
+- (void)decrementBadge {
+    NSInteger badgeCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    badgeCount = (badgeCount > 0)? badgeCount-1:0;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = badgeCount;
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    currentInstallation.badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    [currentInstallation saveEventually];
+}
 
 - (double) getDidEnteredBGTimestamp{
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -149,6 +186,7 @@
 - (void)showLogin:(BOOL)show{
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     if (show) {
+        [[UIApplication sharedApplication] unregisterForRemoteNotifications];
         UIViewController *loginController = [sb instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [UIView transitionFromView:self.window.rootViewController.view toView:loginController.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
             if (finished) {
@@ -156,10 +194,12 @@
             }
         }];
     } else {
-        UITabBarController *tabController = [sb instantiateViewControllerWithIdentifier:@"MainTabController"];
-        [UIView transitionFromView:self.window.rootViewController.view toView:tabController.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
+        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+        self.tabController = [sb instantiateViewControllerWithIdentifier:@"YPOTabBarController"];
+        [UIView transitionFromView:self.window.rootViewController.view toView:self.tabController.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:^(BOOL finished) {
             if (finished) {
-                self.window.rootViewController = tabController;
+                self.window.rootViewController = self.tabController;
             }
         }];
     }

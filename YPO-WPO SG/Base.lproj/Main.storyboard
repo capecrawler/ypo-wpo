@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ayk-5E-GOZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ayk-5E-GOZ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
         <scene sceneID="Rca-4i-FwB">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabController" id="ayk-5E-GOZ" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="YPOTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ayk-5E-GOZ" customClass="YPOTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="aOS-bN-aEk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -63,7 +63,7 @@
         <!--Profile-->
         <scene sceneID="otm-j6-7h8">
             <objects>
-                <viewController id="fkt-7y-uto" customClass="MemberDetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemberDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fkt-7y-uto" customClass="MemberDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4kh-Wg-MIo"/>
                         <viewControllerLayoutGuide type="bottom" id="GAd-gl-1N0"/>
@@ -482,7 +482,7 @@
         <!--News Details View Controller-->
         <scene sceneID="pcE-b8-6pC">
             <objects>
-                <viewController id="akR-dP-DY8" customClass="NewsDetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="akR-dP-DY8" customClass="NewsDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wnA-sR-Hiy"/>
                         <viewControllerLayoutGuide type="bottom" id="eHs-Jh-YBL"/>
@@ -692,7 +692,7 @@
         <!--Events-->
         <scene sceneID="cnn-aV-3l8">
             <objects>
-                <collectionViewController id="8ln-dx-Ybl" customClass="EventsCollectionViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="EventsCollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8ln-dx-Ybl" customClass="EventsCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IZX-C2-1yA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -722,7 +722,7 @@
         <!--Details-->
         <scene sceneID="hBv-gd-OBV">
             <objects>
-                <tableViewController id="Zck-64-ryJ" customClass="EventDetailsViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EventDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zck-64-ryJ" customClass="EventDetailsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pgk-Mj-7pv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1281,7 +1281,7 @@
         <!--Profile-->
         <scene sceneID="Rq6-P2-eST">
             <objects>
-                <viewController id="GUW-Ay-Slj" customClass="EditProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GUW-Ay-Slj" customClass="EditProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p1d-Nu-TqM"/>
                         <viewControllerLayoutGuide type="bottom" id="p9t-oC-ns1"/>
@@ -1483,10 +1483,10 @@
         <image name="logo-ypo-login" width="526" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zPr-BJ-IgD"/>
-        <segue reference="7LE-WR-FjD"/>
-        <segue reference="jgX-hT-tlG"/>
         <segue reference="7nJ-SL-Da7"/>
+        <segue reference="jgX-hT-tlG"/>
+        <segue reference="7LE-WR-FjD"/>
+        <segue reference="zPr-BJ-IgD"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.011764705882352941" green="0.27843137254901962" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
 </document>
