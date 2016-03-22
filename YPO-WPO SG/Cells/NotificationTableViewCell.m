@@ -29,7 +29,13 @@
 
 - (void) setNotification:(YPONotification *)notification {
     _notification = notification;
-    [self.thumbView sd_setImageWithURL:[NSURL URLWithString:self.notification.thumbURL]];
+    if ([self.notification.thumbURL isNotEmpty]) {
+        [self.thumbView sd_setImageWithURL:[NSURL URLWithString:self.notification.thumbURL]];
+    } else {
+        if ([notification.type isEqualToString:@"member"]) {
+            self.thumbView.image = [UIImage imageNamed:@"profile"];
+        }
+    }
     [self processLabelForNotification:notification];
     self.dateLabel.text = notification.sorting.timeAgoSinceNow;
 }

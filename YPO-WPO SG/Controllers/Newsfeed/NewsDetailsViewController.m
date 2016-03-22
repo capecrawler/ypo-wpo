@@ -28,7 +28,6 @@
     self.commentCountLabel.text = @"";
     
     [self.webView loadRequest:[NSURLRequest requestWithURL: [NSURL URLWithString:self.urlRequestString]]];
-    
 }
 
 - (void)didReceiveMemoryWarning {

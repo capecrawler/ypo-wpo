@@ -31,22 +31,22 @@
     self.thumbURL       = dictionary[@"thumb_url"];
     NSString *postDate  = dictionary[@"post_date"];
     if (postDate) {
-        self.postDate   = [NSDate dateFromInternetDateTimeString:postDate formatHint:DateFormatHintRFC3339];
+        self.postDate   = [NSDate dateFromString:postDate format:ISODateTimeFormat];
     }
     
     NSString *startDate = dictionary[@"start_date"];
     if (startDate) {
-        self.startDate  = [NSDate dateFromInternetDateTimeString:startDate formatHint:DateFormatHintRFC3339];
+        self.startDate  = [NSDate dateFromString:startDate format:ISODateTimeFormat];
     }
     
     NSString *endDate   = dictionary[@"end_date"];
     if (endDate) {
-        self.endDate    = [NSDate dateFromInternetDateTimeString:endDate formatHint:DateFormatHintRFC3339];
+        self.endDate    = [NSDate dateFromString:endDate format:ISODateTimeFormat];
     }
     
     NSString *sorting   = dictionary[@"sorting"];
     if (sorting) {
-        self.sorting    = [NSDate dateFromInternetDateTimeString:sorting formatHint:DateFormatHintRFC3339];
+        self.sorting    = [NSDate dateFromString:sorting format:ISODateTimeFormat];
     }
     
     self.comment        = dictionary[@"comment"];

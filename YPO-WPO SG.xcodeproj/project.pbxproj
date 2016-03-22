@@ -23,6 +23,7 @@
 		AC0605AF1B2ABB2F00EB0F5F /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0605AE1B2ABB2F00EB0F5F /* UIColor+Theme.m */; };
 		AC0605B21B2ABD1800EB0F5F /* TableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0605B11B2ABD1800EB0F5F /* TableViewHeader.m */; };
 		AC0605B41B2ABD3300EB0F5F /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0605B31B2ABD3300EB0F5F /* TableViewHeader.xib */; };
+		AC13BF1C1C84A11600144E61 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC13BF1B1C84A11600144E61 /* ResetPasswordViewController.m */; };
 		AC6793B81B89E6EF00A751E9 /* YPOGenderController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6793B71B89E6EF00A751E9 /* YPOGenderController.m */; };
 		AC6793BB1B89E71700A751E9 /* YPOChapterController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6793BA1B89E71700A751E9 /* YPOChapterController.m */; };
 		AC6793BE1B89FE2600A751E9 /* YPODateController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6793BD1B89FE2600A751E9 /* YPODateController.m */; };
@@ -157,6 +158,8 @@
 		AC0605B01B2ABD1800EB0F5F /* TableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewHeader.h; sourceTree = "<group>"; };
 		AC0605B11B2ABD1800EB0F5F /* TableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewHeader.m; sourceTree = "<group>"; };
 		AC0605B31B2ABD3300EB0F5F /* TableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
+		AC13BF1A1C84A11600144E61 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
+		AC13BF1B1C84A11600144E61 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		AC1B721D1BE768DC004ECD70 /* YPO_WPO_SG 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YPO_WPO_SG 4.xcdatamodel"; sourceTree = "<group>"; };
 		AC2A72681BE0FC8C003B7F72 /* YPO_WPO_SG 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YPO_WPO_SG 3.xcdatamodel"; sourceTree = "<group>"; };
 		AC6793B61B89E6EF00A751E9 /* YPOGenderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPOGenderController.h; sourceTree = "<group>"; };
@@ -650,6 +653,8 @@
 			children = (
 				32EA009F1B23351700B392E2 /* LoginViewController.h */,
 				32EA00A01B23351700B392E2 /* LoginViewController.m */,
+				AC13BF1A1C84A11600144E61 /* ResetPasswordViewController.h */,
+				AC13BF1B1C84A11600144E61 /* ResetPasswordViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -979,6 +984,7 @@
 				D43EDA9D1B394F970022FAD4 /* NSDate+InternetDate.m in Sources */,
 				ACD916A21B3E899000A93A06 /* NSDate+FormattedString.m in Sources */,
 				ACCF4CA21B63BBBF00F40CEE /* UIImageView+YPOCache.m in Sources */,
+				AC13BF1C1C84A11600144E61 /* ResetPasswordViewController.m in Sources */,
 				ACC993B41B29DBE7008E262E /* NewsDetailsViewController.m in Sources */,
 				ACB3F53B1B6A57B200A8B279 /* ChangePasswordController.m in Sources */,
 				ACCFD74F1B51E94100DA5F06 /* YPOEvent.m in Sources */,
@@ -1069,7 +1075,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "4ef9524f-7437-4c4e-ac35-c495a26b0cb2";
+				PROVISIONING_PROFILE = "0ff3dd4f-4ad5-469e-b21b-c35e330902cb";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1108,7 +1114,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "4ef9524f-7437-4c4e-ac35-c495a26b0cb2";
+				PROVISIONING_PROFILE = "0ff3dd4f-4ad5-469e-b21b-c35e330902cb";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1148,7 +1154,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4ef9524f-7437-4c4e-ac35-c495a26b0cb2";
+				PROVISIONING_PROFILE = "0ff3dd4f-4ad5-469e-b21b-c35e330902cb";
 			};
 			name = Debug;
 		};
@@ -1186,7 +1192,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4ef9524f-7437-4c4e-ac35-c495a26b0cb2";
+				PROVISIONING_PROFILE = "0ff3dd4f-4ad5-469e-b21b-c35e330902cb";
 			};
 			name = Release;
 		};

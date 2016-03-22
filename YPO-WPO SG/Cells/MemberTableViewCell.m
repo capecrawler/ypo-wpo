@@ -65,7 +65,7 @@
         self.membershipLabel.text = self.member.chapter;
     }
     
-    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:self.member.profilePicURL]];
+    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:self.member.profilePicURL] placeholderImage:[UIImage imageNamed:@"profile"]];
     if (self.showJoinedDate) {
         self.dateJoinedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Date Joined: %@", @"Date joined text"), [self.member.joinedDate stringWithFormat:@"dd MMMM yyyy"]];
     } else {

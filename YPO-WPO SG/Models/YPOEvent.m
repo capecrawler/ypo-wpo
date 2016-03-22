@@ -79,6 +79,7 @@
         self.rsvpEmail = rsvp[@"email"];
         self.rsvpName = rsvp[@"name"];
     }
+    
 }
 
 - (NSString *)startMonth {

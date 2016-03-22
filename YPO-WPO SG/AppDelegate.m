@@ -38,6 +38,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [Parse setApplicationId:@"Ohujzor69llWxaI1CZ6865ecABH9DMSeoPpo2bQO"
+                  clientKey:@"tom8KEfqogegzaiNI8YMeykmWZJvAwa2T8jCwZc0"];
+    
     if (launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]) {
         [self handleRemoteNotification:launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]];
         [self decrementBadge];
@@ -57,12 +60,11 @@
         [[YPOSyncManager sharedManager]deleteAllData];
         [self showLogin:YES];
     } else {
+        NSLog(@"try to register");
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
     }
     
-    [Parse setApplicationId:@"Ohujzor69llWxaI1CZ6865ecABH9DMSeoPpo2bQO"
-                  clientKey:@"tom8KEfqogegzaiNI8YMeykmWZJvAwa2T8jCwZc0"];
     
     return YES;
 }
@@ -114,6 +116,7 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Store the deviceToken in the current installation and save it to Parse.
+    NSLog(@"did register remote notif");
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     currentInstallation.channels = @[ @"global" ];
@@ -127,6 +130,11 @@
         [self handleRemoteNotification:userInfo];
         [self decrementBadge];
     }
+}
+
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"notification error: %@", error);
 }
 
 #pragma mark - AppearanceProxy

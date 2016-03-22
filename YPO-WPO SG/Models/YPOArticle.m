@@ -33,9 +33,9 @@
     self.content            = dictionary[@"content"];
     self.author             = dictionary[@"author"];
     NSString *postDate      = dictionary[@"post_date"];
-    self.postDate           = [NSDate dateFromInternetDateTimeString:postDate formatHint:DateFormatHintRFC3339];
+    self.postDate           = [NSDate dateFromString:postDate format:ISODateTimeFormat];
     NSString *created       = dictionary[@"created"];
-    self.created            = [NSDate dateFromInternetDateTimeString:created formatHint:DateFormatHintRFC3339];
+    self.created            = [NSDate dateFromString:created format:ISODateTimeFormat];
     self.createdBy          = dictionary[@"created_by"];    
 }
 

@@ -28,7 +28,7 @@
     self.name               = dictionary[@"name"];
     self.profilePictureURL  = dictionary[@"profile_picture_url"];
     NSString *postDate      = dictionary[@"post_date"];
-    self.postDate           = [NSDate dateFromInternetDateTimeString:postDate formatHint:DateFormatHintRFC3339];
+    self.postDate           = [NSDate dateFromString:postDate format:ISODateTimeFormat];
 }
 
 

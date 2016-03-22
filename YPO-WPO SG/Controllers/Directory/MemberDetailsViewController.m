@@ -114,7 +114,7 @@
     }
     self.nameLabel.text = self.member.name;
     self.chapterLabel.text = self.member.chapter;
-    [self.profileView sd_setImageWithURL:[NSURL URLWithString:self.member.profilePicURL]];
+    [self.profileView sd_setImageWithURL:[NSURL URLWithString:self.member.profilePicURL] placeholderImage:[UIImage imageNamed:@"profile"]];
     
     if ([self.member.company.name isNotEmpty]) {
         self.companyLabel.text = self.member.company.name;

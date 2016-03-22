@@ -222,7 +222,7 @@
         return _fetchRequest;
     }
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"article.articleID == %@", self.articleID];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"article.articleID == %ld", (long)self.articleID];
     _fetchRequest = [YPOComment MR_requestAllSortedBy:@"postDate" ascending:NO withPredicate:predicate];
     [_fetchRequest setFetchLimit:self.currentPage * BATCHSIZE];
     [_fetchRequest setFetchBatchSize:BATCHSIZE];
